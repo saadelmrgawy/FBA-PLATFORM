@@ -1,0 +1,2906 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>بوابة الدخول والتسجيل | FBA Futur By Ai</title>
+<link rel="icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --neon-cyan:#00d9ff;--neon-purple:#8b5cf6;--neon-pink:#ec4899;
+  --gold:#fbbf24;--gold-dark:#d97706;--emerald:#10b981;--red:#ef4444;
+  --deep-space:#05060f;--text-light:#f1f5f9;--text-muted:#94a3b8;
+  --gradient-main:linear-gradient(135deg,#00d9ff 0%,#8b5cf6 50%,#ec4899 100%);
+  --gradient-gold:linear-gradient(135deg,#fbbf24,#d97706);
+  --gradient-emerald:linear-gradient(135deg,#10b981,#059669);
+  --radius:18px;
+  --pad-x:clamp(14px,3vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Cairo',sans-serif;background:var(--deep-space);color:var(--text-light);overflow-x:hidden;min-height:100vh;line-height:1.65;font-size:14px;font-size:clamp(12.5px,.17vw + 12px,14.5px);-webkit-font-smoothing:antialiased;}
+img,svg{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input,select,textarea{font-family:inherit;}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent;}
+
+.bg-layer{position:fixed;inset:0;z-index:-4;background:radial-gradient(ellipse at 20% 20%,rgba(0,217,255,.13),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(139,92,246,.15),transparent 55%),radial-gradient(ellipse at 50% 50%,rgba(236,72,153,.07),transparent 60%),var(--deep-space);}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(0,217,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);}
+.bg-mesh{position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle 600px at var(--mx,50%) var(--my,50%),rgba(0,217,255,.22),transparent 55%),radial-gradient(circle 500px at calc(100% - var(--mx,50%)) calc(100% - var(--my,50%)),rgba(139,92,246,.2),transparent 55%);transition:background .25s;mix-blend-mode:screen;}
+.bg-orbs{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.3;animation:orbFloat 22s ease-in-out infinite;}
+.orb-1{width:420px;height:420px;background:#00d9ff;top:8%;left:8%;}
+.orb-2{width:500px;height:500px;background:#8b5cf6;top:50%;right:5%;animation-delay:-6s;}
+.orb-3{width:380px;height:380px;background:#ec4899;bottom:8%;left:25%;animation-delay:-12s;}
+.orb-4{width:320px;height:320px;background:#fbbf24;top:20%;right:28%;animation-delay:-18s;opacity:.16;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(60px,-40px) scale(1.1);}50%{transform:translate(-40px,60px) scale(.95);}75%{transform:translate(40px,40px) scale(1.05);}}
+
+.loader-screen{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#0a0e27 0%,#05060f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .7s,visibility .7s;overflow:hidden;}
+.loader-screen.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-logo-wrap{position:relative;width:110px;height:110px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;}
+.loader-glow{position:absolute;inset:-22px;border-radius:50%;background:var(--gradient-main);filter:blur(28px);opacity:.35;animation:loaderGlowPulse 2.4s ease-in-out infinite;}
+@keyframes loaderGlowPulse{0%,100%{opacity:.22;transform:scale(.9);}50%{opacity:.5;transform:scale(1.08);}}
+.loader-ring{position:absolute;inset:0;border-radius:50%;border:3px solid transparent;border-top-color:#00d9ff;border-right-color:#8b5cf6;animation:spin 1.3s linear infinite;}
+.loader-ring-2{inset:14px;border-top-color:#8b5cf6;border-right-color:#ec4899;animation:spin 2s linear infinite reverse;}
+.loader-ring-3{inset:28px;border-top-color:#3b82f6;border-right-color:#00d9ff;animation:spin 2.6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loader-logo-inner{position:relative;width:68px;height:68px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 35px rgba(0,217,255,.7);border:2px solid rgba(255,255,255,.25);}
+.loader-logo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.loader-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:900;background:var(--gradient-main);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;margin:0 0 6px;animation:lg 3s linear infinite;}
+@keyframes lg{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+.loader-sub{font-size:.82rem;color:var(--text-muted);letter-spacing:1.5px;margin-bottom:18px;}
+.loader-bar{position:relative;width:260px;max-width:72vw;height:5px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin:0 auto 10px;border:1px solid rgba(0,217,255,.2);}
+.loader-bar-fill{height:100%;width:0%;background:var(--gradient-main);border-radius:10px;box-shadow:0 0 15px rgba(0,217,255,.8);transition:width .3s;}
+.loader-percent{font-family:'Orbitron',sans-serif;font-size:.78rem;color:#00d9ff;letter-spacing:2px;}
+
+.navbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:10px var(--pad-x);transition:all .35s;min-height:56px;}
+.nav-logos{display:flex;align-items:center;gap:10px;}
+.nav-logos img{height:clamp(30px,4vw,42px);width:auto;object-fit:contain;filter:drop-shadow(0 3px 10px rgba(0,217,255,.3));}
+.nav-actions{display:flex;align-items:center;gap:8px;}
+.nav-icon-btn{width:clamp(38px,4.4vw,44px);height:clamp(38px,4.4vw,44px);border-radius:12px;background:rgba(15,23,42,.55);border:1px solid rgba(0,217,255,.32);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:all .3s;backdrop-filter:blur(12px);}
+.nav-icon-btn:hover{background:var(--gradient-main);border-color:transparent;transform:translateY(-2px);}
+.menu-lines{position:relative;width:20px;height:14px;}
+.menu-lines span{position:absolute;right:0;height:2px;background:#fff;border-radius:2px;transition:all .4s;}
+.menu-lines span:nth-child(1){top:0;width:20px;}
+.menu-lines span:nth-child(2){top:6px;width:14px;}
+.menu-lines span:nth-child(3){top:12px;width:18px;}
+.nav-home-btn{display:inline-flex;align-items:center;gap:7px;height:clamp(38px,4.4vw,44px);padding:0 clamp(12px,1.5vw,18px);border-radius:100px;background:rgba(15,23,42,.6);backdrop-filter:blur(12px);color:#fff;font-weight:800;font-size:.8rem;border:1px solid rgba(0,217,255,.4);transition:all .3s;}
+.nav-home-btn:hover{background:var(--gradient-main);border-color:transparent;}
+.nav-home-btn span{white-space:nowrap;}
+
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:999;opacity:0;visibility:hidden;transition:all .4s;}
+.sidebar-overlay.open{opacity:1;visibility:visible;}
+.sidebar-menu{position:fixed;top:0;right:0;height:100vh;width:clamp(270px,86vw,360px);background:linear-gradient(180deg,rgba(10,14,39,.98),rgba(15,23,42,.98));backdrop-filter:blur(30px);border-left:1px solid rgba(0,217,255,.3);z-index:1000;transform:translateX(100%);transition:transform .5s cubic-bezier(.68,-.55,.27,1.55);padding:22px 18px;overflow-y:auto;}
+.sidebar-menu.open{transform:translateX(0);}
+.sidebar-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient-main);}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(0,217,255,.18);}
+.sidebar-header h3{margin:0;font-family:'Orbitron',sans-serif;font-size:.9rem;background:linear-gradient(135deg,#00d9ff,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.sidebar-close{width:34px;height:34px;border-radius:10px;background:rgba(0,217,255,.12);border:1px solid rgba(0,217,255,.3);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.05rem;transition:all .3s;}
+.sidebar-close:hover{background:var(--gradient-main);transform:rotate(90deg);}
+.sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;}
+.sidebar-links li a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:var(--text-light);font-weight:600;font-size:.85rem;transition:all .3s;border:1px solid transparent;min-height:42px;}
+.sidebar-links li a:hover{border-color:rgba(0,217,255,.4);transform:translateX(-5px);}
+.sidebar-links li a i{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(0,217,255,.12);color:#00d9ff;font-size:.85rem;flex-shrink:0;}
+.sidebar-links li a:hover i{background:var(--gradient-main);color:#fff;}
+.sidebar-links li a.active{border-color:rgba(0,217,255,.55);background:linear-gradient(135deg,rgba(0,217,255,.12),rgba(139,92,246,.12));}
+.sidebar-links li a.active i{background:var(--gradient-main);color:#fff;}
+
+.page-hero{display:flex;flex-direction:column;align-items:center;padding:calc(56px + 22px) var(--pad-x) 18px;text-align:center;position:relative;}
+.breadcrumb{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;background:rgba(15,23,42,.65);border:1px solid rgba(0,217,255,.3);font-size:.7rem;font-weight:700;color:var(--text-muted);margin-bottom:14px;flex-wrap:wrap;justify-content:center;}
+.breadcrumb a{color:#7dd3fc;}
+.breadcrumb i{font-size:.55rem;color:#475569;}
+.breadcrumb .current{color:#fff;}
+.page-hero-tag{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:100px;background:linear-gradient(135deg,rgba(0,217,255,.15),rgba(139,92,246,.1));border:1px solid rgba(0,217,255,.45);color:#7dd3fc;font-size:.72rem;font-weight:700;margin-bottom:12px;backdrop-filter:blur(10px);}
+.page-hero-tag i{color:#ec4899;}
+.page-hero h1{font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:clamp(1.4rem,4.2vw,2.6rem);line-height:1.3;margin:0 0 8px;}
+.page-hero h1 .grad{background:linear-gradient(100deg,#00d9ff,#8b5cf6 45%,#ec4899 75%,#00d9ff);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gshift 5s ease-in-out infinite;padding-bottom:.12em;}
+@keyframes gshift{0%,100%{background-position:0% center;}50%{background-position:100% center;}}
+.page-hero p{max-width:700px;color:var(--text-muted);font-size:clamp(.78rem,1.4vw,.92rem);line-height:1.85;}
+.page-hero p strong{color:#7dd3fc;}
+
+.auth-section{padding:14px var(--pad-x) 50px;max-width:1400px;margin:0 auto;}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px;border-radius:100px;background:rgba(15,23,42,.75);border:1px solid rgba(0,217,255,.28);backdrop-filter:blur(20px);max-width:440px;margin:0 auto 24px;}
+.auth-tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:50px;background:transparent;color:#cbd5e1;font-weight:800;font-size:.82rem;cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);min-height:42px;border:1px solid transparent;}
+.auth-tab.active{background:var(--gradient-main);color:#fff;box-shadow:0 10px 26px rgba(139,92,246,.5);transform:translateY(-2px);}
+
+.auth-panel{display:none;animation:pIn .55s cubic-bezier(.16,1,.3,1);}
+.auth-panel.active{display:block;}
+@keyframes pIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+.auth-card{position:relative;padding:clamp(22px,3vw,40px) clamp(18px,2.6vw,36px);border-radius:24px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(0,217,255,.35);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);max-width:560px;margin:0 auto;}
+.auth-card::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,217,255,.14),transparent 25%,rgba(139,92,246,.14),transparent 55%,rgba(236,72,153,.12),transparent 80%);animation:spin 25s linear infinite;pointer-events:none;}
+.auth-card > *{position:relative;z-index:1;}
+.auth-card-header{text-align:center;margin-bottom:22px;}
+.auth-card-icon{width:clamp(56px,8vw,72px);height:clamp(56px,8vw,72px);margin:0 auto 14px;border-radius:20px;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-size:clamp(1.4rem,2.6vw,1.8rem);color:#fff;box-shadow:0 16px 40px rgba(139,92,246,.5);position:relative;}
+.auth-card-icon::before{content:'';position:absolute;inset:-7px;border-radius:24px;border:2px dashed rgba(0,217,255,.45);animation:spin 20s linear infinite;}
+.auth-card-header h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.05rem,2.2vw,1.4rem);font-weight:900;color:#fff;margin:0 0 6px;line-height:1.35;}
+.auth-card-header h2 .grad{background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.auth-card-header p{color:var(--text-muted);font-size:.78rem;line-height:1.75;}
+
+.form-group{margin-bottom:12px;position:relative;}
+.form-label{display:block;font-size:.76rem;font-weight:800;color:#e2e8f0;margin-bottom:5px;}
+.form-label .req{color:#ec4899;}
+.form-label .hint{color:var(--text-muted);font-weight:600;font-size:.66rem;margin-right:5px;}
+.input-wrap{position:relative;}
+.input-wrap > .field-icon{position:absolute;top:50%;right:13px;transform:translateY(-50%);color:#64748b;font-size:.85rem;pointer-events:none;z-index:2;}
+.form-control{width:100%;padding:11px 40px 11px 13px;border-radius:12px;border:1.5px solid rgba(0,217,255,.25);background:rgba(5,6,15,.6);color:#f1f5f9;font-size:.86rem;transition:all .25s;outline:none;min-height:44px;}
+.form-control:focus{border-color:#00d9ff;box-shadow:0 0 0 3px rgba(0,217,255,.15);background:rgba(5,6,15,.85);}
+.form-control:focus ~ .field-icon{color:#00d9ff;}
+.form-control::placeholder{color:#64748b;}
+.form-control.ltr{direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;}
+select.form-control{cursor:pointer;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#00d9ff 50%),linear-gradient(135deg,#00d9ff 50%,transparent 50%);background-position:calc(10% - 2px) 50%,calc(10% - 12px) 50%;background-size:11px 11px,11px 11px;background-repeat:no-repeat;padding-left:32px;}
+select.form-control option{background:#0a0e27;color:#fff;}
+select.form-control optgroup{background:#0a0e27;color:#fbbf24;font-weight:900;}
+textarea.form-control{resize:vertical;min-height:80px;padding:11px 13px;}
+
+.toggle-password{position:absolute;top:50%;left:10px;transform:translateY(-50%);background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.3);color:#00d9ff;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.72rem;cursor:pointer;transition:all .3s;z-index:3;}
+.toggle-password:hover{background:var(--gradient-main);color:#fff;border-color:transparent;}
+
+.form-hint{display:flex;align-items:flex-start;gap:6px;margin-top:4px;font-size:.65rem;color:#64748b;line-height:1.55;}
+.form-hint i{color:#00d9ff;font-size:.68rem;margin-top:1px;flex-shrink:0;}
+.form-hint.warn i{color:#fbbf24;}
+.form-hint.error{color:#ef4444;}
+.form-hint.error i{color:#ef4444;}
+
+.password-strength{margin-top:8px;}
+.strength-bar{height:6px;background:rgba(5,6,15,.7);border-radius:100px;overflow:hidden;border:1px solid rgba(0,217,255,.15);}
+.strength-fill{height:100%;width:0%;border-radius:100px;transition:all .4s cubic-bezier(.16,1,.3,1);}
+.strength-fill.s1{width:20%;background:linear-gradient(90deg,#ef4444,#b91c1c);}
+.strength-fill.s2{width:40%;background:linear-gradient(90deg,#f59e0b,#d97706);}
+.strength-fill.s3{width:60%;background:linear-gradient(90deg,#fbbf24,#d97706);}
+.strength-fill.s4{width:80%;background:linear-gradient(90deg,#22d3ee,#0891b2);}
+.strength-fill.s5{width:100%;background:linear-gradient(90deg,#10b981,#059669);}
+.strength-requirements{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}
+.strength-requirements span{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;background:rgba(5,6,15,.6);border:1px solid rgba(148,163,184,.25);font-size:.62rem;font-weight:700;color:#94a3b8;transition:all .3s;}
+.strength-requirements span i{font-size:.55rem;opacity:.5;}
+.strength-requirements span.ok{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.5);color:#10b981;}
+.strength-requirements span.ok i{opacity:1;color:#10b981;}
+
+.captcha-box{padding:13px 15px;border-radius:14px;background:linear-gradient(140deg,rgba(5,6,15,.8),rgba(26,11,46,.6));border:1px solid rgba(0,217,255,.28);margin-bottom:14px;}
+.captcha-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.captcha-checkbox{display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;font-weight:700;font-size:.78rem;color:#e2e8f0;position:relative;}
+.captcha-checkbox input{position:absolute;opacity:0;pointer-events:none;}
+.captcha-checkbox .cb-box{width:24px;height:24px;border-radius:7px;border:2px solid rgba(0,217,255,.4);background:rgba(5,6,15,.6);display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;}
+.captcha-checkbox .cb-box i{color:#fff;font-size:.65rem;opacity:0;transform:scale(.5);transition:all .3s;}
+.captcha-checkbox input:checked ~ .cb-box{background:var(--gradient-emerald);border-color:transparent;box-shadow:0 5px 15px rgba(16,185,129,.5);}
+.captcha-checkbox input:checked ~ .cb-box i{opacity:1;transform:scale(1);}
+
+.captcha-challenges{display:grid;gap:8px;margin-top:10px;padding-top:10px;border-top:1px dashed rgba(0,217,255,.2);}
+.captcha-challenge{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.captcha-challenge .ch-label{font-size:.66rem;color:#7dd3fc;font-weight:800;min-width:80px;flex-shrink:0;}
+.captcha-challenge .ch-question{padding:6px 12px;background:linear-gradient(135deg,rgba(0,217,255,.12),rgba(139,92,246,.1));border:1px solid rgba(0,217,255,.4);border-radius:9px;direction:ltr;letter-spacing:1px;color:#fff;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.82rem;}
+.captcha-challenge input{flex:1;min-width:90px;padding:7px 10px;border-radius:9px;border:1.5px solid rgba(0,217,255,.3);background:rgba(5,6,15,.7);color:#fff;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:.82rem;text-align:center;outline:none;transition:all .3s;direction:ltr;}
+.captcha-challenge input:focus{border-color:#00d9ff;box-shadow:0 0 0 3px rgba(0,217,255,.15);}
+.refresh-btn{width:32px;height:32px;border-radius:9px;background:rgba(0,217,255,.12);border:1px solid rgba(0,217,255,.3);color:#00d9ff;display:flex;align-items:center;justify-content:center;font-size:.78rem;cursor:pointer;transition:all .3s;flex-shrink:0;}
+.refresh-btn:hover{background:var(--gradient-main);color:#fff;border-color:transparent;transform:rotate(180deg);}
+
+.btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;border-radius:12px;background:var(--gradient-main);color:#fff;font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:.88rem;border:none;cursor:pointer;transition:all .3s;box-shadow:0 12px 30px rgba(139,92,246,.5);position:relative;overflow:hidden;min-height:46px;letter-spacing:.4px;}
+.btn-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-100%);transition:transform .7s;}
+.btn-submit:hover::before{transform:translateX(100%);}
+.btn-submit:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(236,72,153,.55);}
+.btn-submit:disabled{opacity:.7;cursor:not-allowed;transform:none;}
+
+.btn-ghost-full{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:11px;border-radius:12px;background:rgba(15,23,42,.6);color:#cbd5e1;font-weight:800;font-size:.82rem;border:1.5px solid rgba(0,217,255,.3);transition:all .3s;cursor:pointer;min-height:42px;}
+.btn-ghost-full:hover{background:rgba(0,217,255,.1);border-color:#00d9ff;color:#fff;transform:translateY(-2px);}
+
+.form-divider{display:flex;align-items:center;gap:12px;margin:14px 0;color:#64748b;font-size:.7rem;font-weight:800;}
+.form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(0,217,255,.3),transparent);}
+
+.form-links{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.form-links a{color:#7dd3fc;font-size:.74rem;font-weight:700;transition:color .3s;cursor:pointer;}
+.form-links a:hover{color:#ec4899;text-decoration:underline;}
+
+.register-card{position:relative;padding:clamp(20px,2.4vw,32px) clamp(16px,2.4vw,32px);border-radius:24px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(0,217,255,.35);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);max-width:1400px;margin:0 auto;}
+.register-card::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,217,255,.08),transparent 25%,rgba(139,92,246,.08),transparent 55%,rgba(236,72,153,.06),transparent 80%);animation:spin 30s linear infinite;pointer-events:none;}
+.register-card > *{position:relative;z-index:1;}
+.register-header{text-align:center;margin-bottom:18px;}
+.register-header h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.05rem,2.2vw,1.4rem);font-weight:900;color:#fff;margin:0 0 6px;line-height:1.3;}
+.register-header h2 .grad{background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.register-header p{color:var(--text-muted);font-size:.76rem;line-height:1.65;max-width:640px;margin:0 auto;}
+
+.progress-steps{display:flex;gap:3px;margin-bottom:20px;position:relative;padding:0 2px;overflow-x:auto;scrollbar-width:none;}
+.progress-steps::-webkit-scrollbar{display:none;}
+.progress-steps::before{content:'';position:absolute;top:16px;right:6%;left:6%;height:2px;background:rgba(0,217,255,.15);border-radius:2px;z-index:0;}
+.progress-steps::after{content:'';position:absolute;top:16px;right:6%;height:2px;background:var(--gradient-main);border-radius:2px;z-index:1;width:var(--progress,0%);transition:width .6s cubic-bezier(.16,1,.3,1);box-shadow:0 0 10px rgba(0,217,255,.5);}
+.step-item{flex:1 1 0;min-width:56px;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;z-index:2;cursor:pointer;transition:all .3s;}
+.step-circle{width:clamp(28px,3.5vw,34px);height:clamp(28px,3.5vw,34px);border-radius:50%;background:rgba(15,23,42,.9);border:2.5px solid rgba(0,217,255,.25);display:flex;align-items:center;justify-content:center;font-family:'Cairo',sans-serif;font-weight:900;font-size:.68rem;color:#94a3b8;transition:all .4s cubic-bezier(.34,1.56,.64,1);}
+.step-circle i{font-size:.72rem;}
+.step-item.active .step-circle{background:var(--gradient-main);border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(139,92,246,.6),0 0 0 4px rgba(0,217,255,.15);transform:scale(1.1);}
+.step-item.completed .step-circle{background:var(--gradient-emerald);border-color:transparent;color:#fff;box-shadow:0 6px 18px rgba(16,185,129,.5);}
+.step-item.completed .step-circle::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;font-size:.66rem;}
+.step-item.completed .step-circle span,.step-item.completed .step-circle i{display:none;}
+.step-label{font-size:clamp(.52rem,.75vw,.6rem);font-weight:800;color:#64748b;text-align:center;line-height:1.15;transition:color .3s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70px;}
+.step-item.active .step-label{color:#fff;}
+.step-item.completed .step-label{color:#10b981;}
+
+.stage-content{display:none;animation:sIn .5s cubic-bezier(.16,1,.3,1);}
+.stage-content.active{display:block;}
+@keyframes sIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+.stage-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(0,217,255,.15);}
+.stage-title-icon{flex-shrink:0;width:clamp(38px,4.6vw,44px);height:clamp(38px,4.6vw,44px);border-radius:12px;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;box-shadow:0 10px 24px rgba(139,92,246,.4);}
+.stage-title-text h3{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(.92rem,1.6vw,1.08rem);font-weight:900;color:#fff;margin:0 0 2px;line-height:1.25;}
+.stage-title-text p{color:var(--text-muted);font-size:.7rem;margin:0;line-height:1.55;}
+
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px;}
+.form-grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));}
+.form-grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));}
+.form-grid .full{grid-column:1/-1;}
+.form-grid .half{grid-column:span 1;}
+@media (min-width:1024px){.register-card{max-width:1400px;}.form-grid.cols-3{grid-template-columns:repeat(3,1fr);}.form-grid.cols-4{grid-template-columns:repeat(4,1fr);}}
+@media (min-width:1280px){.form-grid.cols-4{grid-template-columns:repeat(4,1fr);}}
+
+.dynamic-section{padding:12px 14px;border-radius:14px;background:linear-gradient(140deg,rgba(0,217,255,.05),rgba(139,92,246,.03));border:1px solid rgba(0,217,255,.25);margin-bottom:12px;animation:sIn .45s cubic-bezier(.16,1,.3,1);}
+.dynamic-section-title{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:900;color:#7dd3fc;margin:0 0 10px;padding-bottom:7px;border-bottom:1px dashed rgba(0,217,255,.2);}
+.dynamic-section-title i{color:#ec4899;font-size:.75rem;}
+.dynamic-section.warn{border-color:rgba(251,191,36,.35);background:linear-gradient(140deg,rgba(251,191,36,.05),rgba(236,72,153,.02));}
+.dynamic-section.warn .dynamic-section-title{color:#fbbf24;}
+
+.file-upload{position:relative;padding:14px 12px;border-radius:12px;border:2px dashed rgba(0,217,255,.3);background:rgba(5,6,15,.5);text-align:center;cursor:pointer;transition:all .3s;overflow:hidden;}
+.file-upload:hover{border-color:rgba(0,217,255,.7);background:rgba(0,217,255,.06);}
+.file-upload.has-file{border-style:solid;border-color:#10b981;background:rgba(16,185,129,.06);padding:8px;}
+.file-upload input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;}
+.file-upload-icon{width:clamp(34px,4vw,40px);height:clamp(34px,4vw,40px);margin:0 auto 6px;border-radius:11px;background:rgba(0,217,255,.12);border:1px solid rgba(0,217,255,.3);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#00d9ff;transition:transform .35s;}
+.file-upload:hover .file-upload-icon{transform:scale(1.06) rotate(-5deg);}
+.file-upload.has-file .file-upload-icon{background:var(--gradient-emerald);border-color:transparent;color:#fff;}
+.file-upload h5{font-size:.76rem;font-weight:800;color:#fff;margin:0 0 2px;}
+.file-upload p{font-size:.62rem;color:#64748b;margin:0;line-height:1.5;}
+.file-upload-preview{display:none;width:100%;max-height:120px;object-fit:contain;border-radius:9px;margin-top:6px;border:1px solid rgba(0,217,255,.2);}
+.file-upload.has-file .file-upload-preview{display:block;}
+.file-upload.has-file .file-upload-icon,.file-upload.has-file h5{display:none;}
+.file-upload.has-file p{color:#10b981;font-weight:700;}
+.file-remove-btn{display:none;margin-top:6px;padding:4px 10px;border-radius:8px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#ef4444;font-size:.62rem;font-weight:800;cursor:pointer;}
+.file-upload.has-file .file-remove-btn{display:inline-flex;align-items:center;gap:4px;}
+
+.review-section{padding:12px 14px;border-radius:14px;background:linear-gradient(140deg,rgba(5,6,15,.6),rgba(26,11,46,.5));border:1px solid rgba(0,217,255,.25);margin-bottom:12px;}
+.review-section h4{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:900;color:#fff;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid rgba(0,217,255,.15);}
+.review-section h4 i{color:#00d9ff;font-size:.75rem;}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:7px;}
+.review-item{padding:6px 10px;border-radius:8px;background:rgba(0,217,255,.04);border:1px solid rgba(0,217,255,.12);}
+.review-item .lbl{display:block;font-size:.58rem;color:#64748b;font-weight:700;margin-bottom:2px;text-transform:uppercase;letter-spacing:.4px;}
+.review-item .val{display:block;font-size:.72rem;color:#fff;font-weight:800;word-break:break-word;line-height:1.4;}
+
+.terms-box{padding:12px 14px;border-radius:14px;background:linear-gradient(140deg,rgba(251,191,36,.06),rgba(139,92,246,.04));border:1px solid rgba(251,191,36,.3);margin-bottom:12px;}
+.terms-checkbox{display:flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none;}
+.terms-checkbox input{position:absolute;opacity:0;pointer-events:none;}
+.terms-checkbox .cb-box{flex-shrink:0;width:22px;height:22px;border-radius:7px;border:2px solid rgba(251,191,36,.5);background:rgba(5,6,15,.6);display:flex;align-items:center;justify-content:center;transition:all .3s;margin-top:1px;}
+.terms-checkbox .cb-box i{color:#fff;font-size:.58rem;opacity:0;transform:scale(.5);transition:all .3s;}
+.terms-checkbox input:checked ~ .cb-box{background:var(--gradient-gold);border-color:transparent;box-shadow:0 5px 15px rgba(251,191,36,.5);}
+.terms-checkbox input:checked ~ .cb-box i{opacity:1;transform:scale(1);}
+.terms-checkbox .cb-text{font-size:.72rem;color:#cbd5e1;line-height:1.7;font-weight:600;}
+.terms-checkbox .cb-text strong{color:#fbbf24;font-weight:800;}
+
+.stage-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(0,217,255,.15);flex-wrap:wrap;}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:12px;font-weight:900;font-size:.82rem;cursor:pointer;transition:all .3s;border:none;min-width:110px;min-height:44px;}
+.nav-btn.prev{background:rgba(15,23,42,.7);color:#cbd5e1;border:1.5px solid rgba(0,217,255,.3);}
+.nav-btn.prev:hover{background:rgba(0,217,255,.1);color:#fff;border-color:#00d9ff;}
+.nav-btn.next{background:var(--gradient-main);color:#fff;box-shadow:0 10px 26px rgba(139,92,246,.45);}
+.nav-btn.next:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(236,72,153,.5);}
+.nav-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.stage-counter{font-family:'Orbitron',sans-serif;font-size:.75rem;font-weight:900;color:#7dd3fc;letter-spacing:1px;white-space:nowrap;}
+
+.success-screen{display:none;text-align:center;padding:14px 0;}
+.success-screen.active{display:block;animation:pIn .7s cubic-bezier(.16,1,.3,1);}
+.success-icon{width:clamp(70px,11vw,96px);height:clamp(70px,11vw,96px);margin:0 auto 18px;border-radius:50%;background:var(--gradient-emerald);display:flex;align-items:center;justify-content:center;font-size:clamp(1.8rem,4.2vw,2.6rem);color:#fff;box-shadow:0 18px 50px rgba(16,185,129,.5);position:relative;animation:sPop .6s cubic-bezier(.34,1.56,.64,1);}
+@keyframes sPop{0%{transform:scale(0);}70%{transform:scale(1.12);}100%{transform:scale(1);}}
+.success-icon::before{content:'';position:absolute;inset:-12px;border-radius:50%;border:3px dashed rgba(16,185,129,.5);animation:spin 22s linear infinite;}
+.success-screen h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.05rem,2.4vw,1.5rem);font-weight:900;color:#fff;margin:0 0 10px;}
+.success-screen h2 .grad{background:linear-gradient(135deg,#10b981,#00d9ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.success-screen > p{color:var(--text-muted);font-size:.8rem;line-height:1.85;max-width:560px;margin:0 auto 18px;}
+
+.id-display-box{max-width:600px;margin:0 auto 18px;padding:18px 20px;border-radius:18px;background:linear-gradient(140deg,rgba(0,217,255,.08),rgba(139,92,246,.06));border:2px solid rgba(0,217,255,.4);text-align:center;position:relative;overflow:hidden;}
+.id-display-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,217,255,.15),transparent 25%,rgba(236,72,153,.12),transparent 55%);animation:spin 20s linear infinite;pointer-events:none;}
+.id-display-box > *{position:relative;z-index:1;}
+.id-display-box .id-label{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.5);color:#fbbf24;font-size:.68rem;font-weight:900;letter-spacing:1px;margin-bottom:10px;}
+.id-display-box .id-value{font-family:'JetBrains Mono',monospace;font-size:clamp(.78rem,1.8vw,1.05rem);font-weight:900;color:#fff;letter-spacing:1.5px;direction:ltr;margin:0 0 10px;padding:12px 12px;background:rgba(5,6,15,.7);border-radius:10px;border:1px solid rgba(0,217,255,.3);word-break:break-all;text-shadow:0 0 18px rgba(0,217,255,.5);}
+.id-display-box .id-value .sep{color:#fbbf24;text-shadow:0 0 8px rgba(251,191,36,.8);}
+.copy-id-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:100px;background:rgba(0,217,255,.15);border:1px solid rgba(0,217,255,.4);color:#7dd3fc;font-weight:800;font-size:.72rem;cursor:pointer;transition:all .3s;}
+.copy-id-btn:hover{background:var(--gradient-main);color:#fff;border-color:transparent;transform:translateY(-2px);}
+.id-display-box .id-hint{display:block;margin-top:10px;font-size:.66rem;color:var(--text-muted);line-height:1.65;}
+.id-display-box .id-hint strong{color:#fbbf24;}
+
+.req-info{max-width:520px;margin:0 auto 18px;padding:14px 18px;border-radius:16px;background:linear-gradient(140deg,rgba(5,6,15,.7),rgba(26,11,46,.55));border:1px solid rgba(16,185,129,.3);text-align:right;}
+.req-info h4{font-size:.72rem;font-weight:900;color:#10b981;margin:0 0 10px;text-align:center;letter-spacing:1px;}
+.req-info .req-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed rgba(0,217,255,.15);font-size:.74rem;gap:8px;}
+.req-info .req-row:last-child{border-bottom:none;}
+.req-info .req-row span:first-child{color:#94a3b8;font-weight:700;}
+.req-info .req-row span:last-child{color:#fff;font-weight:900;text-align:left;direction:rtl;}
+.req-info .req-row span.ltr{direction:ltr;font-family:'JetBrains Mono',monospace;font-size:.7rem;}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);padding:11px 20px;border-radius:100px;color:#fff;font-weight:900;font-size:.78rem;z-index:9999;opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:8px;max-width:calc(100vw - 30px);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.toast.success{background:linear-gradient(135deg,#10b981,#059669);}
+.toast.error{background:linear-gradient(135deg,#ef4444,#b91c1c);}
+.toast.info{background:var(--gradient-main);}
+.toast i{font-size:.95rem;}
+
+footer{background:linear-gradient(180deg,transparent,rgba(5,6,15,.98));padding:32px var(--pad-x) 20px;border-top:1px solid rgba(0,217,255,.18);position:relative;}
+footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:2px;background:var(--gradient-main);box-shadow:0 0 20px rgba(0,217,255,.8);}
+.footer-simple{max-width:1100px;margin:0 auto;text-align:center;}
+.footer-simple-logo{font-family:'Orbitron',sans-serif;font-size:clamp(.95rem,1.6vw,1.25rem);font-weight:900;letter-spacing:2px;background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 8px;}
+.footer-simple-desc{color:var(--text-muted);font-size:.76rem;line-height:1.7;max-width:580px;margin:0 auto 14px;}
+.footer-simple-social{display:flex;justify-content:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.footer-simple-social a{width:34px;height:34px;border-radius:10px;background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.28);display:flex;align-items:center;justify-content:center;color:#7dd3fc;transition:all .3s;font-size:.85rem;}
+.footer-simple-social a:hover{background:var(--gradient-main);color:#fff;border-color:transparent;transform:translateY(-3px);}
+.footer-simple-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.footer-simple-links a{color:var(--text-muted);font-size:.72rem;font-weight:600;transition:color .3s;}
+.footer-simple-links a:hover{color:#00d9ff;}
+.footer-simple-copy{color:#64748b;font-size:.66rem;padding-top:14px;border-top:1px solid rgba(0,217,255,.1);}
+
+.alpha-character{position:fixed;bottom:18px;right:18px;z-index:400;cursor:pointer;animation:aBob 4s ease-in-out infinite;}
+@keyframes aBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.alpha-character img{width:clamp(56px,6vw,90px);transition:transform .4s;filter:drop-shadow(0 8px 26px rgba(0,217,255,.5));}
+.alpha-character:hover img{transform:scale(1.1) rotate(-5deg);}
+.alpha-tooltip{position:absolute;bottom:110%;right:0;width:min(270px,72vw);padding:10px 13px;border-radius:14px;background:rgba(10,14,39,.96);backdrop-filter:blur(20px);border:1px solid rgba(0,217,255,.4);color:#e2e8f0;font-size:.74rem;line-height:1.65;box-shadow:0 12px 34px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(8px);transition:all .3s;pointer-events:none;}
+.alpha-tooltip::after{content:'';position:absolute;top:100%;right:24px;border-width:7px;border-style:solid;border-color:rgba(10,14,39,.96) transparent transparent transparent;}
+.alpha-character.active .alpha-tooltip{opacity:1;visibility:visible;transform:translateY(0);}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:9998;display:none;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s;}
+.modal-overlay.open{display:flex;opacity:1;}
+.modal-box{position:relative;max-width:480px;width:100%;padding:clamp(22px,3.5vw,34px);border-radius:22px;background:linear-gradient(140deg,rgba(15,23,42,.98),rgba(26,11,46,.95));border:1px solid rgba(0,217,255,.4);box-shadow:0 30px 80px rgba(0,0,0,.7);max-height:90vh;overflow-y:auto;animation:pIn .4s cubic-bezier(.16,1,.3,1);}
+.modal-close{position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:10px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;transition:all .3s;z-index:3;}
+.modal-close:hover{background:var(--gradient-main);color:#fff;border-color:transparent;transform:rotate(90deg);}
+.modal-box h2{text-align:center;font-family:'Orbitron','Cairo',sans-serif;font-size:1.1rem;font-weight:900;color:#fff;margin:0 0 6px;}
+.modal-box .modal-sub{text-align:center;color:var(--text-muted);font-size:.76rem;line-height:1.7;margin:0 0 16px;}
+.forgot-user-info{padding:10px 14px;border-radius:12px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.35);margin-bottom:12px;font-size:.74rem;color:#e2e8f0;line-height:1.65;}
+.forgot-user-info strong{color:#10b981;}
+
+.status-hero-icon{width:80px;height:80px;margin:0 auto 16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;box-shadow:0 16px 40px rgba(139,92,246,.4);}
+@keyframes bobSoft{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.pending-details{padding:14px 16px;border-radius:14px;background:rgba(5,6,15,.6);border:1px solid rgba(0,217,255,.25);margin-bottom:14px;text-align:right;}
+.pending-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(0,217,255,.15);font-size:.78rem;gap:8px;align-items:center;}
+.pending-row:last-child{border-bottom:none;}
+.pending-row span:first-child{color:#94a3b8;font-weight:700;}
+.pending-row span:last-child{color:#fff;font-weight:900;}
+.pending-row span.ltr{direction:ltr;font-family:'JetBrains Mono',monospace;font-size:.72rem;text-align:left;word-break:break-all;}
+.pending-info-box{display:flex;gap:10px;padding:12px 14px;border-radius:12px;background:rgba(5,6,15,.5);border:1px solid rgba(16,185,129,.4);font-size:.74rem;line-height:1.75;color:#cbd5e1;text-align:right;margin-bottom:10px;}
+.pending-info-box i{font-size:1.1rem;color:#10b981;flex-shrink:0;margin-top:2px;}
+.pending-info-box.warn{border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.06);}
+.pending-info-box.warn i{color:#fbbf24;}
+.pending-info-box.danger{border-color:rgba(239,68,68,.5);background:rgba(239,68,68,.06);}
+.pending-info-box.danger i{color:#ef4444;}
+.pending-info-box.info{border-color:rgba(0,217,255,.5);background:rgba(0,217,255,.06);}
+.pending-info-box.info i{color:#00d9ff;}
+.pending-info-box strong{color:#fff;display:block;margin-bottom:4px;}
+.pending-info-box a{color:#7dd3fc;font-weight:800;}
+
+/* ===== VERIFY SCREEN (loading with counter) ===== */
+.verify-screen{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#0a0e27 0%,#05060f 100%);display:none;align-items:center;justify-content:center;padding:20px;flex-direction:column;opacity:0;transition:opacity .5s;}
+.verify-screen.open{display:flex;opacity:1;}
+.verify-card{max-width:520px;width:100%;padding:clamp(24px,4vw,40px);border-radius:24px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(0,217,255,.35);text-align:center;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.verify-card::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,217,255,.12),transparent 25%,rgba(139,92,246,.12),transparent 55%,rgba(236,72,153,.08),transparent 80%);animation:spin 20s linear infinite;pointer-events:none;}
+.verify-card > *{position:relative;z-index:1;}
+.verify-circle{position:relative;width:160px;height:160px;margin:0 auto 20px;}
+.verify-circle svg{width:100%;height:100%;transform:rotate(-90deg);}
+.verify-track{fill:none;stroke:rgba(0,217,255,.15);stroke-width:6;}
+.verify-progress{fill:none;stroke:url(#verifyGradient);stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset .95s linear;}
+.verify-counter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:3rem;font-weight:900;color:#fff;text-shadow:0 0 30px rgba(0,217,255,.8);}
+.verify-title{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1rem,2vw,1.25rem);font-weight:900;color:#fff;margin:0 0 8px;}
+.verify-title .grad{background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.verify-sub{color:var(--text-muted);font-size:.78rem;margin:0 0 18px;line-height:1.65;}
+.verify-steps{display:flex;flex-direction:column;gap:8px;text-align:right;margin-bottom:16px;}
+.verify-step{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:11px;background:rgba(5,6,15,.5);border:1px solid rgba(0,217,255,.15);font-size:.76rem;color:#94a3b8;font-weight:700;transition:all .4s;}
+.verify-step i{font-size:.9rem;color:#475569;transition:all .4s;}
+.verify-step.active{border-color:rgba(0,217,255,.5);background:rgba(0,217,255,.08);color:#fff;}
+.verify-step.active i{color:#00d9ff;}
+.verify-step.done{border-color:rgba(16,185,129,.5);background:rgba(16,185,129,.06);color:#10b981;}
+.verify-step.done i{color:#10b981;}
+.verify-name{font-size:.8rem;color:#cbd5e1;font-weight:700;padding-top:14px;border-top:1px solid rgba(0,217,255,.15);}
+.verify-name strong{color:#fbbf24;font-weight:900;}
+
+@media (max-width:768px){
+  .nav-logos img{height:32px;}
+  .auth-card{padding:20px 16px;border-radius:20px;}
+  .register-card{padding:18px 14px;border-radius:20px;}
+  .form-grid{gap:9px;}
+  .stage-title-icon{width:38px;height:38px;font-size:.95rem;border-radius:11px;}
+  .stage-title-text h3{font-size:.88rem;}
+  .stage-title-text p{font-size:.68rem;}
+  .form-control{padding:10px 38px 10px 12px;font-size:.82rem;min-height:42px;}
+  .file-upload{padding:12px 10px;}
+  .review-grid{grid-template-columns:1fr 1fr;}
+  .stage-nav{gap:6px;}
+  .nav-btn{min-width:0;padding:10px 14px;font-size:.74rem;flex:1;min-height:40px;}
+  .stage-counter{font-size:.68rem;width:100%;text-align:center;order:-1;margin-bottom:4px;}
+  .step-label{font-size:.5rem;max-width:52px;}
+  .step-circle{width:26px;height:26px;font-size:.6rem;border-width:2px;}
+  .progress-steps::before,.progress-steps::after{top:12px;}
+  .toast{font-size:.72rem;padding:10px 16px;bottom:14px;}
+  .verify-circle{width:130px;height:130px;}
+  .verify-counter{font-size:2.4rem;}
+}
+@media (max-width:520px){
+  .nav-home-btn span{display:none;}
+  .auth-tabs{grid-template-columns:1fr 1fr;border-radius:100px;padding:5px;gap:4px;}
+  .auth-tab{border-radius:50px;justify-content:center;padding:9px 6px;font-size:.72rem;gap:5px;min-height:40px;}
+  .auth-tab i{font-size:.72rem;}
+  .captcha-row{flex-direction:column;align-items:stretch;}
+  .captcha-checkbox{justify-content:center;}
+  .captcha-challenge{flex-direction:column;align-items:stretch;}
+  .review-grid{grid-template-columns:1fr;}
+  .stage-nav{flex-direction:column-reverse;}
+  .stage-nav .nav-btn{width:100%;}
+  .id-display-box{padding:14px 12px;}
+  .id-display-box .id-value{font-size:.68rem;letter-spacing:1px;padding:10px 8px;}
+  .step-label{display:none;}
+  .modal-box{padding:20px 16px;}
+}
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-track{background:#05060f;}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#00d9ff,#8b5cf6);border-radius:10px;border:2px solid #05060f;}
+</style>
+</head>
+<body>
+
+<div class="loader-screen" id="loaderScreen">
+<div class="loader-logo-wrap">
+<div class="loader-glow"></div>
+<div class="loader-ring"></div><div class="loader-ring loader-ring-2"></div><div class="loader-ring loader-ring-3"></div>
+<div class="loader-logo-inner"><img src="./assets/EBDA3.png" alt="logo" onerror="this.style.display='none'"></div>
+</div>
+<h1 class="loader-title">FUTUR BY AI</h1>
+<p class="loader-sub">بوابة الدخول الرسمية</p>
+<div class="loader-bar"><div class="loader-bar-fill" id="loaderBarFill"></div></div>
+<div class="loader-percent" id="loaderPercent">0%</div>
+</div>
+
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="bg-mesh" id="bgMesh"></div>
+<div class="bg-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div><div class="orb orb-4"></div></div>
+
+<nav class="navbar" id="navbar">
+<div class="nav-logos">
+<img src="./assets/minestry-sports.png" alt="الوزارة" onerror="this.style.display='none'">
+<img src="./assets/KFS.png" alt="الاتحاد" onerror="this.style.display='none'">
+</div>
+<div class="nav-actions">
+<a href="./index.html" class="nav-home-btn"><i class="fas fa-home"></i><span>الرئيسية</span></a>
+<button class="nav-icon-btn" id="menuToggleBtn" aria-label="القائمة"><div class="menu-lines"><span></span><span></span><span></span></div></button>
+</div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar-menu" id="sidebarMenu">
+<div class="sidebar-header"><h3>FBA FUTUR BY AI</h3><button class="sidebar-close" id="sidebarCloseBtn"><i class="fas fa-times"></i></button></div>
+<ul class="sidebar-links">
+<li><a href="index.html"><i class="fas fa-home"></i><span>الصفحة الرئيسية</span></a></li>
+<li><a href="about.html"><i class="fas fa-info-circle"></i><span>من نحن</span></a></li>
+<li><a href="committees.html"><i class="fas fa-sitemap"></i><span>الوحدات</span></a></li>
+<li><a href="events.html"><i class="fas fa-calendar-check"></i><span>الفعاليات</span></a></li>
+<li><a href="team.html"><i class="fas fa-users"></i><span>الهيكل التطوعي</span></a></li>
+<li><a href="sponsors.html"><i class="fas fa-handshake"></i><span>الرعاة</span></a></li>
+<li><a href="contact.html"><i class="fas fa-headset"></i><span>تواصل معنا</span></a></li>
+<li><a href="login.html" class="active"><i class="fas fa-right-to-bracket"></i><span>تسجيل الدخول</span></a></li>
+</ul>
+</aside>
+
+<section class="page-hero">
+<div class="breadcrumb"><a href="index.html">الرئيسية</a><i class="fas fa-chevron-left"></i><span class="current">بوابة الدخول</span></div>
+<h1>بوابة <span class="grad">الدخول الرسمية</span></h1>
+<p>سجّل دخولك بـ <strong>الرقم القومي</strong> أو <strong>الرقم التعريفي</strong>، وسيتم توجيهك تلقائياً إلى <strong>الداشبورد المخصصة لك</strong>.</p>
+</section>
+
+<section class="auth-section">
+
+<div class="auth-tabs" id="authTabs">
+<button class="auth-tab active" data-tab="login"><i class="fas fa-right-to-bracket"></i> تسجيل الدخول</button>
+<button class="auth-tab" data-tab="register"><i class="fas fa-user-plus"></i> حساب جديد</button>
+</div>
+
+<div class="auth-panel active" data-panel="login" id="loginPanel">
+<div class="auth-card">
+<div class="auth-card-header">
+<div class="auth-card-icon"><i class="fas fa-fingerprint"></i></div>
+<h2>أهلاً بك في <span class="grad">بوابة قادة التحول</span></h2>
+<p>ادخل بالرقم القومي أو الرقم التعريفي. يتم توجيهك للداشبورد المخصصة حسب صلاحياتك.</p>
+</div>
+
+<form id="loginForm" onsubmit="handleLogin(event)">
+<div class="form-group">
+<label class="form-label" for="loginIdentifier">الرقم القومي / الرقم التعريفي <span class="req">*</span></label>
+<div class="input-wrap">
+<input type="text" id="loginIdentifier" class="form-control ltr" placeholder="30XXXXXXXXXXXX أو FBA·XXX·XXX·XX·XXXX#XXXX$XXXX" required>
+<i class="fas fa-id-card field-icon"></i>
+</div>
+<div class="form-hint"><i class="fas fa-info-circle"></i> الرقم القومي (14 رقم) أو الرقم التعريفي الفريد.</div>
+</div>
+
+<div class="form-group">
+<label class="form-label" for="loginPassword">كلمة المرور <span class="req">*</span></label>
+<div class="input-wrap">
+<input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+<i class="fas fa-lock field-icon"></i>
+<button type="button" class="toggle-password" onclick="togglePassword('loginPassword',this)"><i class="fas fa-eye"></i></button>
+</div>
+</div>
+
+<div class="form-links">
+<label class="captcha-checkbox" style="cursor:pointer">
+<input type="checkbox" id="rememberMe">
+<span class="cb-box"><i class="fas fa-check"></i></span>
+<span style="font-size:.72rem;color:#cbd5e1;font-weight:700">تذكرني</span>
+</label>
+<a onclick="openForgotPassword()">نسيت كلمة المرور؟</a>
+</div>
+
+<button type="submit" class="btn-submit" id="loginSubmitBtn">
+<i class="fas fa-right-to-bracket"></i>
+<span>دخول آمن</span>
+</button>
+</form>
+
+<div class="form-divider">أو</div>
+<button type="button" class="btn-ghost-full" onclick="switchTab('register')">
+<i class="fas fa-user-plus"></i> <span>ليس لديك حساب؟ سجّل الآن مجاناً</span>
+</button>
+</div>
+</div>
+
+<div class="auth-panel" data-panel="register" id="registerPanel">
+<div class="register-card">
+<div class="register-header">
+<h2>انضم إلى <span class="grad">FBA Futur By Ai</span></h2>
+<p>سجّل بياناتك في 8 مراحل ذكية. الحقول تظهر ديناميكياً حسب اختياراتك. السن المسموح من 18 إلى 45 سنة.</p>
+</div>
+
+<div class="progress-steps" id="progressSteps">
+<div class="step-item active" data-step="1" onclick="goToStage(1)"><div class="step-circle">1</div><div class="step-label">شخصي</div></div>
+<div class="step-item" data-step="2" onclick="goToStage(2)"><div class="step-circle">2</div><div class="step-label">كلمة المرور</div></div>
+<div class="step-item" data-step="3" onclick="goToStage(3)"><div class="step-circle">3</div><div class="step-label">التعليم</div></div>
+<div class="step-item" data-step="4" onclick="goToStage(4)"><div class="step-circle">4</div><div class="step-label">وظيفي</div></div>
+<div class="step-item" data-step="5" onclick="goToStage(5)"><div class="step-circle">5</div><div class="step-label">اتصال</div></div>
+<div class="step-item" data-step="6" onclick="goToStage(6)"><div class="step-circle">6</div><div class="step-label">إضافي</div></div>
+<div class="step-item" data-step="7" onclick="goToStage(7)"><div class="step-circle">7</div><div class="step-label">مستندات</div></div>
+<div class="step-item" data-step="8" onclick="goToStage(8)"><div class="step-circle">8</div><div class="step-label">مراجعة</div></div>
+</div>
+
+<form id="registerForm" onsubmit="handleRegister(event)">
+
+<div class="stage-content active" data-stage="1">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-id-card"></i></div>
+<div class="stage-title-text">
+<h3>البيانات الشخصية</h3>
+<p>الاسم الكامل (عربي وإنجليزي) + الرقم القومي + الميلاد + العنوان الديناميكي.</p>
+</div>
+</div>
+<div class="form-grid cols-2">
+<div class="form-group full">
+<label class="form-label" for="fullNameAr">الاسم الكامل (عربي) <span class="req">*</span></label>
+<input type="text" id="fullNameAr" class="form-control" placeholder="محمد أحمد علي المرجاوي" required>
+<div class="form-hint"><i class="fas fa-info-circle"></i> اكتب الاسم الرباعي كما هو في البطاقة.</div>
+</div>
+<div class="form-group full">
+<label class="form-label" for="fullNameEn">الاسم الكامل (English) <span class="req">*</span></label>
+<input type="text" id="fullNameEn" class="form-control ltr" placeholder="Mohamed Ahmed Ali El-Margawy" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="nationalId">الرقم القومي (14 رقم) <span class="req">*</span></label>
+<input type="text" id="nationalId" class="form-control ltr" placeholder="30XXXXXXXXXXXX" required maxlength="14" inputmode="numeric" pattern="[0-9]{14}">
+<div class="form-hint" id="nationalIdHint"><i class="fas fa-shield-halved"></i> يُستخرج تاريخ الميلاد والنوع تلقائياً.</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="birthDate">تاريخ الميلاد <span class="req">*</span></label>
+<input type="date" id="birthDate" class="form-control ltr" required>
+<div class="form-hint" id="ageHint"><i class="fas fa-birthday-cake"></i> العمر يُحسب تلقائياً (18-45).</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="gender">النوع <span class="req">*</span></label>
+<select id="gender" class="form-control" required onchange="handleGenderChange()">
+<option value="">اختر...</option>
+<option value="male">ذكر</option>
+<option value="female">أنثى</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="maritalStatus">الحالة الاجتماعية <span class="hint">(اختياري)</span></label>
+<select id="maritalStatus" class="form-control">
+<option value="">اختر...</option>
+<option value="single">أعزب</option>
+<option value="married">متزوج</option>
+<option value="divorced">مطلق</option>
+<option value="widowed">أرمل</option>
+</select>
+</div>
+</div>
+
+<div class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-location-dot"></i> العنوان المسجل بالبطاقة (ديناميكي)</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="addressGovernorate">المحافظة <span class="req">*</span></label>
+<select id="addressGovernorate" class="form-control" required onchange="updateAddressCities()">
+<option value="">اختر المحافظة...</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="addressCity">المدينة / المركز / الحي <span class="req">*</span></label>
+<select id="addressCity" class="form-control" required onchange="handleAddressCityChange()">
+<option value="">اختر المحافظة أولاً...</option>
+</select>
+</div>
+<div class="form-group full" id="customCityGroup" style="display:none">
+<label class="form-label" for="customCity">اسم المدينة / المركز يدوياً <span class="req">*</span></label>
+<input type="text" id="customCity" class="form-control" placeholder="اكتب اسم المدينة أو المركز">
+</div>
+<div class="form-group full">
+<label class="form-label" for="addressDetail">العنوان التفصيلي <span class="req">*</span></label>
+<input type="text" id="addressDetail" class="form-control" placeholder="الشارع - رقم المبنى - علامة مميزة" required>
+<div class="form-hint"><i class="fas fa-info-circle"></i> سيتم دمج العنوان: المحافظة - المدينة - التفاصيل.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="stage-content" data-stage="2">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-shield-halved"></i></div>
+<div class="stage-title-text">
+<h3>كلمة المرور والأمان</h3>
+<p>اختر كلمة مرور قوية لحماية حسابك. الحد الأدنى 8 أحرف مع رموز وأرقام.</p>
+</div>
+</div>
+<div class="form-grid cols-2">
+<div class="form-group full">
+<label class="form-label" for="regPassword">كلمة المرور <span class="req">*</span></label>
+<div class="input-wrap">
+<input type="password" id="regPassword" class="form-control" placeholder="8+ أحرف" required oninput="checkPasswordStrength()">
+<i class="fas fa-lock field-icon"></i>
+<button type="button" class="toggle-password" onclick="togglePassword('regPassword',this)"><i class="fas fa-eye"></i></button>
+</div>
+<div class="password-strength">
+<div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+<div class="strength-requirements" id="strengthReqs">
+<span data-req="length"><i class="fas fa-circle"></i> 8+ أحرف</span>
+<span data-req="upper"><i class="fas fa-circle"></i> حرف كبير A-Z</span>
+<span data-req="lower"><i class="fas fa-circle"></i> حرف صغير a-z</span>
+<span data-req="number"><i class="fas fa-circle"></i> رقم 0-9</span>
+<span data-req="special"><i class="fas fa-circle"></i> رمز @#$</span>
+</div>
+</div>
+</div>
+<div class="form-group full">
+<label class="form-label" for="regPasswordConfirm">تأكيد كلمة المرور <span class="req">*</span></label>
+<div class="input-wrap">
+<input type="password" id="regPasswordConfirm" class="form-control" placeholder="أعد كتابة كلمة المرور" required oninput="checkPasswordMatch()">
+<i class="fas fa-lock field-icon"></i>
+<button type="button" class="toggle-password" onclick="togglePassword('regPasswordConfirm',this)"><i class="fas fa-eye"></i></button>
+</div>
+<div class="form-hint" id="passwordMatchHint"></div>
+</div>
+</div>
+</div>
+
+<div class="stage-content" data-stage="3">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-graduation-cap"></i></div>
+<div class="stage-title-text">
+<h3>البيانات التعليمية</h3>
+<p>الحقول تظهر وتختفي حسب حالتك التعليمية. اختر الحالة أولاً.</p>
+</div>
+</div>
+<div class="form-grid cols-3">
+<div class="form-group full">
+<label class="form-label" for="educationStatus">الحالة التعليمية <span class="req">*</span></label>
+<select id="educationStatus" class="form-control" required onchange="handleEducationChange()">
+<option value="">اختر حالتك...</option>
+<option value="high_school">طالب ثانوي</option>
+<option value="university_student">طالب جامعي</option>
+<option value="graduate">خريج جامعي</option>
+<option value="postgraduate">دراسات عليا (ماجستير/دكتوراه)</option>
+<option value="self_taught">تعلم ذاتي (بدون جامعة)</option>
+</select>
+</div>
+</div>
+
+<div id="universitySection" style="display:none" class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-university"></i> بيانات الجامعة والكلية</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="universityType">نوع الجامعة <span class="req">*</span></label>
+<select id="universityType" class="form-control" onchange="filterUniversities()">
+<option value="">كل الأنواع...</option>
+<option value="government">حكومية</option>
+<option value="private">خاصة</option>
+<option value="national">أهلية</option>
+<option value="technological">تكنولوجية</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="university">الجامعة <span class="req">*</span></label>
+<select id="university" class="form-control" onchange="updateFaculties()">
+<option value="">اختر الجامعة...</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="faculty">الكلية / التخصص <span class="req">*</span></label>
+<select id="faculty" class="form-control" onchange="handleFacultyChange()">
+<option value="">اختر الجامعة أولاً...</option>
+</select>
+</div>
+<div class="form-group full" id="customFacultyGroup" style="display:none">
+<label class="form-label" for="customFaculty">اسم الكلية / التخصص يدوياً <span class="req">*</span></label>
+<input type="text" id="customFaculty" class="form-control" placeholder="اكتب اسم الكلية أو التخصص">
+</div>
+</div>
+</div>
+
+<div id="highSchoolSection" style="display:none" class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-school"></i> بيانات المدرسة الثانوية</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="schoolGovernorate">المحافظة <span class="req">*</span></label>
+<select id="schoolGovernorate" class="form-control" onchange="updateSchools()">
+<option value="">اختر المحافظة...</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="schoolType">نوع المدرسة <span class="req">*</span></label>
+<select id="schoolType" class="form-control" onchange="updateSchools()">
+<option value="">كل الأنواع...</option>
+<option value="general">عامة</option>
+<option value="language">لغات</option>
+<option value="stem">المتفوقين STEM</option>
+<option value="technical">فنية</option>
+<option value="azhari">أزهرية</option>
+<option value="international">دولية</option>
+<option value="private">خاصة</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="schoolName">اسم المدرسة <span class="req">*</span></label>
+<select id="schoolName" class="form-control" onchange="handleSchoolChange()">
+<option value="">اختر المحافظة أولاً...</option>
+</select>
+</div>
+<div class="form-group full" id="customSchoolGroup" style="display:none">
+<label class="form-label" for="customSchoolName">اسم المدرسة يدوياً <span class="req">*</span></label>
+<input type="text" id="customSchoolName" class="form-control" placeholder="اكتب اسم المدرسة بالكامل">
+<div class="form-hint"><i class="fas fa-info-circle"></i> استخدم هذا الحقل لو مدرستك غير موجودة في القائمة.</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="schoolGrade">الصف الدراسي <span class="req">*</span></label>
+<select id="schoolGrade" class="form-control">
+<option value="">اختر الصف...</option>
+<option value="first">الأول الثانوي</option>
+<option value="second">الثاني الثانوي</option>
+<option value="third">الثالث الثانوي</option>
+</select>
+</div>
+</div>
+</div>
+
+<div id="studentSection" style="display:none" class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-user-graduate"></i> بيانات الطالب الجامعي</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="academicYear">السنة الدراسية <span class="req">*</span></label>
+<select id="academicYear" class="form-control" onchange="handleAcademicYearChange()">
+<option value="">اختر السنة...</option>
+<option value="1">الأولى</option>
+<option value="2">الثانية</option>
+<option value="3">الثالثة</option>
+<option value="4">الرابعة</option>
+<option value="5">الخامسة</option>
+<option value="6">السادسة</option>
+<option value="final">سنة التخرج</option>
+</select>
+</div>
+<div class="form-group" id="studentEvalMethodGroup" style="display:none">
+<label class="form-label" for="studentEvalMethod">طريقة التقييم <span class="req">*</span></label>
+<select id="studentEvalMethod" class="form-control" onchange="handleStudentEvalChange()">
+<option value="">اختر...</option>
+<option value="gpa">المعدل التراكمي (GPA)</option>
+<option value="grade">التقدير العام</option>
+</select>
+</div>
+<div class="form-group" id="studentGPAGroup" style="display:none">
+<label class="form-label" for="finalYearGPA">المعدل التراكمي (GPA) <span class="req">*</span></label>
+<input type="text" id="finalYearGPA" class="form-control ltr" placeholder="مثال: 3.5 / 4.0">
+</div>
+<div class="form-group" id="studentGradeGroup" style="display:none">
+<label class="form-label" for="finalYearGrade">التقدير العام <span class="req">*</span></label>
+<select id="finalYearGrade" class="form-control">
+<option value="">اختر التقدير...</option>
+<option value="excellent_with_honors">ممتاز مع مرتبة الشرف</option>
+<option value="excellent">ممتاز</option>
+<option value="very_good">جيد جداً</option>
+<option value="good">جيد</option>
+<option value="pass">مقبول</option>
+</select>
+</div>
+</div>
+</div>
+
+<div id="graduateSection" style="display:none" class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-certificate"></i> بيانات الخريج</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="gradYear">سنة التخرج <span class="req">*</span></label>
+<input type="text" id="gradYear" class="form-control ltr" placeholder="2023" maxlength="4" inputmode="numeric">
+</div>
+<div class="form-group">
+<label class="form-label" for="gradEvalMethod">طريقة التقييم <span class="req">*</span></label>
+<select id="gradEvalMethod" class="form-control" onchange="handleGradEvalChange()">
+<option value="">اختر...</option>
+<option value="gpa">المعدل التراكمي (GPA)</option>
+<option value="grade">التقدير العام</option>
+</select>
+</div>
+<div class="form-group" id="gradGPAGroup" style="display:none">
+<label class="form-label" for="gradGPA">المعدل التراكمي <span class="req">*</span></label>
+<input type="text" id="gradGPA" class="form-control ltr" placeholder="3.5 / 4.0 أو 85%">
+</div>
+<div class="form-group" id="gradGradeGroup" style="display:none">
+<label class="form-label" for="gradGrade">التقدير العام <span class="req">*</span></label>
+<select id="gradGrade" class="form-control">
+<option value="">اختر التقدير...</option>
+<option value="excellent_with_honors">ممتاز مع مرتبة الشرف</option>
+<option value="excellent">ممتاز</option>
+<option value="very_good">جيد جداً</option>
+<option value="good">جيد</option>
+<option value="pass">مقبول</option>
+</select>
+</div>
+</div>
+</div>
+
+<div id="postgradSection" style="display:none" class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-book-reader"></i> بيانات الدراسات العليا</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="postgradDegree">الدرجة العلمية <span class="req">*</span></label>
+<select id="postgradDegree" class="form-control">
+<option value="">اختر...</option>
+<option value="diploma">دبلومة</option>
+<option value="master">ماجستير</option>
+<option value="phd">دكتوراه</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="researchArea">مجال البحث <span class="req">*</span></label>
+<input type="text" id="researchArea" class="form-control" placeholder="مثال: الذكاء الاصطناعي">
+</div>
+</div>
+</div>
+
+<div class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-wand-magic-sparkles"></i> المهارات والخبرات</div>
+<div class="form-grid cols-2">
+<div class="form-group full">
+<label class="form-label" for="skills">أهم 5 مهارات لديك <span class="req">*</span></label>
+<input type="text" id="skills" class="form-control" placeholder="مثال: Python, Prompt Engineering, التصميم, إدارة المشاريع" required>
+<div class="form-hint"><i class="fas fa-lightbulb"></i> افصل بين المهارات بفاصلة (,).</div>
+</div>
+<div class="form-group full">
+<label class="form-label" for="experience">خبرات تطوعية <span class="hint">(اختياري)</span></label>
+<textarea id="experience" class="form-control" placeholder="اذكر أهم تجاربك التطوعية..." style="min-height:70px"></textarea>
+</div>
+</div>
+</div>
+</div>
+
+<div class="stage-content" data-stage="4">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-user-tie"></i></div>
+<div class="stage-title-text">
+<h3>البيانات الوظيفية</h3>
+<p>السيزون والوحدة والمحافظة والمسمي الوظيفي في الهيكل.</p>
+</div>
+</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="season">السيزون <span class="req">*</span></label>
+<select id="season" class="form-control" required>
+<option value="">اختر السيزون...</option>
+<option value="s1-2025">السيزون الأول (2025)</option>
+<option value="s2-2025">السيزون الثاني (2025)</option>
+<option value="s3-2026">السيزون الثالث (2026)</option>
+<option value="s4-2026">السيزون الرابع (2026)</option>
+<option value="new">دفعة جديدة</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="governorate">المحافظة <span class="req">*</span></label>
+<select id="governorate" class="form-control" required></select>
+</div>
+<div class="form-group">
+<label class="form-label" for="unit">الوحدة / الإدارة <span class="req">*</span></label>
+<select id="unit" class="form-control" required onchange="updatePositionOptions()">
+<option value="">اختر الوحدة...</option>
+<option value="hr">الموارد البشرية (HR)</option>
+<option value="or">التنظيم والعمليات (OR)</option>
+<option value="pr">العلاقات العامة واللوجيستيات (PR)</option>
+<option value="sm">التسويق والانتشار (SM)</option>
+<option value="ait">تحول الذكاء الاصطناعي (AIT)</option>
+<option value="executive">الإدارة التنفيذية</option>
+<option value="top">الإدارة العليا</option>
+</select>
+</div>
+<div class="form-group full">
+<label class="form-label" for="position">المسمي الوظيفي <span class="req">*</span></label>
+<select id="position" class="form-control" required>
+<option value="">اختر الوحدة أولاً...</option>
+</select>
+</div>
+<div class="form-group full">
+<label class="form-label" for="joinReason">سبب الانضمام <span class="req">*</span></label>
+<textarea id="joinReason" class="form-control" placeholder="اكتب 3-5 أسطر عن سبب انضمامك..." required style="min-height:80px"></textarea>
+</div>
+</div>
+</div>
+
+<div class="stage-content" data-stage="5">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-address-book"></i></div>
+<div class="stage-title-text">
+<h3>بيانات الاتصال</h3>
+<p>بريد شخصي + أرقام تواصل. سيصلك إشعار القبول على الواتساب.</p>
+</div>
+</div>
+<div class="form-grid cols-3">
+<div class="form-group full">
+<label class="form-label" for="personalEmail">البريد الإلكتروني الشخصي <span class="req">*</span></label>
+<div class="input-wrap">
+<input type="email" id="personalEmail" class="form-control ltr" placeholder="example@gmail.com" required>
+<i class="fas fa-envelope field-icon"></i>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="whatsapp">رقم الواتساب <span class="req">*</span></label>
+<div class="input-wrap">
+<input type="tel" id="whatsapp" class="form-control ltr" placeholder="+201XXXXXXXXX" required>
+<i class="fab fa-whatsapp field-icon"></i>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="phone">رقم هاتف إضافي <span class="req">*</span></label>
+<div class="input-wrap">
+<input type="tel" id="phone" class="form-control ltr" placeholder="+201XXXXXXXXX" required>
+<i class="fas fa-phone field-icon"></i>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="emergencyContact">رقم الطوارئ <span class="hint">(اختياري)</span></label>
+<input type="text" id="emergencyContact" class="form-control" placeholder="اسم + رقم">
+</div>
+<div class="form-group full">
+<label class="form-label" for="socialLink">LinkedIn / GitHub <span class="hint">(اختياري)</span></label>
+<input type="url" id="socialLink" class="form-control ltr" placeholder="https://linkedin.com/in/username">
+</div>
+</div>
+</div>
+
+<div class="stage-content" data-stage="6">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-shield-halved"></i></div>
+<div class="stage-title-text">
+<h3>بيانات إضافية</h3>
+<p>موقف التجنيد للذكور + بيانات ولي الأمر للطلاب. الحقول ديناميكية.</p>
+</div>
+</div>
+
+<div id="militarySection" style="display:none" class="dynamic-section warn">
+<div class="dynamic-section-title"><i class="fas fa-user-shield"></i> الموقف من التجنيد (للذكور فقط)</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="militaryStatus">الموقف من الخدمة العسكرية <span class="req">*</span></label>
+<select id="militaryStatus" class="form-control" onchange="handleMilitaryChange()">
+<option value="">اختر الموقف...</option>
+<option value="not_required">غير مطلوب (تحت السن / أنثى)</option>
+<option value="postponed">مؤجل</option>
+<option value="completed">أدى الخدمة</option>
+<option value="exempted">معافى</option>
+<option value="not_completed">لم يؤدِّ الخدمة بعد</option>
+</select>
+</div>
+<div class="form-group" id="militaryReasonGroup" style="display:none">
+<label class="form-label" for="militaryReason">سبب التأجيل / الإعفاء <span class="req">*</span></label>
+<input type="text" id="militaryReason" class="form-control" placeholder="مثال: طالب، سبب طبي، وحيد والديه...">
+</div>
+<div class="form-group" id="militaryDateGroup" style="display:none">
+<label class="form-label" for="militaryDate">تاريخ الإتمام / الإعفاء <span class="req">*</span></label>
+<input type="date" id="militaryDate" class="form-control ltr">
+</div>
+</div>
+</div>
+
+<div id="guardianSection" style="display:none" class="dynamic-section">
+<div class="dynamic-section-title"><i class="fas fa-users"></i> بيانات ولي الأمر (للطلاب فقط)</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label" for="guardianName">اسم ولي الأمر <span class="req">*</span></label>
+<input type="text" id="guardianName" class="form-control" placeholder="الاسم الكامل">
+</div>
+<div class="form-group">
+<label class="form-label" for="guardianRelation">صلة القرابة <span class="req">*</span></label>
+<select id="guardianRelation" class="form-control">
+<option value="">اختر...</option>
+<option value="father">الأب</option>
+<option value="mother">الأم</option>
+<option value="brother">الأخ</option>
+<option value="sister">الأخت</option>
+<option value="uncle">العم / الخال</option>
+<option value="other">أخرى</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="guardianPhone">رقم ولي الأمر <span class="req">*</span></label>
+<input type="tel" id="guardianPhone" class="form-control ltr" placeholder="+201XXXXXXXXX">
+</div>
+</div>
+</div>
+
+<div id="noAdditionalSection" class="dynamic-section" style="text-align:center;padding:30px 20px;">
+<div style="font-size:2rem;color:rgba(0,217,255,.3);margin-bottom:10px;"><i class="fas fa-check-circle"></i></div>
+<p style="color:var(--text-muted);font-size:.85rem;margin:0;">لا توجد بيانات إضافية مطلوبة منك.<br>تستطيع التخطي للمرحلة التالية.</p>
+</div>
+</div>
+
+<div class="stage-content" data-stage="7">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+<div class="stage-title-text">
+<h3>رفع المستندات</h3>
+<p>المستندات تظهر حسب حالتك. جميع الملفات سرية ومشفرة.</p>
+</div>
+</div>
+
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label">الصورة الشخصية <span class="req">*</span></label>
+<div class="file-upload" id="personalPhotoBox">
+<input type="file" id="personalPhoto" accept="image/*" required onchange="handleFileUpload(this,'personalPhotoBox','personalPhotoPreview')">
+<div class="file-upload-icon"><i class="fas fa-user-circle"></i></div>
+<h5>الصورة الشخصية</h5>
+<p>JPG, PNG - حتى 5MB</p>
+<img class="file-upload-preview" id="personalPhotoPreview" alt="preview">
+<button type="button" class="file-remove-btn" onclick="removeFile('personalPhoto','personalPhotoBox','personalPhotoPreview')"><i class="fas fa-times"></i> حذف</button>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label">البطاقة (الوش) <span class="req">*</span></label>
+<div class="file-upload" id="idFrontBox">
+<input type="file" id="idFront" accept="image/*" required onchange="handleFileUpload(this,'idFrontBox','idFrontPreview')">
+<div class="file-upload-icon"><i class="fas fa-id-card"></i></div>
+<h5>الوجه الأمامي</h5>
+<p>JPG, PNG - حتى 5MB</p>
+<img class="file-upload-preview" id="idFrontPreview" alt="preview">
+<button type="button" class="file-remove-btn" onclick="removeFile('idFront','idFrontBox','idFrontPreview')"><i class="fas fa-times"></i> حذف</button>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label">البطاقة (الضهر) <span class="req">*</span></label>
+<div class="file-upload" id="idBackBox">
+<input type="file" id="idBack" accept="image/*" required onchange="handleFileUpload(this,'idBackBox','idBackPreview')">
+<div class="file-upload-icon"><i class="fas fa-id-card"></i></div>
+<h5>الوجه الخلفي</h5>
+<p>JPG, PNG - حتى 5MB</p>
+<img class="file-upload-preview" id="idBackPreview" alt="preview">
+<button type="button" class="file-remove-btn" onclick="removeFile('idBack','idBackBox','idBackPreview')"><i class="fas fa-times"></i> حذف</button>
+</div>
+</div>
+</div>
+
+<div id="degreeUploadSection" style="display:none" class="dynamic-section warn">
+<div class="dynamic-section-title"><i class="fas fa-scroll"></i> صورة المؤهل الدراسي (مطلوب للخريجين)</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label">صورة من شهادة التخرج / المؤهل <span class="req">*</span></label>
+<div class="file-upload" id="degreeDocBox">
+<input type="file" id="degreeDoc" accept="image/*,application/pdf" onchange="handleFileUpload(this,'degreeDocBox','degreeDocPreview')">
+<div class="file-upload-icon"><i class="fas fa-scroll"></i></div>
+<h5>شهادة التخرج</h5>
+<p>JPG, PNG, PDF - حتى 5MB</p>
+<img class="file-upload-preview" id="degreeDocPreview" alt="preview">
+<button type="button" class="file-remove-btn" onclick="removeFile('degreeDoc','degreeDocBox','degreeDocPreview')"><i class="fas fa-times"></i> حذف</button>
+</div>
+</div>
+</div>
+</div>
+
+<div id="militaryUploadSection" style="display:none" class="dynamic-section warn">
+<div class="dynamic-section-title"><i class="fas fa-shield-halved"></i> شهادة إتمام الخدمة العسكرية (للذكور الذين أدوا الخدمة)</div>
+<div class="form-grid cols-3">
+<div class="form-group">
+<label class="form-label">صورة شهادة إتمام الخدمة العسكرية <span class="req">*</span></label>
+<div class="file-upload" id="militaryDocBox">
+<input type="file" id="militaryDoc" accept="image/*,application/pdf" onchange="handleFileUpload(this,'militaryDocBox','militaryDocPreview')">
+<div class="file-upload-icon"><i class="fas fa-file-shield"></i></div>
+<h5>شهادة إتمام الخدمة</h5>
+<p>JPG, PNG, PDF - حتى 5MB</p>
+<img class="file-upload-preview" id="militaryDocPreview" alt="preview">
+<button type="button" class="file-remove-btn" onclick="removeFile('militaryDoc','militaryDocBox','militaryDocPreview')"><i class="fas fa-times"></i> حذف</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="stage-content" data-stage="8">
+<div class="stage-title">
+<div class="stage-title-icon"><i class="fas fa-clipboard-check"></i></div>
+<div class="stage-title-text">
+<h3>المراجعة والتأكيد</h3>
+<p>راجع بياناتك جيداً. بعد التأكيد، ستصلك صورة الرقم التعريفي.</p>
+</div>
+</div>
+
+<div class="review-section"><h4><i class="fas fa-user"></i> البيانات الشخصية</h4><div class="review-grid" id="reviewPersonal"></div></div>
+<div class="review-section"><h4><i class="fas fa-graduation-cap"></i> البيانات التعليمية</h4><div class="review-grid" id="reviewEducation"></div></div>
+<div class="review-section"><h4><i class="fas fa-user-tie"></i> البيانات الوظيفية</h4><div class="review-grid" id="reviewProfessional"></div></div>
+<div class="review-section"><h4><i class="fas fa-address-book"></i> بيانات الاتصال</h4><div class="review-grid" id="reviewContact"></div></div>
+<div class="review-section" id="reviewAdditionalSection" style="display:none"><h4><i class="fas fa-shield-halved"></i> بيانات إضافية</h4><div class="review-grid" id="reviewAdditional"></div></div>
+
+<div class="terms-box">
+<label class="terms-checkbox">
+<input type="checkbox" id="agreeTerms" required>
+<span class="cb-box"><i class="fas fa-check"></i></span>
+<span class="cb-text">أُقرّ بأن جميع البيانات صحيحة، وألتزم بكل <strong>قواعد اللائحة الداخلية</strong> للمشروع بما فيها السرية والحضور وأخلاقيات العمل التطوعي.</span>
+</label>
+</div>
+
+<div class="captcha-box">
+<div class="captcha-row">
+<label class="captcha-checkbox">
+<input type="checkbox" id="registerHumanCheck" required>
+<span class="cb-box"><i class="fas fa-check"></i></span>
+<span><i class="fas fa-robot" style="color:#00d9ff;margin-left:5px"></i> أُقسم أنني إنسان (ليس روبوت)</span>
+</label>
+</div>
+<div class="captcha-challenges">
+<div class="captcha-challenge">
+<span class="ch-label"><i class="fas fa-calculator" style="color:#fbbf24"></i> حسابية:</span>
+<span class="ch-question" id="registerMathQuestion">(0 × 0) + 0</span>
+<input type="number" id="registerMathAnswer" placeholder="؟" required>
+</div>
+<div class="captcha-challenge">
+<span class="ch-label"><i class="fas fa-font" style="color:#ec4899"></i> معكوسة:</span>
+<span class="ch-question" id="registerReverseQuestion">CHANGE</span>
+<input type="text" id="registerReverseAnswer" placeholder="EGNAHC" required maxlength="20" autocomplete="off">
+</div>
+<button type="button" class="refresh-btn" onclick="generateCaptcha('register')" style="align-self:flex-start"><i class="fas fa-rotate"></i></button>
+</div>
+</div>
+</div>
+
+<div class="stage-nav">
+<button type="button" class="nav-btn prev" id="prevBtn" onclick="prevStage()" disabled><i class="fas fa-chevron-right"></i> <span>السابق</span></button>
+<div class="stage-counter" id="stageCounter">المرحلة 1 من 8</div>
+<button type="button" class="nav-btn next" id="nextBtn" onclick="nextStage()"><span>التالي</span> <i class="fas fa-chevron-left"></i></button>
+</div>
+</form>
+</div>
+</div>
+
+<div class="success-screen" id="successScreen">
+<div class="success-icon"><i class="fas fa-check"></i></div>
+<h2>تم استلام طلبك <span class="grad">بنجاح!</span></h2>
+<p>شكراً لانضمامك. طلبك الآن قيد المراجعة من الوحدة المركزية. سيتم التواصل معك خلال 48-72 ساعة.</p>
+
+<div class="id-display-box">
+<div class="id-label"><i class="fas fa-fingerprint"></i> رقمك التعريفي الفريد</div>
+<div class="id-value" id="idDisplayValue">—</div>
+<button type="button" class="copy-id-btn" onclick="copyID()"><i class="fas fa-copy"></i> نسخ الرقم</button>
+<span class="id-hint">
+<strong>⚠️ احتفظ بهذا الرقم!</strong><br>
+ستحتاجه للدخول. يمكنك أيضاً الدخول بالرقم القومي.<br>
+<strong>الرقم يتضمن:</strong> المحافظة · الوحدة · المستوى · السنة · رمز فريد.
+</span>
+</div>
+
+<div class="req-info">
+<h4><i class="fas fa-file-shield"></i> ملخص الطلب</h4>
+<div class="req-row"><span>الاسم:</span><span id="reqName">—</span></div>
+<div class="req-row"><span>الرقم التعريفي:</span><span class="ltr" id="reqNumber">—</span></div>
+<div class="req-row"><span>الوحدة:</span><span id="reqUnit">—</span></div>
+<div class="req-row"><span>المحافظة:</span><span id="reqGov">—</span></div>
+<div class="req-row"><span>الحالة:</span><span style="color:#fbbf24">⏳ قيد المراجعة</span></div>
+</div>
+
+<button type="button" class="btn-ghost-full" onclick="resetToLogin()" style="max-width:400px;margin:0 auto">
+<i class="fas fa-right-to-bracket"></i> <span>العودة لتسجيل الدخول</span>
+</button>
+</div>
+
+</section>
+
+<footer>
+<div class="footer-simple">
+<h3 class="footer-simple-logo">FBA FUTUR BY AI</h3>
+<p class="footer-simple-desc">أول منصة رقمية تطوعية مصرية تدعم تحول الذكاء الاصطناعي.</p>
+<div class="footer-simple-social">
+<a href="https://www.facebook.com/share/16NuHNYhs7/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/ebdaa360" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@ebda3_360" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="mailto:ebdaa360@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+<div class="footer-simple-links">
+<a href="index.html">الرئيسية</a>
+<a href="about.html">من نحن</a>
+<a href="committees.html">الوحدات</a>
+<a href="events.html">الفعاليات</a>
+<a href="team.html">الهيكل</a>
+<a href="sponsors.html">الرعاة</a>
+<a href="contact.html">تواصل</a>
+</div>
+<p class="footer-simple-copy">© 2025 <span style="color:#8b5cf6;font-weight:700">FBA Futur By Ai</span> — جميع الحقوق محفوظة</p>
+</div>
+</footer>
+
+<div class="alpha-character" id="alphaCharacter">
+<div class="alpha-tooltip" id="alphaTooltip">أهلاً بك! سجّل دخولك أو أنشئ حساباً في 8 مراحل ذكية.</div>
+<img src="./assets/ALPHA-1.png" alt="VolunAI" onerror="this.style.display='none'">
+</div>
+
+<!-- FORGOT PASSWORD MODAL -->
+<div class="modal-overlay" id="forgotModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeForgotModal()"><i class="fas fa-times"></i></button>
+    <div class="auth-card-icon" style="margin:0 auto 14px;width:60px;height:60px;font-size:1.4rem"><i class="fas fa-key"></i></div>
+    <h2>استعادة كلمة المرور</h2>
+    <p class="modal-sub">أدخل رقمك القومي أو التعريفي للتحقق من حسابك، ثم قم بتعيين كلمة مرور جديدة.</p>
+
+    <div id="forgotStep1">
+      <div class="form-group">
+        <label class="form-label">الرقم القومي / التعريفي <span class="req">*</span></label>
+        <div class="input-wrap">
+          <input type="text" id="forgotIdentifier" class="form-control ltr" placeholder="30XXXXXXXXXXXX أو FBA·...">
+          <i class="fas fa-id-card field-icon"></i>
+        </div>
+      </div>
+      <button type="button" class="btn-submit" onclick="verifyForgotIdentifier()"><i class="fas fa-search"></i> تحقق من الحساب</button>
+    </div>
+
+    <div id="forgotStep2" style="display:none">
+      <div class="forgot-user-info" id="forgotUserInfo"></div>
+      <div class="form-group">
+        <label class="form-label">كلمة المرور الجديدة <span class="req">*</span></label>
+        <div class="input-wrap">
+          <input type="password" id="forgotNewPassword" class="form-control" placeholder="8+ أحرف">
+          <i class="fas fa-lock field-icon"></i>
+          <button type="button" class="toggle-password" onclick="togglePassword('forgotNewPassword',this)"><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">تأكيد كلمة المرور <span class="req">*</span></label>
+        <div class="input-wrap">
+          <input type="password" id="forgotConfirmPassword" class="form-control" placeholder="أعد الكتابة">
+          <i class="fas fa-lock field-icon"></i>
+        </div>
+      </div>
+      <button type="button" class="btn-submit" onclick="saveNewPassword()"><i class="fas fa-save"></i> حفظ كلمة المرور الجديدة</button>
+    </div>
+  </div>
+</div>
+
+<!-- STATUS MODAL (Pending / Rejected / Banned / Frozen) -->
+<div class="modal-overlay" id="statusModal">
+  <div class="modal-box" style="max-width:560px" id="statusModalBox">
+    <button class="modal-close" onclick="closeStatusModal()"><i class="fas fa-times"></i></button>
+    <div class="status-hero-icon" id="statusIcon"><i class="fas fa-hourglass-half"></i></div>
+    <h2 id="statusTitle">—</h2>
+    <p class="modal-sub" id="statusSub">—</p>
+
+    <div class="pending-details" id="statusDetails"></div>
+
+    <div id="statusInfoBox"></div>
+
+    <button type="button" class="btn-submit" onclick="closeStatusModal()" style="margin-top:14px">
+      <i class="fas fa-check"></i> <span id="statusBtnLabel">حسناً</span>
+    </button>
+  </div>
+</div>
+
+<!-- DASHBOARD UNDER CONSTRUCTION MODAL -->
+<div class="modal-overlay" id="constructionModal">
+  <div class="modal-box" style="max-width:540px;border-color:rgba(0,217,255,.5)">
+    <button class="modal-close" onclick="closeConstructionModal()"><i class="fas fa-times"></i></button>
+    <div class="status-hero-icon" style="background:var(--gradient-main);animation:bobSoft 2s ease-in-out infinite">
+      <i class="fas fa-rocket"></i>
+    </div>
+    <h2>يتم تجهيز لوحة التحكم الخاصة بكم 🚀</h2>
+    <p class="modal-sub">أهلاً بك في <strong style="color:#00d9ff">FBA Futur By Ai</strong>! فريق التطوير يعمل الآن على تجهيز لوحة التحكم المخصصة لصلاحياتك.</p>
+
+    <div class="pending-info-box" style="border-color:rgba(0,217,255,.4);background:linear-gradient(140deg,rgba(0,217,255,.08),rgba(139,92,246,.05))">
+      <i class="fas fa-lightbulb" style="color:#00d9ff"></i>
+      <div>
+        <strong>رسالة تشجيعية:</strong>
+        أنت الآن جزء من فريق يصنع المستقبل بالذكاء الاصطناعي. 🎯
+        <br>انتظر قليلاً، سنُعلمك فور جهوزية لوحتك. صبرك يصنع الفرق! ⭐
+      </div>
+    </div>
+
+    <div class="pending-details" style="margin-top:12px">
+      <div class="pending-row"><span>الاسم:</span><span id="consName">—</span></div>
+      <div class="pending-row"><span>الوظيفة:</span><span id="consRole">—</span></div>
+      <div class="pending-row"><span>الرقم التعريفي:</span><span class="ltr" id="consId">—</span></div>
+    </div>
+
+    <div class="pending-info-box warn" style="margin-top:12px">
+      <i class="fas fa-headset" style="color:#fbbf24"></i>
+      <div>
+        <strong>للاستفسار العاجل:</strong>
+        📧 <a href="mailto:ebdaa360@gmail.com">ebdaa360@gmail.com</a>
+        <br>📱 واتساب: <a href="https://wa.me/201234567890" target="_blank">+20 123 456 7890</a>
+      </div>
+    </div>
+
+    <button type="button" class="btn-submit" onclick="closeConstructionModal()" style="margin-top:14px">
+      <i class="fas fa-thumbs-up"></i> <span>تمام، في انتظار لوحتي</span>
+    </button>
+  </div>
+</div>
+
+<!-- VERIFY SCREEN (10-second counter loading) -->
+<div class="verify-screen" id="verifyScreen">
+  <div class="verify-card">
+    <div class="verify-circle">
+      <svg viewBox="0 0 160 160">
+        <defs>
+          <linearGradient id="verifyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00d9ff"/>
+            <stop offset="50%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#ec4899"/>
+          </linearGradient>
+        </defs>
+        <circle class="verify-track" cx="80" cy="80" r="70"/>
+        <circle class="verify-progress" id="verifyProgress" cx="80" cy="80" r="70"/>
+      </svg>
+      <div class="verify-counter" id="verifyCounter">10</div>
+    </div>
+    <h2 class="verify-title">جاري التحقق من <span class="grad">بياناتك</span></h2>
+    <p class="verify-sub">يتم فحص الهوية والصلاحيات وتأكيد الحساب...</p>
+
+    <div class="verify-steps">
+      <div class="verify-step active" id="vstep1"><i class="fas fa-circle-notch fa-spin"></i> التحقق من الهوية الرقمية</div>
+      <div class="verify-step" id="vstep2"><i class="fas fa-circle"></i> فحص حالة الحساب والصلاحيات</div>
+      <div class="verify-step" id="vstep3"><i class="fas fa-circle"></i> تحميل الداشبورد المخصص</div>
+      <div class="verify-step" id="vstep4"><i class="fas fa-circle"></i> تجهيز جلسة آمنة</div>
+    </div>
+
+    <p class="verify-name">أهلاً <strong id="verifyUserName">—</strong> · سيتم تحويلك خلال لحظات</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMessage">رسالة</span></div>
+
+<script>
+/* =========================================================
+   INDEXEDDB MANAGER
+   ========================================================= */
+const DB_NAME = 'FBA_FuturByAi_DB';
+const DB_VERSION = 1;
+const STORE_USERS = 'users';
+
+function openDB(){
+  return new Promise((resolve,reject)=>{
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => {
+      const db = e.target.result;
+      if(!db.objectStoreNames.contains(STORE_USERS)){
+        const store = db.createObjectStore(STORE_USERS, {keyPath:'id'});
+        store.createIndex('nationalId','nationalId',{unique:false});
+        store.createIndex('email','email',{unique:false});
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function dbAddUser(user){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_USERS,'readwrite');
+    const store = tx.objectStore(STORE_USERS);
+    const req = store.put(user);
+    req.onsuccess = () => resolve(true);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function dbGetUserByIdentifier(identifier){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_USERS,'readonly');
+    const store = tx.objectStore(STORE_USERS);
+    const idl = (identifier||'').trim().toLowerCase();
+    const req = store.getAll();
+    req.onsuccess = () => {
+      const all = req.result || [];
+      const found = all.find(u =>
+        (u.nationalId||'').toLowerCase() === idl ||
+        (u.id||'').toLowerCase() === idl ||
+        (u.email||'').toLowerCase() === idl
+      );
+      resolve(found || null);
+    };
+    req.onerror = () => reject(req.error);
+  });
+}
+async function dbUpdateUser(user){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_USERS,'readwrite');
+    const store = tx.objectStore(STORE_USERS);
+    const req = store.put(user);
+    req.onsuccess = () => resolve(true);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+/* =========================================================
+   UNIVERSITIES DATA
+   ========================================================= */
+const UNIVERSITIES = {
+  government: {
+    'جامعة القاهرة':['الطب','الصيدلة','طب الأسنان','التمريض','الطب البيطري','العلوم','الزراعة','الهندسة','الحاسبات والذكاء الاصطناعي','التربية','الآداب','دار العلوم','الدراسات الأفريقية العليا','التربية للطفولة المبكرة','الاقتصاد والعلوم السياسية','الإعلام','الآثار','الحقوق','التجارة','العلاج الطبيعي','طب الفم والأسنان','التخطيط الإقليمي','الدراسات العليا للبحوث الإحصائية','المعهد القومي للأورام'],
+    'جامعة عين شمس':['الصيدلة','العلوم','الطب','طب الأسنان','الحاسبات والمعلومات','الهندسة','التربية','الألسن','التجارة','التربية النوعية','الزراعة','الحقوق','التمريض','الآداب','البنات','الآثار','الإعلام','الطب البيطري','الدراسات العليا والبحوث البيئية','الدراسات العليا للطفولة'],
+    'جامعة الإسكندرية':['الآداب','الحقوق','الأعمال','العلوم','الطب','الصيدلة','الهندسة','التربية','الزراعة','طب الأسنان','السياحة والفنادق','الطب البيطري','الفنون الجميلة','التمريض','التربية الرياضية','التربية النوعية','الدراسات الاقتصادية والعلوم السياسية'],
+    'جامعة المنصورة':['الطب','طب الأسنان','الصيدلة','الطب البيطري','العلوم','الزراعة','التمريض','الهندسة','الحاسبات والمعلومات','التجارة','الحقوق','التربية','الآداب','التربية النوعية','رياض الأطفال','السياحة والفنادق','الفنون الجميلة','التربية الرياضية','التربية للطفولة المبكرة'],
+    'جامعة أسيوط':['العلوم','الهندسة','الزراعة','الطب','الصيدلة','الطب البيطري','التجارة','التربية','الحقوق','علوم الرياضة','التربية النوعية','الخدمة الاجتماعية','الآداب','التمريض','طب الأسنان','الحاسبات والمعلومات','تكنولوجيا صناعة السكر','الفنون الجميلة'],
+    'جامعة طنطا':['الطب البشري','العلوم','التربية','التجارة','الصيدلة','طب الأسنان','الآداب','الحقوق','التمريض','الهندسة','الزراعة','علوم الرياضة','التربية النوعية','الحاسبات والمعلومات','الفنون التطبيقية','المعهد الفني للتمريض'],
+    'جامعة الزقازيق':['الزراعة','علوم الرياضة بنات','التجارة','التربية النوعية','الطب البشري','الحاسبات والمعلومات','التربية','التمريض','العلوم','التكنولوجيا والتنمية','الصيدلة','علوم ذوي الإعاقة والتأهيل','الحقوق','طب وجراحة الفم والأسنان','الآداب','الطب البيطري','التربية الرياضية','الهندسة'],
+    'جامعة حلوان':['الآداب','الاقتصاد المنزلي','التربية','التمريض','الحاسبات والذكاء الاصطناعي','الخدمة الاجتماعية','الصيدلة','الطب','التربية الفنية','العلوم','الهندسة (حلوان)','الهندسة (المطرية)','الفنون الجميلة','التربية الموسيقية','التجارة وإدارة الأعمال','السياحة والفنادق','الفنون التطبيقية','التكنولوجيا والتعليم','الحقوق'],
+    'جامعة المنيا':['الآداب','الألسن','الحقوق','دار العلوم','الزراعة','التربية','التربية الفنية','الحاسبات والمعلومات','طب الأسنان','الطب البيطري','التربية للطفولة المبكرة','الطب البشري','الصيدلة','الهندسة','العلوم','الفنون الجميلة','السياحة والفنادق','التربية الرياضية','التمريض','التربية النوعية','رياض الأطفال'],
+    'جامعة المنوفية':['الطب','طب الأسنان','الصيدلة','التمريض','تكنولوجيا العلوم الصحية التطبيقية','العلوم','الزراعة','الآداب','الحقوق','التجارة','الاقتصاد المنزلي','الهندسة (شبين الكوم)','الحاسبات والمعلومات','التربية','الهندسة الإلكترونية','الذكاء الاصطناعي','معهد الكبد القومي'],
+    'جامعة قناة السويس':['التربية','الزراعة','العلوم','الطب','الطب البيطري','التجارة','الصيدلة','السياحة والفنادق','طب الفم والأسنان','الحاسبات والمعلومات','الآداب والعلوم الإنسانية','التمريض','الهندسة','العلاج الطبيعي','الكلية المصرية الصينية','علوم الرياضة','الألسن'],
+    'جامعة بني سويف':['التجارة','الحقوق','الطب البيطري','الآداب','العلوم','التربية','الصيدلة','الطب','التمريض','التربية الرياضية','التعليم الصناعي','الهندسة','الحاسبات والمعلومات','طب الأسنان','الإعلام','الدراسات الاقتصادية والعلوم السياسية','الزراعة','العلوم الطبية التطبيقية','العلاج الطبيعي','السياحة والفنادق','علوم ذوي الاحتياجات الخاصة','الألسن','رياض أطفال','الفنون التطبيقية','علوم الأرض'],
+    'جامعة الفيوم':['الهندسة','الحاسبات والذكاء الاصطناعي','الصيدلة','العلوم','الزراعة','الآداب','علوم الرياضة','السياحة والفنادق','التربية للطفولة المبكرة','التمريض','طب الأسنان','الطب','الآثار','الألسن','التربية','الحقوق','دار العلوم','الخدمة الاجتماعية','التربية النوعية'],
+    'جامعة بنها':['الهندسة (شبرا)','الهندسة (بنها)','الحاسبات والمعلومات','التمريض','التربية','الآداب','التربية النوعية','الفنون التطبيقية','الحقوق','الزراعة','التجارة','الطب البشري','العلاج الطبيعي','الطب البيطري','العلوم','التربية الرياضية'],
+    'جامعة كفر الشيخ':['الطب البشري','طب الفم والأسنان','العلاج الطبيعي','الصيدلة','التمريض','الطب البيطري','علوم الثروة السمكية والمصايد','الهندسة','الذكاء الاصطناعي','الزراعة','الألسن','التربية','الآداب','التجارة','الحقوق','الحاسبات والمعلومات والذكاء الاصطناعي','العلوم','الفنون والتصميم'],
+    'جامعة سوهاج':['العلوم','التربية','الآداب','التجارة','الطب','الزراعة','الهندسة','التمريض','التربية النوعية','التربية الرياضية','الحاسبات والذكاء الاصطناعي','الطب البيطري','التكنولوجيا والتعليم الصناعي','الآثار','الحقوق','الصيدلة','الألسن','الدراسات العليا والبحوث البيئية','طب الأسنان'],
+    'جامعة أسوان':['الطب البشري','الهندسة','هندسة الطاقة','العلوم','الزراعة والموارد الطبيعية','تكنولوجيا المصايد والثروة السمكية','الآداب','الألسن','التجارة','الحقوق','دار العلوم','الآثار','التربية','علوم الرياضة','الطب البيطري','التمريض','التربية النوعية','الخدمة الاجتماعية'],
+    'جامعة بورسعيد':['الهندسة','العلوم','تكنولوجيا الإدارة ونظم المعلومات','الطب','العلاج الطبيعي','الصيدلة','التمريض','التجارة','التربية للطفولة المبكرة','التربية','الآداب','الحقوق','التربية النوعية','التربية الرياضية','رياض أطفال'],
+    'جامعة دمياط':['الطب','فنون تطبيقية','الهندسة','الحقوق','الآثار','التمريض','الحاسبات والمعلومات','العلوم','التربية','التجارة','الآداب','الزراعة','التربية النوعية','التربية الرياضية (بنين)','الحاسبات والذكاء الاصطناعي'],
+    'جامعة السويس':['هندسة البترول والتعدين','التكنولوجيا والتعليم','التجارة','التربية','العلوم','الثروة السمكية','الآداب','السياسة والاقتصاد','الحاسبات والمعلومات','الإعلام وتكنولوجيا الاتصال','الهندسة','الطب البشري','طب الفم والأسنان','العلاج الطبيعي'],
+    'جامعة دمنهور':['التربية','الآداب','التجارة','الزراعة','التمريض','التربية للطفولة المبكرة','العلوم','الصيدلة','الطب البيطري','التربية النوعية','الحاسبات والمعلومات','الهندسة','الفنون التطبيقية','رياض الأطفال','طب الأسنان'],
+    'جامعة مدينة السادات':['الطب البشري','الطب البيطري','الصيدلة','السياحة والفنادق','علوم الرياضة','التربية','التربية للطفولة المبكرة','الحاسبات والذكاء الاصطناعي','التجارة','الحقوق','العلوم','التمريض','التربية الرياضية'],
+    'جامعة الأقصر':['الحاسبات والمعلومات','الفنون الجميلة','الألسن','الآثار','السياحة والفنادق','التربية','الطب','طب الأسنان','الهندسة','التمريض','العلوم'],
+    'جامعة الوادي الجديد':['التربية','علوم الرياضة','الآداب','الطب','العلوم','الصيدلة','الزراعة','الهندسة','الطب البيطري','التمريض'],
+    'جامعة مطروح':['التربية','الزراعة الصحراوية والبيئية','الطب البيطري','التمريض','السياحة والفنادق','التربية للطفولة المبكرة','علوم الرياضة','علوم البترول والتعدين','التربية النوعية','الآثار واللغات','الحاسبات والذكاء الاصطناعي'],
+    'جامعة العريش':['التربية','العلوم الزراعية البيئية','التربية الرياضية','العلوم','الآداب','الاستزراع السمكي والمصايد البحرية','الاقتصاد المنزلي','التجارة','الطب البيطري','الطب','الحاسبات والمعلومات'],
+    'جامعة الغردقة':['التربية','الألسن','الحاسبات والذكاء الاصطناعي','السياحة والفنادق','العلوم'],
+    'جامعة جنوب الوادي':['العلوم','التربية','الآداب','الطب البيطري','التربية النوعية','التجارة','الزراعة','الحقوق','الهندسة','طب الفم والأسنان','الإعلام وتكنولوجيا الاتصال','العلاج الطبيعي','الآثار','علوم الرياضة','الصيدلة']
+  },
+  private: {
+    'جامعة 6 أكتوبر':['الطب البشري','طب الأسنان','العلوم الطبية التطبيقية','العلوم الاجتماعية','الصيدلة','العلاج الطبيعي','الحاسبات والمعلومات','الترجمة واللغات','الإعلام','التجارة وعلوم الإدارة','سياحة وفنادق','التمريض','الهندسة','الفنون التطبيقية','الإعلام وفنون الاتصال','التربية','الاقتصاد والإدارة'],
+    'جامعة MSA':['طب الأسنان','العلاج الطبيعي','الصيدلة','التكنولوجيا الحيوية','التغذية وتكنولوجيا الغذاء','الفنون والتصميم','علوم الإدارة','الإعلام','اللغات','العلوم','الهندسة','علوم الحاسب الآلي'],
+    'جامعة MUST':['الطب البشري','طب الأسنان','العلاج الطبيعي','الصيدلة','التكنولوجيا الحيوية','الترجمة واللغات','الإعلام','التربية الخاصة','الاقتصاد والإدارة','تكنولوجيا المعلومات','الهندسة'],
+    'جامعة MIU':['الألسن والإعلام','إدارة الأعمال والتجارة الدولية','الحاسبات','طب الأسنان','الصيدلة','العلوم الهندسية والفنون'],
+    'الجامعة الألمانية GUC':['التكنولوجيا الحيوية','الهندسة','الحاسبات وتقنية المعلومات','إدارة الأعمال','التصميم','الهندسة الصيدلانية والتكنولوجيا','الهندسة المعمارية','العلاج الطبيعي','القانون'],
+    'جامعة الأهرام الكندية ACU':['طب الأسنان','العلاج الطبيعي','الصيدلة','الهندسة','علوم الحاسوب وتكنولوجيا المعلومات','التصميم والفنون الإبداعية','إدارة الأعمال','الإعلام الجماهيري','اللغات والترجمة'],
+    'الجامعة البريطانية BUE':['الفنون والتصميم','الإعلام','طب الأسنان','الهندسة','هندسة الطاقة','حاسبات ومعلومات','الحقوق','التمريض','الصيدلة','السياحة وإدارة الفنادق','الآداب والعلوم الإنسانية','الاقتصاد والعلوم السياسية'],
+    'الجامعة الحديثة MTI':['الحاسبات والذكاء الاصطناعي','الإدارة','الهندسة','الإعلام','الصيدلة','التمريض','طب الفم والأسنان','العلاج الطبيعي','الطب البشري'],
+    'جامعة سيناء':['طب الأسنان','الصيدلة','إدارة الأعمال','علوم الحاسب','تكنولوجيا المعلومات','العلاج الطبيعي','الإعلام','البايوتكنولوجي','الهندسة'],
+    'جامعة فاروس':['الهندسة','طب الأسنان','الصيدلة والصناعات الدوائية','اللغات والترجمة','إدارة الأعمال','الدراسات القانونية','السياحة وإدارة الفنادق','تكنولوجيا العلوم الصحية التطبيقية','الإعلام وفنون الاتصال','العلاج الطبيعي','الفنون والتصميم','علوم الحاسبات والذكاء الاصطناعي','العلوم المالية والإدارية'],
+    'جامعة النهضة':['الطب البشري','طب الفم والأسنان','الصيدلة','العلاج الطبيعي','الهندسة','علوم الحاسب','إدارة الأعمال','الإعلام والعلاقات العامة','الفنون الجميلة','التمريض','تكنولوجيا العلوم الصحية والتطبيقية'],
+    'جامعة المستقبل':['طب الأسنان','الصيدلة','الهندسة والتكنولوجيا','الحاسبات وتكنولوجيا المعلومات','التجارة وإدارة الأعمال','الاقتصاد والعلوم السياسية'],
+    'الجامعة المصرية الروسية':['الصيدلة','طب الفم والأسنان','الهندسة','الإدارة والاقتصاد وتكنولوجيا الأعمال','الذكاء الاصطناعي','الألسن','الفنون الجميلة','الفنون التطبيقية'],
+    'جامعة الدلتا':['الطب البشري','طب الفم والأسنان','العلاج الطبيعي','الصيدلة (الإكلينيكية)','الهندسة','الذكاء الاصطناعي','تكنولوجيا العلوم الصحية التطبيقية','الطب البيطري','التمريض','إدارة الأعمال','الآداب','هندسة الطاقة','الحقوق'],
+    'جامعة هليوبوليس':['الهندسة','الصيدلة وتكنولوجيا الدواء','العلاج الطبيعي','إدارة الأعمال والاقتصاد','الزراعة الحيوية'],
+    'جامعة بدر بالقاهرة':['الطب البشري','طب الفم والأسنان','الصيدلة والصناعات الدوائية','العلاج الطبيعي','الطب البيطري وسلامة الغذاء','التمريض','العلوم الإنسانية والاجتماعية','الهندسة والتكنولوجيا','إدارة الأعمال والاقتصاد','الفنون التطبيقية','القانون','اللغات والترجمة','العلوم السياسية والعلاقات الدولية','العلوم السينمائية والمسرحية','التكنولوجيا الحيوية','علوم الحاسب والذكاء الاصطناعي'],
+    'جامعة حورس':['الهندسة','الطب البشري','طب الأسنان','الصيدلة','العلاج الطبيعي','إدارة الأعمال','تكنولوجيا العلوم الصحية التطبيقية','الفنون الجميلة والتصميم','الذكاء الاصطناعي والمعلوماتية','الألسن واللغات'],
+    'الجامعة المصرية الصينية':['العلاج الطبيعي','الصيدلة وتكنولوجيا الدواء','الهندسة والتكنولوجيا','الاقتصاد والتجارة الدولية','التمريض','الطب البيطري','الحاسبات ونظم المعلومات','الفنون والتصميم','الإعلام','الدراسات الأدبية'],
+    'جامعة ميريت':['الطب البشري','الصيدلة','العلاج الطبيعي','الطب وجراحة الفم والأسنان','الهندسة','العلوم التكنولوجية','الآداب والعلوم الإنسانية','الاقتصاد وإدارة الأعمال','السياحة والفنادق','التمريض'],
+    'جامعة سفنكس':['طب الفم والأسنان','العلاج الطبيعي','الصيدلة','الحاسبات والذكاء الاصطناعي','الطب البيطري','الهندسة','العلوم الصحية التطبيقية','التمريض','الحقوق','التكنولوجيا الحيوية'],
+    'جامعة السلام':['طب الفم والأسنان','العلاج الطبيعي','الصيدلة','التمريض','الفنون التطبيقية','الهندسة'],
+    'جامعة بدر بأسيوط':['طب الفم والأسنان','الصيدلة','الطب البيطري','العلاج الطبيعي','التمريض','الحقوق','التكنولوجيا الحيوية','الذكاء الاصطناعي','اللغات والترجمة','الفنون التطبيقية','الإدارة والعلوم المالية والاقتصادية','الهندسة والتكنولوجيا'],
+    'جامعة الصالحية الجديدة':['طب الأسنان','الصيدلة','العلاج الطبيعي','الإدارة والاقتصاد الدولي','الحاسبات والمعلومات'],
+    'جامعة الحياة':['العلاج الطبيعي','إدارة الأعمال والممارسات الدولية'],
+    'جامعة مايو':['العلاج الطبيعي','السياسة والاقتصاد وإدارة الأعمال','الهندسة','التمريض','التكنولوجيا','الحاسبات والذكاء الاصطناعي'],
+    'جامعة الريادة':['الهندسة','الصيدلة','طب الأسنان','العلاج الطبيعي','التمريض','العلوم الصحية التطبيقية','علوم الحاسب والذكاء الاصطناعي','إدارة الأعمال','الفنون والتصميم','الألسن والإعلام','الطب البشري'],
+    'جامعة الابتكار':['العلاج الطبيعي','التمريض','علوم الكمبيوتر وتكنولوجيا المعلومات','الهندسة','التكنولوجيا الحديثة','إدارة الأعمال','الفنون'],
+    'جامعة المدينة بالقاهرة':['العلاج الطبيعي','الهندسة','الفنون والتصميم','الإعلام','الاقتصاد والعلوم الإدارية'],
+    'جامعة رشيد':['العلاج الطبيعي','التمريض','إدارة الأعمال','الهندسة','طب الفم والأسنان','التكنولوجيا التطبيقية'],
+    'جامعة باديا':['الطب','طب الأسنان','العلاج الطبيعي','الحاسبات وعلوم البيانات','إدارة الأعمال والاقتصاد التطبيقية','الفنون الجميلة','الهندسة'],
+    'جامعة وادي النيل':['صيدلة إكلينيكية','هندسة','إدارة الأعمال','طب أسنان','بيوتكنولوجي','علوم الحاسب وتكنولوجيا المعلومات','علوم تطبيقية','فنون وتصميم','العلوم الإنسانية','العلوم الإدارية','تكنولوجيا العلوم الصحية التطبيقية'],
+    'جامعة اللوتس':['طب الأسنان','العلاج الطبيعي','التمريض','الإدارة والاقتصاد والعلوم السياسية','الحاسبات والمعلومات والذكاء الاصطناعي','الهندسة','العلوم الصحية التطبيقية'],
+    'جامعة النيل':['إدارة الأعمال','الهندسة والعلوم التطبيقية','تكنولوجيا المعلومات وعلوم الحاسب','التكنولوجيا الحيوية','العلوم الإنسانية والرقمنة','علوم المياه والأمن الغذائي','العلوم','هندسة الطاقة والبيئة']
+  },
+  national: {
+    'جامعة الملك سلمان الدولية':['الهندسة','علوم وهندسة الحاسب','الطب','طب الأسنان','التمريض','الصناعات التكنولوجية','إدارة الأعمال','الألسن واللغات التطبيقية','العمارة','الفنون والتصميم','السياحة والضيافة','العلاج الطبيعي','الطب البيطري','علوم المجتمع','الزراعات الصحراوية'],
+    'جامعة العلمين الدولية':['طب الأسنان','الصيدلة','العلاج الطبيعي','الهندسة','علوم وهندسة الحاسبات','علوم الصحة العامة','الفنون والتصميم','العلوم الأساسية المتقدمة','إدارة الأعمال','الدراسات القانونية الدولية'],
+    'جامعة الجلالة':['الطب البشري','طب الأسنان','الصيدلة','العلاج الطبيعي','التمريض','تكنولوجيا العلوم الصحية التطبيقية','الهندسة','علوم الكمبيوتر','هندسة الحاسب','العمارة','الفنون والتصميم','الإنتاج الإعلامي','العلوم الإدارية'],
+    'جامعة المنصورة الجديدة':['الطب البشري','طب الأسنان','الصيدلة','الهندسة','علوم وهندسة الحاسب','العلوم','العلوم الصحية','القانون','الأعمال','التمريض','علوم وهندسة المنسوجات','العلوم الاجتماعية والإنسانية'],
+    'الجامعة المصرية للتعلم الإلكتروني':['الحاسبات وتكنولوجيا المعلومات','إدارة الأعمال','الدراسات التربوية'],
+    'جامعة النيل الأهلية':['تكنولوجيا المعلومات وعلوم الحاسب','إدارة المعلومات','الهندسة والطاقة البيئة','العلوم','الهندسة والعلوم التطبيقية','التكنولوجيا الحيوية','علوم المياه والأمن الغذائي','العلوم الإنسانية والرقمنة'],
+    'الجامعة الأهلية الفرنسية':['الهندسة','الإدارة ونظم المعلومات','اللغات التطبيقية والعلوم الاجتماعية'],
+    'جامعة مصر للمعلوماتية':['علوم الحاسب والمعلومات','الهندسة','تكنولوجيا الأعمال','الفنون الرقمية والتصميم'],
+    'جامعة حلوان الأهلية':['الطب والجراحة','طب الفم والأسنان','العلاج الطبيعي','الهندسة','علوم الحاسب','العلوم','تكنولوجيا العلوم الصحية التطبيقية','العلوم الإنسانية','الفنون','الدراسات القانونية','الترجمة المتخصصة'],
+    'جامعة المنصورة الأهلية':['الطب البشري','طب الأسنان','الصيدلة','الهندسة والتكنولوجيا','الاقتصاد والعلوم الإدارية','تكنولوجيا العلوم الصحية','التمريض'],
+    'جامعة بنها الأهلية':['الطب البشري','طب الأسنان','العلاج الطبيعي','الهندسة','تكنولوجيا العلوم الصحية التطبيقية','الاقتصاد وإدارة الأعمال','علوم الحاسب','الطب البيطري','الفنون البصرية والتصميم','علوم الطاقة'],
+    'جامعة المنوفية الأهلية':['الطب البشري','طب الأسنان','العلاج الطبيعي','الصيدلة','الهندسة','الحاسبات والذكاء الاصطناعي','الطب البيطري','العلوم الصحية التطبيقية','التمريض','العلوم الإنسانية والاجتماعية'],
+    'جامعة بني سويف الأهلية':['الحاسبات والذكاء الاصطناعي','الطب البشري','طب الفم والأسنان','العلاج الطبيعي','الهندسة','العلوم','الإعلام','التجارة','الآداب','التمريض','الصيدلة','الحقوق','علوم الملاحة'],
+    'جامعة أسيوط الأهلية':['الطب البشري','طب الأسنان','الصيدلة والبحوث الدوائية','الهندسة والعلوم التطبيقية','الحاسبات والذكاء الاصطناعي','العلوم المالية والإدارية','الألسن واللغات التطبيقية'],
+    'جامعة جنوب الوادي الأهلية':['الطب البشري','طب وجراحة الفم والأسنان','الصيدلة','العلاج الطبيعي','التمريض','الهندسة','الحاسبات والذكاء الاصطناعي','العلوم الإدارية والمالية','الألسن','الإعلام والعلوم الإنسانية'],
+    'جامعة المنيا الأهلية':['الطب البشري','طب الأسنان','العلاج الطبيعي','الصيدلة','الهندسة','الحاسبات والذكاء الاصطناعي','العلاقات العامة وإدارة الأعمال'],
+    'جامعة شرق بورسعيد الأهلية':['الطب البشري','طب الأسنان','العلاج الطبيعي','الصيدلة','الطب البيطري','الهندسة','علوم الحاسب','تكنولوجيا العلوم الصحية التطبيقية','علوم الإدارة','الآداب','التكنولوجيا الحيوية'],
+    'جامعة الإسكندرية الأهلية':['الطب البشري','طب الأسنان','الصيدلة','الهندسة','علوم الحاسب والذكاء الاصطناعي','التمريض','السياحة والفنادق','العلوم الزراعية','الفنون والتصميم','الاقتصاد وعلوم تكنولوجيا الإدارة','الإعلام الرقمي','الأمن السيبراني','الجيوماتكس'],
+    'جامعة الزقازيق الأهلية':['الطب البشري','طب وجراحة الفم والأسنان','الصيدلة','التمريض','الهندسة','الحاسبات والمعلومات','التجارة'],
+    'جامعة الإسماعيلية الجديدة الأهلية':['الطب والجراحة','طب وجراحة الفم والأسنان','الصيدلة','علوم التمريض','العلاج الطبيعي','الهندسة','تكنولوجيا العلوم الصحية التطبيقية','التجارة الدولية واللغات'],
+    'جامعة السويس الأهلية':['طب الأسنان','العلاج الطبيعي','الهندسة والبترول والتعدين','الحاسبات والمعلومات والذكاء الاصطناعي','العلوم','اللغات والعلوم الإنسانية','الاقتصاد والإدارة والعلوم السياسية','الفنون التطبيقية','الإعلام','الأعمال'],
+    'جامعة دمنهور الأهلية':['الصيدلة','الطب البيطري','التمريض','الحاسبات والمعلومات والذكاء الاصطناعي','العلوم','إدارة الأعمال','الآداب والعلوم الإنسانية','الفنون التطبيقية'],
+    'جامعة القاهرة الأهلية':['الطب البشري','طب الأسنان','الصيدلة','العلاج الطبيعي','الطب البيطري','الهندسة','الحاسبات والذكاء الاصطناعي','التمريض','إدارة الأعمال','الاقتصاد والعلوم السياسية','العلوم','القانون','الإعلام','التربية للطفولة المبكرة'],
+    'جامعة عين شمس الأهلية':['الهندسة','الحاسبات والمعلومات والذكاء الاصطناعي','التجارة','العلوم','الزراعة','الآداب','الإعلام','الطب البشري','طب الأسنان','التمريض','القانون الدولي'],
+    'جامعة سوهاج الأهلية':['الطب البشري','الصيدلة','الهندسة','الحاسبات والمعلومات والذكاء الاصطناعي','تكنولوجيا العلوم الصحية','الإعلام','العلوم','اللغات والعلوم الإنسانية'],
+    'جامعة كفر الشيخ الأهلية':['الطب البشري','طب الفم والأسنان','الصيدلة','العلاج الطبيعي','التمريض','الطب البيطري','الهندسة','الحاسبات والمعلومات والذكاء الاصطناعي','العلوم','الزراعة','اللغات والعلوم الإنسانية','التجارة وعلوم الإدارة','الفنون والتصميم'],
+    'جامعة الوادي الجديد الأهلية':['الصيدلة','الطب البيطري','العلوم','الزراعة','اللغات والعلوم الإنسانية'],
+    'جامعة الفيوم الأهلية':['الطب','طب وجراحة الفم والأسنان','الهندسة','الحاسبات والمعلومات والذكاء الاصطناعي','التمريض','العلوم','اللغات والعلوم الإنسانية'],
+    'جامعة طنطا الأهلية':['الطب','طب الأسنان','الصيدلة','التمريض','الهندسة','الحاسبات والمعلومات والذكاء الاصطناعي','العلوم','الألسن','الأعمال','العلوم الاجتماعية والإنسانية'],
+    'جامعة الأقصر الأهلية':['الحاسبات والمعلومات والذكاء الاصطناعي','السياحة والآثار','الفنون والتصميم','اللغات والترجمة والعلوم الإنسانية'],
+    'جامعة دمياط الأهلية':['التمريض','الفنون والتصميم','الحاسبات والمعلومات والذكاء الاصطناعي','الآثار والسياحة','الأعمال','الألسن'],
+    'جامعة مدينة السادات الأهلية':['الحاسبات والمعلومات والذكاء الاصطناعي','الأعمال','الصيدلة','الطب البيطري','العلوم','السياحة والفنادق','علوم الرياضة']
+  },
+  technological: {
+    'جامعة القاهرة الجديدة التكنولوجية':['كلية تكنولوجيا الصناعة والطاقة','كلية العلوم الصحية التطبيقية'],
+    'جامعة بني سويف التكنولوجية':['الكلية المصرية الكورية لتكنولوجيا الصناعة والطاقة'],
+    'جامعة الدلتا التكنولوجية':['كلية تكنولوجيا الصناعة والطاقة'],
+    'جامعة سمنود التكنولوجية':['كلية التكنولوجيا (الغزل والنسيج والصناعات)'],
+    'جامعة طيبة التكنولوجية':['كلية تكنولوجيا الخدمات الفندقية والسياحية','كلية تكنولوجيا الصناعة والطاقة'],
+    'جامعة برج العرب التكنولوجية':['كلية تكنولوجيا الصناعة والطاقة','كلية تكنولوجيا العلوم الصحية'],
+    'جامعة أسيوط الجديدة التكنولوجية':['كلية تكنولوجيا الصناعة والطاقة','كلية تكنولوجيا العلوم الصحية'],
+    'جامعة 6 أكتوبر التكنولوجية':['كلية تكنولوجيا الصناعة والطاقة','كلية تكنولوجيا العلوم الصحية'],
+    'جامعة شرق بورسعيد التكنولوجية':['كلية تكنولوجيا الصناعة والطاقة','كلية تكنولوجيا الخدمات الفندقية والسياحية']
+  }
+};
+
+/* =========================================================
+   SCHOOLS DATA
+   ========================================================= */
+const SCHOOLS = {
+  'القاهرة':[
+    {n:'مدرسة النزهة الحجاز بنين الثانوية',t:'general'},
+    {n:'مدرسة النزهة الحجاز بنات الثانوية',t:'general'},
+    {n:'مدرسة بببي جاردن الثانوية للغات',t:'language'},
+    {n:'مدرسة علم الدين الخاصة للغات',t:'language'},
+    {n:'مدرسة الشروق الخاصة',t:'private'},
+    {n:'مدرسة الصرح الخاصة',t:'private'},
+    {n:'مدرسة الأمل لغات',t:'language'},
+    {n:'مدرسة منارة المعادي ث لغات',t:'language'},
+    {n:'مدرسة سقارة ث الخاصة لغات',t:'language'},
+    {n:'مدرسة الأورمان الخاصة سمارت ثانوي',t:'private'},
+    {n:'مدرسة واحة المعادي لغات',t:'language'},
+    {n:'مدرسة نارم ث لغات',t:'language'},
+    {n:'مدرسة الرياض الخاصة ث بنين',t:'private'},
+    {n:'مدرسة المتفوقين بنين بعين شمس',t:'stem'},
+    {n:'مدرسة المتفوقين بنات بالمعادي',t:'stem'},
+    {n:'مدرسة القاهرة الجديدة المشتركة',t:'stem'},
+    {n:'المدرسة المصرية الدولية بالشيخ زايد',t:'international'},
+    {n:'Cairo American College',t:'international'},
+    {n:'Malvern College Egypt',t:'international'},
+    {n:'Metropolitan School',t:'international'},
+    {n:'Nefertari American International School',t:'international'},
+    {n:'معهد فتيات مصر الجديدة ع/ث',t:'azhari'}
+  ],
+  'الجيزة':[
+    {n:'السعيدية الثانوية العسكرية',t:'general'},
+    {n:'الجيزة الثانوية بنات',t:'general'},
+    {n:'وجيه بغدادى ثانوى بنات',t:'general'},
+    {n:'العدالة الثانوية',t:'general'},
+    {n:'الثانوية التجريبية الرياضية',t:'general'},
+    {n:'الجيزة الثانوية الصناعية بنات',t:'technical'},
+    {n:'الميدان الثانوية الصناعية بنات',t:'technical'},
+    {n:'جمال عبد الناصر الثانوية بنات',t:'general'},
+    {n:'إمبابة الثانوية العسكرية بنين',t:'general'},
+    {n:'الشيخة جواهر الثانوية بنات',t:'general'},
+    {n:'جينيس الدولية',t:'international'},
+    {n:'جينيس الحديثة لغات',t:'language'},
+    {n:'جمال عبد الناصر الثانوية الرسمية لغات',t:'language'},
+    {n:'الأورمان الثانوية بنين',t:'general'},
+    {n:'النيل جاردن الخاصة لغات',t:'language'},
+    {n:'هضبة الأهرام الخاصة ثانوي',t:'private'},
+    {n:'العزيزية الخاصة ثانوي',t:'private'},
+    {n:'كابيتال لغات',t:'language'},
+    {n:'مدرسة 6 أكتوبر بنين',t:'stem'},
+    {n:'معهد القدس ع/ث',t:'azhari'}
+  ],
+  'الإسكندرية':[
+    {n:'مدرسة المشير أحمد بدوي الثانوية للبنين',t:'general'},
+    {n:'مدرسة الورديان الثانوية للبنين',t:'general'},
+    {n:'مدرسة طه حسين الثانوية بنات',t:'general'},
+    {n:'مدرسة رأس التين الثانوية',t:'general'},
+    {n:'مدرسة العباسية الثانوية',t:'general'},
+    {n:'مدرسة النصر للبنين',t:'general'},
+    {n:'رويالتي الثانوية لغات',t:'language'},
+    {n:'مدرسة الحجازي الخاصة الثانوية',t:'private'},
+    {n:'هارفست الخاصة الثانوية لغات',t:'language'},
+    {n:'معالي السلام',t:'private'},
+    {n:'جناكليس القومية ث المشتركة لغات',t:'language'},
+    {n:'Pioneers International School',t:'international'},
+    {n:'Egypt Modern School',t:'international'},
+    {n:'El Zahraa American School',t:'international'},
+    {n:'The American School of Alexandria',t:'international'}
+  ],
+  'الدقهلية':[
+    {n:'الوادي الثانوية للغات بنات',t:'language'},
+    {n:'المنصورة رويال سكولز الثانوية الخاصة للغات',t:'language'},
+    {n:'جلوري الثانوية الأمريكية',t:'international'},
+    {n:'المنصورة كولج الثانوية الحديثة',t:'language'},
+    {n:'دكرنس الثانوية الرسمية للغات',t:'language'},
+    {n:'دماص الثانوية بنين',t:'general'},
+    {n:'كفر سعد الثانوية المشتركة',t:'general'},
+    {n:'بيلا الثانوية الجديدة بنات',t:'general'},
+    {n:'شربين الثانوية بنات',t:'general'},
+    {n:'مدرسة كفر العرب الثانوية',t:'general'}
+  ],
+  'الشرقية':[
+    {n:'مدرسة الحسينية الثانوية الصناعية المشتركة',t:'technical'},
+    {n:'مدرسة المتفوقين الثانوية',t:'stem'},
+    {n:'مدرسة الألفي الثانوية بنين',t:'general'},
+    {n:'مدرسة الشهيد محمد إبراهيم البقاش الثانوية',t:'general'}
+  ],
+  'القليوبية':[
+    {n:'فتحي الجمل الثانوية المشتركة الخاصة',t:'private'},
+    {n:'فجر الإسلام الثانوية الخاصة المشتركة',t:'private'},
+    {n:'الشيماء الثانوية بنات',t:'general'},
+    {n:'الثانوية بنات بمدينة بنها',t:'general'},
+    {n:'كفر شكر الرسمية لغات',t:'language'},
+    {n:'مصطفى عطايا',t:'general'},
+    {n:'معهد بنها النموذجي بنين',t:'azhari'},
+    {n:'معهد باسوس ع/ث',t:'azhari'}
+  ],
+  'البحيرة':[
+    {n:'إدكو بنين',t:'general'},
+    {n:'إدكو بنات',t:'general'},
+    {n:'الخدمة ث م',t:'general'},
+    {n:'فصول السلام',t:'general'},
+    {n:'كوم الفرج',t:'general'},
+    {n:'أبو المطامير بنين',t:'general'},
+    {n:'بستناوي',t:'general'},
+    {n:'بركة غطاس',t:'general'},
+    {n:'سحالي',t:'general'},
+    {n:'الخدير',t:'general'},
+    {n:'منارة بدر الخاصة الثانوية',t:'private'},
+    {n:'الجيل الواعد',t:'language'}
+  ],
+  'المنوفية':[
+    {n:'الشهيد اللواء إبراهيم عبد المعبود الثانوية',t:'general'},
+    {n:'شبرا بخوم الثانوية بنين',t:'general'},
+    {n:'برة العجوز الثانوية',t:'general'},
+    {n:'مصطاي الثانوية',t:'general'},
+    {n:'الرمالي الثانوية',t:'general'}
+  ],
+  'الغربية':[{n:'المحلة الثانوية الصناعية بنات',t:'technical'}],
+  'كفر الشيخ':[
+    {n:'مدرسة شهيد السلام الثانوية العسكرية بنين',t:'general'},
+    {n:'مدرسة سخا الثانوية بنات',t:'general'},
+    {n:'مدرسة إبراهيم الشناوي الثانوية بنات',t:'general'},
+    {n:'مدرسة مصطفى هلال الثانوية بنين',t:'general'},
+    {n:'مدرسة مطوبس الثانوية بنين',t:'general'},
+    {n:'مدرسة بني بكار الثانوية المشتركة',t:'general'},
+    {n:'مدرسة قبريط الثانوية المشتركة',t:'general'},
+    {n:'مدرسة عابد عبد العال الثانوية بنات',t:'general'},
+    {n:'مدرسة قلين الصناعية المشتركة العسكرية',t:'technical'},
+    {n:'مدرسة فوه الصناعية النسيجية',t:'technical'},
+    {n:'مدرسة كفر الشيخ الصناعية بنات',t:'technical'},
+    {n:'معهد كفر الشيخ الثانوي بنين',t:'azhari'}
+  ],
+  'دمياط':[
+    {n:'مدرسة دمياط الثانوية العسكرية بنين',t:'general'},
+    {n:'مدرسة اللوزي الثانوية بنات',t:'general'},
+    {n:'مدرسة عمر بن الخطاب الثانوية بنات',t:'general'},
+    {n:'مدرسة أم المؤمنين الثانوية',t:'general'},
+    {n:'مدرسة دمياط الثانوية التجارية',t:'technical'},
+    {n:'مدرسة محرم الثانوية بنين',t:'general'},
+    {n:'مدرسة صادق جاويش',t:'general'},
+    {n:'مدرسة أبو بكر الصديق',t:'general'},
+    {n:'دمياط الميكانيكية (بنين)',t:'technical'},
+    {n:'دمياط الزخرفية (بنين)',t:'technical'},
+    {n:'دمياط الصناعية (بنات)',t:'technical'}
+  ],
+  'قنا':[{n:'معهد بنين قنا الثانوي',t:'azhari'}]
+};
+
+/* =========================================================
+   ADDRESS DATA
+   ========================================================= */
+const ADDRESS_DATA = {
+  'القاهرة': ['مدينة نصر','المعادي','مصر الجديدة','حلوان','المقطم','عين شمس','شبرا','الزيتون','السلام','المرج','التجمع الخامس','مدينة الشروق','مدينة بدر','مدينة العبور','15 مايو','طرة','المنيل','السيدة زينب','مصر القديمة','الخليفة','الموسكي','الأزبكية','بولاق','الوايلي','الشرابية','روض الفرج','الساحل','حدائق القبة','الزاوية الحمراء','الأميرية','النزهة'],
+  'الجيزة': ['الدقي','المهندسين','العجوزة','إمبابة','الوراق','أوسيم','كرداسة','6 أكتوبر','الشيخ زايد','حدائق الأهرام','الهرم','فيصل','الطالبية','البدرشين','العياط','الصف','أطفيح','منشأة القناطر','أبو النمرس','الحوامدية','الواحات البحرية'],
+  'الإسكندرية': ['المنتزه','شرق الإسكندرية','وسط الإسكندرية','غرب الإسكندرية','الجمرك','العجمي','الدخيلة','برج العرب','العامرية','أبو قير','المعمورة','سيدي جابر','سموحة','محرم بك','كرموز','الأنفوشي','الرمل','العطارين','اللبان','غيط العنب','المكس'],
+  'الدقهلية': ['المنصورة','طلخا','ميت غمر','دكرنس','شربين','بلقاس','تمي الأمديد','السنبلاوين','الجمالية','ميت سلسيل','منية النصر','نبروه','بني عبيد','أجا','المنزلة','كفر البطيخ','جمصة','معدية'],
+  'الشرقية': ['الزقازيق','بلبيس','منيا القمح','أبو حماد','العاشر من رمضان','الحسينية','ديرب نجم','أبو كبير','كفر صقر','أولاد صقر','مشتول السوق','ههيا','الإبراهيمية','صان الحجر','القرين','فاقوس','منشأة أبو عمر'],
+  'القليوبية': ['بنها','شبرا الخيمة','القناطر الخيرية','قليوب','طوخ','قها','كفر شكر','الخانكة','شبين القناطر','أبو زعبل','الخصوص','العبور','مسطرد'],
+  'كفر الشيخ': ['كفر الشيخ','دسوق','فوه','مطوبس','بلطيم','الحامول','بيلا','الرياض','سيدي سالم','قلين','بني بكار','قبريط','مصيف بلطيم'],
+  'الغربية': ['طنطا','المحلة الكبرى','كفر الزيات','زفتى','السنطة','قطور','بسيون','سمنود','المنشأة','الجابرية'],
+  'المنوفية': ['شبين الكوم','المنوف','قويسنا','أشمون','الباجور','تلا','بركة السبع','السادات','الشهداء','سرس الليان'],
+  'البحيرة': ['دمنهور','كفر الدوار','إدكو','أبو المطامير','أبو حمص','رشيد','إيتاي البارود','الدلنجات','المحمودية','الرحمانية','شبراخيت','حوش عيسى','وادي النطرون','بدر','النوبارية'],
+  'الإسماعيلية': ['الإسماعيلية','فايد','القنطرة شرق','القنطرة غرب','التل الكبير','أبو صوير','القصاصين','مدينة الإسماعيلية الجديدة'],
+  'بورسعيد': ['بورسعيد','بورفؤاد','الزهور','الشرق','المناخ','العرب','الجنوب','المدينة الجديدة'],
+  'السويس': ['السويس','الأربعين','فيصل','عتاقة','الجناين','السلام','الشرقية','مدينة السويس الجديدة'],
+  'شمال سيناء': ['العريش','بئر العبد','الشيخ زويد','رفح','نخل','الحسنة','وسط سيناء'],
+  'جنوب سيناء': ['الطور','شرم الشيخ','دهب','نويبع','سانت كاترين','أبو رديس','أبو زنيمة','رأس سدر'],
+  'الفيوم': ['الفيوم','سنورس','إطسا','طامية','يوسف الصديق','أبشواي','الفيوم الجديدة','شدموه'],
+  'بني سويف': ['بني سويف','الواسطى','ناصر','إهناسيا','ببا','سمسطا','الفشن','بني سويف الجديدة'],
+  'المنيا': ['المنيا','ملوي','سمالوط','بني مزار','مغاغة','أبو قرقاص','دير مواس','مطاي','المنيا الجديدة','العدوة'],
+  'أسيوط': ['أسيوط','ديروط','القوصية','أبنوب','منفلوط','أبو تيج','الغنايم','ساحل سليم','البداري','صدفا','أسيوط الجديدة'],
+  'سوهاج': ['سوهاج','طهطا','جرجا','جهينة','المراغة','المنشاة','دار السلام','أخميم','ساقلتة','العسيرات','سوهاج الجديدة'],
+  'قنا': ['قنا','نجع حمادي','دشنا','قفط','قوص','أرمنت','فرشوط','أبو تشت','الوقف','نقادة'],
+  'الأقصر': ['الأقصر','إسنا','أرمنت','البياضية','القرنة','الطود','الأقصر الجديدة'],
+  'أسوان': ['أسوان','كوم أمبو','إدفو','دراو','نصر النوبة','أبو سمبل','أسوان الجديدة'],
+  'البحر الأحمر': ['الغردقة','سفاجا','القصير','رأس غارب','مرسى علم','شلاتين','حلايب','البحر الأحمر الجديدة'],
+  'الوادي الجديد': ['الخارجة','الداخلة','الفرافرة','باريس','بلاط','موط'],
+  'مطروح': ['مرسى مطروح','الحمام','العلمين','الضبعة','سيوة','السلوم','براني','النجيلة','سيدي براني'],
+  'دمياط': ['دمياط','دمياط الجديدة','رأس البر','فارسكور','كفر سعد','الزرقا','السرو','ميت أبو غالب','عزبة البرج','كفر البطيخ']
+};
+
+const GOVERNORATES = ['القاهرة','الجيزة','الإسكندرية','الدقهلية','الشرقية','القليوبية','كفر الشيخ','الغربية','المنوفية','البحيرة','الإسماعيلية','بورسعيد','السويس','شمال سيناء','جنوب سيناء','الفيوم','بني سويف','المنيا','أسيوط','سوهاج','قنا','الأقصر','أسوان','البحر الأحمر','الوادي الجديد','مطروح','دمياط'];
+
+const POSITIONS_BY_UNIT = {
+  top:[{value:'supervisor',label:'المشرف العام على المشروع',level:'L0',levelTitle:'المشرف العام',dashboard:'supervisor'},{value:'national_coordinator',label:'منسق المشروع للجمهورية',level:'L1',levelTitle:'منسق الجمهورية',dashboard:'coordinator'}],
+  executive:[
+    {value:'exec_director',label:'المدير التنفيذي للمشروع',level:'L2',levelTitle:'إدارة تنفيذية',dashboard:'director'},
+    {value:'exec_deputy',label:'نائب المدير التنفيذي',level:'L2',levelTitle:'إدارة تنفيذية',dashboard:'deputy-director'},
+    {value:'exec_member_ai',label:'عضو الإدارة - مسؤول تحول AI',level:'L2',levelTitle:'إدارة تنفيذية',dashboard:'executive'},
+    {value:'exec_member_pr',label:'عضو الإدارة - مسؤول العلاقات العامة',level:'L2',levelTitle:'إدارة تنفيذية',dashboard:'executive'},
+    {value:'exec_member_ext',label:'عضو الإدارة - مسؤول العلاقات الخارجية',level:'L2',levelTitle:'إدارة تنفيذية',dashboard:'executive'},
+    {value:'exec_member',label:'عضو الإدارة التنفيذية',level:'L2',levelTitle:'إدارة تنفيذية',dashboard:'executive'}
+  ],
+  hr:[
+    {value:'hr_head',label:'رئيس وحدة الموارد البشرية (مركزي)',level:'L3',levelTitle:'رئيس وحدة مركزية',dashboard:'unit-head'},
+    {value:'hr_deputy',label:'نائب رئيس وحدة HR (مركزي)',level:'L4',levelTitle:'نائب رئيس وحدة مركزية',dashboard:'deputy-unit-head'},
+    {value:'hr_head_gov',label:'رئيس وحدة HR (محافظة)',level:'L5',levelTitle:'رئيس وحدة محافظة',dashboard:'unit-head'},
+    {value:'hr_deputy_gov',label:'نائب رئيس وحدة HR (محافظة)',level:'L6',levelTitle:'نائب رئيس وحدة محافظة',dashboard:'deputy-unit-head'},
+    {value:'hr_manager_ops',label:'مدير عمليات - HR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'hr_manager_train',label:'مدير تدريب - HR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'hr_manager_quality',label:'مدير جودة - HR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'hr_leader_team',label:'ليدر فريق - HR',level:'L8',levelTitle:'ليدر',dashboard:'leader'},
+    {value:'hr_member',label:'عضو نشط - HR',level:'L9',levelTitle:'عضو',dashboard:'member'},
+    {value:'hr_trainee',label:'عضو متدرب - HR',level:'L9',levelTitle:'متدرب',dashboard:'trainee'}
+  ],
+  or:[
+    {value:'or_head',label:'رئيس وحدة التنظيم والعمليات (مركزي)',level:'L3',levelTitle:'رئيس وحدة مركزية',dashboard:'unit-head'},
+    {value:'or_deputy',label:'نائب رئيس وحدة OR (مركزي)',level:'L4',levelTitle:'نائب رئيس وحدة مركزية',dashboard:'deputy-unit-head'},
+    {value:'or_head_gov',label:'رئيس وحدة OR (محافظة)',level:'L5',levelTitle:'رئيس وحدة محافظة',dashboard:'unit-head'},
+    {value:'or_deputy_gov',label:'نائب رئيس وحدة OR (محافظة)',level:'L6',levelTitle:'نائب رئيس وحدة محافظة',dashboard:'deputy-unit-head'},
+    {value:'or_manager_ops',label:'مدير عمليات - OR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'or_manager_train',label:'مدير تدريب - OR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'or_manager_quality',label:'مدير جودة - OR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'or_leader_team',label:'ليدر فريق - OR',level:'L8',levelTitle:'ليدر',dashboard:'leader'},
+    {value:'or_member',label:'عضو نشط - OR',level:'L9',levelTitle:'عضو',dashboard:'member'},
+    {value:'or_trainee',label:'عضو متدرب - OR',level:'L9',levelTitle:'متدرب',dashboard:'trainee'}
+  ],
+  pr:[
+    {value:'pr_head',label:'رئيس وحدة العلاقات العامة (مركزي)',level:'L3',levelTitle:'رئيس وحدة مركزية',dashboard:'unit-head'},
+    {value:'pr_deputy',label:'نائب رئيس وحدة PR (مركزي)',level:'L4',levelTitle:'نائب رئيس وحدة مركزية',dashboard:'deputy-unit-head'},
+    {value:'pr_head_gov',label:'رئيس وحدة PR (محافظة)',level:'L5',levelTitle:'رئيس وحدة محافظة',dashboard:'unit-head'},
+    {value:'pr_deputy_gov',label:'نائب رئيس وحدة PR (محافظة)',level:'L6',levelTitle:'نائب رئيس وحدة محافظة',dashboard:'deputy-unit-head'},
+    {value:'pr_manager_ops',label:'مدير عمليات - PR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'pr_manager_train',label:'مدير تدريب - PR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'pr_manager_quality',label:'مدير جودة - PR',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'pr_leader_team',label:'ليدر فريق - PR',level:'L8',levelTitle:'ليدر',dashboard:'leader'},
+    {value:'pr_member',label:'عضو نشط - PR',level:'L9',levelTitle:'عضو',dashboard:'member'},
+    {value:'pr_trainee',label:'عضو متدرب - PR',level:'L9',levelTitle:'متدرب',dashboard:'trainee'}
+  ],
+  sm:[
+    {value:'sm_head',label:'رئيس وحدة التسويق (مركزي)',level:'L3',levelTitle:'رئيس وحدة مركزية',dashboard:'unit-head'},
+    {value:'sm_deputy',label:'نائب رئيس وحدة SM (مركزي)',level:'L4',levelTitle:'نائب رئيس وحدة مركزية',dashboard:'deputy-unit-head'},
+    {value:'sm_head_gov',label:'رئيس وحدة SM (محافظة)',level:'L5',levelTitle:'رئيس وحدة محافظة',dashboard:'unit-head'},
+    {value:'sm_deputy_gov',label:'نائب رئيس وحدة SM (محافظة)',level:'L6',levelTitle:'نائب رئيس وحدة محافظة',dashboard:'deputy-unit-head'},
+    {value:'sm_manager_ops',label:'مدير عمليات - SM',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'sm_manager_train',label:'مدير تدريب - SM',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'sm_manager_quality',label:'مدير جودة - SM',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'sm_leader_team',label:'ليدر فريق - SM',level:'L8',levelTitle:'ليدر',dashboard:'leader'},
+    {value:'sm_member',label:'عضو نشط - SM',level:'L9',levelTitle:'عضو',dashboard:'member'},
+    {value:'sm_trainee',label:'عضو متدرب - SM',level:'L9',levelTitle:'متدرب',dashboard:'trainee'}
+  ],
+  ait:[
+    {value:'ait_head',label:'رئيس وحدة تحول AI (مركزي)',level:'L3',levelTitle:'رئيس وحدة مركزية',dashboard:'unit-head'},
+    {value:'ait_deputy',label:'نائب رئيس وحدة AIT (مركزي)',level:'L4',levelTitle:'نائب رئيس وحدة مركزية',dashboard:'deputy-unit-head'},
+    {value:'ait_head_gov',label:'رئيس وحدة AIT (محافظة)',level:'L5',levelTitle:'رئيس وحدة محافظة',dashboard:'unit-head'},
+    {value:'ait_deputy_gov',label:'نائب رئيس وحدة AIT (محافظة)',level:'L6',levelTitle:'نائب رئيس وحدة محافظة',dashboard:'deputy-unit-head'},
+    {value:'ait_manager_ops',label:'مدير عمليات - AIT',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'ait_manager_train',label:'مدير تدريب - AIT',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'ait_manager_quality',label:'مدير جودة - AIT',level:'L7',levelTitle:'مدير',dashboard:'manager'},
+    {value:'ait_leader_team',label:'ليدر فريق - AIT',level:'L8',levelTitle:'ليدر',dashboard:'leader'},
+    {value:'ait_member',label:'عضو نشط - AIT',level:'L9',levelTitle:'عضو',dashboard:'member'},
+    {value:'ait_trainee',label:'عضو متدرب - AIT',level:'L9',levelTitle:'متدرب',dashboard:'trainee'}
+  ]
+};
+
+const UNIT_CODES = {top:'TOP',executive:'EXC',hr:'HRS',or:'ORS',pr:'PRS',sm:'SMS',ait:'AIT'};
+const GOV_CODES = {'القاهرة':'CAI','الجيزة':'GIZ','الإسكندرية':'ALX','الدقهلية':'DKH','الشرقية':'SHR','القليوبية':'QLY','كفر الشيخ':'KFS','الغربية':'GHR','المنوفية':'MNF','البحيرة':'BHR','الإسماعيلية':'ISM','بورسعيد':'PSD','السويس':'SUZ','شمال سيناء':'NSI','جنوب سيناء':'SSI','الفيوم':'FYM','بني سويف':'BSF','المنيا':'MNY','أسيوط':'ASY','سوهاج':'SHG','قنا':'QNA','الأقصر':'LXR','أسوان':'ASW','البحر الأحمر':'RSE','الوادي الجديد':'WAD','مطروح':'MTR','دمياط':'DMT'};
+
+// ===== ADMIN (يتم تحديثه من localStorage) =====
+function getAdminData(){
+  try{
+    const saved = JSON.parse(localStorage.getItem('fba_admin_profile')||'{}');
+    const savedPass = localStorage.getItem('fba_admin_password');
+    return {
+      email: saved.email || 'admin@fba.com',
+      password: savedPass || '23522004',
+      name: saved.name || 'المدير - سعد المرجاوي',
+      roleTitle: saved.roleTitle || 'عضو الإدارة التنفيذية · مسؤول تحول AI',
+      dashboard: 'admin-dashboard',
+      id: saved.id || 'FBA·EGY·EXC·L2·2025#A0D1$M0D1'
+    };
+  }catch(e){
+    return {email:'admin@fba.com',password:'23522004',name:'المدير',roleTitle:'مدير النظام',dashboard:'admin-dashboard',id:'FBA·EGY·EXC·L2·2025#A0D1$M0D1'};
+  }
+}
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');const m=document.getElementById('toastMessage');
+  m.textContent=msg;t.className='toast '+type;
+  t.querySelector('i').className = type==='error'?'fas fa-exclamation-circle':(type==='info'?'fas fa-info-circle':'fas fa-check-circle');
+  t.classList.add('show');
+  clearTimeout(window._tt);
+  window._tt=setTimeout(()=>t.classList.remove('show'),3500);
+}
+function togglePassword(id,btn){
+  const inp=document.getElementById(id);const i=btn.querySelector('i');
+  if(inp.type==='password'){inp.type='text';i.className='fas fa-eye-slash';}
+  else{inp.type='password';i.className='fas fa-eye';}
+}
+function switchTab(tab){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.auth-panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===tab));
+  document.getElementById('successScreen').classList.remove('active');
+  window.scrollTo({top:document.querySelector('.auth-section').offsetTop-40,behavior:'smooth'});
+}
+document.querySelectorAll('.auth-tab').forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.tab)));
+
+const CAPTCHA_WORDS=['FUTURE','CHANGE','CREATE','INNOVATE','LEADER','VISION','DIGITAL','GENIUS','MASTER','SECURE','TARGET','ACHIEVE','IMPACT','BUILD','GROW'];
+const captchaState={register:{mathAnswer:0,reverseAnswer:''}};
+function generateCaptcha(prefix){
+  const a=Math.floor(Math.random()*8)+2,b=Math.floor(Math.random()*8)+2,c=Math.floor(Math.random()*20)+5;
+  const word=CAPTCHA_WORDS[Math.floor(Math.random()*CAPTCHA_WORDS.length)];
+  captchaState[prefix]={mathAnswer:(a*b)+c,reverseAnswer:word.split('').reverse().join('')};
+  document.getElementById(prefix+'MathQuestion').textContent=`(${a} × ${b}) + ${c}`;
+  document.getElementById(prefix+'MathAnswer').value='';
+  document.getElementById(prefix+'ReverseQuestion').textContent=word;
+  document.getElementById(prefix+'ReverseAnswer').value='';
+}
+function verifyCaptcha(prefix){
+  const m=parseInt(document.getElementById(prefix+'MathAnswer').value,10);
+  const r=document.getElementById(prefix+'ReverseAnswer').value.trim().toUpperCase();
+  const s=captchaState[prefix];
+  if(m!==s.mathAnswer) return {ok:false,msg:'الإجابة الحسابية غير صحيحة.'};
+  if(r!==s.reverseAnswer) return {ok:false,msg:'الكلمة المعكوسة غير صحيحة.'};
+  return {ok:true};
+}
+generateCaptcha('register');
+
+(function(){
+  const l=document.getElementById('loaderScreen'),b=document.getElementById('loaderBarFill'),p=document.getElementById('loaderPercent');
+  let v=0;const i=setInterval(()=>{v+=Math.random()*12+4;if(v>=100)v=100;b.style.width=v+'%';p.textContent=Math.floor(v)+'%';
+    if(v>=100){clearInterval(i);setTimeout(()=>{l.classList.add('hide');setTimeout(()=>l.remove(),800);},350);}},170);
+})();
+
+(function(){
+  const m=document.getElementById('bgMesh');let tx=50,ty=50,cx=50,cy=50;
+  document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth)*100;ty=(e.clientY/window.innerHeight)*100;});
+  document.addEventListener('touchmove',e=>{if(e.touches[0]){tx=(e.touches[0].clientX/window.innerWidth)*100;ty=(e.touches[0].clientY/window.innerHeight)*100;}},{passive:true});
+  function a(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;m.style.setProperty('--mx',cx+'%');m.style.setProperty('--my',cy+'%');requestAnimationFrame(a);}a();
+})();
+
+(function(){const n=document.getElementById('navbar');window.addEventListener('scroll',()=>{if(window.scrollY>30)n.classList.add('scrolled');else n.classList.remove('scrolled');},{passive:true});})();
+(function(){const b=document.getElementById('menuToggleBtn'),m=document.getElementById('sidebarMenu'),o=document.getElementById('sidebarOverlay'),c=document.getElementById('sidebarCloseBtn');
+  const op=()=>{m.classList.add('open');o.classList.add('open');document.body.style.overflow='hidden';};
+  const cl=()=>{m.classList.remove('open');o.classList.remove('open');document.body.style.overflow='';};
+  b.addEventListener('click',op);c.addEventListener('click',cl);o.addEventListener('click',cl);})();
+
+function checkPasswordStrength(){
+  const p=document.getElementById('regPassword').value;
+  const reqs={length:p.length>=8,upper:/[A-Z]/.test(p),lower:/[a-z]/.test(p),number:/[0-9]/.test(p),special:/[^A-Za-z0-9]/.test(p)};
+  let score=0;for(const k in reqs) if(reqs[k]) score++;
+  const fill=document.getElementById('strengthFill');
+  fill.className='strength-fill';
+  if(p.length>0) fill.classList.add('s'+score);
+  document.querySelectorAll('#strengthReqs span').forEach(s=>{s.classList.toggle('ok',reqs[s.dataset.req]);});
+}
+function checkPasswordMatch(){
+  const p1=document.getElementById('regPassword').value;
+  const p2=document.getElementById('regPasswordConfirm').value;
+  const hint=document.getElementById('passwordMatchHint');
+  if(!p2){hint.className='form-hint';hint.innerHTML='';return;}
+  if(p1===p2){hint.className='form-hint';hint.innerHTML='<i class="fas fa-check-circle" style="color:#10b981"></i> كلمتا المرور متطابقتان.';}
+  else{hint.className='form-hint error';hint.innerHTML='<i class="fas fa-exclamation-circle"></i> كلمتا المرور غير متطابقتين.';}
+}
+
+(function(){
+  const gov=document.getElementById('governorate');
+  const schoolGov=document.getElementById('schoolGovernorate');
+  const addrGov=document.getElementById('addressGovernorate');
+  GOVERNORATES.forEach(g=>{
+    const o1=document.createElement('option');o1.value=g;o1.textContent=g;gov.appendChild(o1);
+    const o2=document.createElement('option');o2.value=g;o2.textContent=g;schoolGov.appendChild(o2);
+    const o3=document.createElement('option');o3.value=g;o3.textContent=g;addrGov.appendChild(o3);
+  });
+})();
+
+function updateAddressCities(){
+  const gov=document.getElementById('addressGovernorate').value;
+  const sel=document.getElementById('addressCity');
+  sel.innerHTML='<option value="">اختر المدينة / المركز...</option>';
+  if(!gov){sel.innerHTML='<option value="">اختر المحافظة أولاً...</option>';return;}
+  const list=ADDRESS_DATA[gov]||[];
+  list.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
+  const o=document.createElement('option');o.value='__custom__';o.textContent='أخرى (اكتب يدوياً)';o.style.fontWeight='900';o.style.color='#fbbf24';sel.appendChild(o);
+}
+function handleAddressCityChange(){
+  const v=document.getElementById('addressCity').value;
+  const grp=document.getElementById('customCityGroup');
+  if(v==='__custom__'){grp.style.display='block';document.getElementById('customCity').required=true;}
+  else{grp.style.display='none';document.getElementById('customCity').required=false;}
+}
+
+function filterUniversities(){
+  const type=document.getElementById('universityType').value;
+  const sel=document.getElementById('university');
+  sel.innerHTML='<option value="">اختر الجامعة...</option>';
+  const types = type ? [type] : ['government','private','national','technological'];
+  const typeLabels = {government:'حكومية',private:'خاصة',national:'أهلية',technological:'تكنولوجية'};
+  types.forEach(t=>{
+    if(!UNIVERSITIES[t]) return;
+    const og=document.createElement('optgroup');
+    og.label = typeLabels[t] || t;
+    Object.keys(UNIVERSITIES[t]).forEach(u=>{
+      const o=document.createElement('option');o.value=u;o.textContent=u;o.dataset.type=t;og.appendChild(o);
+    });
+    sel.appendChild(og);
+  });
+}
+function updateFaculties(){
+  const uni=document.getElementById('university').value;
+  const sel=document.getElementById('faculty');
+  sel.innerHTML='<option value="">اختر الكلية...</option>';
+  if(!uni){sel.innerHTML='<option value="">اختر الجامعة أولاً...</option>';return;}
+  let facs=null;
+  for(const t in UNIVERSITIES){if(UNIVERSITIES[t][uni]){facs=UNIVERSITIES[t][uni];break;}}
+  if(facs){
+    facs.forEach(f=>{const o=document.createElement('option');o.value=f;o.textContent=f;sel.appendChild(o);});
+    const o=document.createElement('option');o.value='__custom__';o.textContent='أخرى (اكتب يدوياً)';o.style.fontWeight='900';o.style.color='#fbbf24';sel.appendChild(o);
+  }
+}
+function handleFacultyChange(){
+  const v=document.getElementById('faculty').value;
+  const grp=document.getElementById('customFacultyGroup');
+  if(v==='__custom__'){grp.style.display='block';document.getElementById('customFaculty').required=true;}
+  else{grp.style.display='none';document.getElementById('customFaculty').required=false;}
+}
+
+function updateSchools(){
+  const gov=document.getElementById('schoolGovernorate').value;
+  const type=document.getElementById('schoolType').value;
+  const sel=document.getElementById('schoolName');
+  sel.innerHTML='<option value="">اختر المدرسة...</option>';
+  if(!gov){sel.innerHTML='<option value="">اختر المحافظة أولاً...</option>';return;}
+  let list=SCHOOLS[gov]||[];
+  if(type) list=list.filter(s=>s.t===type);
+  list.forEach(s=>{const o=document.createElement('option');o.value=s.n;o.textContent=s.n;sel.appendChild(o);});
+  const o=document.createElement('option');o.value='__custom__';o.textContent='أخرى (اكتب يدوياً)';o.style.fontWeight='900';o.style.color='#fbbf24';sel.appendChild(o);
+}
+function handleSchoolChange(){
+  const v=document.getElementById('schoolName').value;
+  const grp=document.getElementById('customSchoolGroup');
+  if(v==='__custom__'){grp.style.display='block';document.getElementById('customSchoolName').required=true;}
+  else{grp.style.display='none';document.getElementById('customSchoolName').required=false;}
+}
+
+function handleEducationChange(){
+  const status=document.getElementById('educationStatus').value;
+  const secs=['universitySection','highSchoolSection','studentSection','graduateSection','postgradSection'];
+  secs.forEach(s=>{document.getElementById(s).style.display='none';document.getElementById(s).querySelectorAll('input,select,textarea').forEach(el=>el.required=false);});
+  ['studentEvalMethodGroup','studentGPAGroup','studentGradeGroup','gradGPAGroup','gradGradeGroup'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  ['studentEvalMethod','finalYearGPA','finalYearGrade','gradEvalMethod','gradGPA','gradGrade'].forEach(id=>{const el=document.getElementById(id);if(el)el.required=false;});
+
+  if(status==='high_school'){
+    document.getElementById('highSchoolSection').style.display='block';
+    ['schoolGovernorate','schoolType','schoolName','schoolGrade'].forEach(id=>document.getElementById(id).required=true);
+  }
+  else if(status==='university_student'){
+    document.getElementById('universitySection').style.display='block';
+    document.getElementById('studentSection').style.display='block';
+    ['universityType','university','faculty','academicYear'].forEach(id=>document.getElementById(id).required=true);
+  }
+  else if(status==='graduate'){
+    document.getElementById('universitySection').style.display='block';
+    document.getElementById('graduateSection').style.display='block';
+    ['universityType','university','faculty','gradYear','gradEvalMethod'].forEach(id=>document.getElementById(id).required=true);
+  }
+  else if(status==='postgraduate'){
+    document.getElementById('universitySection').style.display='block';
+    document.getElementById('postgradSection').style.display='block';
+    ['universityType','university','faculty','postgradDegree','researchArea'].forEach(id=>document.getElementById(id).required=true);
+  }
+  handleGuardianVisibility();
+  handleMilitaryVisibility();
+  updateUploadSections();
+}
+function handleAcademicYearChange(){
+  const y=document.getElementById('academicYear').value;
+  const methodGroup=document.getElementById('studentEvalMethodGroup');
+  document.getElementById('studentGPAGroup').style.display='none';
+  document.getElementById('studentGradeGroup').style.display='none';
+  document.getElementById('finalYearGPA').required=false;
+  document.getElementById('finalYearGrade').required=false;
+  if(y==='final'){
+    methodGroup.style.display='block';
+    document.getElementById('studentEvalMethod').required=true;
+  } else {
+    methodGroup.style.display='none';
+    document.getElementById('studentEvalMethod').required=false;
+    document.getElementById('studentEvalMethod').value='';
+  }
+  handleMilitaryVisibility();
+}
+function handleStudentEvalChange(){
+  const m=document.getElementById('studentEvalMethod').value;
+  document.getElementById('studentGPAGroup').style.display=m==='gpa'?'block':'none';
+  document.getElementById('studentGradeGroup').style.display=m==='grade'?'block':'none';
+  document.getElementById('finalYearGPA').required=m==='gpa';
+  document.getElementById('finalYearGrade').required=m==='grade';
+}
+function handleGradEvalChange(){
+  const m=document.getElementById('gradEvalMethod').value;
+  document.getElementById('gradGPAGroup').style.display=m==='gpa'?'block':'none';
+  document.getElementById('gradGradeGroup').style.display=m==='grade'?'block':'none';
+  document.getElementById('gradGPA').required=m==='gpa';
+  document.getElementById('gradGrade').required=m==='grade';
+}
+
+function handleGenderChange(){handleMilitaryVisibility();updateUploadSections();}
+function handleMilitaryVisibility(){
+  const gender=document.getElementById('gender').value;
+  const age=document.getElementById('birthDate').value?calcAge(document.getElementById('birthDate').value):0;
+  const showMilitary = gender==='male' && age>=18;
+  const sec=document.getElementById('militarySection');
+  sec.style.display = showMilitary ? 'block' : 'none';
+  if(!showMilitary){
+    document.getElementById('militaryStatus').required=false;
+    document.getElementById('militaryStatus').value='';
+    document.getElementById('militaryReasonGroup').style.display='none';
+    document.getElementById('militaryDateGroup').style.display='none';
+  }
+  updateNoAdditionalSection();
+}
+function handleMilitaryChange(){
+  const s=document.getElementById('militaryStatus').value;
+  document.getElementById('militaryReasonGroup').style.display=(s==='postponed'||s==='exempted')?'block':'none';
+  document.getElementById('militaryDateGroup').style.display=(s==='completed'||s==='exempted')?'block':'none';
+  document.getElementById('militaryReason').required=(s==='postponed'||s==='exempted');
+  document.getElementById('militaryDate').required=(s==='completed'||s==='exempted');
+  updateUploadSections();
+}
+function handleGuardianVisibility(){
+  const st=document.getElementById('educationStatus').value;
+  const showGuardian = st==='high_school' || st==='university_student';
+  const sec=document.getElementById('guardianSection');
+  sec.style.display=showGuardian?'block':'none';
+  ['guardianName','guardianRelation','guardianPhone'].forEach(id=>{
+    document.getElementById(id).required=showGuardian;
+    if(!showGuardian) document.getElementById(id).value='';
+  });
+  updateNoAdditionalSection();
+}
+function updateNoAdditionalSection(){
+  const mil=document.getElementById('militarySection').style.display==='block';
+  const gua=document.getElementById('guardianSection').style.display==='block';
+  document.getElementById('noAdditionalSection').style.display=(!mil && !gua)?'block':'none';
+}
+
+function updatePositionOptions(){
+  const u=document.getElementById('unit').value;
+  const sel=document.getElementById('position');
+  sel.innerHTML='<option value="">اختر المسمي...</option>';
+  if(!u||!POSITIONS_BY_UNIT[u]){sel.innerHTML='<option value="">اختر الوحدة أولاً...</option>';return;}
+  POSITIONS_BY_UNIT[u].forEach(p=>{
+    const o=document.createElement('option');o.value=p.value;o.textContent=p.label;
+    o.dataset.level=p.level;o.dataset.levelTitle=p.levelTitle;o.dataset.dashboard=p.dashboard;
+    sel.appendChild(o);
+  });
+}
+
+function calcAge(bd){
+  const b=new Date(bd),t=new Date();let a=t.getFullYear()-b.getFullYear();
+  const m=t.getMonth()-b.getMonth();
+  if(m<0||(m===0&&t.getDate()<b.getDate()))a--;return a;
+}
+document.getElementById('birthDate').addEventListener('change',function(){
+  const h=document.getElementById('ageHint');
+  if(!this.value){h.className='form-hint';h.innerHTML='<i class="fas fa-birthday-cake"></i> العمر يُحسب تلقائياً (18-45).';return;}
+  const age=calcAge(this.value);
+  if(age<18){h.className='form-hint error';h.innerHTML=`<i class="fas fa-exclamation-circle"></i> عمرك ${age} سنة. الحد الأدنى 18.`;this.setCustomValidity('السن أقل من 18');}
+  else if(age>45){h.className='form-hint error';h.innerHTML=`<i class="fas fa-exclamation-circle"></i> عمرك ${age} سنة. الحد الأقصى 45.`;this.setCustomValidity('السن أكبر من 45');}
+  else{h.className='form-hint';h.innerHTML=`<i class="fas fa-check-circle" style="color:#10b981"></i> عمرك ${age} سنة - مقبول.`;this.setCustomValidity('');}
+  handleMilitaryVisibility();
+});
+document.getElementById('nationalId').addEventListener('input',function(){
+  const v=this.value.trim();
+  const h=document.getElementById('nationalIdHint');
+  if(v.length===14 && /^\d{14}$/.test(v)){
+    const c=v[0],yy=v.substring(1,3),mm=v.substring(3,5),dd=v.substring(5,7);
+    let cen='';if(c==='2')cen='19';else if(c==='3')cen='20';else if(c==='4')cen='21';
+    if(cen){
+      document.getElementById('birthDate').value=`${cen}${yy}-${mm}-${dd}`;
+      document.getElementById('birthDate').dispatchEvent(new Event('change'));
+      document.getElementById('gender').value = parseInt(v[12],10)%2===0?'female':'male';
+      handleGenderChange();
+    }
+    h.className='form-hint';h.innerHTML='<i class="fas fa-check-circle" style="color:#10b981"></i> تم استخراج البيانات تلقائياً.';
+  }else{h.className='form-hint';h.innerHTML='<i class="fas fa-shield-halved"></i> يُستخرج تاريخ الميلاد والنوع تلقائياً.';}
+});
+
+function handleFileUpload(input,boxId,previewId){
+  const box=document.getElementById(boxId),preview=document.getElementById(previewId);
+  const file=input.files[0];if(!file)return;
+  if(file.size>5*1024*1024){showToast('حجم الملف أكبر من 5MB.','error');input.value='';return;}
+  const reader=new FileReader();
+  reader.onload=e=>{preview.src=e.target.result;box.classList.add('has-file');const p=box.querySelector('p');if(p)p.textContent='✓ '+file.name;};
+  reader.readAsDataURL(file);
+}
+function removeFile(inputId,boxId,previewId){
+  document.getElementById(inputId).value='';
+  document.getElementById(boxId).classList.remove('has-file');
+  document.getElementById(previewId).src='';
+  const p=document.querySelector(`#${boxId} p`);if(p)p.textContent='JPG, PNG - حتى 5MB';
+}
+
+let currentStage=1;const totalStages=8;
+
+function updateProgressBar(){
+  const pct=((currentStage-1)/(totalStages-1))*100;
+  document.getElementById('progressSteps').style.setProperty('--progress',pct+'%');
+  document.querySelectorAll('.step-item').forEach((item,i)=>{
+    item.classList.remove('active','completed');
+    if(i+1<currentStage)item.classList.add('completed');
+    else if(i+1===currentStage)item.classList.add('active');
+  });
+  document.getElementById('stageCounter').textContent=`المرحلة ${currentStage} من ${totalStages}`;
+  document.getElementById('prevBtn').disabled=currentStage===1;
+  const nb=document.getElementById('nextBtn');
+  nb.innerHTML=currentStage===totalStages?'<i class="fas fa-paper-plane"></i> <span>تأكيد وإرسال</span>':'<span>التالي</span> <i class="fas fa-chevron-left"></i>';
+}
+
+function updateUploadSections(){
+  const eduStatus=document.getElementById('educationStatus').value;
+  if(eduStatus==='graduate'||eduStatus==='postgraduate'){
+    document.getElementById('degreeUploadSection').style.display='block';
+    document.getElementById('degreeDoc').required=true;
+  } else {
+    document.getElementById('degreeUploadSection').style.display='none';
+    document.getElementById('degreeDoc').required=false;
+  }
+  const milShow=document.getElementById('militarySection').style.display==='block';
+  const milStatus=document.getElementById('militaryStatus').value;
+  if(milShow && milStatus==='completed'){
+    document.getElementById('militaryUploadSection').style.display='block';
+    document.getElementById('militaryDoc').required=true;
+  } else {
+    document.getElementById('militaryUploadSection').style.display='none';
+    document.getElementById('militaryDoc').required=false;
+  }
+}
+
+function goToStage(n){
+  if(n===currentStage)return;
+  if(n>currentStage){for(let i=currentStage;i<n;i++){if(!validateStage(i))return;}}
+  currentStage=n;
+  document.querySelectorAll('.stage-content').forEach(s=>s.classList.toggle('active',+s.dataset.stage===n));
+  if(n>=7) updateUploadSections();
+  updateProgressBar();
+  if(n===8)buildReview();
+  window.scrollTo({top:document.querySelector('.register-card').offsetTop-60,behavior:'smooth'});
+}
+function nextStage(){
+  if(currentStage===totalStages){document.getElementById('registerForm').requestSubmit();return;}
+  if(!validateStage(currentStage))return;
+  currentStage++;
+  document.querySelectorAll('.stage-content').forEach(s=>s.classList.toggle('active',+s.dataset.stage===currentStage));
+  if(currentStage>=7) updateUploadSections();
+  updateProgressBar();
+  if(currentStage===8)buildReview();
+  window.scrollTo({top:document.querySelector('.register-card').offsetTop-60,behavior:'smooth'});
+}
+function prevStage(){
+  if(currentStage===1)return;
+  currentStage--;
+  document.querySelectorAll('.stage-content').forEach(s=>s.classList.toggle('active',+s.dataset.stage===currentStage));
+  updateProgressBar();
+  window.scrollTo({top:document.querySelector('.register-card').offsetTop-60,behavior:'smooth'});
+}
+
+function validateStage(n){
+  const stage=document.querySelector(`.stage-content[data-stage="${n}"]`);
+  const inputs=stage.querySelectorAll('input[required],select[required],textarea[required]');
+  for(const inp of inputs){
+    if(inp.disabled)continue;
+    if(inp.closest('div[style*="display: none"]'))continue;
+    if(inp.type==='file'){
+      if(!inp.files||!inp.files.length){showToast('يجب رفع المستند المطلوب.','error');inp.focus();return false;}
+      continue;
+    }
+    if(inp.type==='checkbox'){
+      if(!inp.checked){showToast('يرجى الموافقة على الشروط.','error');inp.focus();return false;}
+      continue;
+    }
+    if(!inp.value.trim()){
+      inp.style.borderColor='#ef4444';setTimeout(()=>{inp.style.borderColor='';},2000);
+      inp.focus();showToast('يرجى إكمال جميع الحقول المطلوبة.','error');return false;
+    }
+    if(inp.id==='nationalId'&&!/^\d{14}$/.test(inp.value)){showToast('الرقم القومي يجب أن يكون 14 رقماً.','error');return false;}
+    if(inp.id==='birthDate'){const age=calcAge(inp.value);if(age<18||age>45){showToast(`السن المسموح 18-45. عمرك: ${age}`,'error');return false;}}
+    if(inp.id==='regPassword'&&inp.value.length<8){showToast('كلمة المرور يجب أن تكون 8 أحرف على الأقل.','error');return false;}
+    if(inp.id==='regPasswordConfirm'&&inp.value!==document.getElementById('regPassword').value){showToast('كلمتا المرور غير متطابقتين.','error');return false;}
+    if(inp.id==='fullNameEn'&&!/^[a-zA-Z\s\-'.]+$/.test(inp.value)){showToast('الاسم بالإنجليزية يجب أن يكون بحروف إنجليزية.','error');return false;}
+  }
+  return true;
+}
+
+function buildReview(){
+  const g=id=>(document.getElementById(id)?.value||'—');
+  const ot=id=>{const el=document.getElementById(id);return el?.options?.[el.selectedIndex]?.text||'—';};
+  const gradeMap={'excellent_with_honors':'ممتاز مع مرتبة الشرف','excellent':'ممتاز','very_good':'جيد جداً','good':'جيد','pass':'مقبول'};
+
+  const addrGov=g('addressGovernorate');
+  const addrCityRaw=g('addressCity');
+  const addrCity = addrCityRaw==='__custom__'?g('customCity'):addrCityRaw;
+  const addrDetail=g('addressDetail');
+  const fullAddress=`${addrGov} - ${addrCity} - ${addrDetail}`;
+
+  document.getElementById('reviewPersonal').innerHTML=`
+    <div class="review-item" style="grid-column:1/-1"><span class="lbl">الاسم (عربي)</span><span class="val">${g('fullNameAr')}</span></div>
+    <div class="review-item" style="grid-column:1/-1"><span class="lbl">الاسم (English)</span><span class="val" style="direction:ltr;text-align:left">${g('fullNameEn')}</span></div>
+    <div class="review-item"><span class="lbl">الرقم القومي</span><span class="val" style="direction:ltr;text-align:left">${g('nationalId').replace(/(\d{4})\d{6}(\d{4})/,'$1******$2')}</span></div>
+    <div class="review-item"><span class="lbl">الميلاد</span><span class="val">${g('birthDate')}</span></div>
+    <div class="review-item"><span class="lbl">النوع</span><span class="val">${ot('gender')}</span></div>
+    <div class="review-item"><span class="lbl">الحالة</span><span class="val">${ot('maritalStatus')}</span></div>
+    <div class="review-item" style="grid-column:1/-1"><span class="lbl">العنوان</span><span class="val">${fullAddress}</span></div>
+  `;
+
+  const eduStatus=document.getElementById('educationStatus').value;
+  let eduHTML=`<div class="review-item"><span class="lbl">الحالة</span><span class="val">${ot('educationStatus')}</span></div>`;
+  if(['university_student','graduate','postgraduate'].includes(eduStatus)){
+    const customFac=g('customFaculty');
+    eduHTML+=`<div class="review-item"><span class="lbl">الجامعة</span><span class="val">${ot('university')}</span></div>`;
+    eduHTML+=`<div class="review-item"><span class="lbl">الكلية</span><span class="val">${document.getElementById('faculty').value==='__custom__'?customFac:ot('faculty')}</span></div>`;
+  }
+  if(eduStatus==='university_student'){
+    eduHTML+=`<div class="review-item"><span class="lbl">السنة</span><span class="val">${ot('academicYear')}</span></div>`;
+    const m=g('studentEvalMethod');
+    if(m==='gpa') eduHTML+=`<div class="review-item"><span class="lbl">المعدل التراكمي</span><span class="val" style="direction:ltr">${g('finalYearGPA')}</span></div>`;
+    if(m==='grade') eduHTML+=`<div class="review-item"><span class="lbl">التقدير</span><span class="val">${gradeMap[g('finalYearGrade')]||'—'}</span></div>`;
+  }
+  if(eduStatus==='graduate'){
+    eduHTML+=`<div class="review-item"><span class="lbl">سنة التخرج</span><span class="val">${g('gradYear')}</span></div>`;
+    const m=g('gradEvalMethod');
+    if(m==='gpa') eduHTML+=`<div class="review-item"><span class="lbl">المعدل التراكمي</span><span class="val" style="direction:ltr">${g('gradGPA')}</span></div>`;
+    if(m==='grade') eduHTML+=`<div class="review-item"><span class="lbl">التقدير</span><span class="val">${gradeMap[g('gradGrade')]||'—'}</span></div>`;
+  }
+  if(eduStatus==='postgraduate'){
+    eduHTML+=`<div class="review-item"><span class="lbl">الدرجة</span><span class="val">${ot('postgradDegree')}</span></div>`;
+    eduHTML+=`<div class="review-item"><span class="lbl">مجال البحث</span><span class="val">${g('researchArea')}</span></div>`;
+  }
+  if(eduStatus==='high_school'){
+    eduHTML+=`<div class="review-item"><span class="lbl">المدرسة</span><span class="val">${document.getElementById('schoolName').value==='__custom__'?g('customSchoolName'):ot('schoolName')}</span></div>`;
+    eduHTML+=`<div class="review-item"><span class="lbl">الصف</span><span class="val">${ot('schoolGrade')}</span></div>`;
+  }
+  eduHTML+=`<div class="review-item" style="grid-column:1/-1"><span class="lbl">المهارات</span><span class="val">${g('skills')}</span></div>`;
+  document.getElementById('reviewEducation').innerHTML=eduHTML;
+
+  document.getElementById('reviewProfessional').innerHTML=`
+    <div class="review-item"><span class="lbl">السيزون</span><span class="val">${ot('season')}</span></div>
+    <div class="review-item"><span class="lbl">المحافظة</span><span class="val">${ot('governorate')}</span></div>
+    <div class="review-item"><span class="lbl">الوحدة</span><span class="val">${ot('unit')}</span></div>
+    <div class="review-item"><span class="lbl">المسمي</span><span class="val">${ot('position')}</span></div>
+    <div class="review-item" style="grid-column:1/-1"><span class="lbl">سبب الانضمام</span><span class="val">${g('joinReason')}</span></div>
+  `;
+
+  document.getElementById('reviewContact').innerHTML=`
+    <div class="review-item"><span class="lbl">البريد</span><span class="val" style="direction:ltr;text-align:left">${g('personalEmail')}</span></div>
+    <div class="review-item"><span class="lbl">واتساب</span><span class="val" style="direction:ltr;text-align:left">${g('whatsapp')}</span></div>
+    <div class="review-item"><span class="lbl">هاتف</span><span class="val" style="direction:ltr;text-align:left">${g('phone')}</span></div>
+    <div class="review-item"><span class="lbl">طوارئ</span><span class="val">${g('emergencyContact')||'—'}</span></div>
+  `;
+
+  const additionalEl=document.getElementById('reviewAdditional');
+  const additionalSec=document.getElementById('reviewAdditionalSection');
+  let addHTML='';
+  const milShow=document.getElementById('militarySection').style.display==='block';
+  const guaShow=document.getElementById('guardianSection').style.display==='block';
+  if(milShow && document.getElementById('militaryStatus').value){
+    addHTML+=`<div class="review-item"><span class="lbl">الموقف العسكري</span><span class="val">${ot('militaryStatus')}</span></div>`;
+    if(g('militaryReason')!=='—') addHTML+=`<div class="review-item"><span class="lbl">السبب</span><span class="val">${g('militaryReason')}</span></div>`;
+    if(g('militaryDate')!=='—') addHTML+=`<div class="review-item"><span class="lbl">التاريخ</span><span class="val">${g('militaryDate')}</span></div>`;
+  }
+  if(guaShow){
+    addHTML+=`<div class="review-item"><span class="lbl">ولي الأمر</span><span class="val">${g('guardianName')}</span></div>`;
+    addHTML+=`<div class="review-item"><span class="lbl">القرابة</span><span class="val">${ot('guardianRelation')}</span></div>`;
+    addHTML+=`<div class="review-item"><span class="lbl">رقم ولي الأمر</span><span class="val" style="direction:ltr">${g('guardianPhone')}</span></div>`;
+  }
+  if(addHTML){additionalEl.innerHTML=addHTML;additionalSec.style.display='block';}
+  else {additionalSec.style.display='none';}
+}
+
+function genCode(len=4){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<len;i++)s+=c[Math.floor(Math.random()*c.length)];return s;}
+function generateUserID(gov,unit,level){
+  const govCode=GOV_CODES[gov]||'EGY';
+  const unitCode=UNIT_CODES[unit]||'GEN';
+  const year=new Date().getFullYear();
+  return `FBA·${govCode}·${unitCode}·${level}·${year}#${genCode(4)}$${genCode(4)}`;
+}
+function formatIDDisplay(id){
+  return id.replace(/·/g,'<span class="sep">·</span>').replace(/#/g,'<span class="sep">#</span>').replace(/\$/g,'<span class="sep">$</span>');
+}
+
+/* =========================================================
+   STATUS MODAL (Pending / Rejected / Banned / Frozen)
+   ========================================================= */
+function showStatusModal(status, user){
+  const meta = {
+    pending:{
+      icon:'<i class="fas fa-hourglass-half"></i>',
+      iconBg:'linear-gradient(135deg,#fbbf24,#d97706)',
+      border:'rgba(251,191,36,.5)',
+      title:'طلبك قيد المراجعة ⏳',
+      sub:'شكراً لانضمامك! طلبك الآن في مرحلة المراجعة من الوحدة المركزية.',
+      infoBox:`<div class="pending-info-box"><i class="fas fa-info-circle"></i><div><strong>مدة المراجعة المتوقعة:</strong>خلال <strong style="color:#10b981;display:inline">48 ساعة</strong> من وقت التقديم.<br>سيتم إخطارك فوراً عند اكتمال المراجعة عبر الواتساب أو البريد.</div></div>`,
+      btnLabel:'حسناً، سأنتظر'
+    },
+    rejected:{
+      icon:'<i class="fas fa-times-circle"></i>',
+      iconBg:'linear-gradient(135deg,#ef4444,#b91c1c)',
+      border:'rgba(239,68,68,.5)',
+      title:'تم رفض طلبك ❌',
+      sub:'نأسف، لم يتم قبول طلبك في الوقت الحالي. يمكنك الاطلاع على السبب أدناه.',
+      infoBox:'',
+      btnLabel:'حسناً، فهمت'
+    },
+    banned:{
+      icon:'<i class="fas fa-user-slash"></i>',
+      iconBg:'linear-gradient(135deg,#475569,#1e293b)',
+      border:'rgba(100,116,139,.6)',
+      title:'تم حظر حسابك 🚫',
+      sub:'لا يمكنك الدخول حالياً. تم إيقاف حسابك من قِبل الإدارة.',
+      infoBox:`<div class="pending-info-box danger"><i class="fas fa-ban"></i><div><strong>حظر دائم</strong>حسابك محظور ولن تستطيع الدخول حتى يتم إلغاء الحظر.<br>يرجى التواصل مع الوحدة المركزية للاستفسار.</div></div>`,
+      btnLabel:'حسناً، فهمت'
+    },
+    frozen:{
+      icon:'<i class="fas fa-snowflake"></i>',
+      iconBg:'linear-gradient(135deg,#0ea5e9,#0284c7)',
+      border:'rgba(14,165,233,.5)',
+      title:'حسابك مُجمّد مؤقتاً ❄️',
+      sub:'تم تجميد حسابك مؤقتاً من قِبل الإدارة. لا يمكنك الدخول في الوقت الحالي.',
+      infoBox:`<div class="pending-info-box info"><i class="fas fa-snowflake"></i><div><strong>تجميد مؤقت</strong>يمكن رفع التجميد في أي وقت. تواصل مع الدعم لمعرفة التفاصيل.</div></div>`,
+      btnLabel:'حسناً، فهمت'
+    }
+  }[status];
+
+  if(!meta) return;
+
+  // Set icon & border
+  const iconEl = document.getElementById('statusIcon');
+  iconEl.innerHTML = meta.icon;
+  iconEl.style.background = meta.iconBg;
+  document.getElementById('statusModalBox').style.borderColor = meta.border;
+
+  document.getElementById('statusTitle').textContent = meta.title;
+  document.getElementById('statusSub').textContent = meta.sub;
+  document.getElementById('statusBtnLabel').textContent = meta.btnLabel;
+
+  // Details
+  const submittedAt = user.submittedAt ? new Date(user.submittedAt) : null;
+  const now = new Date();
+  const hoursElapsed = submittedAt ? (now - submittedAt) / (1000*60*60) : 0;
+  const days = Math.floor(hoursElapsed/24);
+  const hours = Math.floor(hoursElapsed % 24);
+  const elapsed = days>0 ? `${days} يوم و ${hours} ساعة` : `${hours} ساعة`;
+
+  let detailsHTML = `
+    <div class="pending-row"><span>الاسم:</span><span>${escapeHTML_local(user.fullNameAr||'—')}</span></div>
+    <div class="pending-row"><span>الرقم التعريفي:</span><span class="ltr">${escapeHTML_local(user.id||'—')}</span></div>
+  `;
+
+  if(status==='pending' && submittedAt){
+    detailsHTML += `
+      <div class="pending-row"><span>تاريخ التقديم:</span><span>${submittedAt.toLocaleString('ar-EG')}</span></div>
+      <div class="pending-row"><span>الوقت المنقضي:</span><span>${elapsed}</span></div>
+      <div class="pending-row"><span>الحالة:</span><span style="color:#fbbf24"><i class="fas fa-spinner fa-spin"></i> قيد المراجعة</span></div>
+    `;
+  }
+
+  // Show reason for rejected/banned/frozen
+  if(status==='rejected'){
+    detailsHTML += `<div class="pending-row"><span>سبب الرفض:</span><span style="color:#ef4444;text-align:left">${escapeHTML_local(user.rejectionReason||'لم يُذكر سبب')}</span></div>`;
+    if(user.rejectedAt) detailsHTML += `<div class="pending-row"><span>تاريخ الرفض:</span><span>${new Date(user.rejectedAt).toLocaleString('ar-EG')}</span></div>`;
+  }
+  if(status==='banned'){
+    detailsHTML += `<div class="pending-row"><span>سبب الحظر:</span><span style="color:#ef4444;text-align:left">${escapeHTML_local(user.banReason||'لم يُذكر سبب')}</span></div>`;
+    if(user.bannedAt) detailsHTML += `<div class="pending-row"><span>تاريخ الحظر:</span><span>${new Date(user.bannedAt).toLocaleString('ar-EG')}</span></div>`;
+    if(user.lastModifiedBy) detailsHTML += `<div class="pending-row"><span>بواسطة:</span><span>${escapeHTML_local(user.lastModifiedBy)}</span></div>`;
+  }
+  if(status==='frozen'){
+    detailsHTML += `<div class="pending-row"><span>سبب التجميد:</span><span style="color:#fbbf24;text-align:left">${escapeHTML_local(user.freezeReason||'لم يُذكر سبب')}</span></div>`;
+    if(user.frozenAt) detailsHTML += `<div class="pending-row"><span>تاريخ التجميد:</span><span>${new Date(user.frozenAt).toLocaleString('ar-EG')}</span></div>`;
+    if(user.lastModifiedBy) detailsHTML += `<div class="pending-row"><span>بواسطة:</span><span>${escapeHTML_local(user.lastModifiedBy)}</span></div>`;
+  }
+
+  // Show overdue warning for pending
+  if(status==='pending' && hoursElapsed >= 48){
+    detailsHTML += `<div class="pending-row"><span>ملاحظة:</span><span style="color:#fbbf24;text-align:left">مرت أكثر من 48 ساعة، يرجى التواصل مع الدعم.</span></div>`;
+  }
+
+  document.getElementById('statusDetails').innerHTML = detailsHTML;
+
+  // Info box (contact support for all statuses except pending normal)
+  let infoHTML = meta.infoBox;
+  if(status==='rejected' || status==='banned' || status==='frozen' || (status==='pending' && hoursElapsed >= 48)){
+    infoHTML += `
+      <div class="pending-info-box warn" style="margin-top:8px">
+        <i class="fas fa-headset"></i>
+        <div>
+          <strong>للتواصل مع الدعم الفني:</strong>
+          📧 <a href="mailto:ebdaa360@gmail.com">ebdaa360@gmail.com</a>
+          <br>📱 واتساب: <a href="https://wa.me/201234567890" target="_blank">+20 123 456 7890</a>
+        </div>
+      </div>
+    `;
+  }
+  document.getElementById('statusInfoBox').innerHTML = infoHTML;
+
+  document.getElementById('statusModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeStatusModal(){
+  document.getElementById('statusModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function escapeHTML_local(str){
+  if(str==null) return '';
+  return String(str).replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+}
+
+/* =========================================================
+   VERIFY SCREEN — 10s counter loading before redirect
+   ========================================================= */
+function showVerifyScreen(session, isAdmin, targetUrl){
+  const screen = document.getElementById('verifyScreen');
+  const counterEl = document.getElementById('verifyCounter');
+  const progressEl = document.getElementById('verifyProgress');
+  const nameEl = document.getElementById('verifyUserName');
+
+  nameEl.textContent = session.name || 'صديقنا';
+
+  // Reset steps
+  ['vstep1','vstep2','vstep3','vstep4'].forEach((id,i)=>{
+    const el = document.getElementById(id);
+    el.className = 'verify-step' + (i===0?' active':'');
+    el.querySelector('i').className = i===0 ? 'fas fa-circle-notch fa-spin' : 'fas fa-circle';
+  });
+
+  // Circle setup
+  const radius = 70;
+  const circumference = 2 * Math.PI * radius;
+  progressEl.style.strokeDasharray = circumference;
+  progressEl.style.strokeDashoffset = circumference;
+
+  screen.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  let counter = 10;
+  counterEl.textContent = counter;
+  // Animate progress at start
+  setTimeout(()=>{ progressEl.style.strokeDashoffset = circumference * (1 - 0/10); }, 50);
+
+  // Activate steps progressively
+  const activateStep = (i)=>{
+    const el = document.getElementById('vstep'+(i+1));
+    if(!el) return;
+    el.classList.remove('active');
+    el.classList.add('done');
+    el.querySelector('i').className = 'fas fa-check-circle';
+    const next = document.getElementById('vstep'+(i+2));
+    if(next){
+      next.classList.add('active');
+      next.querySelector('i').className = 'fas fa-circle-notch fa-spin';
+    }
+  };
+
+  const stepsTiming = [
+    {t:1, step:0},
+    {t:3, step:1},
+    {t:6, step:2},
+    {t:8, step:3}
+  ];
+  stepsTiming.forEach(({t,step})=>{
+    setTimeout(()=>activateStep(step), (10 - t)*1000);
+  });
+
+  const interval = setInterval(()=>{
+    counter--;
+    counterEl.textContent = counter >= 0 ? counter : 0;
+    const progress = (10 - counter) / 10;
+    progressEl.style.strokeDashoffset = circumference * (1 - progress);
+    if(counter <= 0){
+      clearInterval(interval);
+      // Final redirect
+      window.location.href = targetUrl;
+    }
+  }, 1000);
+}
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+async function handleLogin(e){
+  e.preventDefault();
+  const id=document.getElementById('loginIdentifier').value.trim();
+  const pwd=document.getElementById('loginPassword').value;
+
+  const btn=document.getElementById('loginSubmitBtn');
+  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i><span>جاري التحقق...</span>';
+  const resetBtn=()=>{btn.disabled=false;btn.innerHTML='<i class="fas fa-right-to-bracket"></i><span>دخول آمن</span>';};
+
+  try{
+    await new Promise(r=>setTimeout(r,700));
+    const idl=id.toLowerCase();
+    const ADMIN = getAdminData();
+    let user=null,isAdmin=false;
+
+    if(idl===ADMIN.email.toLowerCase() && pwd===ADMIN.password){
+      user=ADMIN;isAdmin=true;
+    }
+
+    if(!user){
+      const f=await dbGetUserByIdentifier(id);
+      if(f) user=f;
+    }
+
+    if(!user){showToast('بيانات الدخول غير صحيحة.','error');resetBtn();return;}
+
+    // Password check first for all non-admin users
+    if(!isAdmin && user.password && user.password!==pwd){
+      showToast('كلمة المرور غير صحيحة.','error');
+      resetBtn();
+      return;
+    }
+
+    // Check status for users (banned / frozen / rejected / pending)
+    if(!isAdmin){
+      if(user.status === 'banned'){
+        resetBtn();
+        showStatusModal('banned', user);
+        return;
+      }
+      if(user.status === 'frozen'){
+        resetBtn();
+        showStatusModal('frozen', user);
+        return;
+      }
+      if(user.status === 'rejected'){
+        resetBtn();
+        showStatusModal('rejected', user);
+        return;
+      }
+      if(user.status === 'pending'){
+        resetBtn();
+        showStatusModal('pending', user);
+        return;
+      }
+    }
+
+    // Create session
+    const session={
+      id:user.id,
+      name:user.fullNameAr||user.name,
+      role:user.position||'admin',
+      roleTitle:user.roleTitle||user.positionTitle||'مسؤول',
+      dashboard:user.dashboard||'member',
+      level:user.level||'L9',
+      levelTitle:user.levelTitle||'',
+      governorate:user.governorate||'',
+      unit:user.unit||'',
+      isAdmin:isAdmin,
+      loginAt:new Date().toISOString()
+    };
+    if(document.getElementById('rememberMe').checked)localStorage.setItem('fba_session',JSON.stringify(session));
+    else sessionStorage.setItem('fba_session',JSON.stringify(session));
+
+    btn.innerHTML='<i class="fas fa-check"></i><span>تم التحقق!</span>';
+    showToast('تم تسجيل الدخول بنجاح!','success');
+
+    // Determine target URL
+    const targetUrl = isAdmin ? './admin-dashboard.html' : getDashUrl(session.dashboard);
+
+    // Show 10-second verify screen then redirect
+    setTimeout(()=>{
+      showVerifyScreen(session, isAdmin, targetUrl);
+      // Don't reset button — page will redirect
+    }, 400);
+
+  }catch(err){
+    console.error(err);
+    showToast('حدث خطأ أثناء تسجيل الدخول.','error');
+    resetBtn();
+  }
+}
+
+function getDashName(k){
+  const m={'supervisor':'داشبورد المشرف العام','coordinator':'داشبورد المنسق العام','director':'داشبورد المدير التنفيذي','deputy-director':'داشبورد نائب المدير','executive':'داشبورد الإدارة التنفيذية','unit-head':'داشبورد رئيس الوحدة','deputy-unit-head':'داشبورد نائب رئيس الوحدة','manager':'داشبورد المدير','leader':'داشبورد الليدر','member':'داشبورد العضو','trainee':'داشبورد المتدرب','admin-dashboard':'داشبورد مراجعة الطلبات'};
+  return m[k]||'الداشبورد المخصصة';
+}
+function getDashUrl(k){
+  const m={'supervisor':'./dashboard-supervisor.html','coordinator':'./dashboard-coordinator.html','director':'./dashboard-director.html','deputy-director':'./dashboard-deputy-director.html','executive':'./dashboard-executive.html','unit-head':'./dashboard-unit-head.html','deputy-unit-head':'./dashboard-deputy-unit-head.html','manager':'./dashboard-manager.html','leader':'./dashboard-leader.html','member':'./dashboard-member.html','trainee':'./dashboard-trainee.html','admin-dashboard':'./admin-dashboard.html'};
+  return m[k]||'./dashboard-member.html';
+}
+
+/* CONSTRUCTION MODAL */
+function showConstructionModal(session){
+  document.getElementById('consName').textContent = session.name || '—';
+  document.getElementById('consRole').textContent = session.roleTitle || '—';
+  document.getElementById('consId').textContent = session.id || '—';
+  document.getElementById('constructionModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeConstructionModal(){
+  document.getElementById('constructionModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* FORGOT PASSWORD */
+let forgotUser=null;
+
+function openForgotPassword(){
+  forgotUser=null;
+  document.getElementById('forgotIdentifier').value='';
+  document.getElementById('forgotNewPassword').value='';
+  document.getElementById('forgotConfirmPassword').value='';
+  document.getElementById('forgotStep1').style.display='block';
+  document.getElementById('forgotStep2').style.display='none';
+  document.getElementById('forgotModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeForgotModal(){
+  document.getElementById('forgotModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+async function verifyForgotIdentifier(){
+  const id=document.getElementById('forgotIdentifier').value.trim();
+  if(!id){showToast('يرجى إدخال الرقم.','error');return;}
+  const ADMIN = getAdminData();
+  const idl=id.toLowerCase();
+
+  let found=null;
+  if(idl===ADMIN.email.toLowerCase()){found={name:ADMIN.name,id:ADMIN.id,isAdmin:true};}
+  else{found=await dbGetUserByIdentifier(id);}
+
+  if(!found){
+    showToast('لا يوجد حساب بهذا الرقم في قاعدة البيانات.','error');
+    return;
+  }
+  forgotUser=found;
+  document.getElementById('forgotUserInfo').innerHTML=`تم التحقق من الحساب: <strong>${found.fullNameAr||found.name||'مستخدم'}</strong><br><span style="font-size:.68rem;color:#94a3b8;direction:ltr;display:inline-block">${found.id||''}</span>`;
+  document.getElementById('forgotStep1').style.display='none';
+  document.getElementById('forgotStep2').style.display='block';
+}
+async function saveNewPassword(){
+  const p1=document.getElementById('forgotNewPassword').value;
+  const p2=document.getElementById('forgotConfirmPassword').value;
+  if(!p1||p1.length<8){showToast('كلمة المرور يجب أن تكون 8 أحرف على الأقل.','error');return;}
+  if(p1!==p2){showToast('كلمتا المرور غير متطابقتين.','error');return;}
+  if(!forgotUser){showToast('حدث خطأ. أعد المحاولة.','error');return;}
+
+  if(forgotUser.isAdmin){
+    showToast('لا يمكن تغيير كلمة مرور الحساب الرئيسي من هنا.','info');
+    return;
+  }
+  try{
+    forgotUser.password=p1;
+    await dbUpdateUser(forgotUser);
+    showToast('تم تغيير كلمة المرور بنجاح! يمكنك الآن تسجيل الدخول.','success');
+    setTimeout(()=>{closeForgotModal();switchTab('login');},1200);
+  }catch(e){
+    showToast('حدث خطأ أثناء الحفظ.','error');
+  }
+}
+
+/* =========================================================
+   جمع الصور والمستندات المرفوعة (تُحفظ كـ Base64 مع الحساب)
+   ========================================================= */
+function collectUploadedDoc(inputId, boxId, previewId){
+  const input = document.getElementById(inputId);
+  const box = document.getElementById(boxId);
+  const preview = document.getElementById(previewId);
+  const file = input && input.files && input.files[0];
+  if(!file || !box || !box.classList.contains('has-file') || !preview || !preview.src || !preview.src.startsWith('data:')){
+    return null;
+  }
+  return {
+    dataUrl: preview.src,
+    name: file.name,
+    type: file.type,
+    size: file.size,
+    uploadedAt: new Date().toISOString()
+  };
+}
+
+/* REGISTER */
+async function handleRegister(e){
+  e.preventDefault();
+  if(!document.getElementById('registerHumanCheck').checked){showToast('يرجى تأكيد أنك إنسان.','error');return;}
+  const cap=verifyCaptcha('register');
+  if(!cap.ok){showToast(cap.msg,'error');generateCaptcha('register');return;}
+  if(!document.getElementById('agreeTerms').checked){showToast('يجب الموافقة على اللائحة.','error');return;}
+
+  const btn=document.getElementById('nextBtn');
+  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> <span>جاري الإرسال...</span>';
+
+  const pSel=document.getElementById('position');
+  const pOpt=pSel.selectedOptions[0];
+
+  const cityRaw=document.getElementById('addressCity').value;
+  const cityFinal = cityRaw==='__custom__' ? document.getElementById('customCity').value.trim() : cityRaw;
+  const addrGov=document.getElementById('addressGovernorate').value;
+
+  // الصور والمستندات المرفوعة في مرحلة الرفع — تتحفظ كجزء من بيانات الحساب
+  const personalPhoto = collectUploadedDoc('personalPhoto','personalPhotoBox','personalPhotoPreview');
+  const idFront = collectUploadedDoc('idFront','idFrontBox','idFrontPreview');
+  const idBack = collectUploadedDoc('idBack','idBackBox','idBackPreview');
+  const degreeDoc = collectUploadedDoc('degreeDoc','degreeDocBox','degreeDocPreview');
+  const militaryDoc = collectUploadedDoc('militaryDoc','militaryDocBox','militaryDocPreview');
+
+  const user={
+    personalPhoto,
+    idFront,
+    idBack,
+    degreeDoc,
+    militaryDoc,
+    fullNameAr:document.getElementById('fullNameAr').value.trim(),
+    fullNameEn:document.getElementById('fullNameEn').value.trim(),
+    nationalId:document.getElementById('nationalId').value.trim(),
+    birthDate:document.getElementById('birthDate').value,
+    gender:document.getElementById('gender').value,
+    maritalStatus:document.getElementById('maritalStatus').value,
+    addressGovernorate:addrGov,
+    addressCity:cityFinal,
+    addressDetail:document.getElementById('addressDetail').value.trim(),
+    address:`${addrGov} - ${cityFinal} - ${document.getElementById('addressDetail').value.trim()}`,
+    password:document.getElementById('regPassword').value,
+    season:document.getElementById('season').value,
+    governorate:document.getElementById('governorate').value,
+    unit:document.getElementById('unit').value,
+    position:pSel.value,
+    positionTitle:pOpt?.text||'',
+    level:pOpt?.dataset.level||'L9',
+    levelTitle:pOpt?.dataset.levelTitle||'عضو',
+    dashboard:pOpt?.dataset.dashboard||'member',
+    joinReason:document.getElementById('joinReason').value.trim(),
+    email:document.getElementById('personalEmail').value.trim(),
+    whatsapp:document.getElementById('whatsapp').value.trim(),
+    phone:document.getElementById('phone').value.trim(),
+    emergencyContact:document.getElementById('emergencyContact').value.trim(),
+    socialLink:document.getElementById('socialLink').value.trim(),
+    educationStatus:document.getElementById('educationStatus').value,
+    universityType:document.getElementById('universityType').value,
+    university:document.getElementById('university').value,
+    faculty:document.getElementById('faculty').value==='__custom__'?document.getElementById('customFaculty').value:document.getElementById('faculty').value,
+    academicYear:document.getElementById('academicYear').value,
+    studentEvalMethod:document.getElementById('studentEvalMethod').value,
+    finalYearGPA:document.getElementById('finalYearGPA').value,
+    finalYearGrade:document.getElementById('finalYearGrade').value,
+    gradYear:document.getElementById('gradYear').value,
+    gradEvalMethod:document.getElementById('gradEvalMethod').value,
+    gradGPA:document.getElementById('gradGPA').value,
+    gradGrade:document.getElementById('gradGrade').value,
+    postgradDegree:document.getElementById('postgradDegree').value,
+    researchArea:document.getElementById('researchArea').value,
+    schoolGovernorate:document.getElementById('schoolGovernorate').value,
+    schoolType:document.getElementById('schoolType').value,
+    schoolName:document.getElementById('schoolName').value==='__custom__'?document.getElementById('customSchoolName').value:document.getElementById('schoolName').value,
+    schoolGrade:document.getElementById('schoolGrade').value,
+    guardianName:document.getElementById('guardianName').value,
+    guardianRelation:document.getElementById('guardianRelation').value,
+    guardianPhone:document.getElementById('guardianPhone').value,
+    militaryStatus:document.getElementById('militaryStatus').value,
+    militaryReason:document.getElementById('militaryReason').value,
+    militaryDate:document.getElementById('militaryDate').value,
+    skills:document.getElementById('skills').value.trim(),
+    experience:document.getElementById('experience').value.trim(),
+    status:'pending',
+    submittedAt:new Date().toISOString(),
+    id:null,
+    approvedAt:null,
+    approvedBy:null
+  };
+
+  const newId=generateUserID(user.governorate,user.unit,user.level);
+  user.id=newId;
+
+  try{
+    await dbAddUser(user);
+
+    document.getElementById('idDisplayValue').innerHTML=formatIDDisplay(newId);
+    document.getElementById('reqName').textContent=user.fullNameAr;
+    document.getElementById('reqNumber').textContent=newId;
+    document.getElementById('reqUnit').textContent=pOpt?.text||'—';
+    document.getElementById('reqGov').textContent=user.governorate;
+
+    document.querySelectorAll('.auth-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('successScreen').classList.add('active');
+    showToast('تم إرسال طلبك بنجاح!','success');
+    window.scrollTo({top:document.querySelector('.auth-section').offsetTop-40,behavior:'smooth'});
+
+    document.getElementById('registerForm').reset();
+    currentStage=1;
+    document.querySelectorAll('.stage-content').forEach(s=>s.classList.toggle('active',+s.dataset.stage===1));
+    updateProgressBar();
+    generateCaptcha('register');
+    ['universitySection','highSchoolSection','studentSection','graduateSection','postgradSection','guardianSection','militarySection','customFacultyGroup','customSchoolGroup','degreeUploadSection','militaryUploadSection','customCityGroup','studentEvalMethodGroup','studentGPAGroup','studentGradeGroup','gradGPAGroup','gradGradeGroup'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+    document.getElementById('noAdditionalSection').style.display='block';
+  }catch(err){
+    console.error(err);
+    showToast('حدث خطأ أثناء حفظ البيانات.','error');
+  }finally{
+    btn.disabled=false;btn.innerHTML='<i class="fas fa-paper-plane"></i> <span>تأكيد وإرسال</span>';
+  }
+}
+
+function copyID(){
+  const id=document.getElementById('reqNumber').textContent;
+  if(navigator.clipboard){navigator.clipboard.writeText(id).then(()=>showToast('تم النسخ!','success')).catch(()=>fbCopy(id));}
+  else fbCopy(id);
+}
+function fbCopy(text){const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');showToast('تم النسخ!','success');}catch(e){}document.body.removeChild(t);}
+function resetToLogin(){document.getElementById('successScreen').classList.remove('active');switchTab('login');}
+
+/* INIT */
+updateProgressBar();
+filterUniversities();
+
+/* ALPHA */
+(function(){
+  const a=document.getElementById('alphaCharacter'),t=document.getElementById('alphaTooltip');
+  const msgs=[
+    'أهلاً! سجّل دخولك بالرقم القومي أو الرقم التعريفي.',
+    'التسجيل في 8 مراحل ذكية، والحقول تظهر حسب اختياراتك!',
+    'السن المسموح 18-45 سنة فقط!',
+    'العنوان الآن ديناميكي: محافظة → مدينة → تفاصيل!',
+    'الذكور يظهرلهم الموقف من التجنيد تلقائياً!',
+    'المعدل التراكمي: إما GPA أو التقدير العام!',
+    'البيانات محفوظة بأمان في IndexedDB!',
+    'لو حسابك اتجمد أو اتحظر هتعرف السبب عند الدخول!'
+  ];
+  setTimeout(()=>{a.classList.add('active');setTimeout(()=>a.classList.remove('active'),6500);},1500);
+  a.addEventListener('click',()=>{
+    t.textContent=msgs[Math.floor(Math.random()*msgs.length)];
+    a.classList.add('active');
+    clearTimeout(a._t);a._t=setTimeout(()=>a.classList.remove('active'),5000);
+  });
+})();
+
+document.querySelectorAll('img').forEach(img=>{
+  img.addEventListener('error',function(){
+    if(!this.dataset.fb){this.dataset.fb='1';this.style.background='linear-gradient(135deg,rgba(0,217,255,.15),rgba(139,92,246,.15))';}
+  });
+});
+
+/* Global body click to close modals */
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click', e=>{
+    if(e.target === ov && ov.id !== 'verifyScreen'){
+      ov.classList.remove('open');
+      if(!document.querySelector('.modal-overlay.open')) document.body.style.overflow='';
+    }
+  });
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(m=>{
+      m.classList.remove('open');
+    });
+    if(!document.querySelector('.modal-overlay.open')) document.body.style.overflow='';
+  }
+});
+</script>
+<script src="./auth-widget.js" defer></script>
+</body>
+</html>

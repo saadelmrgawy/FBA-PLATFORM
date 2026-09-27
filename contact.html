@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تواصل معنا | FBA Futur By Ai</title>
+<meta name="description" content="تواصل مباشر مع فريق FBA Futur By Ai - كل وسائل التواصل الرسمية وأرقام المسؤولين في القطاع المركزي والموارد البشرية.">
+<link rel="icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+<link rel="shortcut icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<style>
+:root{
+  --neon-cyan:#00d9ff;
+  --neon-purple:#8b5cf6;
+  --neon-pink:#ec4899;
+  --gold:#fbbf24;
+  --gold-dark:#d97706;
+  --emerald:#10b981;
+  --emerald-dark:#059669;
+  --deep-space:#05060f;
+  --text-light:#f1f5f9;
+  --text-muted:#94a3b8;
+  --gradient-main:linear-gradient(135deg,#00d9ff 0%,#8b5cf6 50%,#ec4899 100%);
+  --gradient-gold:linear-gradient(135deg,#fde68a 0%,#fbbf24 40%,#d97706 100%);
+  --gradient-emerald:linear-gradient(135deg,#34d399 0%,#10b981 50%,#059669 100%);
+  --gradient-blue:linear-gradient(135deg,#3b82f6,#8b5cf6);
+  /* Unified Spacing Scale */
+  --space-xs:8px;
+  --space-sm:14px;
+  --space-md:20px;
+  --space-lg:28px;
+  --space-xl:40px;
+  --space-2xl:60px;
+  --radius-sm:12px;
+  --radius-md:16px;
+  --radius-lg:20px;
+  --radius-xl:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Cairo',sans-serif;background:var(--deep-space);color:var(--text-light);overflow-x:hidden;min-height:100vh;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased;}
+img,svg{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+/* ============ BG ============ */
+.bg-layer{position:fixed;inset:0;z-index:-4;background:radial-gradient(ellipse at 20% 20%,rgba(0,217,255,.13),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(139,92,246,.15),transparent 55%),radial-gradient(ellipse at 50% 50%,rgba(236,72,153,.07),transparent 60%),var(--deep-space);}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(0,217,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.045) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);}
+.bg-mesh{position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle 600px at var(--mx,50%) var(--my,50%),rgba(0,217,255,.22),transparent 55%),radial-gradient(circle 500px at calc(100% - var(--mx,50%)) calc(100% - var(--my,50%)),rgba(139,92,246,.2),transparent 55%);transition:background .25s ease-out;mix-blend-mode:screen;}
+.bg-orbs{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.32;animation:orbFloat 22s ease-in-out infinite;}
+.orb-1{width:420px;height:420px;background:#00d9ff;top:8%;left:8%;}
+.orb-2{width:500px;height:500px;background:#8b5cf6;top:50%;right:5%;animation-delay:-6s;}
+.orb-3{width:380px;height:380px;background:#ec4899;bottom:8%;left:25%;animation-delay:-12s;}
+.orb-4{width:320px;height:320px;background:#fbbf24;top:20%;right:28%;animation-delay:-18s;opacity:.18;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(60px,-40px) scale(1.1);}50%{transform:translate(-40px,60px) scale(.95);}75%{transform:translate(40px,40px) scale(1.05);}}
+
+/* ============ LOADER ============ */
+.loader-screen{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#0a0e27 0%,#05060f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease;overflow:hidden;}
+.loader-screen.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-screen::before{content:'';position:absolute;inset:-10%;background-image:radial-gradient(rgba(0,217,255,.35) 1px,transparent 1px);background-size:34px 34px;opacity:.22;animation:loaderGridDrift 16s linear infinite;pointer-events:none;}
+@keyframes loaderGridDrift{0%{transform:translate(0,0);}100%{transform:translate(34px,34px);}}
+.loader-particle{position:absolute;bottom:-10px;border-radius:50%;background:var(--gradient-main);filter:blur(.5px);pointer-events:none;animation:loaderParticleFloat linear infinite;}
+@keyframes loaderParticleFloat{0%{transform:translateY(0) translateX(0) scale(1);opacity:0;}10%{opacity:.75;}85%{opacity:.45;}100%{transform:translateY(-105vh) translateX(24px) scale(.4);opacity:0;}}
+.loader-content{position:relative;z-index:2;width:100%;max-width:420px;margin:0 auto;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.loader-logo-wrap{position:relative;width:150px;height:150px;margin:0 auto 25px;display:flex;align-items:center;justify-content:center;animation:loaderFadeInUp .7s ease both;}
+.loader-glow{position:absolute;inset:-22px;border-radius:50%;background:var(--gradient-main);filter:blur(28px);opacity:.35;animation:loaderGlowPulse 2.4s ease-in-out infinite;}
+@keyframes loaderGlowPulse{0%,100%{opacity:.22;transform:scale(.9);}50%{opacity:.5;transform:scale(1.08);}}
+.loader-ring{position:absolute;inset:0;border-radius:50%;border:3px solid transparent;border-top-color:#00d9ff;border-right-color:#8b5cf6;animation:spin 1.3s linear infinite;}
+.loader-ring::before{content:'';position:absolute;top:-4px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#00d9ff;box-shadow:0 0 12px 3px rgba(0,217,255,.9);}
+.loader-ring-2{inset:15px;border-top-color:#8b5cf6;border-right-color:#ec4899;animation:spin 2s linear infinite reverse;}
+.loader-ring-2::before{content:'';position:absolute;top:-3px;left:50%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#ec4899;box-shadow:0 0 10px 3px rgba(236,72,153,.9);}
+.loader-ring-3{inset:30px;border-top-color:#3b82f6;border-right-color:#00d9ff;animation:spin 2.6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loader-logo-inner{position:relative;width:90px;height:90px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 40px rgba(0,217,255,.7);animation:pulseScale 2s ease-in-out infinite;border:2px solid rgba(255,255,255,.25);}
+.loader-logo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;}
+.loader-logo-inner::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);background-size:250% 250%;background-position:200% 0;animation:loaderShine 2.6s ease-in-out infinite;z-index:2;}
+@keyframes loaderShine{0%{background-position:200% 0;}100%{background-position:-50% 0;}}
+@keyframes pulseScale{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+.loader-title{font-family:'Orbitron',sans-serif;font-size:2.3rem;font-weight:900;background:var(--gradient-main);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:3px;margin:0 0 8px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .15s both,loaderGradientShift 3s linear infinite;}
+@keyframes loaderGradientShift{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+.loader-sub{font-family:'Cairo',sans-serif;font-size:1rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:30px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .3s both;}
+.loader-bar{position:relative;width:300px;max-width:80vw;height:6px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin:0 auto 15px;border:1px solid rgba(0,217,255,.2);animation:loaderFadeInUp .7s ease .45s both;}
+.loader-bar-fill{height:100%;width:0%;background:var(--gradient-main);background-size:200% auto;border-radius:10px;box-shadow:0 0 15px rgba(0,217,255,.8);transition:width .3s ease;position:relative;overflow:hidden;}
+.loader-bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);animation:loaderBarShimmer 1.2s linear infinite;}
+@keyframes loaderBarShimmer{0%{transform:translateX(-140%);}100%{transform:translateX(140%);}}
+.loader-percent{font-family:'Orbitron',sans-serif;font-size:.9rem;color:#00d9ff;letter-spacing:2px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .55s both;}
+@keyframes loaderFadeInUp{0%{opacity:0;transform:translateY(16px);}100%{opacity:1;transform:translateY(0);}}
+
+/* ============ NAVBAR ============ */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:transparent;transition:all .35s;}
+.nav-logos{display:flex;align-items:center;gap:12px;}
+.nav-logos img{height:46px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,217,255,.3));transition:transform .3s;}
+.nav-logos img:hover{transform:scale(1.08) translateY(-2px);}
+.nav-actions{display:flex;align-items:center;gap:10px;}
+.nav-icon-btn{position:relative;width:48px;height:48px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(0,217,255,.32);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;transition:all .35s;backdrop-filter:blur(12px);}
+.nav-icon-btn:hover{transform:translateY(-3px) scale(1.08);border-color:transparent;box-shadow:0 12px 30px rgba(0,217,255,.5);background:var(--gradient-main);}
+.menu-lines{position:relative;width:22px;height:16px;}
+.menu-lines span{position:absolute;right:0;height:2px;background:#fff;border-radius:2px;transition:all .4s;}
+.menu-lines span:nth-child(1){top:0;width:22px;}
+.menu-lines span:nth-child(2){top:7px;width:16px;}
+.menu-lines span:nth-child(3){top:14px;width:20px;}
+.nav-login-btn{display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 22px 0 18px;border-radius:100px;background:var(--gradient-main);color:#fff;font-weight:900;font-size:.88rem;border:1px solid rgba(255,255,255,.25);box-shadow:0 8px 22px rgba(139,92,246,.45);transition:all .35s;}
+.nav-login-btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 34px rgba(236,72,153,.6);}
+.nav-login-btn span{white-space:nowrap;}
+
+/* ============ SIDEBAR ============ */
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:999;opacity:0;visibility:hidden;transition:all .4s;}
+.sidebar-overlay.open{opacity:1;visibility:visible;}
+.sidebar-menu{position:fixed;top:0;right:0;height:100vh;width:360px;max-width:88vw;background:linear-gradient(180deg,rgba(10,14,39,.98),rgba(15,23,42,.98));backdrop-filter:blur(30px);border-left:1px solid rgba(0,217,255,.3);box-shadow:-20px 0 60px rgba(0,0,0,.6);z-index:1000;transform:translateX(100%);transition:transform .5s cubic-bezier(.68,-.55,.27,1.55);padding:26px 22px;overflow-y:auto;}
+.sidebar-menu.open{transform:translateX(0);}
+.sidebar-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient-main);box-shadow:0 0 20px rgba(0,217,255,.8);}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid rgba(0,217,255,.18);}
+.sidebar-header h3{margin:0;font-family:'Orbitron',sans-serif;font-size:1rem;letter-spacing:1px;background:var(--gradient-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.sidebar-close{width:38px;height:38px;border-radius:10px;background:rgba(0,217,255,.12);border:1px solid rgba(0,217,255,.3);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.15rem;transition:all .3s;}
+.sidebar-close:hover{background:var(--gradient-main);transform:rotate(90deg);}
+.sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;}
+.sidebar-links li a{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;color:var(--text-light);font-weight:600;font-size:.95rem;transition:all .35s;border:1px solid transparent;}
+.sidebar-links li a:hover{border-color:rgba(0,217,255,.4);transform:translateX(-6px);}
+.sidebar-links li a i{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(0,217,255,.12);color:#00d9ff;font-size:.95rem;transition:all .35s;flex-shrink:0;}
+.sidebar-links li a:hover i{background:var(--gradient-main);color:#fff;transform:rotate(-8deg) scale(1.05);}
+.sidebar-links li a.active{border-color:rgba(0,217,255,.55);background:linear-gradient(135deg,rgba(0,217,255,.12),rgba(139,92,246,.12));}
+.sidebar-links li a.active i{background:var(--gradient-main);color:#fff;}
+
+/* ============ PAGE HERO ============ */
+.page-hero{min-height:78vh;min-height:78svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(120px,17vh,160px) 5% clamp(50px,8vh,80px);text-align:center;position:relative;overflow:hidden;}
+.breadcrumb{display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:100px;background:rgba(15,23,42,.65);border:1px solid rgba(0,217,255,.3);backdrop-filter:blur(12px);font-size:.78rem;font-weight:700;color:var(--text-muted);margin-bottom:22px;animation:fadeInUp .7s ease both;}
+.breadcrumb a{color:#7dd3fc;transition:color .3s;}
+.breadcrumb a:hover{color:#ec4899;}
+.breadcrumb i{font-size:.6rem;color:#475569;}
+.breadcrumb .current{color:#fff;}
+.page-hero-tag{display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:100px;background:linear-gradient(135deg,rgba(0,217,255,.15),rgba(139,92,246,.1));border:1px solid rgba(0,217,255,.45);color:#7dd3fc;font-size:.8rem;font-weight:700;margin-bottom:22px;backdrop-filter:blur(10px);position:relative;overflow:hidden;box-shadow:0 0 25px rgba(0,217,255,.15);animation:fadeInUp .7s ease .1s both;}
+.page-hero-tag::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(0,217,255,.3),transparent);transform:translateX(-100%);animation:badgeShine 3s ease-in-out infinite;}
+@keyframes badgeShine{0%{transform:translateX(-100%);}60%,100%{transform:translateX(100%);}}
+.page-hero-tag i{color:#ec4899;animation:pulseScale 2s infinite;position:relative;z-index:1;}
+.page-hero-tag span{position:relative;z-index:1;}
+.page-hero h1{font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:clamp(1.85rem,5.4vw,4rem);line-height:1.32;margin:0 0 20px;animation:fadeInUp .8s ease .25s both;}
+.page-hero h1 .grad{background:linear-gradient(100deg,#00d9ff,#8b5cf6 45%,#ec4899 75%,#00d9ff);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 45px rgba(139,92,246,.55));animation:gradientShift 5s ease-in-out infinite;padding-bottom:.15em;}
+@keyframes gradientShift{0%,100%{background-position:0% center;}50%{background-position:100% center;}}
+.page-hero p{max-width:860px;color:var(--text-muted);font-size:clamp(.88rem,1.5vw,1.1rem);line-height:2;margin:0 auto 30px;animation:fadeInUp .8s ease .4s both;}
+.page-hero p strong{color:#7dd3fc;font-weight:700;}
+.page-hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeInUp .8s ease .55s both;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* ============ BUTTONS ============ */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:var(--gradient-main);color:#fff;font-weight:800;font-size:clamp(.85rem,1.3vw,1rem);cursor:pointer;box-shadow:0 10px 30px rgba(139,92,246,.45);transition:all .35s;white-space:nowrap;border:none;}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(236,72,153,.55);}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:rgba(15,23,42,.5);color:#fff;font-weight:800;font-size:clamp(.85rem,1.3vw,1rem);border:1px solid rgba(0,217,255,.4);cursor:pointer;backdrop-filter:blur(10px);transition:all .35s;white-space:nowrap;}
+.btn-ghost:hover{background:rgba(0,217,255,.12);border-color:#00d9ff;transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,217,255,.3);}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:var(--gradient-gold);color:#1a0b2e;font-weight:900;font-size:clamp(.85rem,1.3vw,1rem);border:none;cursor:pointer;box-shadow:0 10px 30px rgba(251,191,36,.45);transition:all .35s;white-space:nowrap;}
+.btn-gold:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(251,191,36,.65);}
+
+/* ============ CONTAINER & SECTION ============ */
+.container{width:100%;max-width:1400px;margin:0 auto;padding:0 clamp(16px,3vw,40px);}
+.section{padding:clamp(40px,6vw,85px) 0;position:relative;}
+.section-head{text-align:center;margin-bottom:clamp(28px,4vw,50px);}
+.section-tag{display:inline-block;padding:6px 16px;border-radius:100px;background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.35);color:#7dd3fc;font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.section-title{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.5rem,3.2vw,2.4rem);font-weight:900;margin:0 0 14px;line-height:1.25;}
+.section-title .gradient-text{background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.section-desc{max-width:760px;margin:0 auto;color:var(--text-muted);font-size:.95rem;line-height:1.85;padding:0 var(--space-sm);}
+
+/* ============ UNIFIED GRID SYSTEM ============ */
+.grid{display:grid;gap:var(--space-md);width:100%;align-items:stretch;}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));}
+.grid-5{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));}
+
+/* ============ LIVE STATS ============ */
+.live-bar{padding:0 0 var(--space-xl) 0;}
+.live-bar-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-sm);padding:var(--space-lg) var(--space-md);border-radius:var(--radius-xl);background:linear-gradient(160deg,rgba(15,23,42,.9),rgba(26,11,46,.85));border:1px solid rgba(0,217,255,.28);backdrop-filter:blur(16px);position:relative;overflow:hidden;}
+.live-bar-inner::before{content:'';position:absolute;top:0;right:0;width:100%;height:3px;background:linear-gradient(90deg,#00d9ff,#8b5cf6,#ec4899,#fbbf24);background-size:200% auto;animation:gradientSlide 4s linear infinite;}
+@keyframes gradientSlide{0%{background-position:0% center;}100%{background-position:200% center;}}
+.live-stat{display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-xs);min-width:0;}
+.live-stat-icon{flex-shrink:0;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;background:var(--gradient-main);box-shadow:0 8px 22px rgba(139,92,246,.4);transition:transform .4s;}
+.live-stat:hover .live-stat-icon{transform:rotate(-8deg) scale(1.1);}
+.live-stat-info{min-width:0;}
+.live-stat-info .val{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1rem,1.8vw,1.4rem);background:linear-gradient(135deg,#00d9ff,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;display:block;margin-bottom:4px;white-space:nowrap;}
+.live-stat-info .lbl{color:var(--text-muted);font-size:.72rem;font-weight:700;line-height:1.3;display:block;}
+.live-stat:nth-child(2) .live-stat-icon{background:linear-gradient(135deg,#ec4899,#be185d);}
+.live-stat:nth-child(3) .live-stat-icon{background:linear-gradient(135deg,#10b981,#059669);}
+.live-stat:nth-child(4) .live-stat-icon{background:linear-gradient(135deg,#fbbf24,#d97706);color:#1a0b2e;}
+
+/* ============ QUICK CONTACT ============ */
+.quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-md);}
+.quick-card{position:relative;padding:var(--space-lg) var(--space-md);border-radius:var(--radius-xl);background:linear-gradient(160deg,rgba(15,23,42,.92),rgba(26,11,46,.85));border:1px solid rgba(var(--qc-rgb,0,217,255),.3);overflow:hidden;transition:all .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;align-items:center;text-align:center;min-height:340px;height:100%;}
+.quick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--qc-gradient,var(--gradient-main));transform:scaleX(0);transform-origin:right;transition:transform .5s;}
+.quick-card:hover::before{transform:scaleX(1);}
+.quick-card:hover{transform:translateY(-10px);border-color:rgba(var(--qc-rgb,0,217,255),.65);box-shadow:0 28px 65px rgba(var(--qc-rgb,0,217,255),.3);}
+.qc-icon{width:72px;height:72px;border-radius:20px;background:var(--qc-gradient,var(--gradient-main));display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;margin-bottom:var(--space-md);box-shadow:0 15px 40px rgba(var(--qc-rgb,0,217,255),.4);position:relative;transition:transform .4s;flex-shrink:0;}
+.qc-icon::before{content:'';position:absolute;inset:-8px;border-radius:24px;border:2px dashed rgba(var(--qc-rgb,0,217,255),.35);animation:spin 18s linear infinite;}
+.quick-card:hover .qc-icon{transform:rotate(-8deg) scale(1.08);}
+.quick-card h3{font-size:1.1rem;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.4;min-height:2.8em;display:flex;align-items:center;justify-content:center;}
+.qc-en{font-family:'Orbitron',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:1.4px;color:var(--qc-color,#00d9ff);margin:0 0 var(--space-sm);text-transform:uppercase;min-height:1.2em;display:flex;align-items:center;justify-content:center;}
+.qc-value{font-family:'JetBrains Mono',monospace;font-size:clamp(.85rem,1.3vw,1rem);font-weight:900;color:#fff;direction:ltr;margin:0 0 var(--space-md);padding:12px 16px;border-radius:var(--radius-sm);background:rgba(5,6,15,.6);border:1px solid rgba(var(--qc-rgb,0,217,255),.25);width:100%;word-break:break-all;transition:all .3s;}
+.qc-value:hover{border-color:rgba(var(--qc-rgb,0,217,255),.6);background:rgba(var(--qc-rgb,0,217,255),.06);}
+.qc-actions{display:flex;gap:var(--space-xs);width:100%;margin-top:auto;}
+.qc-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:var(--radius-sm);background:var(--qc-gradient,var(--gradient-main));color:#fff;font-weight:800;font-size:.82rem;transition:all .3s;min-height:44px;}
+.qc-btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(var(--qc-rgb,0,217,255),.5);}
+.qc-copy-btn{position:absolute;top:16px;left:16px;width:38px;height:38px;border-radius:10px;background:rgba(5,6,15,.7);border:1px solid rgba(var(--qc-rgb,0,217,255),.3);color:var(--qc-color,#00d9ff);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .3s;z-index:5;}
+.qc-copy-btn:hover{background:var(--qc-gradient,var(--gradient-main));color:#fff;border-color:transparent;transform:scale(1.1);}
+.qc-copy-btn.copied{background:linear-gradient(135deg,#10b981,#059669);color:#fff;border-color:transparent;}
+
+/* ============ SOCIAL ============ */
+.social-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-sm);}
+.social-item{position:relative;padding:var(--space-lg) var(--space-sm);border-radius:var(--radius-lg);background:linear-gradient(160deg,rgba(15,23,42,.9),rgba(26,11,46,.78));border:1px solid rgba(var(--sc-rgb,0,217,255),.25);text-align:center;transition:all .45s;display:flex;flex-direction:column;align-items:center;height:100%;min-height:240px;overflow:hidden;}
+.social-item::before{content:'';position:absolute;top:0;right:0;width:100%;height:4px;background:var(--sc-gradient,var(--gradient-main));transform:scaleX(0);transform-origin:right;transition:transform .5s;}
+.social-item:hover::before{transform:scaleX(1);}
+.social-item:hover{transform:translateY(-10px);border-color:rgba(var(--sc-rgb,0,217,255),.65);box-shadow:0 25px 55px rgba(var(--sc-rgb,0,217,255),.3);}
+.social-item-icon{width:64px;height:64px;flex-shrink:0;border-radius:18px;background:var(--sc-gradient,var(--gradient-main));display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#fff;margin-bottom:var(--space-sm);box-shadow:0 12px 30px rgba(var(--sc-rgb,0,217,255),.4);transition:transform .4s;}
+.social-item:hover .social-item-icon{transform:rotate(-8deg) scale(1.1);}
+.social-item h4{font-size:.98rem;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.3;}
+.social-item-handle{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--sc-color,#00d9ff);font-weight:700;margin:0 0 var(--space-sm);direction:ltr;word-break:break-all;min-height:2.6em;display:flex;align-items:center;justify-content:center;}
+.social-item-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:100px;background:var(--sc-gradient,var(--gradient-main));color:#fff;font-weight:800;font-size:.74rem;transition:all .3s;margin-top:auto;min-height:38px;}
+.social-item-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(var(--sc-rgb,0,217,255),.5);}
+
+/* ============ CONTACT TABS ============ */
+.contact-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-xs);padding:12px;border-radius:60px;background:rgba(15,23,42,.6);border:1px solid rgba(0,217,255,.22);backdrop-filter:blur(16px);max-width:fit-content;margin:0 auto var(--space-xl);}
+.contact-tab{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:50px;background:transparent;color:#cbd5e1;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;border:1px solid transparent;}
+.contact-tab i{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;background:rgba(148,163,184,.12);color:#94a3b8;transition:all .35s;flex-shrink:0;}
+.contact-tab:hover{background:rgba(0,217,255,.08);color:#fff;}
+.contact-tab.active{background:linear-gradient(135deg,var(--ct-color,#00d9ff),var(--ct-color2,#8b5cf6));color:#fff;box-shadow:0 12px 30px rgba(var(--ct-rgb,0,217,255),.45);transform:translateY(-2px);}
+.contact-tab.active i{background:rgba(255,255,255,.22);color:#fff;transform:rotate(-8deg) scale(1.05);}
+
+.contact-panel{display:none;animation:panelIn .6s cubic-bezier(.16,1,.3,1);}
+.contact-panel.active{display:block;}
+@keyframes panelIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ============ OFFICIALS GRID ============ */
+.officials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:var(--space-md);}
+.official-card{position:relative;padding:0;border-radius:var(--radius-xl);background:linear-gradient(160deg,rgba(15,23,42,.95),rgba(26,11,46,.85));border:1px solid rgba(var(--of-rgb,0,217,255),.32);overflow:hidden;transition:all .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;height:100%;}
+.official-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--of-gradient,var(--gradient-main));transform:scaleX(0);transform-origin:right;transition:transform .5s;z-index:3;}
+.official-card:hover::before{transform:scaleX(1);}
+.official-card:hover{transform:translateY(-10px);border-color:rgba(var(--of-rgb,0,217,255),.65);box-shadow:0 30px 70px rgba(var(--of-rgb,0,217,255),.3);}
+.of-header{position:relative;padding:var(--space-md);background:linear-gradient(140deg,rgba(var(--of-rgb,0,217,255),.12),transparent 70%);display:flex;align-items:center;gap:var(--space-sm);border-bottom:1px solid rgba(var(--of-rgb,0,217,255),.15);}
+.of-avatar{position:relative;flex-shrink:0;width:80px;height:80px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--of-color,#00d9ff),var(--of-color2,#8b5cf6));display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,255,255,.9);box-shadow:0 12px 30px rgba(var(--of-rgb,0,217,255),.4);}
+.of-avatar::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,var(--of-color,#00d9ff),var(--of-color2,#8b5cf6),var(--of-color,#00d9ff));animation:spin 8s linear infinite;z-index:-1;opacity:.85;}
+.of-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+.of-avatar i{font-size:2rem;color:#fff;}
+.of-info{flex:1;min-width:0;}
+.of-badge{display:inline-block;padding:4px 12px;border-radius:100px;background:rgba(var(--of-rgb,0,217,255),.15);border:1px solid rgba(var(--of-rgb,0,217,255),.4);color:var(--of-color,#00d9ff);font-weight:800;font-size:.66rem;margin-bottom:8px;}
+.of-name{font-size:1rem;font-weight:900;color:#fff;margin:0 0 4px;line-height:1.35;}
+.of-role{font-size:.76rem;color:var(--of-color,#00d9ff);font-weight:800;margin:0;line-height:1.4;}
+.of-body{padding:var(--space-md);display:flex;flex-direction:column;flex:1;gap:var(--space-xs);}
+.of-contact{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--radius-sm);background:rgba(5,6,15,.5);border:1px solid rgba(var(--of-rgb,0,217,255),.15);transition:all .3s;position:relative;min-height:62px;}
+.of-contact:hover{border-color:rgba(var(--of-rgb,0,217,255),.5);background:rgba(var(--of-rgb,0,217,255),.06);}
+.of-contact-icon{flex-shrink:0;width:38px;height:38px;border-radius:10px;background:var(--of-gradient,var(--gradient-main));display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#fff;box-shadow:0 6px 16px rgba(var(--of-rgb,0,217,255),.35);}
+.of-contact-info{flex:1;min-width:0;padding-left:36px;}
+.of-contact-info .lbl{font-size:.62rem;color:var(--text-muted);font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin:0 0 3px;display:block;}
+.of-contact-info .val{font-family:'Cairo',sans-serif;font-size:.85rem;color:#fff;font-weight:800;margin:0;word-break:break-all;direction:ltr;text-align:left;}
+.of-contact-info .val a{color:#fff;transition:color .3s;}
+.of-contact-info .val a:hover{color:var(--of-color,#00d9ff);}
+.of-copy{position:absolute;top:50%;left:12px;transform:translateY(-50%);width:30px;height:30px;border-radius:8px;background:rgba(var(--of-rgb,0,217,255),.1);border:1px solid rgba(var(--of-rgb,0,217,255),.25);color:var(--of-color,#00d9ff);display:flex;align-items:center;justify-content:center;font-size:.72rem;transition:all .3s;cursor:pointer;}
+.of-copy:hover{background:var(--of-gradient,var(--gradient-main));color:#fff;border-color:transparent;transform:translateY(-50%) scale(1.1);}
+.of-copy.copied{background:linear-gradient(135deg,#10b981,#059669);color:#fff;border-color:transparent;}
+
+/* ============ FORM ============ */
+.form-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--space-lg);align-items:start;}
+.form-wrapper{position:relative;padding:clamp(24px,4vw,48px);border-radius:var(--radius-xl);background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(0,217,255,.4);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.form-wrapper::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,217,255,.1),transparent 25%,rgba(139,92,246,.1),transparent 55%,rgba(236,72,153,.08),transparent 80%);animation:spin 25s linear infinite;pointer-events:none;}
+.form-wrapper > *{position:relative;z-index:1;}
+.form-header{text-align:center;margin-bottom:var(--space-lg);}
+.form-header h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:900;margin:0 0 10px;color:#fff;}
+.form-header h2 .grad{background:var(--gradient-main);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.form-header p{color:var(--text-muted);font-size:.9rem;line-height:1.85;max-width:640px;margin:0 auto;}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-sm);}
+.form-group{position:relative;}
+.form-group.full{grid-column:1/-1;}
+.form-label{display:block;font-size:.8rem;font-weight:800;color:#e2e8f0;margin-bottom:7px;}
+.form-label .req{color:#ec4899;}
+.form-control{width:100%;padding:13px 16px;border-radius:var(--radius-sm);border:1.5px solid rgba(0,217,255,.25);background:rgba(5,6,15,.6);color:#f1f5f9;font-family:'Cairo',sans-serif;font-size:.9rem;transition:all .3s;outline:none;min-height:48px;}
+.form-control:focus{border-color:#00d9ff;box-shadow:0 0 0 4px rgba(0,217,255,.15);background:rgba(5,6,15,.85);}
+.form-control::placeholder{color:#64748b;}
+select.form-control{cursor:pointer;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#00d9ff 50%),linear-gradient(135deg,#00d9ff 50%,transparent 50%);background-position:calc(10% - 2px) 50%,calc(10% - 12px) 50%;background-size:12px 12px,12px 12px;background-repeat:no-repeat;}
+select.form-control option{background:#0a0e27;color:#fff;}
+textarea.form-control{resize:none;min-height:140px;font-family:'Cairo',sans-serif;}
+.form-submit{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px;border-radius:var(--radius-sm);background:var(--gradient-main);color:#fff;font-weight:900;font-size:1rem;cursor:pointer;border:none;transition:all .35s;box-shadow:0 14px 30px rgba(139,92,246,.45);position:relative;overflow:hidden;margin-top:var(--space-md);min-height:52px;}
+.form-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent,rgba(255,255,255,.4),transparent);transform:translateX(-100%);transition:transform .6s;}
+.form-submit:hover::before{transform:translateX(100%);}
+.form-submit:hover{transform:translateY(-4px);box-shadow:0 20px 45px rgba(236,72,153,.55);}
+.form-submit:disabled{opacity:.7;cursor:not-allowed;transform:none;}
+
+.form-side-info{display:flex;flex-direction:column;gap:var(--space-sm);position:sticky;top:100px;}
+.side-info-card{padding:var(--space-md);border-radius:var(--radius-lg);background:linear-gradient(160deg,rgba(15,23,42,.85),rgba(26,11,46,.72));border:1px solid rgba(0,217,255,.22);transition:all .4s;}
+.side-info-card:hover{border-color:rgba(0,217,255,.55);transform:translateX(-6px);box-shadow:0 16px 40px rgba(0,217,255,.2);}
+.side-info-head{display:flex;align-items:center;gap:12px;margin-bottom:var(--space-sm);}
+.side-info-icon{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;box-shadow:0 8px 22px rgba(139,92,246,.4);}
+.side-info-head h4{font-size:.95rem;font-weight:900;color:#fff;margin:0;line-height:1.4;}
+.side-info-card p{color:var(--text-muted);font-size:.82rem;line-height:1.85;margin:0;}
+.side-info-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+.side-info-card ul li{position:relative;padding-right:22px;color:var(--text-muted);font-size:.82rem;line-height:1.75;}
+.side-info-card ul li::before{content:'\f058';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;right:0;top:2px;color:#10b981;font-size:.75rem;}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed rgba(0,217,255,.15);font-size:.82rem;gap:var(--space-xs);}
+.hours-row:last-child{border-bottom:none;padding-bottom:0;}
+.hours-day{color:#fff;font-weight:800;}
+.hours-time{color:#10b981;font-weight:800;font-family:'JetBrains Mono',monospace;direction:ltr;font-size:.78rem;white-space:nowrap;}
+
+/* ============ MAP ============ */
+.map-wrapper{position:relative;width:100%;border-radius:var(--radius-xl);overflow:hidden;border:1px solid rgba(0,217,255,.3);box-shadow:0 30px 80px rgba(0,0,0,.5);background:linear-gradient(160deg,rgba(15,23,42,.95),rgba(26,11,46,.85));height:440px;display:flex;align-items:center;justify-content:center;}
+.map-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,217,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.08) 1px,transparent 1px);background-size:40px 40px;}
+.map-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(0,217,255,.2),transparent 70%);border-radius:50%;pointer-events:none;max-width:100%;}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;text-align:center;}
+.map-pin-circle{width:100px;height:100px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:#fff;box-shadow:0 15px 40px rgba(139,92,246,.6);position:relative;animation:pinBounce 2s ease-in-out infinite;}
+.map-pin-circle::before{content:'';position:absolute;inset:-15px;border-radius:50%;border:3px solid rgba(0,217,255,.5);animation:pulseRing 2s ease-out infinite;}
+.map-pin-circle::after{content:'';position:absolute;inset:-30px;border-radius:50%;border:2px solid rgba(0,217,255,.25);animation:pulseRing 2s ease-out infinite 0.5s;}
+@keyframes pinBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.5);opacity:0;}}
+.map-pin-text{margin-top:20px;padding:12px 24px;border-radius:100px;background:rgba(5,6,15,.9);border:1px solid rgba(0,217,255,.5);color:#fff;font-weight:900;font-size:.9rem;backdrop-filter:blur(12px);white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.5);}
+.map-pin-text i{color:#00d9ff;margin-left:6px;}
+.map-info{position:absolute;bottom:20px;left:20px;right:20px;padding:16px 20px;border-radius:var(--radius-md);background:rgba(5,6,15,.9);backdrop-filter:blur(12px);border:1px solid rgba(0,217,255,.35);display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm);flex-wrap:wrap;}
+.map-info-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:#e2e8f0;font-weight:700;}
+.map-info-item i{color:#00d9ff;font-size:1rem;flex-shrink:0;}
+.map-info-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:100px;background:var(--gradient-main);color:#fff;font-weight:800;font-size:.78rem;transition:all .3s;white-space:nowrap;}
+.map-info-btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(139,92,246,.5);}
+
+/* ============ FAQ ============ */
+.faq-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:var(--space-sm);}
+.faq-item{border-radius:var(--radius-md);background:linear-gradient(140deg,rgba(15,23,42,.85),rgba(26,11,46,.7));border:1px solid rgba(0,217,255,.22);overflow:hidden;transition:all .4s;}
+.faq-item.open{border-color:rgba(0,217,255,.6);box-shadow:0 18px 42px rgba(0,217,255,.24);}
+.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--space-sm);padding:20px 22px;text-align:right;cursor:pointer;font-size:.95rem;font-weight:800;color:#fff;line-height:1.55;transition:color .3s;}
+.faq-question:hover{color:#7dd3fc;}
+.faq-q-icon{flex-shrink:0;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(0,217,255,.12);border:1px solid rgba(0,217,255,.3);color:#00d9ff;font-size:.85rem;transition:all .4s;}
+.faq-item.open .faq-q-icon{background:var(--gradient-main);color:#fff;border-color:transparent;transform:rotate(135deg);}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
+.faq-item.open .faq-answer{max-height:600px;}
+.faq-answer-inner{padding:0 22px 22px;color:var(--text-muted);font-size:.86rem;line-height:2;}
+.faq-answer-inner strong{color:#7dd3fc;}
+
+/* ============ CTA ============ */
+.cta-box{position:relative;padding:clamp(30px,5vw,60px) clamp(20px,4vw,52px);border-radius:var(--radius-xl);background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(0,217,255,.35);text-align:center;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);}
+.cta-box::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(0,217,255,.12),transparent 25%,rgba(139,92,246,.12),transparent 55%,rgba(236,72,153,.1),transparent 80%);animation:spin 22s linear infinite;pointer-events:none;}
+.cta-box > *{position:relative;z-index:1;}
+.cta-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:rgba(0,217,255,.12);border:1px solid rgba(0,217,255,.4);color:#7dd3fc;font-size:.76rem;font-weight:800;margin-bottom:18px;}
+.cta-box h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.4rem,3.4vw,2.4rem);font-weight:900;line-height:1.35;margin:0 0 16px;color:#fff;}
+.cta-box h2 .grad{background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.cta-box p{max-width:660px;margin:0 auto 26px;color:var(--text-muted);font-size:.94rem;line-height:2;}
+.cta-actions{display:flex;gap:var(--space-sm);flex-wrap:wrap;justify-content:center;}
+
+/* ============ TOAST ============ */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);padding:14px 26px;border-radius:100px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;font-weight:900;font-size:.88rem;box-shadow:0 15px 40px rgba(16,185,129,.5);z-index:9999;opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:10px;max-width:calc(100vw - 40px);}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.toast i{font-size:1.1rem;flex-shrink:0;}
+
+/* ============ FOOTER ============ */
+footer{background:linear-gradient(180deg,transparent,rgba(5,6,15,.98));padding:var(--space-2xl) 0 var(--space-lg);border-top:1px solid rgba(0,217,255,.18);position:relative;margin-top:var(--space-2xl);}
+footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:2px;background:var(--gradient-main);box-shadow:0 0 25px rgba(0,217,255,.8);}
+.footer-simple{max-width:1100px;margin:0 auto;text-align:center;padding:0 clamp(16px,3vw,40px);}
+.footer-simple-logo{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 12px;}
+.footer-simple-desc{color:var(--text-muted);font-size:.9rem;line-height:1.75;max-width:600px;margin:0 auto var(--space-md);}
+.footer-simple-social{display:flex;justify-content:center;gap:12px;margin-bottom:var(--space-md);flex-wrap:wrap;}
+.footer-simple-social a{width:42px;height:42px;border-radius:12px;background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.28);display:flex;align-items:center;justify-content:center;color:#7dd3fc;transition:all .3s;font-size:1rem;}
+.footer-simple-social a:hover{background:var(--gradient-main);color:#fff;border-color:transparent;transform:translateY(-4px);box-shadow:0 10px 25px rgba(0,217,255,.4);}
+.footer-simple-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:var(--space-md);}
+.footer-simple-links a{color:var(--text-muted);font-size:.85rem;font-weight:600;transition:color .3s;}
+.footer-simple-links a:hover{color:#00d9ff;}
+.footer-simple-copy{color:#64748b;font-size:.78rem;padding-top:var(--space-md);border-top:1px solid rgba(0,217,255,.1);}
+.footer-simple-copy .grad{color:#8b5cf6;font-weight:700;}
+
+/* ============ ALPHA ============ */
+.alpha-character{position:fixed;bottom:22px;right:22px;z-index:400;cursor:pointer;animation:alphaBob 4s ease-in-out infinite;}
+@keyframes alphaBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.alpha-character img{width:100px;transition:transform .4s;filter:drop-shadow(0 10px 30px rgba(0,217,255,.5));}
+.alpha-character:hover img{transform:scale(1.12) rotate(-6deg);}
+.alpha-tooltip{position:absolute;bottom:110%;right:0;width:280px;max-width:85vw;padding:14px 16px;border-radius:var(--radius-md);background:rgba(10,14,39,.96);backdrop-filter:blur(20px);border:1px solid rgba(0,217,255,.4);color:#e2e8f0;font-size:.82rem;line-height:1.7;box-shadow:0 15px 40px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s;pointer-events:none;}
+.alpha-tooltip::after{content:'';position:absolute;top:100%;right:26px;border-width:8px;border-style:solid;border-color:rgba(10,14,39,.96) transparent transparent transparent;}
+.alpha-character.active .alpha-tooltip{opacity:1;visibility:visible;transform:translateY(0);}
+
+.wow{visibility:hidden;}
+
+/* ============ RESPONSIVE BREAKPOINTS ============ */
+/* Large Desktop: 1400px+ - Default */
+
+/* Standard Desktop: 1200px */
+@media (max-width:1200px){
+  .live-bar-inner{grid-template-columns:repeat(2,1fr);}
+  .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .social-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .form-layout{grid-template-columns:1fr;gap:var(--space-md);}
+  .form-side-info{position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:var(--space-sm);}
+}
+
+/* Tablet: 992px */
+@media (max-width:992px){
+  .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:700px;margin:0 auto;}
+  .quick-card{min-height:300px;}
+  .social-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:700px;margin:0 auto;}
+  .social-item{min-height:220px;}
+  .officials-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));}
+  .map-wrapper{height:400px;}
+  .map-pin-circle{width:88px;height:88px;font-size:2.1rem;}
+}
+
+/* Small Tablet / Large Phone: 768px */
+@media (max-width:768px){
+  body{font-size:14px;}
+  .navbar{padding:10px 14px;}
+  .nav-logos img{height:36px;}
+  .nav-icon-btn{width:42px;height:42px;font-size:1rem;border-radius:12px;}
+  .nav-login-btn{height:42px;padding:0 16px 0 14px;font-size:.78rem;gap:6px;}
+  .sidebar-menu{width:290px;}
+  .sidebar-links li a{padding:11px 13px;font-size:.88rem;}
+  .page-hero{padding:100px 5% 30px;min-height:auto;}
+  .page-hero h1{font-size:1.45rem;}
+  .page-hero p{font-size:.8rem;}
+  .page-hero-actions{gap:10px;}
+  .btn-primary,.btn-ghost,.btn-gold{padding:12px 18px;font-size:.78rem;}
+  .breadcrumb{font-size:.68rem;padding:6px 14px;}
+  .page-hero-tag{font-size:.68rem;padding:7px 15px;}
+  .section{padding:clamp(35px,5vw,55px) 0;}
+  .section-head{margin-bottom:var(--space-lg);}
+  .section-title{font-size:clamp(1.2rem,4.5vw,1.6rem);}
+  .section-desc{font-size:.82rem;}
+
+  .live-bar-inner{grid-template-columns:repeat(2,1fr);padding:var(--space-md) var(--space-sm);gap:var(--space-xs);}
+  .live-stat{padding:6px;gap:10px;}
+  .live-stat-icon{width:40px;height:40px;font-size:.95rem;border-radius:11px;}
+  .live-stat-info .val{font-size:.95rem;}
+  .live-stat-info .lbl{font-size:.6rem;}
+
+  .quick-grid{grid-template-columns:1fr;max-width:460px;gap:var(--space-sm);}
+  .quick-card{min-height:auto;padding:var(--space-md) var(--space-sm);}
+  .qc-icon{width:58px;height:58px;font-size:1.4rem;border-radius:16px;margin-bottom:14px;}
+  .quick-card h3{font-size:.95rem;min-height:auto;}
+  .qc-en{font-size:.6rem;}
+  .qc-value{font-size:.82rem;padding:10px 12px;margin-bottom:14px;}
+  .qc-btn{padding:11px 12px;font-size:.72rem;min-height:42px;}
+  .qc-copy-btn{width:34px;height:34px;top:12px;left:12px;font-size:.78rem;}
+
+  .social-grid{grid-template-columns:repeat(2,1fr);gap:var(--space-xs);max-width:100%;}
+  .social-item{padding:var(--space-md) var(--space-xs);min-height:200px;}
+  .social-item-icon{width:52px;height:52px;font-size:1.4rem;border-radius:14px;margin-bottom:12px;}
+  .social-item h4{font-size:.82rem;}
+  .social-item-handle{font-size:.62rem;min-height:3em;}
+  .social-item-btn{font-size:.66rem;padding:8px 14px;min-height:36px;}
+
+  .contact-tabs{border-radius:20px;padding:10px;gap:6px;flex-wrap:wrap;max-width:100%;margin:0 auto var(--space-lg);}
+  .contact-tab{flex:1 1 calc(50% - 3px);padding:10px 12px;font-size:.72rem;justify-content:center;gap:6px;min-height:44px;}
+  .contact-tab i{width:26px;height:26px;font-size:.7rem;}
+
+  .officials-grid{gap:var(--space-sm);}
+  .of-header{padding:var(--space-sm);gap:12px;}
+  .of-avatar{width:68px;height:68px;}
+  .of-avatar i{font-size:1.65rem;}
+  .of-name{font-size:.9rem;}
+  .of-role{font-size:.7rem;}
+  .of-body{padding:var(--space-sm);gap:var(--space-xs);}
+  .of-contact{padding:10px 12px;gap:10px;min-height:56px;}
+  .of-contact-icon{width:34px;height:34px;font-size:.85rem;}
+  .of-contact-info{padding-left:32px;}
+  .of-contact-info .val{font-size:.76rem;}
+  .of-copy{width:26px;height:26px;font-size:.62rem;left:10px;}
+
+  .form-wrapper{padding:var(--space-md);border-radius:var(--radius-lg);}
+  .form-header h2{font-size:1.15rem;}
+  .form-header p{font-size:.8rem;}
+  .form-grid{grid-template-columns:1fr;gap:var(--space-sm);}
+  .form-control{padding:11px 14px;font-size:.86rem;min-height:46px;}
+  textarea.form-control{min-height:110px;}
+  .form-submit{padding:13px;font-size:.88rem;min-height:48px;}
+
+  .form-side-info{grid-template-columns:1fr;gap:var(--space-sm);}
+  .side-info-card{padding:var(--space-sm);}
+  .side-info-icon{width:38px;height:38px;font-size:.95rem;}
+  .side-info-head h4{font-size:.85rem;}
+  .side-info-card p,.side-info-card ul li{font-size:.76rem;}
+  .hours-row{font-size:.78rem;padding:8px 0;}
+  .hours-time{font-size:.72rem;}
+
+  .faq-question{padding:16px;font-size:.85rem;gap:var(--space-xs);}
+  .faq-answer-inner{padding:0 16px 18px;font-size:.78rem;}
+  .faq-q-icon{width:30px;height:30px;font-size:.75rem;}
+
+  .map-wrapper{height:340px;border-radius:var(--radius-lg);}
+  .map-pin-circle{width:76px;height:76px;font-size:1.85rem;}
+  .map-pin-text{font-size:.78rem;padding:10px 18px;}
+  .map-info{flex-direction:column;text-align:center;padding:14px 16px;gap:12px;bottom:16px;left:16px;right:16px;}
+  .map-info-item{font-size:.76rem;}
+  .map-info-btn{width:100%;justify-content:center;padding:11px 18px;font-size:.74rem;}
+
+  .cta-box{border-radius:var(--radius-lg);}
+  .cta-box h2{font-size:1.2rem;}
+  .cta-box p{font-size:.82rem;}
+  .cta-actions{flex-direction:column;gap:var(--space-xs);}
+  .cta-actions .btn-primary,.cta-actions .btn-ghost,.cta-actions .btn-gold{width:100%;}
+
+  footer{padding:var(--space-xl) 0 var(--space-md);margin-top:var(--space-xl);}
+  .footer-simple-logo{font-size:1.15rem;letter-spacing:2px;}
+  .footer-simple-desc{font-size:.78rem;}
+  .footer-simple-social a{width:38px;height:38px;font-size:.85rem;}
+  .footer-simple-links{gap:14px;}
+  .footer-simple-links a{font-size:.72rem;}
+  .footer-simple-copy{font-size:.7rem;}
+
+  .alpha-character{right:14px;bottom:14px;}
+  .alpha-character img{width:70px;}
+  .alpha-tooltip{width:220px;font-size:.72rem;padding:10px 12px;}
+  .toast{font-size:.78rem;padding:12px 20px;bottom:20px;}
+}
+
+/* Small Phone: 520px */
+@media (max-width:520px){
+  body{font-size:13px;}
+  .nav-login-btn span{display:none;}
+  .nav-login-btn{padding:0;width:40px;justify-content:center;border-radius:50%;height:40px;}
+  .page-hero h1{font-size:1.25rem;}
+  .page-hero p{font-size:.74rem;}
+  .section-title{font-size:1.15rem;}
+  .section-desc{font-size:.78rem;}
+
+  .live-bar-inner{grid-template-columns:1fr;gap:var(--space-xs);}
+  .live-stat{padding:8px 12px;justify-content:flex-start;}
+
+  .quick-grid{max-width:100%;}
+  .quick-card{min-height:auto;}
+
+  .social-grid{grid-template-columns:1fr;max-width:420px;}
+  .social-item{min-height:auto;padding:var(--space-md);}
+
+  .contact-tab{flex:1 1 100%;}
+
+  .officials-grid{grid-template-columns:1fr;max-width:100%;}
+  .of-header{flex-direction:column;text-align:center;gap:10px;}
+  .of-info{text-align:center;}
+  .of-avatar{width:72px;height:72px;}
+
+  .form-wrapper{padding:var(--space-sm);}
+  .form-header h2{font-size:1.05rem;}
+  .form-submit{font-size:.85rem;}
+
+  .faq-question{font-size:.8rem;padding:14px;}
+  .faq-question span:first-child{flex:1;}
+  .faq-answer-inner{font-size:.75rem;padding:0 14px 16px;}
+
+  .map-wrapper{height:300px;}
+  .map-pin-circle{width:64px;height:64px;font-size:1.55rem;}
+  .map-pin-circle::before{inset:-10px;}
+  .map-pin-circle::after{inset:-20px;}
+  .map-pin-text{font-size:.7rem;padding:8px 14px;margin-top:14px;}
+
+  .footer-simple-logo{font-size:1rem;}
+  .footer-simple-desc{font-size:.72rem;}
+  .footer-simple-social a{width:36px;height:36px;}
+  .footer-simple-links{gap:10px;}
+  .footer-simple-links a{font-size:.65rem;}
+  .footer-simple-copy{font-size:.62rem;}
+
+  .alpha-character img{width:60px;}
+}
+
+/* Extra Small: 400px */
+@media (max-width:400px){
+  .live-stat-info .val{font-size:.85rem;}
+  .live-stat-info .lbl{font-size:.55rem;}
+  .live-stat-icon{width:36px;height:36px;font-size:.85rem;}
+  .qc-value{font-size:.75rem;padding:9px 10px;}
+  .social-item-btn{font-size:.62rem;padding:7px 12px;}
+  .footer-simple-links{flex-direction:row;flex-wrap:wrap;gap:8px;}
+  .footer-simple-links a{font-size:.62rem;}
+}
+
+::-webkit-scrollbar{width:9px;}
+::-webkit-scrollbar-track{background:#05060f;}
+::-webkit-scrollbar-thumb{background:var(--gradient-main);border-radius:10px;border:2px solid #05060f;}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div class="loader-screen" id="loaderScreen">
+<div class="loader-particle" style="width:6px;height:6px;left:10%;animation-duration:7s;animation-delay:0s"></div><div class="loader-particle" style="width:4px;height:4px;left:24%;animation-duration:9.5s;animation-delay:1.2s"></div><div class="loader-particle" style="width:5px;height:5px;left:40%;animation-duration:6.5s;animation-delay:2.4s"></div><div class="loader-particle" style="width:7px;height:7px;left:58%;animation-duration:8.5s;animation-delay:.6s"></div><div class="loader-particle" style="width:4px;height:4px;left:73%;animation-duration:7.8s;animation-delay:1.8s"></div><div class="loader-particle" style="width:5px;height:5px;left:87%;animation-duration:9s;animation-delay:.3s"></div>
+<div class="loader-content">
+<div class="loader-logo-wrap">
+<div class="loader-glow"></div>
+<div class="loader-ring"></div><div class="loader-ring loader-ring-2"></div><div class="loader-ring loader-ring-3"></div>
+<div class="loader-logo-inner"><img src="./assets/EBDA3.png" alt="FBA Futur By Ai" loading="eager" onerror="this.style.display='none'"></div>
+</div>
+<h1 class="loader-title">FUTUR BY AI</h1>
+<p class="loader-sub">تواصل معنا</p>
+<div class="loader-bar"><div class="loader-bar-fill" id="loaderBarFill"></div></div>
+<div class="loader-percent" id="loaderPercent">0%</div>
+</div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="bg-mesh" id="bgMesh"></div>
+<div class="bg-orbs">
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div><div class="orb orb-4"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-logos">
+<img src="./assets/minestry-sports.png" alt="وزارة الشباب والرياضة">
+<img src="./assets/KFS.png" alt="اتحاد شباب كفر الشيخ">
+</div>
+<div class="nav-actions">
+<a href="./login.html" class="nav-login-btn"><i class="fas fa-right-to-bracket"></i><span>تسجيل الدخول</span></a>
+<button class="nav-icon-btn" id="menuToggleBtn" aria-label="القائمة"><div class="menu-lines"><span></span><span></span><span></span></div></button>
+</div>
+</nav>
+
+<!-- SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar-menu" id="sidebarMenu">
+<div class="sidebar-header"><h3>FBA FUTUR BY AI</h3><button class="sidebar-close" id="sidebarCloseBtn"><i class="fas fa-times"></i></button></div>
+<ul class="sidebar-links">
+<li><a href="index.html"><i class="fas fa-home"></i><span>الصفحة الرئيسية</span></a></li>
+<li><a href="about.html"><i class="fas fa-info-circle"></i><span>من نحن</span></a></li>
+<li><a href="committees.html"><i class="fas fa-sitemap"></i><span>الوحدات</span></a></li>
+<li><a href="events.html"><i class="fas fa-calendar-check"></i><span>الفعاليات</span></a></li>
+<li><a href="team.html"><i class="fas fa-users"></i><span>الهيكل التطوعي</span></a></li>
+<li><a href="sponsors.html"><i class="fas fa-handshake"></i><span>الرعاة</span></a></li>
+<li><a href="contact.html" class="active"><i class="fas fa-headset"></i><span>تواصل معنا</span></a></li>
+</ul>
+</aside>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+<div class="breadcrumb">
+<a href="index.html">الرئيسية</a>
+<i class="fas fa-chevron-left"></i>
+<span class="current">تواصل معنا</span>
+</div>
+<div class="page-hero-tag"><i class="fas fa-headset"></i> <span>نحن هنا من أجلك · 24/7</span></div>
+<h1>تواصل <span class="grad">معنا</span> مباشرة</h1>
+<p>كل <strong>وسائل التواصل الرسمية</strong> في مكان واحد، وأرقام <strong>المسؤولين المباشرة</strong> في القطاع المركزي ووحدة الموارد البشرية. اختر الطريقة الأنسب لك للتواصل معنا، وسيتم الرد عليك خلال 24 ساعة كحد أقصى.</p>
+<div class="page-hero-actions">
+<button class="btn-primary" onclick="scrollToId('quick-contact')"><i class="fas fa-bolt"></i> <span>تواصل سريع</span></button>
+<button class="btn-ghost" onclick="scrollToId('officials')"><i class="fas fa-address-book"></i> <span>أرقام المسؤولين</span></button>
+<button class="btn-gold" onclick="scrollToId('form-section')"><i class="fas fa-paper-plane"></i> <span>أرسل رسالة</span></button>
+</div>
+</section>
+
+<!-- LIVE STATS -->
+<section class="live-bar container">
+<div class="live-bar-inner wow animate__fadeInUp">
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-clock"></i></div><div class="live-stat-info"><span class="val">24/7</span><span class="lbl">متاحون لخدمتك</span></div></div>
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-bolt"></i></div><div class="live-stat-info"><span class="val">24h</span><span class="lbl">سرعة الرد</span></div></div>
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-users"></i></div><div class="live-stat-info"><span class="val" data-count="15" data-suffix="+">0</span><span class="lbl">مسؤول مباشر</span></div></div>
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-star"></i></div><div class="live-stat-info"><span class="val" data-count="98" data-suffix="%">0</span><span class="lbl">رضا المستخدمين</span></div></div>
+</div>
+</section>
+
+<!-- QUICK CONTACT -->
+<section class="section" id="quick-contact" style="padding-top:0">
+<div class="container">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">تواصل سريع</span>
+<h2 class="section-title">اختر <span class="gradient-text">القناة المناسبة</span></h2>
+<p class="section-desc">ثلاث قنوات رئيسية للتواصل المباشر معنا. اضغط على أي زر لبدء التواصل فوراً أو انسخ الرقم للاحتفاظ به.</p>
+</div>
+
+<div class="quick-grid">
+<div class="quick-card wow animate__fadeInUp" style="--qc-gradient:linear-gradient(135deg,#3b82f6,#1d4ed8);--qc-rgb:59,130,246;--qc-color:#3b82f6">
+<button class="qc-copy-btn" onclick="copyContact('ebdaa360@gmail.com',this)" aria-label="نسخ البريد"><i class="fas fa-copy"></i></button>
+<div class="qc-icon"><i class="fas fa-envelope"></i></div>
+<h3>البريد الإلكتروني الرسمي</h3>
+<p class="qc-en">OFFICIAL EMAIL</p>
+<div class="qc-value">ebdaa360@gmail.com</div>
+<div class="qc-actions">
+<a href="mailto:ebdaa360@gmail.com" class="qc-btn"><i class="fas fa-paper-plane"></i> راسلنا</a>
+</div>
+</div>
+
+<div class="quick-card wow animate__fadeInUp" data-wow-delay="0.1s" style="--qc-gradient:linear-gradient(135deg,#8b5cf6,#6a47e8);--qc-rgb:139,92,246;--qc-color:#8b5cf6">
+<button class="qc-copy-btn" onclick="copyContact('+201234567890',this)" aria-label="نسخ الهاتف"><i class="fas fa-copy"></i></button>
+<div class="qc-icon"><i class="fas fa-phone-volume"></i></div>
+<h3>الخط الساخن</h3>
+<p class="qc-en">HOTLINE</p>
+<div class="qc-value">+20 123 456 7890</div>
+<div class="qc-actions">
+<a href="tel:+201234567890" class="qc-btn"><i class="fas fa-phone"></i> اتصل الآن</a>
+</div>
+</div>
+
+<div class="quick-card wow animate__fadeInUp" data-wow-delay="0.2s" style="--qc-gradient:linear-gradient(135deg,#10b981,#059669);--qc-rgb:16,185,129;--qc-color:#10b981">
+<button class="qc-copy-btn" onclick="copyContact('+201234567890',this)" aria-label="نسخ الرقم"><i class="fas fa-copy"></i></button>
+<div class="qc-icon"><i class="fab fa-whatsapp"></i></div>
+<h3>واتساب الأعمال</h3>
+<p class="qc-en">WHATSAPP BUSINESS</p>
+<div class="qc-value">+20 123 456 7890</div>
+<div class="qc-actions">
+<a href="https://wa.me/201234567890" target="_blank" class="qc-btn"><i class="fab fa-whatsapp"></i> راسلنا</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section class="section" id="social" style="padding-top:0">
+<div class="container">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">تابعنا</span>
+<h2 class="section-title">حساباتنا <span class="gradient-text">الرسمية</span></h2>
+<p class="section-desc">تابعنا على منصات التواصل الاجتماعي للحصول على آخر الأخبار والفعاليات والتحديثات.</p>
+</div>
+
+<div class="social-grid">
+<a class="social-item wow animate__fadeInUp" href="https://www.facebook.com/share/16NuHNYhs7/?mibextid=wwXIfr" target="_blank" style="--sc-gradient:linear-gradient(135deg,#1877F2,#0d5dbf);--sc-rgb:24,119,242;--sc-color:#1877F2">
+<div class="social-item-icon"><i class="fab fa-facebook-f"></i></div>
+<h4>فيسبوك</h4>
+<p class="social-item-handle">FBA Futur By Ai</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> تابعنا</span>
+</a>
+
+<a class="social-item wow animate__fadeInUp" data-wow-delay="0.05s" href="https://www.instagram.com/ebdaa360?igsh=MWk1ZmEyZThiMnZrOA%3D%3D&utm_source=qr" target="_blank" style="--sc-gradient:linear-gradient(135deg,#E4405F,#833AB4);--sc-rgb:228,64,95;--sc-color:#E4405F">
+<div class="social-item-icon"><i class="fab fa-instagram"></i></div>
+<h4>إنستجرام</h4>
+<p class="social-item-handle">@ebdaa360</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> تابعنا</span>
+</a>
+
+<a class="social-item wow animate__fadeInUp" data-wow-delay="0.1s" href="https://www.tiktok.com/@ebda3_360?_t=ZS-90GbHtyNHvE&_r=1" target="_blank" style="--sc-gradient:linear-gradient(135deg,#000000,#25F4EE);--sc-rgb:37,244,238;--sc-color:#25F4EE">
+<div class="social-item-icon"><i class="fab fa-tiktok"></i></div>
+<h4>تيك توك</h4>
+<p class="social-item-handle">@ebda3_360</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> تابعنا</span>
+</a>
+
+<a class="social-item wow animate__fadeInUp" data-wow-delay="0.15s" href="https://wa.me/201234567890" target="_blank" style="--sc-gradient:linear-gradient(135deg,#25D366,#128C7E);--sc-rgb:37,211,102;--sc-color:#25D366">
+<div class="social-item-icon"><i class="fab fa-whatsapp"></i></div>
+<h4>واتساب</h4>
+<p class="social-item-handle">+20 123 456 7890</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> راسلنا</span>
+</a>
+
+<a class="social-item wow animate__fadeInUp" data-wow-delay="0.2s" href="#" target="_blank" style="--sc-gradient:linear-gradient(135deg,#1DA1F2,#0d8bd9);--sc-rgb:29,161,242;--sc-color:#1DA1F2">
+<div class="social-item-icon"><i class="fab fa-twitter"></i></div>
+<h4>تويتر / X</h4>
+<p class="social-item-handle">@FBAFuturByAI</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> تابعنا</span>
+</a>
+
+<a class="social-item wow animate__fadeInUp" data-wow-delay="0.25s" href="#" target="_blank" style="--sc-gradient:linear-gradient(135deg,#0A66C2,#004182);--sc-rgb:10,102,194;--sc-color:#0A66C2">
+<div class="social-item-icon"><i class="fab fa-linkedin-in"></i></div>
+<h4>لينكد إن</h4>
+<p class="social-item-handle">FBA Futur By Ai</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> تابعنا</span>
+</a>
+
+<a class="social-item wow animate__fadeInUp" data-wow-delay="0.3s" href="#" target="_blank" style="--sc-gradient:linear-gradient(135deg,#FF0000,#c4302b);--sc-rgb:255,0,0;--sc-color:#FF0000">
+<div class="social-item-icon"><i class="fab fa-youtube"></i></div>
+<h4>يوتيوب</h4>
+<p class="social-item-handle">FBA Futur By Ai</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> شاهدنا</span>
+</a>
+
+<a class="social-item wow animate__fadeInUp" data-wow-delay="0.35s" href="https://t.me/" target="_blank" style="--sc-gradient:linear-gradient(135deg,#0088cc,#006699);--sc-rgb:0,136,204;--sc-color:#0088cc">
+<div class="social-item-icon"><i class="fab fa-telegram"></i></div>
+<h4>تليجرام</h4>
+<p class="social-item-handle">@FBAFuturByAI</p>
+<span class="social-item-btn"><i class="fas fa-external-link-alt"></i> انضم</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- OFFICIALS -->
+<section class="section" id="officials" style="padding-top:0">
+<div class="container">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">أرقام المسؤولين</span>
+<h2 class="section-title">تواصل <span class="gradient-text">مباشرة مع الفريق</span></h2>
+<p class="section-desc">أرقام مباشرة لكل مسؤول في وحدة الموارد البشرية والقطاع المركزي. اختر القسم الذي يناسب استفسارك وتواصل مباشرة.</p>
+</div>
+
+<div class="contact-tabs wow animate__fadeInUp" id="contactTabs">
+<button class="contact-tab active" data-ctab="hr" style="--ct-color:#10b981;--ct-color2:#059669;--ct-rgb:16,185,129"><i class="fas fa-users-cog"></i> <span>الموارد البشرية</span></button>
+<button class="contact-tab" data-ctab="central" style="--ct-color:#8b5cf6;--ct-color2:#6a47e8;--ct-rgb:139,92,246"><i class="fas fa-building"></i> <span>القطاع المركزي</span></button>
+<button class="contact-tab" data-ctab="executive" style="--ct-color:#fbbf24;--ct-color2:#d97706;--ct-rgb:251,191,36"><i class="fas fa-crown"></i> <span>الإدارة التنفيذية</span></button>
+</div>
+
+<!-- Panel: HR -->
+<div class="contact-panel active" data-cpanel="hr">
+<div class="officials-grid">
+<div class="official-card wow animate__fadeInUp" style="--of-color:#10b981;--of-color2:#059669;--of-rgb:16,185,129;--of-gradient:linear-gradient(135deg,#10b981,#059669)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-user-tie"></i></div>
+<div class="of-info">
+<span class="of-badge">وحدة الموارد البشرية</span>
+<h4 class="of-name">رئيس وحدة الموارد البشرية</h4>
+<p class="of-role">Head of HR Unit</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000001">+20 100 000 0001</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000001',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000001" target="_blank">+20 100 000 0001</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000001',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:hr@fbafutur.com">hr@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('hr@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+
+<div class="official-card wow animate__fadeInUp" data-wow-delay="0.05s" style="--of-color:#10b981;--of-color2:#059669;--of-rgb:16,185,129;--of-gradient:linear-gradient(135deg,#10b981,#059669)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-user-group"></i></div>
+<div class="of-info">
+<span class="of-badge">وحدة الموارد البشرية</span>
+<h4 class="of-name">نائب رئيس وحدة الموارد البشرية</h4>
+<p class="of-role">Vice Head of HR Unit</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000002">+20 100 000 0002</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000002',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000002" target="_blank">+20 100 000 0002</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000002',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:hr-vice@fbafutur.com">hr-vice@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('hr-vice@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+
+<div class="official-card wow animate__fadeInUp" data-wow-delay="0.1s" style="--of-color:#10b981;--of-color2:#059669;--of-rgb:16,185,129;--of-gradient:linear-gradient(135deg,#10b981,#059669)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-user-plus"></i></div>
+<div class="of-info">
+<span class="of-badge">وحدة الموارد البشرية</span>
+<h4 class="of-name">مسؤول الاستقطاب والعضوية</h4>
+<p class="of-role">Recruitment Officer</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000003">+20 100 000 0003</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000003',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000003" target="_blank">+20 100 000 0003</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000003',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:join@fbafutur.com">join@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('join@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Panel: Central Sector -->
+<div class="contact-panel" data-cpanel="central">
+<div class="officials-grid">
+<div class="official-card wow animate__fadeInUp" style="--of-color:#8b5cf6;--of-color2:#6a47e8;--of-rgb:139,92,246;--of-gradient:linear-gradient(135deg,#8b5cf6,#6a47e8)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-cogs"></i></div>
+<div class="of-info">
+<span class="of-badge">وحدة التنظيم والعمليات</span>
+<h4 class="of-name">رئيس وحدة التنظيم والعمليات</h4>
+<p class="of-role">Head of OR Unit</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000010">+20 100 000 0010</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000010',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000010" target="_blank">+20 100 000 0010</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000010',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:operations@fbafutur.com">operations@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('operations@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+
+<div class="official-card wow animate__fadeInUp" data-wow-delay="0.05s" style="--of-color:#ec4899;--of-color2:#be185d;--of-rgb:236,72,153;--of-gradient:linear-gradient(135deg,#ec4899,#be185d)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-handshake"></i></div>
+<div class="of-info">
+<span class="of-badge">وحدة العلاقات العامة</span>
+<h4 class="of-name">رئيس وحدة العلاقات العامة</h4>
+<p class="of-role">Head of PR Unit</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000020">+20 100 000 0020</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000020',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000020" target="_blank">+20 100 000 0020</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000020',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:relations@fbafutur.com">relations@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('relations@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+
+<div class="official-card wow animate__fadeInUp" data-wow-delay="0.1s" style="--of-color:#00d9ff;--of-color2:#0891b2;--of-rgb:0,217,255;--of-gradient:linear-gradient(135deg,#00d9ff,#0891b2)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-bullhorn"></i></div>
+<div class="of-info">
+<span class="of-badge">وحدة التسويق والانتشار</span>
+<h4 class="of-name">رئيس وحدة التسويق والانتشار</h4>
+<p class="of-role">Head of SM Unit</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000030">+20 100 000 0030</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000030',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000030" target="_blank">+20 100 000 0030</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000030',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:marketing@fbafutur.com">marketing@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('marketing@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+
+<div class="official-card wow animate__fadeInUp" data-wow-delay="0.15s" style="--of-color:#22d3ee;--of-color2:#0891b2;--of-rgb:34,211,238;--of-gradient:linear-gradient(135deg,#22d3ee,#0891b2)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-microchip"></i></div>
+<div class="of-info">
+<span class="of-badge">وحدة تحول AI</span>
+<h4 class="of-name">رئيس وحدة تحول الذكاء الاصطناعي</h4>
+<p class="of-role">Head of AIT Unit</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000040">+20 100 000 0040</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000040',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000040" target="_blank">+20 100 000 0040</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000040',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:ai@fbafutur.com">ai@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('ai@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+
+<div class="official-card wow animate__fadeInUp" data-wow-delay="0.2s" style="--of-color:#a855f7;--of-color2:#7c3aed;--of-rgb:168,85,247;--of-gradient:linear-gradient(135deg,#a855f7,#7c3aed)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-globe"></i></div>
+<div class="of-info">
+<span class="of-badge">العلاقات الخارجية</span>
+<h4 class="of-name">مسؤولة العلاقات الخارجية</h4>
+<p class="of-role">External Relations Officer</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000050">+20 100 000 0050</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000050',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000050" target="_blank">+20 100 000 0050</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000050',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:international@fbafutur.com">international@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('international@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Panel: Executive -->
+<div class="contact-panel" data-cpanel="executive">
+<div class="officials-grid">
+<div class="official-card wow animate__fadeInUp" style="--of-color:#fbbf24;--of-color2:#d97706;--of-rgb:251,191,36;--of-gradient:linear-gradient(135deg,#fbbf24,#d97706)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-briefcase"></i></div>
+<div class="of-info">
+<span class="of-badge">الإدارة التنفيذية</span>
+<h4 class="of-name">المدير التنفيذي للمشروع</h4>
+<p class="of-role">Executive Director</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000100">+20 100 000 0100</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000100',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000100" target="_blank">+20 100 000 0100</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000100',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:director@fbafutur.com">director@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('director@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+
+<div class="official-card wow animate__fadeInUp" data-wow-delay="0.05s" style="--of-color:#fbbf24;--of-color2:#d97706;--of-rgb:251,191,36;--of-gradient:linear-gradient(135deg,#fbbf24,#d97706)">
+<div class="of-header">
+<div class="of-avatar"><i class="fas fa-user-tie"></i></div>
+<div class="of-info">
+<span class="of-badge">الإدارة التنفيذية</span>
+<h4 class="of-name">نائب المدير التنفيذي</h4>
+<p class="of-role">Deputy Executive Director</p>
+</div>
+</div>
+<div class="of-body">
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-phone"></i></div>
+<div class="of-contact-info">
+<span class="lbl">الهاتف المباشر</span>
+<p class="val"><a href="tel:+201000000101">+20 100 000 0101</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000101',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fab fa-whatsapp"></i></div>
+<div class="of-contact-info">
+<span class="lbl">واتساب</span>
+<p class="val"><a href="https://wa.me/201000000101" target="_blank">+20 100 000 0101</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('+201000000101',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+<div class="of-contact">
+<div class="of-contact-icon"><i class="fas fa-envelope"></i></div>
+<div class="of-contact-info">
+<span class="lbl">البريد الإلكتروني</span>
+<p class="val"><a href="mailto:deputy@fbafutur.com">deputy@fbafutur.com</a></p>
+</div>
+<button class="of-copy" onclick="copyContact('deputy@fbafutur.com',this)" aria-label="نسخ"><i class="fas fa-copy"></i></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="section" id="form-section" style="padding-top:0">
+<div class="container">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">أرسل رسالة</span>
+<h2 class="section-title">عندك <span class="gradient-text">استفسار؟</span> راسلنا</h2>
+<p class="section-desc">املأ النموذج التالي وسيتم الرد عليك من الفريق المختص خلال 24 ساعة كحد أقصى.</p>
+</div>
+
+<div class="form-layout">
+<div class="form-wrapper wow animate__fadeInUp">
+<div class="form-header">
+<h2>عندك <span class="grad">استفسار؟</span> راسلنا الآن</h2>
+<p>لأي استفسار عاجل، يمكنك الاتصال مباشرة بأرقام المسؤولين المذكورة في القسم السابق.</p>
+</div>
+
+<form id="contactForm" onsubmit="handleContactSubmit(event)">
+<div class="form-grid">
+<div class="form-group">
+<label class="form-label" for="cf-name">الاسم الكامل <span class="req">*</span></label>
+<input type="text" class="form-control" id="cf-name" name="name" placeholder="اكتب اسمك بالكامل" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="cf-email">البريد الإلكتروني <span class="req">*</span></label>
+<input type="email" class="form-control" id="cf-email" name="email" placeholder="example@email.com" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="cf-phone">رقم الهاتف</label>
+<input type="tel" class="form-control" id="cf-phone" name="phone" placeholder="+20 1XX XXX XXXX">
+</div>
+<div class="form-group">
+<label class="form-label" for="cf-subject">الموضوع <span class="req">*</span></label>
+<select class="form-control" id="cf-subject" name="subject" required>
+<option value="">اختر الموضوع...</option>
+<option value="join">الانضمام للمشروع</option>
+<option value="training">التدريبات والبرامج</option>
+<option value="events">الفعاليات</option>
+<option value="sponsor">رعاية / شراكة</option>
+<option value="complaint">شكوى</option>
+<option value="suggestion">اقتراح</option>
+<option value="general">استفسار عام</option>
+</select>
+</div>
+<div class="form-group full">
+<label class="form-label" for="cf-message">رسالتك <span class="req">*</span></label>
+<textarea class="form-control" id="cf-message" name="message" placeholder="اكتب رسالتك بالتفصيل، وسنعاود التواصل معك في أقرب وقت..." required></textarea>
+</div>
+</div>
+<button type="submit" class="form-submit">
+<i class="fas fa-paper-plane"></i>
+<span>أرسل الرسالة</span>
+</button>
+</form>
+</div>
+
+<aside class="form-side-info">
+<div class="side-info-card">
+<div class="side-info-head">
+<div class="side-info-icon"><i class="fas fa-clock"></i></div>
+<h4>ساعات العمل</h4>
+</div>
+<div class="hours-row"><span class="hours-day">الأحد - الخميس</span><span class="hours-time">9:00 ص - 6:00 م</span></div>
+<div class="hours-row"><span class="hours-day">الجمعة</span><span class="hours-time">2:00 م - 6:00 م</span></div>
+<div class="hours-row"><span class="hours-day">السبت</span><span class="hours-time">10:00 ص - 4:00 م</span></div>
+<div class="hours-row"><span class="hours-day">الخط الساخن</span><span class="hours-time">24/7</span></div>
+</div>
+
+<div class="side-info-card">
+<div class="side-info-head">
+<div class="side-info-icon"><i class="fas fa-bolt"></i></div>
+<h4>مدة الاستجابة</h4>
+</div>
+<ul>
+<li>الاستفسارات العامة: خلال 24 ساعة</li>
+<li>طلبات الانضمام: خلال 48 ساعة</li>
+<li>الشكاوى: خلال 72 ساعة</li>
+<li>الحالات الطارئة: فورية</li>
+</ul>
+</div>
+
+<div class="side-info-card">
+<div class="side-info-head">
+<div class="side-info-icon"><i class="fas fa-shield-halved"></i></div>
+<h4>خصوصيتك محفوظة</h4>
+</div>
+<p>كل البيانات التي ترسلها عبر النموذج تُعالج بسرية تامة، ولا تُشارك مع أي جهة خارجية. تلتزم إدارة المشروع بحماية بياناتك وفق معايير حماية البيانات المعتمدة.</p>
+</div>
+</aside>
+</div>
+</div>
+</section>
+
+<!-- MAP -->
+<section class="section" id="map" style="padding-top:0">
+<div class="container">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">موقعنا</span>
+<h2 class="section-title">المقر <span class="gradient-text">الرئيسي</span></h2>
+<p class="section-desc">زُرنا في المقر الرئيسي للمشروع في كفر الشيخ، أو تواصل معنا عبر القنوات الرقمية.</p>
+</div>
+
+<div class="map-wrapper wow animate__fadeInUp">
+<div class="map-bg"></div>
+<div class="map-glow"></div>
+<div class="map-pin">
+<div class="map-pin-circle"><i class="fas fa-map-pin"></i></div>
+<div class="map-pin-text"><i class="fas fa-location-dot"></i> كفر الشيخ، مصر</div>
+</div>
+<div class="map-info">
+<div class="map-info-item">
+<i class="fas fa-building"></i>
+<span>اتحاد شباب كفر الشيخ - المقر الرئيسي</span>
+</div>
+<div class="map-info-item">
+<i class="fas fa-clock"></i>
+<span>9:00 ص - 6:00 م (الأحد - الخميس)</span>
+</div>
+<a href="https://maps.google.com/?q=Kafr+El-Sheikh" target="_blank" class="map-info-btn">
+<i class="fas fa-directions"></i> افتح في الخريطة
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="padding-top:0">
+<div class="container">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">أسئلة شائعة</span>
+<h2 class="section-title">عندك <span class="gradient-text">سؤال؟</span></h2>
+<p class="section-desc">أكثر الأسئلة التي تصلنا من الشباب المهتم بالانضمام للمشروع.</p>
+</div>
+
+<div class="faq-wrap">
+<div class="faq-item open wow animate__fadeInUp">
+<button class="faq-question"><span>كيف أنضم إلى FBA Futur By Ai؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+يمكنك التقديم من خلال <strong>صفحة التسجيل</strong>، أو التواصل مباشرة مع <strong>وحدة الموارد البشرية</strong> عبر أرقامها المذكورة في قسم "أرقام المسؤولين". سيتم التواصل معك خلال 48 ساعة من استلام طلبك.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>هل الانضمام مجاني؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>نعم، مجاني بالكامل.</strong> جميع البرامج التدريبية، ورش العمل، الفعاليات، والمسابقات مجانية تماماً، ولا نطلب أي رسوم من المشاركين.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>هل يمكنني التواصل مع مسؤول محدد مباشرة؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>نعم، بالتأكيد.</strong> في قسم "أرقام المسؤولين" ستجد أرقام المسؤولين المباشرة في كل قسم (الموارد البشرية، القطاع المركزي، الإدارة التنفيذية). يمكنك التواصل مع رئيس الوحدة المسؤولة عن استفسارك مباشرة.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>كم يستغرق الرد على الاستفسارات؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>خلال 24 ساعة</strong> للاستفسارات العامة، و<strong>خلال 48 ساعة</strong> لطلبات الانضمام، و<strong>خلال 72 ساعة</strong> للشكاوى. في الحالات الطارئة، يمكنك الاتصال بالخط الساخن مباشرة على مدار الساعة.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>هل المشروع متاح في كل المحافظات؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>نعم، 27 محافظة.</strong> المشروع له فرق محلية في كل محافظات مصر، ولكل محافظة مجلس قيادي كامل. يمكنك التواصل مع فريق محافظتك عبر صفحة "الفريق".
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>هل يمكنني التطوع بدون خبرة سابقة؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>نعم، لا نطلب خبرة سابقة.</strong> نوفر برامج تدريبية متخصصة من الصفر، ونتولى تأهيلك في المجال الذي تختاره. كل ما تحتاجه هو الشغف والالتزام.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>كيف أتقدم كراعٍ أو شريك للمشروع؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>نرحب بالشراكات.</strong> يرجى التواصل مع <strong>وحدة العلاقات العامة</strong> عبر الأرقام المذكورة في قسم "أرقام المسؤولين"، أو زيارة صفحة "الرعاة" لتقديم طلب رسمي. سيتواصل معك فريق العلاقات خلال 48 ساعة.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>هل توجد شهادات معتمدة بعد التدريب؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>نعم.</strong> يحصل المشاركون على شهادات إتمام معتمدة من المبادرة، وبعض البرامج تحصل على اعتماد إضافي من جهات شريكة. الشهادات معترف بها في سوق العمل المصري والعربي.
+</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding-top:0">
+<div class="container">
+<div class="cta-box wow animate__fadeInUp">
+<div class="cta-badge"><i class="fas fa-bolt"></i> <span>جاهز تبدأ؟</span></div>
+<h2>انضم إلى <span class="grad">قادة التحول الرقمي</span></h2>
+<p>نحن هنا من أجلك. لا تتردد في التواصل معنا لأي استفسار. سجل الآن مجاناً وابدأ رحلتك في أكبر مشروع شبابي رقمي في مصر والوطن العربي.</p>
+<div class="cta-actions">
+<a href="./register.html" class="btn-primary"><i class="fas fa-user-plus"></i> <span>سجّل الآن مجاناً</span></a>
+<a href="https://wa.me/201234567890" target="_blank" class="btn-ghost"><i class="fab fa-whatsapp"></i> <span>تواصل عبر واتساب</span></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-simple">
+<h3 class="footer-simple-logo">FBA FUTUR BY AI</h3>
+<p class="footer-simple-desc">أول منصة رقمية تطوعية مصرية تدعم تحول الذكاء الاصطناعي، وتبني جيلاً قادراً على التعامل مع كل وسائل AI باحترافية.</p>
+<div class="footer-simple-social">
+<a href="https://www.facebook.com/share/16NuHNYhs7/?mibextid=wwXIfr" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/ebdaa360?igsh=MWk1ZmEyZThiMnZrOA%3D%3D&utm_source=qr" target="_blank" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@ebda3_360?_t=ZS-90GbHtyNHvE&_r=1" target="_blank" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
+<a href="mailto:ebdaa360@gmail.com" aria-label="البريد"><i class="fas fa-envelope"></i></a>
+<a href="https://wa.me/201234567890" target="_blank" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+</div>
+<div class="footer-simple-links">
+<a href="index.html">الرئيسية</a>
+<a href="about.html">من نحن</a>
+<a href="committees.html">الوحدات</a>
+<a href="events.html">الفعاليات</a>
+<a href="team.html">الهيكل التطوعي</a>
+<a href="sponsors.html">الرعاة</a>
+<a href="contact.html">تواصل معنا</a>
+</div>
+<p class="footer-simple-copy">© 2025 <span class="grad">FBA Futur By Ai</span> — جميع الحقوق محفوظة | صُمم بشغف في مصر 🇪🇬</p>
+</div>
+</footer>
+
+<!-- ALPHA -->
+<div class="alpha-character" id="alphaCharacter">
+<div class="alpha-tooltip" id="alphaTooltip">أهلاً بك في صفحة التواصل! اختر القناة المناسبة أو تواصل مباشرة مع المسؤولين.</div>
+<img src="./assets/ALPHA-1.png" alt="VolunAI" id="alphaImage" onerror="this.style.display='none'">
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMessage">تم النسخ بنجاح</span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+/* =========================================================
+   CONTACT TABS
+   ========================================================= */
+(function(){
+  const tabs = document.querySelectorAll('.contact-tab');
+  const panels = document.querySelectorAll('.contact-panel');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      const key = tab.dataset.ctab;
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      panels.forEach(p=>{
+        p.classList.toggle('active', p.dataset.cpanel === key);
+      });
+      if(typeof WOW !== 'undefined'){
+        setTimeout(()=>{
+          document.querySelectorAll('.contact-panel.active .wow').forEach(el=>{
+            el.classList.add('animate__animated');
+            el.style.visibility = 'visible';
+          });
+        }, 50);
+      }
+    });
+  });
+})();
+
+/* =========================================================
+   COPY TO CLIPBOARD
+   ========================================================= */
+function showToast(message){
+  const toast = document.getElementById('toast');
+  const msg = document.getElementById('toastMessage');
+  msg.textContent = message || 'تم النسخ بنجاح';
+  toast.classList.add('show');
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(()=>toast.classList.remove('show'), 2500);
+}
+
+function copyContact(text, btn){
+  const doCopy = () => {
+    if(btn){
+      btn.classList.add('copied');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i>';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        btn.innerHTML = original;
+      }, 2000);
+    }
+    showToast('تم النسخ: ' + text);
+  };
+
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).then(doCopy).catch(()=>fallbackCopy(text, doCopy));
+  } else {
+    fallbackCopy(text, doCopy);
+  }
+}
+
+function fallbackCopy(text, callback){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  if(callback) callback();
+}
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+function handleContactSubmit(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
+  const originalHTML = btn.innerHTML;
+
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>جاري الإرسال...</span>';
+  btn.disabled = true;
+
+  setTimeout(()=>{
+    btn.innerHTML = '<i class="fas fa-check"></i> <span>تم الإرسال بنجاح!</span>';
+    btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+
+    setTimeout(()=>{
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+      btn.disabled = false;
+      form.reset();
+      showToast('تم استلام رسالتك، سيتم الرد خلال 24 ساعة');
+    }, 2000);
+  }, 1600);
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+(function(){
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item=>{
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      items.forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+})();
+
+/* =========================================================
+   WOW
+   ========================================================= */
+(function(){
+  if(typeof WOW !== 'undefined') new WOW({boxClass:'wow',animateClass:'animate__animated',offset:60,mobile:true,live:true}).init();
+})();
+
+/* Loader */
+(function(){
+  const loader = document.getElementById('loaderScreen');
+  const bar = document.getElementById('loaderBarFill');
+  const pct = document.getElementById('loaderPercent');
+  let p = 0;
+  const i = setInterval(()=>{
+    p += Math.random()*12 + 4;
+    if(p >= 100) p = 100;
+    bar.style.width = p + '%';
+    pct.textContent = Math.floor(p) + '%';
+    if(p >= 100){
+      clearInterval(i);
+      setTimeout(()=>{loader.classList.add('hide');setTimeout(()=>loader.remove(),900);},400);
+    }
+  }, 180);
+})();
+
+/* BG Mesh */
+(function(){
+  const mesh = document.getElementById('bgMesh');
+  let tx=50, ty=50, cx=50, cy=50;
+  document.addEventListener('mousemove', e=>{tx=(e.clientX/window.innerWidth)*100;ty=(e.clientY/window.innerHeight)*100;});
+  document.addEventListener('touchmove', e=>{if(e.touches[0]){tx=(e.touches[0].clientX/window.innerWidth)*100;ty=(e.touches[0].clientY/window.innerHeight)*100;}},{passive:true});
+  function animate(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;mesh.style.setProperty('--mx',cx+'%');mesh.style.setProperty('--my',cy+'%');requestAnimationFrame(animate);}
+  animate();
+})();
+
+/* Navbar + Sidebar */
+(function(){
+  const nb = document.getElementById('navbar');
+  window.addEventListener('scroll', ()=>{ if(window.scrollY>30) nb.classList.add('scrolled'); else nb.classList.remove('scrolled'); }, {passive:true});
+})();
+
+(function(){
+  const btn = document.getElementById('menuToggleBtn');
+  const menu = document.getElementById('sidebarMenu');
+  const overlay = document.getElementById('sidebarOverlay');
+  const closeBtn = document.getElementById('sidebarCloseBtn');
+  function open(){menu.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){menu.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+  btn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', close);
+  document.addEventListener('keydown', e=>{if(e.key==='Escape')close();});
+})();
+
+function scrollToId(id){ const el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
+
+/* Counters */
+(function(){
+  const nodes = document.querySelectorAll('.counter, .val[data-count]');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target') || el.getAttribute('data-count'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        let cur = 0;
+        const step = target / 70;
+        const tick = ()=>{
+          cur += step;
+          if(cur >= target){ el.textContent = target.toLocaleString('en-US') + suffix; return; }
+          el.textContent = Math.floor(cur).toLocaleString('en-US') + suffix;
+          requestAnimationFrame(tick);
+        };
+        tick();
+        io.unobserve(el);
+      }
+    });
+  }, {threshold: 0.3});
+  nodes.forEach(n=> io.observe(n));
+})();
+
+/* Alpha */
+(function(){
+  const alpha = document.getElementById('alphaCharacter');
+  const tooltip = document.getElementById('alphaTooltip');
+  const messages = [
+    'اضغط على أي تبويب لعرض كل وسائل التواصل المتاحة!',
+    'في تبويب "الموارد البشرية" ستجد أرقام فريق HR مباشرة!',
+    'أرقام القطاع المركزي كاملة في تبويب مخصص!',
+    'اضغط على أيقونة النسخ لنسخ أي رقم أو بريد بضغطة واحدة!',
+    'كل وسائل التواصل الاجتماعي في مكان واحد!',
+    'الخط الساخن متاح 24/7 لخدمتك!'
+  ];
+  setTimeout(()=>{alpha.classList.add('active');setTimeout(()=>alpha.classList.remove('active'),7000);}, 1600);
+  alpha.addEventListener('click', ()=>{
+    tooltip.textContent = messages[Math.floor(Math.random()*messages.length)];
+    alpha.classList.add('active');
+    clearTimeout(alpha._t);
+    alpha._t = setTimeout(()=>alpha.classList.remove('active'), 5500);
+  });
+})();
+</script>
+
+<script src="./auth-widget.js" defer></script>
+</body>
+</html>

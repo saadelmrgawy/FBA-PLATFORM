@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>لوحة تحكم الأدمن | FBA Futur By Ai</title>
+<link rel="icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --neon-cyan:#00d9ff;--neon-purple:#8b5cf6;--neon-pink:#ec4899;
+  --gold:#fbbf24;--gold-dark:#d97706;--emerald:#10b981;--red:#ef4444;--amber:#f59e0b;
+  --deep-space:#05060f;--dark-1:#0a0e27;--dark-2:#0f172a;--dark-3:#1e293b;
+  --text-light:#f1f5f9;--text-muted:#94a3b8;--text-dim:#64748b;
+  --gradient-main:linear-gradient(135deg,#00d9ff 0%,#8b5cf6 50%,#ec4899 100%);
+  --gradient-gold:linear-gradient(135deg,#fbbf24,#d97706);
+  --gradient-emerald:linear-gradient(135deg,#10b981,#059669);
+  --gradient-danger:linear-gradient(135deg,#ef4444,#b91c1c);
+  --sidebar-w:260px;
+  --pad-x:clamp(14px,2.5vw,32px);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Cairo',sans-serif;background:var(--deep-space);color:var(--text-light);overflow-x:hidden;min-height:100vh;line-height:1.65;font-size:14px;-webkit-font-smoothing:antialiased;}
+img,svg{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input,select,textarea{font-family:inherit;}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent;}
+
+.bg-layer{position:fixed;inset:0;z-index:-4;background:radial-gradient(ellipse at 20% 20%,rgba(0,217,255,.1),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(139,92,246,.12),transparent 55%),radial-gradient(ellipse at 50% 50%,rgba(236,72,153,.05),transparent 60%),var(--deep-space);}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(0,217,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);}
+
+/* ===== LAYOUT ===== */
+.admin-layout{display:flex;min-height:100vh;}
+.admin-sidebar{position:fixed;top:0;right:0;height:100vh;width:var(--sidebar-w);background:linear-gradient(180deg,rgba(10,14,39,.98),rgba(15,23,42,.98));backdrop-filter:blur(24px);border-left:1px solid rgba(0,217,255,.18);z-index:600;overflow-y:auto;transition:transform .4s cubic-bezier(.16,1,.3,1);padding:20px 14px;}
+.admin-sidebar.collapsed{transform:translateX(100%);}
+.admin-sidebar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-main);}
+.sidebar-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 16px;border-bottom:1px solid rgba(0,217,255,.14);margin-bottom:16px;}
+.sidebar-brand-logo{width:42px;height:42px;border-radius:12px;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;box-shadow:0 8px 22px rgba(139,92,246,.4);}
+.sidebar-brand-text h3{font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:900;background:linear-gradient(135deg,#00d9ff,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;}
+.sidebar-brand-text span{display:block;font-size:.62rem;color:#fbbf24;font-weight:700;margin-top:2px;letter-spacing:.5px;}
+
+.sidebar-nav{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;}
+.sidebar-nav li a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:11px;color:var(--text-light);font-weight:700;font-size:.83rem;transition:all .3s;border:1px solid transparent;min-height:44px;position:relative;cursor:pointer;}
+.sidebar-nav li a:hover{border-color:rgba(0,217,255,.35);transform:translateX(-4px);}
+.sidebar-nav li a i.nav-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(0,217,255,.1);color:#00d9ff;font-size:.85rem;flex-shrink:0;transition:all .3s;}
+.sidebar-nav li a:hover i.nav-icon{background:var(--gradient-main);color:#fff;}
+.sidebar-nav li a.active{border-color:rgba(0,217,255,.5);background:linear-gradient(135deg,rgba(0,217,255,.12),rgba(139,92,246,.12));}
+.sidebar-nav li a.active i.nav-icon{background:var(--gradient-main);color:#fff;box-shadow:0 6px 16px rgba(139,92,246,.4);}
+.sidebar-nav li a .nav-badge{margin-right:auto;padding:2px 9px;border-radius:100px;background:var(--gradient-danger);color:#fff;font-size:.62rem;font-weight:900;min-width:22px;text-align:center;}
+.sidebar-nav li a .nav-badge.gold{background:var(--gradient-gold);color:#000;}
+.sidebar-nav li a .nav-badge.green{background:var(--gradient-emerald);}
+.sidebar-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,217,255,.2),transparent);margin:12px 8px;}
+.sidebar-section-label{font-size:.62rem;color:#64748b;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;padding:8px 12px 4px;display:block;}
+.sidebar-footer{padding:14px 12px 6px;border-top:1px solid rgba(0,217,255,.14);margin-top:16px;}
+.admin-profile-mini{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:linear-gradient(135deg,rgba(0,217,255,.08),rgba(139,92,246,.06));border:1px solid rgba(0,217,255,.22);cursor:pointer;transition:all .3s;}
+.admin-profile-mini:hover{border-color:rgba(0,217,255,.5);}
+.admin-profile-avatar{width:38px;height:38px;border-radius:50%;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;color:#000;font-size:1rem;font-weight:900;flex-shrink:0;}
+.admin-profile-info{flex:1;overflow:hidden;}
+.admin-profile-info strong{display:block;font-size:.76rem;color:#fff;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.admin-profile-info span{display:block;font-size:.62rem;color:#fbbf24;font-weight:700;}
+.logout-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px;padding:10px;border-radius:11px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.35);color:#ef4444;font-weight:800;font-size:.78rem;transition:all .3s;}
+.logout-btn:hover{background:var(--gradient-danger);color:#fff;border-color:transparent;}
+
+.admin-main{flex:1;margin-right:var(--sidebar-w);min-width:0;transition:margin .4s;}
+.admin-main.expanded{margin-right:0;}
+
+.admin-topbar{position:sticky;top:0;z-index:500;background:rgba(5,6,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,217,255,.18);padding:12px var(--pad-x);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.topbar-title{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.topbar-toggle{width:40px;height:40px;border-radius:11px;background:rgba(15,23,42,.7);border:1px solid rgba(0,217,255,.3);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;cursor:pointer;transition:all .3s;flex-shrink:0;}
+.topbar-toggle:hover{background:var(--gradient-main);border-color:transparent;}
+.topbar-title h1{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(.95rem,1.6vw,1.2rem);font-weight:900;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.topbar-title p{font-size:.72rem;color:var(--text-muted);margin:0;}
+.topbar-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.topbar-btn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:11px;background:rgba(15,23,42,.65);border:1px solid rgba(0,217,255,.3);color:#fff;font-weight:800;font-size:.76rem;transition:all .3s;white-space:nowrap;cursor:pointer;}
+.topbar-btn:hover{background:var(--gradient-main);border-color:transparent;transform:translateY(-2px);}
+.topbar-btn.gold{border-color:rgba(251,191,36,.4);}
+.topbar-btn.gold:hover{background:var(--gradient-gold);color:#000;}
+.topbar-btn i{font-size:.82rem;}
+
+.admin-content{padding:24px var(--pad-x) 60px;max-width:1600px;margin:0 auto;}
+
+.view-section{display:none;animation:fadeIn .4s;}
+.view-section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px;margin-bottom:22px;}
+.stat-card{position:relative;padding:18px;border-radius:18px;background:linear-gradient(140deg,rgba(15,23,42,.9),rgba(26,11,46,.75));border:1px solid rgba(0,217,255,.25);overflow:hidden;transition:all .35s;cursor:pointer;}
+.stat-card:hover{transform:translateY(-4px);border-color:rgba(0,217,255,.6);box-shadow:0 16px 40px rgba(0,217,255,.15);}
+.stat-card::before{content:'';position:absolute;top:-30%;left:-20%;width:80%;height:180%;background:radial-gradient(circle,rgba(0,217,255,.18),transparent 60%);pointer-events:none;}
+.stat-card.tone-gold::before{background:radial-gradient(circle,rgba(251,191,36,.2),transparent 60%);}
+.stat-card.tone-emerald::before{background:radial-gradient(circle,rgba(16,185,129,.2),transparent 60%);}
+.stat-card.tone-red::before{background:radial-gradient(circle,rgba(239,68,68,.2),transparent 60%);}
+.stat-card.tone-purple::before{background:radial-gradient(circle,rgba(139,92,246,.2),transparent 60%);}
+.stat-card.tone-slate::before{background:radial-gradient(circle,rgba(100,116,139,.2),transparent 60%);}
+.stat-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;margin-bottom:12px;position:relative;z-index:1;background:var(--gradient-main);box-shadow:0 8px 22px rgba(139,92,246,.4);}
+.stat-card.tone-gold .stat-icon{background:var(--gradient-gold);box-shadow:0 8px 22px rgba(251,191,36,.4);color:#000;}
+.stat-card.tone-emerald .stat-icon{background:var(--gradient-emerald);box-shadow:0 8px 22px rgba(16,185,129,.4);}
+.stat-card.tone-red .stat-icon{background:var(--gradient-danger);box-shadow:0 8px 22px rgba(239,68,68,.4);}
+.stat-card.tone-slate .stat-icon{background:linear-gradient(135deg,#475569,#1e293b);box-shadow:0 8px 22px rgba(100,116,139,.4);}
+.stat-value{font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;color:#fff;line-height:1;margin-bottom:4px;position:relative;z-index:1;}
+.stat-label{font-size:.74rem;color:var(--text-muted);font-weight:800;position:relative;z-index:1;}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px;padding:14px 16px;border-radius:16px;background:linear-gradient(140deg,rgba(15,23,42,.85),rgba(26,11,46,.7));border:1px solid rgba(0,217,255,.22);}
+.search-box{position:relative;flex:1;min-width:200px;}
+.search-box i{position:absolute;top:50%;right:14px;transform:translateY(-50%);color:#64748b;font-size:.85rem;pointer-events:none;}
+.search-box input{width:100%;padding:11px 40px 11px 14px;border-radius:12px;border:1.5px solid rgba(0,217,255,.25);background:rgba(5,6,15,.7);color:#f1f5f9;font-size:.82rem;outline:none;transition:all .3s;min-height:42px;}
+.search-box input:focus{border-color:#00d9ff;box-shadow:0 0 0 3px rgba(0,217,255,.15);}
+.search-box input::placeholder{color:#64748b;}
+.toolbar-select{padding:11px 14px;border-radius:12px;border:1.5px solid rgba(0,217,255,.25);background:rgba(5,6,15,.7);color:#f1f5f9;font-size:.8rem;font-weight:800;outline:none;cursor:pointer;min-height:42px;min-width:160px;}
+.toolbar-select:focus{border-color:#00d9ff;}
+.toolbar-select option{background:#0a0e27;color:#fff;}
+.toolbar-btn{display:inline-flex;align-items:center;gap:6px;height:42px;padding:0 16px;border-radius:12px;background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.35);color:#7dd3fc;font-weight:800;font-size:.78rem;transition:all .3s;cursor:pointer;}
+.toolbar-btn:hover{background:var(--gradient-main);color:#fff;border-color:transparent;transform:translateY(-2px);}
+.toolbar-btn.danger{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.35);color:#fca5a5;}
+.toolbar-btn.danger:hover{background:var(--gradient-danger);color:#fff;}
+
+.filter-tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+.filter-tabs::-webkit-scrollbar{display:none;}
+.filter-tab{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:100px;background:rgba(15,23,42,.7);border:1px solid rgba(0,217,255,.2);color:#cbd5e1;font-weight:800;font-size:.76rem;cursor:pointer;transition:all .3s;white-space:nowrap;flex-shrink:0;}
+.filter-tab:hover{border-color:rgba(0,217,255,.5);color:#fff;}
+.filter-tab.active{background:var(--gradient-main);color:#fff;border-color:transparent;box-shadow:0 8px 22px rgba(139,92,246,.4);}
+.filter-tab .count{background:rgba(0,0,0,.25);padding:1px 8px;border-radius:100px;font-size:.64rem;font-weight:900;}
+.filter-tab.active .count{background:rgba(255,255,255,.25);}
+
+.table-card{background:linear-gradient(140deg,rgba(15,23,42,.92),rgba(26,11,46,.75));border:1px solid rgba(0,217,255,.22);border-radius:18px;overflow:hidden;}
+.table-wrap{overflow-x:auto;}
+table.users-table{width:100%;border-collapse:collapse;min-width:1000px;}
+.users-table thead{background:linear-gradient(180deg,rgba(0,217,255,.08),rgba(139,92,246,.04));}
+.users-table th{padding:14px;text-align:right;font-size:.7rem;font-weight:900;color:#7dd3fc;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid rgba(0,217,255,.2);white-space:nowrap;}
+.users-table td{padding:13px 14px;border-bottom:1px solid rgba(0,217,255,.08);font-size:.78rem;color:#e2e8f0;vertical-align:middle;}
+.users-table tbody tr{transition:all .25s;cursor:pointer;}
+.users-table tbody tr:hover{background:rgba(0,217,255,.04);}
+.users-table tbody tr:last-child td{border-bottom:none;}
+.user-cell{display:flex;align-items:center;gap:10px;}
+.user-avatar{width:38px;height:38px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.82rem;flex-shrink:0;box-shadow:0 4px 12px rgba(139,92,246,.35);overflow:hidden;}
+.user-avatar.female{background:linear-gradient(135deg,#ec4899,#be185d);}
+.user-avatar img{width:100%;height:100%;object-fit:cover;}
+.user-cell-info strong{display:block;font-size:.8rem;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;}
+.user-cell-info span{display:block;font-size:.65rem;color:#94a3b8;font-weight:700;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;direction:ltr;text-align:right;}
+.id-cell{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:#fbbf24;font-weight:700;direction:ltr;text-align:right;word-break:break-all;max-width:200px;}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:100px;font-size:.66rem;font-weight:900;white-space:nowrap;}
+.badge.pending{background:rgba(251,191,36,.14);color:#fbbf24;border:1px solid rgba(251,191,36,.4);}
+.badge.approved{background:rgba(16,185,129,.14);color:#10b981;border:1px solid rgba(16,185,129,.4);}
+.badge.rejected{background:rgba(239,68,68,.14);color:#ef4444;border:1px solid rgba(239,68,68,.4);}
+.badge.banned{background:rgba(100,116,139,.2);color:#cbd5e1;border:1px solid rgba(100,116,139,.4);}
+.badge.frozen{background:rgba(0,217,255,.14);color:#00d9ff;border:1px solid rgba(0,217,255,.4);}
+.badge i{font-size:.6rem;}
+
+.row-actions{display:flex;gap:5px;flex-wrap:nowrap;}
+.row-btn{width:32px;height:32px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;cursor:pointer;transition:all .25s;border:1px solid;flex-shrink:0;}
+.row-btn:hover{transform:translateY(-2px);}
+.row-btn.view{background:rgba(0,217,255,.1);border-color:rgba(0,217,255,.35);color:#00d9ff;}
+.row-btn.view:hover{background:var(--gradient-main);color:#fff;border-color:transparent;}
+.row-btn.approve{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.35);color:#10b981;}
+.row-btn.approve:hover{background:var(--gradient-emerald);color:#fff;border-color:transparent;}
+.row-btn.reject{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.35);color:#ef4444;}
+.row-btn.reject:hover{background:var(--gradient-danger);color:#fff;border-color:transparent;}
+.row-btn.ban{background:rgba(100,116,139,.15);border-color:rgba(100,116,139,.4);color:#cbd5e1;}
+.row-btn.ban:hover{background:linear-gradient(135deg,#475569,#1e293b);color:#fff;border-color:transparent;}
+.row-btn.unban{background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.35);color:#a78bfa;}
+.row-btn.unban:hover{background:var(--gradient-main);color:#fff;border-color:transparent;}
+.row-btn.freeze{background:rgba(0,217,255,.1);border-color:rgba(0,217,255,.35);color:#00d9ff;}
+.row-btn.freeze:hover{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;border-color:transparent;}
+
+.empty-state{padding:60px 20px;text-align:center;}
+.empty-state i{font-size:3rem;color:rgba(0,217,255,.25);margin-bottom:14px;}
+.empty-state h3{font-size:1rem;color:#fff;font-weight:900;margin-bottom:6px;}
+.empty-state p{font-size:.78rem;color:var(--text-muted);}
+
+/* ===== MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:9000;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;opacity:0;transition:opacity .3s;}
+.modal-overlay.open{display:flex;opacity:1;}
+.modal-box{position:relative;max-width:900px;width:100%;padding:clamp(20px,3vw,32px);border-radius:22px;background:linear-gradient(140deg,rgba(15,23,42,.99),rgba(26,11,46,.97));border:1px solid rgba(0,217,255,.4);box-shadow:0 30px 80px rgba(0,0,0,.7);margin:auto;animation:slideUp .4s cubic-bezier(.16,1,.3,1);}
+.modal-box.compact{max-width:500px;}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.modal-close{position:absolute;top:14px;left:14px;width:36px;height:36px;border-radius:10px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;transition:all .3s;z-index:5;}
+.modal-close:hover{background:var(--gradient-danger);color:#fff;border-color:transparent;transform:rotate(90deg);}
+.modal-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(0,217,255,.2);}
+.modal-avatar{width:72px;height:72px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:1.6rem;flex-shrink:0;box-shadow:0 10px 26px rgba(139,92,246,.4);overflow:hidden;border:3px solid rgba(0,217,255,.3);}
+.modal-avatar.female{background:linear-gradient(135deg,#ec4899,#be185d);}
+.modal-avatar img{width:100%;height:100%;object-fit:cover;}
+.modal-header-info{flex:1;min-width:0;}
+.modal-header-info h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1rem,2vw,1.25rem);font-weight:900;color:#fff;margin:0 0 4px;line-height:1.3;word-break:break-word;}
+.modal-header-info p{font-size:.72rem;color:#94a3b8;margin:0;direction:ltr;text-align:right;word-break:break-all;font-family:'JetBrains Mono',monospace;}
+.modal-header-badges{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;}
+
+.info-section{margin-bottom:16px;padding:14px 16px;border-radius:14px;background:rgba(5,6,15,.5);border:1px solid rgba(0,217,255,.18);}
+.info-section h4{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:900;color:#7dd3fc;margin:0 0 12px;padding-bottom:8px;border-bottom:1px dashed rgba(0,217,255,.2);}
+.info-section h4 i{color:#ec4899;font-size:.72rem;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px;}
+.info-item{padding:8px 11px;border-radius:9px;background:rgba(0,217,255,.04);border:1px solid rgba(0,217,255,.12);}
+.info-item.full{grid-column:1/-1;}
+.info-item .lbl{display:block;font-size:.58rem;color:#64748b;font-weight:800;margin-bottom:3px;text-transform:uppercase;letter-spacing:.4px;}
+.info-item .val{display:block;font-size:.74rem;color:#fff;font-weight:800;word-break:break-word;line-height:1.45;}
+.info-item .val.ltr{direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.72rem;}
+.info-item .val.empty{color:#64748b;font-style:italic;font-weight:600;}
+
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px;}
+.doc-card{padding:8px;border-radius:12px;background:rgba(0,217,255,.04);border:1px solid rgba(0,217,255,.15);text-align:center;cursor:pointer;transition:all .3s;}
+.doc-card:hover{border-color:rgba(0,217,255,.5);transform:translateY(-2px);background:rgba(0,217,255,.08);}
+.doc-card img{width:100%;height:120px;object-fit:cover;border-radius:8px;border:1px solid rgba(0,217,255,.15);background:rgba(5,6,15,.7);}
+.doc-card span{display:block;font-size:.68rem;font-weight:800;color:#7dd3fc;margin-top:6px;}
+.doc-card .missing{padding:30px 10px;font-size:.7rem;color:#64748b;font-style:italic;}
+.doc-card .missing i{display:block;font-size:1.6rem;color:#334155;margin-bottom:6px;}
+
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,217,255,.2);}
+.modal-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:900;font-size:.78rem;cursor:pointer;transition:all .3s;border:1.5px solid;min-height:44px;flex:1 1 auto;min-width:130px;}
+.modal-btn.approve{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.5);color:#10b981;}
+.modal-btn.approve:hover{background:var(--gradient-emerald);color:#fff;border-color:transparent;transform:translateY(-2px);}
+.modal-btn.reject{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.5);color:#ef4444;}
+.modal-btn.reject:hover{background:var(--gradient-danger);color:#fff;border-color:transparent;transform:translateY(-2px);}
+.modal-btn.ban{background:rgba(100,116,139,.12);border-color:rgba(100,116,139,.4);color:#cbd5e1;}
+.modal-btn.ban:hover{background:linear-gradient(135deg,#475569,#1e293b);color:#fff;border-color:transparent;transform:translateY(-2px);}
+.modal-btn.unban{background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.5);color:#a78bfa;}
+.modal-btn.unban:hover{background:var(--gradient-main);color:#fff;border-color:transparent;transform:translateY(-2px);}
+.modal-btn.freeze{background:rgba(0,217,255,.1);border-color:rgba(0,217,255,.5);color:#00d9ff;}
+.modal-btn.freeze:hover{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;border-color:transparent;transform:translateY(-2px);}
+.modal-btn.warn{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.5);color:#fbbf24;}
+.modal-btn.warn:hover{background:var(--gradient-gold);color:#000;border-color:transparent;transform:translateY(-2px);}
+.modal-btn.ghost{background:rgba(15,23,42,.6);border-color:rgba(0,217,255,.3);color:#cbd5e1;}
+.modal-btn.ghost:hover{background:rgba(0,217,255,.1);color:#fff;border-color:#00d9ff;}
+.modal-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+.modal-form-group{margin-bottom:12px;}
+.modal-form-label{display:block;font-size:.76rem;font-weight:800;color:#e2e8f0;margin-bottom:6px;}
+.modal-form-label .req{color:#ec4899;}
+.modal-form-control{width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid rgba(0,217,255,.25);background:rgba(5,6,15,.7);color:#f1f5f9;font-size:.84rem;outline:none;transition:all .3s;min-height:44px;font-family:'Cairo',sans-serif;}
+.modal-form-control:focus{border-color:#00d9ff;box-shadow:0 0 0 3px rgba(0,217,255,.15);}
+textarea.modal-form-control{resize:vertical;min-height:80px;line-height:1.6;}
+.modal-warning{padding:12px 14px;border-radius:12px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.4);font-size:.74rem;line-height:1.7;color:#fde68a;margin-bottom:14px;display:flex;gap:10px;}
+.modal-warning i{font-size:1.1rem;color:#fbbf24;flex-shrink:0;margin-top:2px;}
+.modal-warning.danger{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.4);color:#fecaca;}
+.modal-warning.danger i{color:#ef4444;}
+.modal-warning.info{background:rgba(0,217,255,.08);border-color:rgba(0,217,255,.4);color:#bae6fd;}
+.modal-warning.info i{color:#00d9ff;}
+.modal-warning.success{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.4);color:#a7f3d0;}
+.modal-warning.success i{color:#10b981;}
+.modal-warning strong{display:block;margin-bottom:3px;color:#fff;}
+
+/* ===== SUPPORT ===== */
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px;margin-bottom:22px;}
+.support-card{padding:18px;border-radius:16px;background:linear-gradient(140deg,rgba(15,23,42,.9),rgba(26,11,46,.7));border:1px solid rgba(0,217,255,.22);transition:all .3s;}
+.support-card:hover{border-color:rgba(0,217,255,.5);transform:translateY(-3px);}
+.support-card h4{display:flex;align-items:center;gap:9px;font-size:.85rem;font-weight:900;color:#fff;margin:0 0 10px;}
+.support-card h4 i{color:#00d9ff;font-size:.9rem;}
+.support-card p{font-size:.74rem;color:#94a3b8;line-height:1.7;margin:0 0 10px;}
+.support-contact{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(0,217,255,.06);border:1px solid rgba(0,217,255,.15);margin-bottom:8px;font-size:.76rem;color:#e2e8f0;}
+.support-contact i{color:#00d9ff;font-size:1rem;width:22px;text-align:center;flex-shrink:0;}
+.support-contact strong{color:#fff;font-weight:900;}
+.support-contact a{color:#7dd3fc;font-weight:800;}
+.support-contact a:hover{color:#ec4899;}
+
+.user-support-list{display:flex;flex-direction:column;gap:10px;}
+.user-support-item{padding:14px 16px;border-radius:14px;background:linear-gradient(140deg,rgba(15,23,42,.85),rgba(26,11,46,.7));border:1px solid rgba(0,217,255,.2);transition:all .3s;}
+.user-support-item:hover{border-color:rgba(0,217,255,.5);}
+.user-support-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.user-support-info{flex:1;min-width:0;}
+.user-support-info strong{display:block;font-size:.82rem;color:#fff;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.user-support-info span{display:block;font-size:.65rem;color:#94a3b8;font-weight:700;direction:ltr;text-align:right;font-family:'JetBrains Mono',monospace;word-break:break-all;}
+.user-support-actions{display:flex;gap:6px;flex-wrap:wrap;}
+.user-support-actions a{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:9px;background:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.3);color:#7dd3fc;font-weight:800;font-size:.7rem;transition:all .3s;}
+.user-support-actions a:hover{background:var(--gradient-main);color:#fff;border-color:transparent;}
+.user-support-actions a.whatsapp{border-color:rgba(37,211,102,.4);color:#25d366;background:rgba(37,211,102,.08);}
+.user-support-actions a.whatsapp:hover{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;padding:8px 0;}
+.timeline::before{content:'';position:absolute;top:0;bottom:0;right:11px;width:2px;background:linear-gradient(180deg,transparent,rgba(0,217,255,.3),rgba(139,92,246,.3),transparent);}
+.timeline-item{position:relative;padding:0 40px 18px 0;}
+.timeline-item:last-child{padding-bottom:0;}
+.timeline-dot{position:absolute;top:4px;right:5px;width:14px;height:14px;border-radius:50%;background:var(--gradient-main);border:2px solid #05060f;box-shadow:0 0 12px rgba(0,217,255,.6);z-index:1;}
+.timeline-dot.green{background:var(--gradient-emerald);box-shadow:0 0 12px rgba(16,185,129,.6);}
+.timeline-dot.red{background:var(--gradient-danger);box-shadow:0 0 12px rgba(239,68,68,.6);}
+.timeline-dot.gold{background:var(--gradient-gold);box-shadow:0 0 12px rgba(251,191,36,.6);}
+.timeline-dot.cyan{background:linear-gradient(135deg,#00d9ff,#0284c7);box-shadow:0 0 12px rgba(0,217,255,.6);}
+.timeline-content{padding:10px 14px;border-radius:12px;background:rgba(0,217,255,.04);border:1px solid rgba(0,217,255,.12);}
+.timeline-content strong{display:block;font-size:.76rem;color:#fff;font-weight:900;margin-bottom:3px;}
+.timeline-content span{display:block;font-size:.68rem;color:#94a3b8;font-weight:700;}
+.timeline-content time{display:block;font-size:.62rem;color:#64748b;margin-top:4px;font-weight:700;}
+
+/* ===== DOCS VIEWER ===== */
+.doc-viewer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;}
+.doc-viewer-overlay.open{display:flex;}
+.doc-viewer-overlay img{max-width:95vw;max-height:90vh;border-radius:12px;border:2px solid rgba(0,217,255,.4);box-shadow:0 30px 80px rgba(0,0,0,.8);}
+.doc-viewer-close{position:absolute;top:20px;left:20px;width:44px;height:44px;border-radius:12px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.5);color:#ef4444;font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.doc-viewer-close:hover{background:var(--gradient-danger);color:#fff;}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);padding:12px 22px;border-radius:100px;color:#fff;font-weight:900;font-size:.8rem;z-index:99999;opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;gap:9px;max-width:calc(100vw - 30px);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.toast.success{background:linear-gradient(135deg,#10b981,#059669);}
+.toast.error{background:linear-gradient(135deg,#ef4444,#b91c1c);}
+.toast.info{background:var(--gradient-main);}
+.toast.warn{background:var(--gradient-gold);color:#000;}
+.toast i{font-size:1rem;}
+
+/* ===== PROFILE CARD ===== */
+.profile-hero{padding:24px;border-radius:20px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.85));border:1px solid rgba(251,191,36,.4);margin-bottom:20px;position:relative;overflow:hidden;}
+.profile-hero::before{content:'';position:absolute;top:-50%;left:-30%;width:120%;height:200%;background:radial-gradient(circle,rgba(251,191,36,.08),transparent 60%);pointer-events:none;}
+.profile-hero-content{display:flex;align-items:center;gap:20px;position:relative;z-index:1;flex-wrap:wrap;}
+.profile-hero-avatar{width:96px;height:96px;border-radius:50%;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;color:#000;font-size:2.2rem;font-weight:900;flex-shrink:0;border:4px solid rgba(251,191,36,.4);box-shadow:0 16px 40px rgba(251,191,36,.4);}
+.profile-hero-info{flex:1;min-width:200px;}
+.profile-hero-info h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:900;color:#fff;margin:0 0 4px;line-height:1.3;}
+.profile-hero-info .profile-role{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.5);color:#fbbf24;font-size:.7rem;font-weight:900;margin-bottom:8px;}
+.profile-hero-info p{font-size:.74rem;color:#94a3b8;margin:0;direction:ltr;text-align:right;font-family:'JetBrains Mono',monospace;word-break:break-all;}
+
+/* ===== LOADER ===== */
+.page-loader{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#0a0e27 0%,#05060f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s;gap:18px;}
+.page-loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-ring-admin{width:64px;height:64px;border-radius:50%;border:3px solid transparent;border-top-color:#00d9ff;border-right-color:#8b5cf6;border-bottom-color:#ec4899;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.page-loader p{color:#00d9ff;font-family:'Orbitron',sans-serif;font-size:.8rem;letter-spacing:2px;}
+
+@media (max-width:1024px){
+  .admin-sidebar{transform:translateX(100%);}
+  .admin-sidebar.mobile-open{transform:translateX(0);box-shadow:-20px 0 60px rgba(0,0,0,.6);}
+  .admin-main{margin-right:0 !important;}
+}
+@media (max-width:768px){
+  .admin-content{padding:18px 12px 50px;}
+  .topbar-title p{display:none;}
+  .users-table th,.users-table td{padding:10px;}
+  .row-btn{width:30px;height:30px;font-size:.72rem;}
+  .stat-card{padding:14px;}
+  .stat-value{font-size:1.5rem;}
+  .modal-actions .modal-btn{flex:1 1 100%;}
+}
+@media (max-width:520px){
+  .toolbar{padding:12px;gap:8px;}
+  .search-box{min-width:100%;}
+  .toolbar-select{min-width:100%;}
+  .filter-tab{padding:8px 12px;font-size:.72rem;}
+  .user-cell-info strong{max-width:140px;font-size:.74rem;}
+  .user-cell-info span{max-width:140px;}
+  .id-cell{font-size:.6rem;max-width:120px;}
+  .modal-header{flex-direction:column;text-align:center;align-items:center;}
+  .modal-header-info{text-align:center;}
+  .profile-hero-content{flex-direction:column;text-align:center;}
+}
+
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-track{background:#05060f;}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#00d9ff,#8b5cf6);border-radius:10px;border:2px solid #05060f;}
+</style>
+</head>
+<body>
+
+<div class="page-loader" id="pageLoader">
+  <div class="loader-ring-admin"></div>
+  <p>LOADING ADMIN PANEL</p>
+</div>
+
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+
+<div class="admin-layout">
+
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo"><i class="fas fa-shield-halved"></i></div>
+      <div class="sidebar-brand-text">
+        <h3>ADMIN CONTROL</h3>
+        <span>FBA FUTUR BY AI</span>
+      </div>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a class="nav-link active" data-view="dashboard"><i class="nav-icon fas fa-chart-pie"></i><span>نظرة عامة</span></a></li>
+      <li><a class="nav-link" data-view="requests"><i class="nav-icon fas fa-file-alt"></i><span>طلبات التسجيل</span><span class="nav-badge gold" id="badgePending">0</span></a></li>
+      <li><a class="nav-link" data-view="users"><i class="nav-icon fas fa-users"></i><span>المستخدمون</span><span class="nav-badge" id="badgeApproved">0</span></a></li>
+      <li><a class="nav-link" data-view="manage"><i class="nav-icon fas fa-user-gear"></i><span>إدارة الحسابات</span></a></li>
+
+      <div class="sidebar-divider"></div>
+      <span class="sidebar-section-label">الدعم والتواصل</span>
+      <li><a class="nav-link" data-view="support"><i class="nav-icon fas fa-headset"></i><span>مركز الدعم الفني</span></a></li>
+      <li><a class="nav-link" data-view="activity"><i class="nav-icon fas fa-stream"></i><span>سجل النشاط</span></a></li>
+
+      <div class="sidebar-divider"></div>
+      <span class="sidebar-section-label">الإدارة</span>
+      <li><a class="nav-link" data-view="profile"><i class="nav-icon fas fa-user-shield"></i><span>ملفي الشخصي</span></a></li>
+      <li><a class="nav-link" data-view="settings"><i class="nav-icon fas fa-cog"></i><span>الإعدادات</span></a></li>
+      <li><a href="./index.html" target="_blank"><i class="nav-icon fas fa-globe"></i><span>الموقع الرئيسي</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="admin-profile-mini" onclick="navigateTo('profile')">
+        <div class="admin-profile-avatar" id="sideAdminAvatar">م</div>
+        <div class="admin-profile-info">
+          <strong id="sideAdminName">المدير</strong>
+          <span>SUPER ADMIN</span>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="logoutAdmin()"><i class="fas fa-right-from-bracket"></i> تسجيل الخروج</button>
+    </div>
+  </aside>
+
+  <main class="admin-main" id="adminMain">
+    <header class="admin-topbar">
+      <div class="topbar-title">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1 id="viewTitle">نظرة عامة</h1>
+          <p id="viewSubtitle">لوحة تحكم الأدمن · إدارة كاملة للنظام</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="topbar-btn" onclick="refreshAllData()"><i class="fas fa-rotate"></i> تحديث</button>
+        <button class="topbar-btn gold" onclick="exportData()"><i class="fas fa-download"></i> تصدير JSON</button>
+      </div>
+    </header>
+
+    <div class="admin-content">
+
+      <!-- ===== DASHBOARD ===== -->
+      <section class="view-section active" data-view="dashboard">
+        <div class="stats-grid">
+          <div class="stat-card" onclick="filterByStatus('all')">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-value" id="statTotal">0</div>
+            <div class="stat-label">إجمالي المستخدمين</div>
+          </div>
+          <div class="stat-card tone-gold" onclick="filterByStatus('pending')">
+            <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
+            <div class="stat-value" id="statPending">0</div>
+            <div class="stat-label">قيد المراجعة</div>
+          </div>
+          <div class="stat-card tone-emerald" onclick="filterByStatus('approved')">
+            <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-value" id="statApproved">0</div>
+            <div class="stat-label">مقبولون</div>
+          </div>
+          <div class="stat-card tone-red" onclick="filterByStatus('rejected')">
+            <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="stat-value" id="statRejected">0</div>
+            <div class="stat-label">مرفوضون</div>
+          </div>
+          <div class="stat-card tone-slate" onclick="filterByStatus('banned')">
+            <div class="stat-icon"><i class="fas fa-user-slash"></i></div>
+            <div class="stat-value" id="statBanned">0</div>
+            <div class="stat-label">محظورون</div>
+          </div>
+          <div class="stat-card tone-purple" onclick="filterByStatus('frozen')">
+            <div class="stat-icon"><i class="fas fa-snowflake"></i></div>
+            <div class="stat-value" id="statFrozen">0</div>
+            <div class="stat-label">مُجمّدون</div>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div style="padding:18px 20px;border-bottom:1px solid rgba(0,217,255,.15);">
+            <h3 style="font-family:'Orbitron',sans-serif;font-size:.92rem;color:#fff;font-weight:900;display:flex;align-items:center;gap:9px;">
+              <i class="fas fa-bolt" style="color:#fbbf24"></i> أحدث الطلبات المستلمة
+            </h3>
+          </div>
+          <div class="table-wrap">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>المستخدم</th><th>الرقم التعريفي</th><th>الوحدة</th><th>المحافظة</th><th>الحالة</th><th>التقديم</th><th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="recentTableBody"></tbody>
+            </table>
+          </div>
+          <div id="recentEmpty" class="empty-state" style="display:none;">
+            <i class="fas fa-inbox"></i>
+            <h3>لا توجد طلبات حتى الآن</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== REQUESTS ===== -->
+      <section class="view-section" data-view="requests">
+        <div class="toolbar">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="ابحث بالاسم، الرقم القومي، الرقم التعريفي..." oninput="renderUsersList()">
+          </div>
+          <select class="toolbar-select" id="unitFilter" onchange="renderUsersList()">
+            <option value="">كل الوحدات</option>
+            <option value="hr">الموارد البشرية HR</option>
+            <option value="or">التنظيم والعمليات OR</option>
+            <option value="pr">العلاقات العامة PR</option>
+            <option value="sm">التسويق والانتشار SM</option>
+            <option value="ait">تحول الذكاء الاصطناعي AIT</option>
+            <option value="executive">الإدارة التنفيذية</option>
+            <option value="top">الإدارة العليا</option>
+          </select>
+          <select class="toolbar-select" id="govFilter" onchange="renderUsersList()">
+            <option value="">كل المحافظات</option>
+          </select>
+          <button class="toolbar-btn" onclick="clearFilters()"><i class="fas fa-filter-circle-xmark"></i> مسح</button>
+        </div>
+
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-status="pending" onclick="filterByStatus('pending')"><i class="fas fa-hourglass-half"></i> قيد المراجعة <span class="count" id="countPending">0</span></button>
+          <button class="filter-tab" data-status="approved" onclick="filterByStatus('approved')"><i class="fas fa-check-circle"></i> مقبول <span class="count" id="countApproved">0</span></button>
+          <button class="filter-tab" data-status="rejected" onclick="filterByStatus('rejected')"><i class="fas fa-times-circle"></i> مرفوض <span class="count" id="countRejected">0</span></button>
+          <button class="filter-tab" data-status="banned" onclick="filterByStatus('banned')"><i class="fas fa-user-slash"></i> محظور <span class="count" id="countBanned">0</span></button>
+          <button class="filter-tab" data-status="frozen" onclick="filterByStatus('frozen')"><i class="fas fa-snowflake"></i> مُجمّد <span class="count" id="countFrozen">0</span></button>
+          <button class="filter-tab" data-status="all" onclick="filterByStatus('all')"><i class="fas fa-list"></i> الكل <span class="count" id="countAll">0</span></button>
+        </div>
+
+        <div class="table-card">
+          <div class="table-wrap">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>المستخدم</th><th>الرقم التعريفي</th><th>الوحدة</th><th>المحافظة</th><th>الحالة</th><th>التقديم</th><th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+          <div id="usersEmpty" class="empty-state" style="display:none;">
+            <i class="fas fa-search"></i>
+            <h3>لا توجد نتائج مطابقة</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== USERS ===== -->
+      <section class="view-section" data-view="users">
+        <div class="toolbar">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchUsersInput" placeholder="ابحث في المستخدمين المقبولين..." oninput="renderApprovedUsers()">
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-wrap">
+            <table class="users-table">
+              <thead>
+                <tr><th>المستخدم</th><th>الرقم التعريفي</th><th>الوحدة</th><th>المحافظة</th><th>المستوى</th><th>تاريخ القبول</th><th>إجراءات</th></tr>
+              </thead>
+              <tbody id="approvedTableBody"></tbody>
+            </table>
+          </div>
+          <div id="approvedEmpty" class="empty-state" style="display:none;">
+            <i class="fas fa-users"></i>
+            <h3>لا يوجد مستخدمون مقبولون بعد</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MANAGE (الإدارة المتقدمة) ===== -->
+      <section class="view-section" data-view="manage">
+        <div class="modal-warning info" style="margin-bottom:16px;">
+          <i class="fas fa-shield-halved"></i>
+          <div>
+            <strong>مركز التحكم المتقدم</strong>
+            من هنا يمكنك إدارة أي حساب على النظام: تجميد، حظر، تفعيل، حذف، تغيير كلمة المرور، تعديل البيانات.
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="manageSearch" placeholder="ابحث عن أي مستخدم بالاسم / الرقم / الوحدة..." oninput="renderManageList()">
+          </div>
+          <select class="toolbar-select" id="manageStatusFilter" onchange="renderManageList()">
+            <option value="">كل الحالات</option>
+            <option value="pending">قيد المراجعة</option>
+            <option value="approved">مقبول / مفعّل</option>
+            <option value="rejected">مرفوض</option>
+            <option value="banned">محظور</option>
+            <option value="frozen">مُجمّد</option>
+          </select>
+        </div>
+
+        <div class="table-card">
+          <div class="table-wrap">
+            <table class="users-table">
+              <thead>
+                <tr><th>المستخدم</th><th>الرقم التعريفي</th><th>الوحدة</th><th>الحالة</th><th>آخر تعديل</th><th>إجراءات سريعة</th></tr>
+              </thead>
+              <tbody id="manageTableBody"></tbody>
+            </table>
+          </div>
+          <div id="manageEmpty" class="empty-state" style="display:none;">
+            <i class="fas fa-user-gear"></i>
+            <h3>لا توجد نتائج</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SUPPORT ===== -->
+      <section class="view-section" data-view="support">
+        <div class="support-grid">
+          <div class="support-card">
+            <h4><i class="fas fa-envelope"></i> البريد الإلكتروني</h4>
+            <p>راسل الفريق المركزي عبر البريد لأي استفسار أو مشكلة تقنية.</p>
+            <div class="support-contact">
+              <i class="fas fa-at"></i>
+              <strong>Support:</strong>
+              <a href="mailto:ebdaa360@gmail.com">ebdaa360@gmail.com</a>
+            </div>
+          </div>
+          <div class="support-card">
+            <h4><i class="fab fa-whatsapp" style="color:#25d366"></i> واتساب الدعم</h4>
+            <p>تواصل مباشر مع الوحدة المركزية للرد السريع.</p>
+            <div class="support-contact">
+              <i class="fab fa-whatsapp" style="color:#25d366"></i>
+              <strong>WhatsApp:</strong>
+              <a href="https://wa.me/201234567890" target="_blank">+20 123 456 7890</a>
+            </div>
+          </div>
+          <div class="support-card">
+            <h4><i class="fas fa-clock"></i> ساعات العمل</h4>
+            <p>فريق الدعم متاح طوال أيام الأسبوع.</p>
+            <div class="support-contact"><i class="fas fa-calendar-check"></i><strong>السبت - الخميس:</strong><span>10ص - 10م</span></div>
+            <div class="support-contact"><i class="fas fa-calendar-day"></i><strong>الجمعة:</strong><span>مغلق</span></div>
+          </div>
+        </div>
+
+        <div class="table-card" style="margin-top:20px;">
+          <div style="padding:18px 20px;border-bottom:1px solid rgba(0,217,255,.15);">
+            <h3 style="font-family:'Orbitron',sans-serif;font-size:.92rem;color:#fff;font-weight:900;display:flex;align-items:center;gap:9px;">
+              <i class="fas fa-user-headset" style="color:#00d9ff"></i> قائمة تواصل المستخدمين
+            </h3>
+          </div>
+          <div style="padding:18px 20px;">
+            <div class="user-support-list" id="supportUserList"></div>
+          </div>
+          <div id="supportEmpty" class="empty-state" style="display:none;">
+            <i class="fas fa-inbox"></i>
+            <h3>لا يوجد مستخدمون للتواصل</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ACTIVITY ===== -->
+      <section class="view-section" data-view="activity">
+        <div class="table-card" style="padding:22px;">
+          <h3 style="font-family:'Orbitron',sans-serif;font-size:.92rem;color:#fff;font-weight:900;display:flex;align-items:center;gap:9px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(0,217,255,.2);">
+            <i class="fas fa-stream" style="color:#8b5cf6"></i> سجل النشاط
+          </h3>
+          <div class="timeline" id="activityTimeline"></div>
+          <div id="activityEmpty" class="empty-state" style="display:none;">
+            <i class="fas fa-history"></i>
+            <h3>لا يوجد نشاط مسجل</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PROFILE (ملفي الشخصي) ===== -->
+      <section class="view-section" data-view="profile">
+        <div class="profile-hero">
+          <div class="profile-hero-content">
+            <div class="profile-hero-avatar" id="profileHeroAvatar">م</div>
+            <div class="profile-hero-info">
+              <div class="profile-role"><i class="fas fa-crown"></i> SUPER ADMIN · المدير الرئيسي</div>
+              <h2 id="profileHeroName">—</h2>
+              <p id="profileHeroEmail">—</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-grid">
+          <div class="support-card">
+            <h4><i class="fas fa-user-pen"></i> تعديل البيانات الأساسية</h4>
+            <p>يمكنك تحديث اسمك وبريدك الإلكتروني.</p>
+            <div class="modal-form-group">
+              <label class="modal-form-label">الاسم الكامل</label>
+              <input type="text" id="adminEditName" class="modal-form-control" placeholder="اسمك الكامل">
+            </div>
+            <div class="modal-form-group">
+              <label class="modal-form-label">البريد الإلكتروني</label>
+              <input type="email" id="adminEditEmail" class="modal-form-control" placeholder="email@example.com" style="direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;">
+            </div>
+            <div class="modal-form-group">
+              <label class="modal-form-label">المسمى الوظيفي</label>
+              <input type="text" id="adminEditRole" class="modal-form-control" placeholder="عضو الإدارة التنفيذية">
+            </div>
+            <button class="modal-btn approve" style="width:100%;margin-top:8px;" onclick="saveAdminProfile()">
+              <i class="fas fa-save"></i> حفظ التعديلات
+            </button>
+          </div>
+
+          <div class="support-card">
+            <h4><i class="fas fa-key"></i> تغيير كلمة المرور</h4>
+            <p>قم بتغيير كلمة مرور حساب الأدمن.</p>
+            <div class="modal-form-group">
+              <label class="modal-form-label">كلمة المرور الحالية <span class="req">*</span></label>
+              <input type="password" id="adminCurrentPass" class="modal-form-control" placeholder="••••••••">
+            </div>
+            <div class="modal-form-group">
+              <label class="modal-form-label">كلمة المرور الجديدة <span class="req">*</span></label>
+              <input type="password" id="adminNewPass" class="modal-form-control" placeholder="8+ أحرف">
+            </div>
+            <div class="modal-form-group">
+              <label class="modal-form-label">تأكيد كلمة المرور <span class="req">*</span></label>
+              <input type="password" id="adminConfirmPass" class="modal-form-control" placeholder="أعد الكتابة">
+            </div>
+            <button class="modal-btn warn" style="width:100%;margin-top:8px;" onclick="changeAdminPassword()">
+              <i class="fas fa-shield-halved"></i> تحديث كلمة المرور
+            </button>
+          </div>
+
+          <div class="support-card">
+            <h4><i class="fas fa-bolt"></i> إجراءات سريعة</h4>
+            <p>إجراءات أمنية ونسخ احتياطي.</p>
+            <button class="modal-btn ghost" style="width:100%;margin-top:8px;" onclick="exportData()">
+              <i class="fas fa-download"></i> تصدير نسخة احتياطية
+            </button>
+            <button class="modal-btn ghost" style="width:100%;margin-top:8px;" onclick="clearActivity()">
+              <i class="fas fa-trash"></i> حذف سجل النشاط
+            </button>
+            <button class="modal-btn reject" style="width:100%;margin-top:8px;" onclick="logoutAdmin()">
+              <i class="fas fa-right-from-bracket"></i> تسجيل الخروج
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SETTINGS ===== -->
+      <section class="view-section" data-view="settings">
+        <div class="support-grid">
+          <div class="support-card">
+            <h4><i class="fas fa-database"></i> قاعدة البيانات</h4>
+            <p>البيانات محفوظة في IndexedDB على متصفحك.</p>
+            <div class="support-contact"><i class="fas fa-users"></i><strong>إجمالي السجلات:</strong><span id="dbTotal">0</span></div>
+            <div class="support-contact"><i class="fas fa-hdd"></i><strong>قاعدة البيانات:</strong><span>FBA_FuturByAi_DB</span></div>
+          </div>
+          <div class="support-card">
+            <h4><i class="fas fa-shield-halved"></i> الأمان</h4>
+            <p>إدارة الأمان والصلاحيات.</p>
+            <div class="support-contact"><i class="fas fa-user-shield"></i><strong>صلاحيتك:</strong><span style="color:#fbbf24">Super Admin</span></div>
+            <div class="support-contact"><i class="fas fa-key"></i><strong>حالة الجلسة:</strong><span style="color:#10b981">نشطة</span></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ===== USER DETAILS MODAL ===== -->
+<div class="modal-overlay" id="userModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('userModal')"><i class="fas fa-times"></i></button>
+    <div class="modal-header">
+      <div class="modal-avatar" id="modalAvatar">؟</div>
+      <div class="modal-header-info">
+        <h2 id="modalName">—</h2>
+        <p id="modalId">—</p>
+        <div class="modal-header-badges" id="modalBadges"></div>
+      </div>
+    </div>
+    <div id="modalBody"></div>
+    <div class="modal-actions" id="modalActions"></div>
+  </div>
+</div>
+
+<!-- ===== ACTION CONFIRM MODAL ===== -->
+<div class="modal-overlay" id="actionModal">
+  <div class="modal-box compact">
+    <button class="modal-close" onclick="closeModal('actionModal')"><i class="fas fa-times"></i></button>
+    <div class="modal-header" style="padding-bottom:14px;margin-bottom:16px;">
+      <div class="modal-avatar" id="actionIcon" style="width:56px;height:56px;font-size:1.3rem;">—</div>
+      <div class="modal-header-info">
+        <h2 id="actionTitle" style="font-size:1rem;">—</h2>
+        <p style="direction:rtl;text-align:right;font-family:'Cairo',sans-serif;" id="actionSub">—</p>
+      </div>
+    </div>
+    <div id="actionWarning"></div>
+    <div class="modal-form-group" id="actionReasonGroup" style="display:none;">
+      <label class="modal-form-label" for="actionReason">السبب <span class="req">*</span></label>
+      <textarea id="actionReason" class="modal-form-control" placeholder="اكتب سبب الإجراء..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn ghost" onclick="closeModal('actionModal')"><i class="fas fa-times"></i> إلغاء</button>
+      <button class="modal-btn" id="actionConfirmBtn"><i class="fas fa-check"></i> تأكيد</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CHANGE PASSWORD MODAL ===== -->
+<div class="modal-overlay" id="passModal">
+  <div class="modal-box compact">
+    <button class="modal-close" onclick="closeModal('passModal')"><i class="fas fa-times"></i></button>
+    <div class="modal-header">
+      <div class="modal-avatar" style="background:var(--gradient-gold);color:#000;font-size:1.3rem;"><i class="fas fa-key"></i></div>
+      <div class="modal-header-info">
+        <h2 style="font-size:1rem;">تغيير كلمة المرور</h2>
+        <p style="direction:rtl;text-align:right;font-family:'Cairo',sans-serif;" id="passModalUser">—</p>
+      </div>
+    </div>
+    <div class="modal-warning info">
+      <i class="fas fa-shield-halved"></i>
+      <div>سيتم تغيير كلمة المرور فوراً. أبلغ المستخدم بكلمة المرور الجديدة.</div>
+    </div>
+    <div class="modal-form-group">
+      <label class="modal-form-label">كلمة المرور الجديدة <span class="req">*</span></label>
+      <input type="password" id="newUserPass" class="modal-form-control" placeholder="8+ أحرف">
+    </div>
+    <div class="modal-form-group">
+      <label class="modal-form-label">تأكيد كلمة المرور <span class="req">*</span></label>
+      <input type="password" id="confirmUserPass" class="modal-form-control" placeholder="أعد الكتابة">
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn ghost" onclick="closeModal('passModal')"><i class="fas fa-times"></i> إلغاء</button>
+      <button class="modal-btn approve" onclick="saveUserPassword()"><i class="fas fa-check"></i> حفظ كلمة المرور</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EDIT USER DATA MODAL ===== -->
+<div class="modal-overlay" id="editUserModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('editUserModal')"><i class="fas fa-times"></i></button>
+    <div class="modal-header">
+      <div class="modal-avatar" style="background:var(--gradient-main);font-size:1.3rem;"><i class="fas fa-user-pen"></i></div>
+      <div class="modal-header-info">
+        <h2 style="font-size:1rem;">تعديل بيانات المستخدم</h2>
+        <p style="direction:rtl;text-align:right;font-family:'Cairo',sans-serif;" id="editModalUser">—</p>
+      </div>
+    </div>
+    <div id="editUserBody"></div>
+    <div class="modal-actions">
+      <button class="modal-btn ghost" onclick="closeModal('editUserModal')"><i class="fas fa-times"></i> إلغاء</button>
+      <button class="modal-btn approve" onclick="saveUserEdits()"><i class="fas fa-save"></i> حفظ التعديلات</button>
+    </div>
+  </div>
+</div>
+
+<div class="doc-viewer-overlay" id="docViewer" onclick="closeDocViewer()">
+  <button class="doc-viewer-close" onclick="closeDocViewer()"><i class="fas fa-times"></i></button>
+  <img id="docViewerImg" src="" alt="document">
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMessage">رسالة</span></div>
+
+<script>
+/* =========================================================
+   CONFIG
+   ========================================================= */
+const DB_NAME = 'FBA_FuturByAi_DB';
+const DB_VERSION = 1;
+const STORE_USERS = 'users';
+const LS_ACTIVITY = 'fba_admin_activity';
+const LS_ADMIN_PROFILE = 'fba_admin_profile';
+
+let adminSession = null;
+let allUsers = [];
+let currentFilter = 'pending';
+let selectedUserId = null;
+let pendingAction = null;
+
+/* =========================================================
+   INDEXEDDB
+   ========================================================= */
+function openDB(){
+  return new Promise((resolve,reject)=>{
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e => {
+      const db = e.target.result;
+      if(!db.objectStoreNames.contains(STORE_USERS)){
+        const store = db.createObjectStore(STORE_USERS, {keyPath:'id'});
+        store.createIndex('nationalId','nationalId',{unique:false});
+        store.createIndex('email','email',{unique:false});
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function dbGetAllUsers(){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_USERS,'readonly');
+    const store = tx.objectStore(STORE_USERS);
+    const req = store.getAll();
+    req.onsuccess = () => resolve(req.result||[]);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function dbUpdateUser(user){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_USERS,'readwrite');
+    const store = tx.objectStore(STORE_USERS);
+    const req = store.put(user);
+    req.onsuccess = () => resolve(true);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function dbDeleteUser(id){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_USERS,'readwrite');
+    const store = tx.objectStore(STORE_USERS);
+    const req = store.delete(id);
+    req.onsuccess = () => resolve(true);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+/* =========================================================
+   AUTH GUARD
+   ========================================================= */
+(function authGuard(){
+  try{
+    adminSession = JSON.parse(sessionStorage.getItem('fba_session')||'null') ||
+                   JSON.parse(localStorage.getItem('fba_session')||'null');
+  }catch(e){}
+
+  if(!adminSession || (!adminSession.isAdmin && adminSession.dashboard !== 'admin-dashboard')){
+    window.location.replace('./login.html');
+    return;
+  }
+
+  // تحميل الملف الشخصي المحفوظ (للتعديلات)
+  const profile = loadAdminProfile();
+  if(profile.name) adminSession.name = profile.name;
+  if(profile.email) adminSession.email = profile.email;
+  if(profile.roleTitle) adminSession.roleTitle = profile.roleTitle;
+
+  const initials = getInitials(adminSession.name);
+  document.getElementById('sideAdminName').textContent = adminSession.name || 'المدير';
+  document.getElementById('sideAdminAvatar').textContent = initials;
+  document.getElementById('profileHeroAvatar').textContent = initials;
+  document.getElementById('profileHeroName').textContent = adminSession.name || '—';
+  document.getElementById('profileHeroEmail').textContent = adminSession.email || 'admin@fba.com';
+
+  // Pre-fill profile edit form
+  const nameEl = document.getElementById('adminEditName');
+  const emailEl = document.getElementById('adminEditEmail');
+  const roleEl = document.getElementById('adminEditRole');
+  if(nameEl) nameEl.value = adminSession.name || '';
+  if(emailEl) emailEl.value = adminSession.email || 'admin@fba.com';
+  if(roleEl) roleEl.value = adminSession.roleTitle || '';
+})();
+
+function loadAdminProfile(){
+  try{ return JSON.parse(localStorage.getItem(LS_ADMIN_PROFILE)||'{}'); }catch(e){ return {}; }
+}
+function saveAdminProfileToLS(data){
+  localStorage.setItem(LS_ADMIN_PROFILE, JSON.stringify(data));
+}
+
+function logoutAdmin(){
+  sessionStorage.removeItem('fba_session');
+  localStorage.removeItem('fba_session');
+  window.location.href = './login.html';
+}
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+function showToast(msg, type='success'){
+  const t = document.getElementById('toast');
+  const m = document.getElementById('toastMessage');
+  m.textContent = msg;
+  t.className = 'toast ' + type;
+  t.querySelector('i').className =
+    type==='error' ? 'fas fa-exclamation-circle' :
+    type==='info'  ? 'fas fa-info-circle' :
+    type==='warn'  ? 'fas fa-exclamation-triangle' :
+                     'fas fa-check-circle';
+  t.classList.add('show');
+  clearTimeout(window._tt);
+  window._tt = setTimeout(()=>t.classList.remove('show'), 3400);
+}
+function formatDate(iso){
+  if(!iso) return '—';
+  try{
+    const d = new Date(iso);
+    return d.toLocaleString('ar-EG', {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  }catch(e){ return '—'; }
+}
+function timeAgo(iso){
+  if(!iso) return '—';
+  const diff = (Date.now() - new Date(iso).getTime())/1000;
+  if(diff<60) return 'منذ لحظات';
+  if(diff<3600) return `منذ ${Math.floor(diff/60)} دقيقة`;
+  if(diff<86400) return `منذ ${Math.floor(diff/3600)} ساعة`;
+  if(diff<2592000) return `منذ ${Math.floor(diff/86400)} يوم`;
+  return formatDate(iso);
+}
+function getInitials(name){
+  if(!name) return '؟';
+  const parts = name.trim().split(/\s+/);
+  return (parts[0]?.[0]||'') + (parts[1]?.[0]||'');
+}
+function escapeHTML(str){
+  if(str==null) return '';
+  return String(str).replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+}
+function statusBadge(status){
+  const map = {
+    pending:{cls:'pending',icon:'hourglass-half',label:'قيد المراجعة'},
+    approved:{cls:'approved',icon:'check-circle',label:'مقبول'},
+    rejected:{cls:'rejected',icon:'times-circle',label:'مرفوض'},
+    banned:{cls:'banned',icon:'user-slash',label:'محظور'},
+    frozen:{cls:'frozen',icon:'snowflake',label:'مُجمّد'}
+  };
+  const it = map[status]||{cls:'pending',icon:'circle',label:status||'—'};
+  return `<span class="badge ${it.cls}"><i class="fas fa-${it.icon}"></i> ${it.label}</span>`;
+}
+function userAvatarHTML(u, size='normal'){
+  const initials = getInitials(u.fullNameAr);
+  const cls = u.gender==='female' ? 'female' : '';
+  if(u.personalPhoto && u.personalPhoto.dataUrl){
+    return `<div class="user-avatar ${cls}" style="${size==='large'?'width:72px;height:72px;font-size:1.6rem;':''}"><img src="${u.personalPhoto.dataUrl}" alt="avatar" onerror="this.parentElement.textContent='${escapeHTML(initials)}'"></div>`;
+  }
+  return `<div class="user-avatar ${cls}" style="${size==='large'?'width:72px;height:72px;font-size:1.6rem;':''}">${escapeHTML(initials)}</div>`;
+}
+
+/* =========================================================
+   ACTIVITY LOG
+   ========================================================= */
+function loadActivity(){
+  try{ return JSON.parse(localStorage.getItem(LS_ACTIVITY)||'[]'); }catch(e){ return []; }
+}
+function logActivity(type, message, meta={}){
+  const log = loadActivity();
+  log.unshift({type, message, meta, at:new Date().toISOString()});
+  if(log.length > 200) log.length = 200;
+  localStorage.setItem(LS_ACTIVITY, JSON.stringify(log));
+  renderActivity();
+}
+function clearActivity(){
+  if(!confirm('هل أنت متأكد من حذف كل سجل النشاط؟')) return;
+  localStorage.removeItem(LS_ACTIVITY);
+  renderActivity();
+  showToast('تم حذف سجل النشاط','info');
+}
+function renderActivity(){
+  const log = loadActivity();
+  const tl = document.getElementById('activityTimeline');
+  const empty = document.getElementById('activityEmpty');
+  if(!log.length){ tl.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  tl.innerHTML = log.map(a=>{
+    const dotClass = a.type==='approve'?'green':a.type==='reject'||a.type==='delete'?'red':a.type==='ban'?'gold':a.type==='freeze'?'cyan':'';
+    return `<div class="timeline-item">
+      <div class="timeline-dot ${dotClass}"></div>
+      <div class="timeline-content">
+        <strong>${escapeHTML(a.message)}</strong>
+        ${a.meta && a.meta.userName ? `<span>المستخدم: ${escapeHTML(a.meta.userName)}</span>`:''}
+        ${a.meta && a.meta.reason ? `<span>السبب: ${escapeHTML(a.meta.reason)}</span>`:''}
+        <time>${timeAgo(a.at)}</time>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* =========================================================
+   LOAD DATA
+   ========================================================= */
+async function refreshAllData(){
+  try{
+    allUsers = await dbGetAllUsers();
+    allUsers.sort((a,b)=> new Date(b.submittedAt||0) - new Date(a.submittedAt||0));
+    updateStats();
+    renderRecentTable();
+    renderUsersList();
+    renderApprovedUsers();
+    renderManageList();
+    renderSupportList();
+    document.getElementById('dbTotal').textContent = allUsers.length;
+  }catch(e){
+    console.error(e);
+    showToast('حدث خطأ أثناء تحميل البيانات','error');
+  }
+}
+
+function updateStats(){
+  const total = allUsers.length;
+  const pending = allUsers.filter(u=>u.status==='pending').length;
+  const approved = allUsers.filter(u=>u.status==='approved').length;
+  const rejected = allUsers.filter(u=>u.status==='rejected').length;
+  const banned = allUsers.filter(u=>u.status==='banned').length;
+  const frozen = allUsers.filter(u=>u.status==='frozen').length;
+
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statPending').textContent = pending;
+  document.getElementById('statApproved').textContent = approved;
+  document.getElementById('statRejected').textContent = rejected;
+  document.getElementById('statBanned').textContent = banned;
+  document.getElementById('statFrozen').textContent = frozen;
+
+  document.getElementById('badgePending').textContent = pending;
+  document.getElementById('badgeApproved').textContent = approved;
+
+  document.getElementById('countPending').textContent = pending;
+  document.getElementById('countApproved').textContent = approved;
+  document.getElementById('countRejected').textContent = rejected;
+  document.getElementById('countBanned').textContent = banned;
+  document.getElementById('countFrozen').textContent = frozen;
+  document.getElementById('countAll').textContent = total;
+}
+
+/* =========================================================
+   RENDERING
+   ========================================================= */
+function userRow(u){
+  const unitLabel = u.positionTitle || u.unit || '—';
+  return `<tr onclick="openUserModal('${u.id}')">
+    <td>
+      <div class="user-cell">
+        ${userAvatarHTML(u)}
+        <div class="user-cell-info">
+          <strong>${escapeHTML(u.fullNameAr||'—')}</strong>
+          <span>${escapeHTML(u.email||u.whatsapp||'—')}</span>
+        </div>
+      </div>
+    </td>
+    <td><div class="id-cell">${escapeHTML(u.id||'—')}</div></td>
+    <td>${escapeHTML(unitLabel)}</td>
+    <td>${escapeHTML(u.governorate||'—')}</td>
+    <td>${statusBadge(u.status)}</td>
+    <td style="font-size:.7rem;color:#94a3b8;font-weight:700;">${timeAgo(u.submittedAt)}</td>
+    <td onclick="event.stopPropagation();">
+      <div class="row-actions">
+        <button class="row-btn view" title="عرض" onclick="openUserModal('${u.id}')"><i class="fas fa-eye"></i></button>
+        ${u.status==='pending'?`
+          <button class="row-btn approve" title="قبول" onclick="quickApprove('${u.id}')"><i class="fas fa-check"></i></button>
+          <button class="row-btn reject" title="رفض" onclick="askAction('reject','${u.id}')"><i class="fas fa-times"></i></button>
+        `:''}
+        ${u.status==='approved'?`
+          <button class="row-btn freeze" title="تجميد" onclick="askAction('freeze','${u.id}')"><i class="fas fa-snowflake"></i></button>
+          <button class="row-btn ban" title="حظر" onclick="askAction('ban','${u.id}')"><i class="fas fa-user-slash"></i></button>
+        `:''}
+        ${u.status==='banned'||u.status==='frozen'?`
+          <button class="row-btn unban" title="إلغاء الحظر/التجميد" onclick="quickUnban('${u.id}')"><i class="fas fa-unlock"></i></button>
+        `:''}
+        ${u.status==='rejected'?`
+          <button class="row-btn approve" title="قبول" onclick="quickApprove('${u.id}')"><i class="fas fa-check"></i></button>
+        `:''}
+      </div>
+    </td>
+  </tr>`;
+}
+
+function renderRecentTable(){
+  const tb = document.getElementById('recentTableBody');
+  const empty = document.getElementById('recentEmpty');
+  const recent = allUsers.slice(0, 6);
+  if(!recent.length){ tb.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  tb.innerHTML = recent.map(userRow).join('');
+}
+
+function renderUsersList(){
+  const tb = document.getElementById('usersTableBody');
+  const empty = document.getElementById('usersEmpty');
+  const q = (document.getElementById('searchInput').value||'').trim().toLowerCase();
+  const unitF = document.getElementById('unitFilter').value;
+  const govF = document.getElementById('govFilter').value;
+
+  let list = allUsers.filter(u=>{
+    if(currentFilter!=='all' && u.status!==currentFilter) return false;
+    if(unitF && u.unit!==unitF) return false;
+    if(govF && u.governorate!==govF) return false;
+    if(q){
+      const blob = [u.fullNameAr,u.fullNameEn,u.nationalId,u.id,u.email,u.whatsapp,u.phone,u.unit,u.positionTitle,u.governorate,u.address,u.faculty,u.university].filter(Boolean).join(' ').toLowerCase();
+      if(!blob.includes(q)) return false;
+    }
+    return true;
+  });
+
+  document.querySelectorAll('.filter-tab').forEach(t=>{
+    t.classList.toggle('active', t.dataset.status===currentFilter);
+  });
+
+  if(!list.length){ tb.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  tb.innerHTML = list.map(userRow).join('');
+}
+
+function renderApprovedUsers(){
+  const tb = document.getElementById('approvedTableBody');
+  const empty = document.getElementById('approvedEmpty');
+  const q = (document.getElementById('searchUsersInput').value||'').trim().toLowerCase();
+  let list = allUsers.filter(u=>u.status==='approved');
+  if(q){
+    const blob = [u.fullNameAr,u.fullNameEn,u.nationalId,u.id,u.email,u.unit,u.governorate].filter(Boolean).join(' ').toLowerCase();
+    if(!blob.includes(q)) list = [];
+  }
+  if(!list.length){ tb.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  tb.innerHTML = list.map(u=>`<tr onclick="openUserModal('${u.id}')">
+    <td><div class="user-cell">${userAvatarHTML(u)}<div class="user-cell-info"><strong>${escapeHTML(u.fullNameAr||'—')}</strong><span>${escapeHTML(u.email||u.whatsapp||'—')}</span></div></div></td>
+    <td><div class="id-cell">${escapeHTML(u.id||'—')}</div></td>
+    <td>${escapeHTML(u.positionTitle||u.unit||'—')}</td>
+    <td>${escapeHTML(u.governorate||'—')}</td>
+    <td><span class="badge approved"><i class="fas fa-layer-group"></i> ${escapeHTML(u.level||'L9')}</span></td>
+    <td style="font-size:.7rem;color:#94a3b8;font-weight:700;">${timeAgo(u.approvedAt)}</td>
+    <td onclick="event.stopPropagation();">
+      <div class="row-actions">
+        <button class="row-btn view" onclick="openUserModal('${u.id}')"><i class="fas fa-eye"></i></button>
+        <button class="row-btn freeze" onclick="askAction('freeze','${u.id}')" title="تجميد"><i class="fas fa-snowflake"></i></button>
+        <button class="row-btn ban" onclick="askAction('ban','${u.id}')" title="حظر"><i class="fas fa-user-slash"></i></button>
+      </div>
+    </td>
+  </tr>`).join('');
+}
+
+/* ===== MANAGE LIST ===== */
+function renderManageList(){
+  const tb = document.getElementById('manageTableBody');
+  const empty = document.getElementById('manageEmpty');
+  const q = (document.getElementById('manageSearch').value||'').trim().toLowerCase();
+  const stF = document.getElementById('manageStatusFilter').value;
+
+  let list = allUsers.filter(u=>{
+    if(stF && u.status!==stF) return false;
+    if(q){
+      const blob = [u.fullNameAr,u.fullNameEn,u.nationalId,u.id,u.email,u.whatsapp,u.unit,u.governorate].filter(Boolean).join(' ').toLowerCase();
+      if(!blob.includes(q)) return false;
+    }
+    return true;
+  });
+
+  if(!list.length){ tb.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  tb.innerHTML = list.map(u=>`<tr onclick="openUserModal('${u.id}')">
+    <td><div class="user-cell">${userAvatarHTML(u)}<div class="user-cell-info"><strong>${escapeHTML(u.fullNameAr||'—')}</strong><span>${escapeHTML(u.email||u.whatsapp||'—')}</span></div></div></td>
+    <td><div class="id-cell">${escapeHTML(u.id||'—')}</div></td>
+    <td>${escapeHTML(u.positionTitle||u.unit||'—')}</td>
+    <td>${statusBadge(u.status)}</td>
+    <td style="font-size:.68rem;color:#94a3b8;">${timeAgo(u.approvedAt || u.bannedAt || u.frozenAt || u.submittedAt)}</td>
+    <td onclick="event.stopPropagation();">
+      <div class="row-actions">
+        <button class="row-btn view" title="عرض" onclick="openUserModal('${u.id}')"><i class="fas fa-eye"></i></button>
+        <button class="row-btn" style="background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.35);color:#fbbf24;" title="تغيير كلمة المرور" onclick="openPassModal('${u.id}')"><i class="fas fa-key"></i></button>
+        <button class="row-btn" style="background:rgba(0,217,255,.1);border-color:rgba(0,217,255,.35);color:#00d9ff;" title="تعديل البيانات" onclick="openEditUserModal('${u.id}')"><i class="fas fa-user-pen"></i></button>
+        ${u.status==='approved'?`<button class="row-btn freeze" title="تجميد" onclick="askAction('freeze','${u.id}')"><i class="fas fa-snowflake"></i></button>`:''}
+        ${u.status==='approved'?`<button class="row-btn ban" title="حظر" onclick="askAction('ban','${u.id}')"><i class="fas fa-user-slash"></i></button>`:''}
+        ${u.status==='pending'?`<button class="row-btn approve" title="قبول" onclick="quickApprove('${u.id}')"><i class="fas fa-check"></i></button>`:''}
+        ${(u.status==='banned'||u.status==='frozen')?`<button class="row-btn unban" title="تفعيل" onclick="quickUnban('${u.id}')"><i class="fas fa-unlock"></i></button>`:''}
+        <button class="row-btn reject" title="حذف" onclick="askAction('delete','${u.id}')"><i class="fas fa-trash"></i></button>
+      </div>
+    </td>
+  </tr>`).join('');
+}
+
+function renderSupportList(){
+  const list = document.getElementById('supportUserList');
+  const empty = document.getElementById('supportEmpty');
+  const users = allUsers.filter(u=>u.status==='approved' && (u.whatsapp||u.phone||u.email));
+  if(!users.length){ list.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display = 'none';
+  list.innerHTML = users.map(u=>{
+    const wa = (u.whatsapp||'').replace(/[^\d]/g,'');
+    return `<div class="user-support-item">
+      <div class="user-support-header">
+        ${userAvatarHTML(u)}
+        <div class="user-support-info">
+          <strong>${escapeHTML(u.fullNameAr||'—')}</strong>
+          <span>${escapeHTML(u.id||'—')}</span>
+        </div>
+      </div>
+      <div class="user-support-actions">
+        ${u.whatsapp?`<a class="whatsapp" href="https://wa.me/${wa}" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>`:''}
+        ${u.phone?`<a href="tel:${escapeHTML(u.phone)}"><i class="fas fa-phone"></i> اتصال</a>`:''}
+        ${u.email?`<a href="mailto:${escapeHTML(u.email)}"><i class="fas fa-envelope"></i> بريد</a>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* =========================================================
+   FILTERS / NAV
+   ========================================================= */
+function filterByStatus(status){
+  currentFilter = status;
+  navigateTo('requests');
+  renderUsersList();
+}
+function clearFilters(){
+  document.getElementById('searchInput').value='';
+  document.getElementById('unitFilter').value='';
+  document.getElementById('govFilter').value='';
+  renderUsersList();
+  showToast('تم مسح الفلاتر','info');
+}
+
+const VIEW_META = {
+  dashboard:{title:'نظرة عامة', sub:'لوحة تحكم الأدمن · إدارة كاملة للنظام'},
+  requests:{title:'طلبات التسجيل', sub:'مراجعة وقبول ورفض طلبات الانضمام'},
+  users:{title:'المستخدمون المقبولون', sub:'إدارة الأعضاء المفعّلين'},
+  manage:{title:'إدارة الحسابات', sub:'تحكم كامل: تجميد، حظر، تفعيل، حذف، تغيير كلمة المرور'},
+  support:{title:'مركز الدعم الفني', sub:'بيانات التواصل والدعم'},
+  activity:{title:'سجل النشاط', sub:'كل الإجراءات الإدارية'},
+  profile:{title:'ملفي الشخصي', sub:'إدارة بيانات حساب الأدمن'},
+  settings:{title:'الإعدادات', sub:'إعدادات النظام والنسخ الاحتياطي'}
+};
+
+function navigateTo(view){
+  document.querySelectorAll('.sidebar-nav .nav-link').forEach(a=>{
+    a.classList.toggle('active', a.dataset.view===view);
+  });
+  document.querySelectorAll('.view-section').forEach(s=>{
+    s.classList.toggle('active', s.dataset.view===view);
+  });
+  const meta = VIEW_META[view]||{title:'لوحة التحكم',sub:''};
+  document.getElementById('viewTitle').textContent = meta.title;
+  document.getElementById('viewSubtitle').textContent = meta.sub;
+  if(window.innerWidth <= 1024){
+    document.getElementById('adminSidebar').classList.remove('mobile-open');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.querySelectorAll('.sidebar-nav .nav-link').forEach(a=>{
+  a.addEventListener('click', ()=>{ if(a.dataset.view) navigateTo(a.dataset.view); });
+});
+
+document.getElementById('sidebarToggle').addEventListener('click', ()=>{
+  const sb = document.getElementById('adminSidebar');
+  if(window.innerWidth <= 1024){ sb.classList.toggle('mobile-open'); }
+  else { sb.classList.toggle('collapsed'); document.getElementById('adminMain').classList.toggle('expanded'); }
+});
+
+/* =========================================================
+   MODAL HELPERS
+   ========================================================= */
+function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click', e=>{ if(e.target===ov) closeModal(ov.id); });
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id)); }
+});
+
+function openDocViewer(src){
+  document.getElementById('docViewerImg').src = src;
+  document.getElementById('docViewer').classList.add('open');
+}
+function closeDocViewer(){
+  document.getElementById('docViewer').classList.remove('open');
+}
+
+/* =========================================================
+   BUILD INFO GRID
+   ========================================================= */
+function buildInfoGrid(items){
+  return items.map(([lbl,val,ltr])=>{
+    const isEmpty = !val || val==='—';
+    const valCls = isEmpty ? 'val empty' : (ltr ? 'val ltr' : 'val');
+    return `<div class="info-item ${ltr?'full':''}">
+      <span class="lbl">${escapeHTML(lbl)}</span>
+      <span class="${valCls}">${isEmpty?'غير متوفر':escapeHTML(val)}</span>
+    </div>`;
+  }).join('');
+}
+
+/* =========================================================
+   USER DETAILS MODAL
+   ========================================================= */
+function openUserModal(id){
+  const u = allUsers.find(x=>x.id===id);
+  if(!u){ showToast('المستخدم غير موجود','error'); return; }
+  selectedUserId = id;
+
+  const avatar = document.getElementById('modalAvatar');
+  avatar.className = 'modal-avatar ' + (u.gender==='female'?'female':'');
+  if(u.personalPhoto && u.personalPhoto.dataUrl){
+    avatar.innerHTML = `<img src="${u.personalPhoto.dataUrl}" alt="avatar">`;
+  } else {
+    avatar.innerHTML = escapeHTML(getInitials(u.fullNameAr));
+  }
+
+  document.getElementById('modalName').textContent = u.fullNameAr||'—';
+  document.getElementById('modalId').textContent = u.id||'—';
+
+  const levelLabel = u.level ? `<span class="badge pending"><i class="fas fa-layer-group"></i> ${escapeHTML(u.level)} · ${escapeHTML(u.levelTitle||'')}</span>` : '';
+  document.getElementById('modalBadges').innerHTML = statusBadge(u.status) + levelLabel;
+
+  const personal = `
+    <div class="info-section">
+      <h4><i class="fas fa-user"></i> البيانات الشخصية</h4>
+      <div class="info-grid">
+        ${buildInfoGrid([
+          ['الاسم (عربي)', u.fullNameAr],
+          ['الاسم (English)', u.fullNameEn, true],
+          ['الرقم القومي', u.nationalId, true],
+          ['تاريخ الميلاد', u.birthDate, true],
+          ['النوع', u.gender==='male'?'ذكر':u.gender==='female'?'أنثى':'—'],
+          ['الحالة الاجتماعية', u.maritalStatus],
+          ['المحافظة', u.addressGovernorate],
+          ['المدينة/المركز', u.addressCity],
+          ['العنوان التفصيلي', u.addressDetail]
+        ])}
+      </div>
+    </div>`;
+
+  const professional = `
+    <div class="info-section">
+      <h4><i class="fas fa-user-tie"></i> البيانات الوظيفية</h4>
+      <div class="info-grid">
+        ${buildInfoGrid([
+          ['السيزون', u.season],
+          ['المحافظة', u.governorate],
+          ['الوحدة', u.unit],
+          ['المسمي الوظيفي', u.positionTitle||u.position],
+          ['المستوى', u.level],
+          ['مستوى الصلاحية', u.levelTitle],
+          ['سبب الانضمام', u.joinReason]
+        ])}
+      </div>
+    </div>`;
+
+  const eduItems = [['الحالة التعليمية', u.educationStatus]];
+  if(u.university) eduItems.push(['الجامعة', u.university]);
+  if(u.faculty) eduItems.push(['الكلية', u.faculty]);
+  if(u.academicYear) eduItems.push(['السنة الدراسية', u.academicYear]);
+  if(u.finalYearGPA) eduItems.push(['GPA', u.finalYearGPA, true]);
+  if(u.finalYearGrade) eduItems.push(['التقدير', u.finalYearGrade]);
+  if(u.gradYear) eduItems.push(['سنة التخرج', u.gradYear, true]);
+  if(u.gradGPA) eduItems.push(['GPA', u.gradGPA, true]);
+  if(u.gradGrade) eduItems.push(['التقدير', u.gradGrade]);
+  if(u.postgradDegree) eduItems.push(['الدرجة العلمية', u.postgradDegree]);
+  if(u.researchArea) eduItems.push(['مجال البحث', u.researchArea]);
+  if(u.schoolName) eduItems.push(['المدرسة', u.schoolName]);
+  if(u.schoolGrade) eduItems.push(['الصف', u.schoolGrade]);
+  if(u.skills) eduItems.push(['المهارات', u.skills]);
+  if(u.experience) eduItems.push(['خبرات', u.experience]);
+
+  const education = `
+    <div class="info-section">
+      <h4><i class="fas fa-graduation-cap"></i> البيانات التعليمية</h4>
+      <div class="info-grid">${buildInfoGrid(eduItems)}</div>
+    </div>`;
+
+  const contact = `
+    <div class="info-section">
+      <h4><i class="fas fa-address-book"></i> بيانات الاتصال</h4>
+      <div class="info-grid">
+        ${buildInfoGrid([
+          ['البريد الإلكتروني', u.email, true],
+          ['واتساب', u.whatsapp, true],
+          ['هاتف', u.phone, true],
+          ['طوارئ', u.emergencyContact],
+          ['LinkedIn/GitHub', u.socialLink, true]
+        ])}
+      </div>
+    </div>`;
+
+  // 📸 Document section
+  const docsSection = `
+    <div class="info-section">
+      <h4><i class="fas fa-images"></i> المستندات والصور المرفقة</h4>
+      <div class="docs-grid">
+        ${['personalPhoto','idFront','idBack','degreeDoc','militaryDoc'].map(key=>{
+          const labels = {
+            personalPhoto:'الصورة الشخصية',
+            idFront:'البطاقة (الوش)',
+            idBack:'البطاقة (الضهر)',
+            degreeDoc:'شهادة التخرج',
+            militaryDoc:'شهادة الجيش'
+          };
+          const doc = u[key];
+          if(doc && doc.dataUrl){
+            return `<div class="doc-card" onclick="openDocViewer('${doc.dataUrl}')">
+              <img src="${doc.dataUrl}" alt="${labels[key]}">
+              <span><i class="fas fa-expand"></i> ${labels[key]}</span>
+            </div>`;
+          }
+          return `<div class="doc-card" style="cursor:default;">
+            <div class="missing"><i class="fas fa-image"></i>لم يتم رفعها</div>
+            <span>${labels[key]}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+
+  const additionalItems = [];
+  if(u.militaryStatus) additionalItems.push(['الموقف العسكري', u.militaryStatus]);
+  if(u.militaryReason) additionalItems.push(['سبب التأجيل/الإعفاء', u.militaryReason]);
+  if(u.militaryDate) additionalItems.push(['تاريخ الإتمام', u.militaryDate, true]);
+  if(u.guardianName) additionalItems.push(['ولي الأمر', u.guardianName]);
+  if(u.guardianRelation) additionalItems.push(['صلة القرابة', u.guardianRelation]);
+  if(u.guardianPhone) additionalItems.push(['رقم ولي الأمر', u.guardianPhone, true]);
+
+  const additional = additionalItems.length ? `
+    <div class="info-section">
+      <h4><i class="fas fa-shield-halved"></i> بيانات إضافية</h4>
+      <div class="info-grid">${buildInfoGrid(additionalItems)}</div>
+    </div>` : '';
+
+  const system = `
+    <div class="info-section">
+      <h4><i class="fas fa-cog"></i> بيانات النظام</h4>
+      <div class="info-grid">
+        ${buildInfoGrid([
+          ['تاريخ التقديم', formatDate(u.submittedAt)],
+          ['الحالة', u.status],
+          ['تاريخ القبول', u.approvedAt?formatDate(u.approvedAt):'—'],
+          ['قبل بواسطة', u.approvedBy||'—'],
+          ['آخر تعديل', u.lastModifiedAt?formatDate(u.lastModifiedAt):'—'],
+          ['آخر تعديل بواسطة', u.lastModifiedBy||'—'],
+          ['سبب الرفض', u.rejectionReason||'—'],
+          ['سبب الحظر', u.banReason||'—'],
+          ['سبب التجميد', u.freezeReason||'—']
+        ])}
+      </div>
+    </div>`;
+
+  document.getElementById('modalBody').innerHTML = personal + professional + education + contact + docsSection + additional + system;
+
+  // Action buttons - comprehensive
+  const actionsEl = document.getElementById('modalActions');
+  let actions = '';
+
+  if(u.status==='pending'){
+    actions = `
+      <button class="modal-btn approve" onclick="closeModal('userModal'); quickApprove('${u.id}')"><i class="fas fa-check-circle"></i> قبول</button>
+      <button class="modal-btn reject" onclick="closeModal('userModal'); askAction('reject','${u.id}')"><i class="fas fa-times-circle"></i> رفض</button>
+      <button class="modal-btn warn" onclick="closeModal('userModal'); openPassModal('${u.id}')"><i class="fas fa-key"></i> كلمة المرور</button>
+    `;
+  } else if(u.status==='approved'){
+    actions = `
+      <button class="modal-btn freeze" onclick="closeModal('userModal'); askAction('freeze','${u.id}')"><i class="fas fa-snowflake"></i> تجميد</button>
+      <button class="modal-btn ban" onclick="closeModal('userModal'); askAction('ban','${u.id}')"><i class="fas fa-user-slash"></i> حظر</button>
+      <button class="modal-btn warn" onclick="closeModal('userModal'); openPassModal('${u.id}')"><i class="fas fa-key"></i> كلمة المرور</button>
+      <button class="modal-btn ghost" onclick="closeModal('userModal'); openEditUserModal('${u.id}')"><i class="fas fa-user-pen"></i> تعديل</button>
+    `;
+  } else if(u.status==='rejected'){
+    actions = `
+      <button class="modal-btn approve" onclick="closeModal('userModal'); quickApprove('${u.id}')"><i class="fas fa-check-circle"></i> قبول الآن</button>
+      <button class="modal-btn reject" onclick="closeModal('userModal'); askAction('delete','${u.id}')"><i class="fas fa-trash"></i> حذف نهائي</button>
+    `;
+  } else if(u.status==='banned'||u.status==='frozen'){
+    actions = `
+      <button class="modal-btn approve" onclick="closeModal('userModal'); quickUnban('${u.id}')"><i class="fas fa-unlock"></i> تفعيل / إلغاء</button>
+      <button class="modal-btn warn" onclick="closeModal('userModal'); openPassModal('${u.id}')"><i class="fas fa-key"></i> كلمة المرور</button>
+      <button class="modal-btn reject" onclick="closeModal('userModal'); askAction('delete','${u.id}')"><i class="fas fa-trash"></i> حذف نهائي</button>
+    `;
+  }
+
+  actions += `<button class="modal-btn ghost" onclick="closeModal('userModal')"><i class="fas fa-times"></i> إغلاق</button>`;
+  actionsEl.innerHTML = actions;
+
+  openModal('userModal');
+}
+
+/* =========================================================
+   ACTION MODAL
+   ========================================================= */
+const ACTION_META = {
+  approve:{
+    title:'تأكيد قبول الطلب',
+    sub:'سيتم تفعيل الحساب.',
+    icon:'<i class="fas fa-check-circle"></i>',
+    iconColor:'linear-gradient(135deg,#10b981,#059669)',
+    btnLabel:'نعم، اقبل',
+    btnClass:'approve',
+    needsReason:false,
+    warning:'<div class="modal-warning success"><i class="fas fa-info-circle"></i><div>سيتحول المستخدم للحالة <strong>مقبول</strong> ويستطيع الدخول.</div></div>'
+  },
+  reject:{
+    title:'تأكيد رفض الطلب',
+    sub:'سيتم رفض الطلب.',
+    icon:'<i class="fas fa-times-circle"></i>',
+    iconColor:'linear-gradient(135deg,#ef4444,#b91c1c)',
+    btnLabel:'نعم، ارفض',
+    btnClass:'reject',
+    needsReason:true,
+    warning:'<div class="modal-warning danger"><i class="fas fa-exclamation-triangle"></i><div>لن يستطيع المستخدم الدخول بعد الرفض.</div></div>'
+  },
+  ban:{
+    title:'حظر المستخدم',
+    sub:'إيقاف دائم لحين إلغاء الحظر.',
+    icon:'<i class="fas fa-user-slash"></i>',
+    iconColor:'linear-gradient(135deg,#475569,#1e293b)',
+    btnLabel:'نعم، احظر',
+    btnClass:'ban',
+    needsReason:true,
+    warning:'<div class="modal-warning danger"><i class="fas fa-lock"></i><div><strong>حظر نهائي</strong> المستخدم لن يستطيع الدخول لحين إلغاء الحظر.</div></div>'
+  },
+  freeze:{
+    title:'تجميد الحساب',
+    sub:'إيقاف مؤقت للحساب لحين المراجعة.',
+    icon:'<i class="fas fa-snowflake"></i>',
+    iconColor:'linear-gradient(135deg,#0ea5e9,#0284c7)',
+    btnLabel:'نعم، جمّد',
+    btnClass:'freeze',
+    needsReason:true,
+    warning:'<div class="modal-warning info"><i class="fas fa-snowflake"></i><div><strong>تجميد مؤقت</strong> يمكن رفعه في أي وقت. المستخدم لن يستطيع الدخول أثناء التجميد.</div></div>'
+  },
+  delete:{
+    title:'حذف الحساب نهائياً',
+    sub:'حذف كل البيانات — لا يمكن التراجع.',
+    icon:'<i class="fas fa-trash"></i>',
+    iconColor:'linear-gradient(135deg,#ef4444,#7f1d1d)',
+    btnLabel:'نعم، احذف نهائياً',
+    btnClass:'reject',
+    needsReason:false,
+    warning:'<div class="modal-warning danger"><i class="fas fa-skull-crossbones"></i><div><strong>إجراء لا يمكن التراجع عنه</strong> كل بيانات المستخدم سيتم مسحها.</div></div>'
+  }
+};
+
+function askAction(type, userId){
+  const u = allUsers.find(x=>x.id===userId);
+  if(!u){ showToast('المستخدم غير موجود','error'); return; }
+  const meta = ACTION_META[type];
+  if(!meta) return;
+
+  selectedUserId = userId;
+  pendingAction = type;
+
+  const iconEl = document.getElementById('actionIcon');
+  iconEl.innerHTML = meta.icon;
+  iconEl.style.background = meta.iconColor;
+  iconEl.style.color = '#fff';
+
+  document.getElementById('actionTitle').textContent = meta.title;
+  document.getElementById('actionSub').textContent = `${meta.sub} · ${u.fullNameAr||''}`;
+  document.getElementById('actionWarning').innerHTML = meta.warning;
+
+  const reasonGroup = document.getElementById('actionReasonGroup');
+  const reasonInput = document.getElementById('actionReason');
+  if(meta.needsReason){
+    reasonGroup.style.display = 'block';
+    reasonInput.value = '';
+    reasonInput.required = true;
+  } else {
+    reasonGroup.style.display = 'none';
+    reasonInput.required = false;
+  }
+
+  const btn = document.getElementById('actionConfirmBtn');
+  btn.className = 'modal-btn ' + meta.btnClass;
+  btn.innerHTML = '<i class="fas fa-check"></i> ' + meta.btnLabel;
+  btn.onclick = executeAction;
+
+  openModal('actionModal');
+}
+
+async function executeAction(){
+  if(!selectedUserId || !pendingAction) return;
+  const u = allUsers.find(x=>x.id===selectedUserId);
+  if(!u) return;
+
+  const meta = ACTION_META[pendingAction];
+  const reason = document.getElementById('actionReason').value.trim();
+  if(meta.needsReason && !reason){ showToast('يرجى كتابة السبب','error'); return; }
+
+  const btn = document.getElementById('actionConfirmBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التنفيذ...';
+
+  try{
+    const now = new Date().toISOString();
+    const adminName = adminSession?.name || 'Admin';
+    const oldStatus = u.status;
+
+    if(pendingAction==='approve'){
+      u.status = 'approved';
+      u.approvedAt = now;
+      u.approvedBy = adminName;
+      u.rejectionReason = '';
+      u.banReason = '';
+      u.freezeReason = '';
+      logActivity('approve', `قبول: ${u.fullNameAr}`, {userName:u.fullNameAr});
+    } else if(pendingAction==='reject'){
+      u.status = 'rejected';
+      u.rejectionReason = reason;
+      u.rejectedAt = now;
+      logActivity('reject', `رفض: ${u.fullNameAr}`, {userName:u.fullNameAr, reason});
+    } else if(pendingAction==='ban'){
+      u.status = 'banned';
+      u.banReason = reason;
+      u.bannedAt = now;
+      logActivity('ban', `حظر: ${u.fullNameAr}`, {userName:u.fullNameAr, reason});
+    } else if(pendingAction==='freeze'){
+      u.status = 'frozen';
+      u.freezeReason = reason;
+      u.frozenAt = now;
+      logActivity('freeze', `تجميد: ${u.fullNameAr}`, {userName:u.fullNameAr, reason});
+    } else if(pendingAction==='delete'){
+      await dbDeleteUser(u.id);
+      logActivity('delete', `حذف: ${u.fullNameAr}`, {userName:u.fullNameAr});
+      showToast('تم حذف الحساب نهائياً','warn');
+      closeModal('actionModal');
+      await refreshAllData();
+      closeModal('userModal');
+      return;
+    }
+
+    u.lastModifiedAt = now;
+    u.lastModifiedBy = adminName;
+    await dbUpdateUser(u);
+
+    const msgMap = {approve:'تم القبول', reject:'تم الرفض', ban:'تم الحظر', freeze:'تم التجميد'};
+    showToast(msgMap[pendingAction] || 'تم التنفيذ', pendingAction==='approve'?'success':pendingAction==='freeze'?'info':'warn');
+    closeModal('actionModal');
+    closeModal('userModal');
+    await refreshAllData();
+  }catch(err){
+    console.error(err);
+    showToast('حدث خطأ أثناء التنفيذ','error');
+  }finally{
+    btn.disabled = false;
+  }
+}
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+async function quickApprove(id){
+  const u = allUsers.find(x=>x.id===id);
+  if(!u) return;
+  const now = new Date().toISOString();
+  u.status = 'approved';
+  u.approvedAt = now;
+  u.approvedBy = adminSession?.name || 'Admin';
+  u.lastModifiedAt = now;
+  u.lastModifiedBy = adminSession?.name || 'Admin';
+  try{
+    await dbUpdateUser(u);
+    logActivity('approve', `قبول: ${u.fullNameAr}`, {userName:u.fullNameAr});
+    showToast('تم القبول ✓','success');
+    await refreshAllData();
+  }catch(e){ showToast('حدث خطأ','error'); }
+}
+
+async function quickUnban(id){
+  const u = allUsers.find(x=>x.id===id);
+  if(!u) return;
+  const now = new Date().toISOString();
+  u.status = 'approved';
+  u.banReason = '';
+  u.freezeReason = '';
+  u.unbannedAt = now;
+  u.lastModifiedAt = now;
+  u.lastModifiedBy = adminSession?.name || 'Admin';
+  try{
+    await dbUpdateUser(u);
+    logActivity('approve', `تفعيل: ${u.fullNameAr}`, {userName:u.fullNameAr});
+    showToast('تم التفعيل ✓','success');
+    await refreshAllData();
+  }catch(e){ showToast('حدث خطأ','error'); }
+}
+
+/* =========================================================
+   CHANGE USER PASSWORD
+   ========================================================= */
+let passTargetId = null;
+function openPassModal(id){
+  const u = allUsers.find(x=>x.id===id);
+  if(!u){ showToast('المستخدم غير موجود','error'); return; }
+  passTargetId = id;
+  document.getElementById('passModalUser').textContent = u.fullNameAr + ' · ' + u.id;
+  document.getElementById('newUserPass').value = '';
+  document.getElementById('confirmUserPass').value = '';
+  openModal('passModal');
+}
+
+async function saveUserPassword(){
+  if(!passTargetId) return;
+  const p1 = document.getElementById('newUserPass').value;
+  const p2 = document.getElementById('confirmUserPass').value;
+  if(!p1 || p1.length<8){ showToast('كلمة المرور يجب أن تكون 8 أحرف على الأقل','error'); return; }
+  if(p1!==p2){ showToast('كلمتا المرور غير متطابقتين','error'); return; }
+
+  const u = allUsers.find(x=>x.id===passTargetId);
+  if(!u) return;
+
+  const now = new Date().toISOString();
+  u.password = p1;
+  u.lastModifiedAt = now;
+  u.lastModifiedBy = adminSession?.name || 'Admin';
+
+  try{
+    await dbUpdateUser(u);
+    logActivity('password', `تغيير كلمة مرور: ${u.fullNameAr}`, {userName:u.fullNameAr});
+    showToast(`تم تحديث كلمة المرور بنجاح ✓`, 'success');
+    closeModal('passModal');
+    await refreshAllData();
+  }catch(e){ showToast('حدث خطأ','error'); }
+}
+
+/* =========================================================
+   EDIT USER DATA
+   ========================================================= */
+let editTargetId = null;
+function openEditUserModal(id){
+  const u = allUsers.find(x=>x.id===id);
+  if(!u){ showToast('المستخدم غير موجود','error'); return; }
+  editTargetId = id;
+  document.getElementById('editModalUser').textContent = u.fullNameAr + ' · ' + u.id;
+
+  const body = document.getElementById('editUserBody');
+  body.innerHTML = `
+    <div class="modal-warning info"><i class="fas fa-info-circle"></i><div>يمكنك تعديل البيانات الأساسية للمستخدم. الحقول الفارغة ستبقى كما هي.</div></div>
+    <div class="info-section">
+      <h4><i class="fas fa-user"></i> البيانات الأساسية</h4>
+      <div class="modal-form-group">
+        <label class="modal-form-label">الاسم الكامل (عربي)</label>
+        <input type="text" id="editFullNameAr" class="modal-form-control" value="${escapeHTML(u.fullNameAr||'')}">
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-form-label">الاسم الكامل (English)</label>
+        <input type="text" id="editFullNameEn" class="modal-form-control" value="${escapeHTML(u.fullNameEn||'')}" style="direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;">
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-form-label">البريد الإلكتروني</label>
+        <input type="email" id="editEmail" class="modal-form-control" value="${escapeHTML(u.email||'')}" style="direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;">
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-form-label">واتساب</label>
+        <input type="tel" id="editWhatsapp" class="modal-form-control" value="${escapeHTML(u.whatsapp||'')}" style="direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;">
+      </div>
+      <div class="modal-form-group">
+        <label class="modal-form-label">هاتف إضافي</label>
+        <input type="tel" id="editPhone" class="modal-form-control" value="${escapeHTML(u.phone||'')}" style="direction:ltr;text-align:left;font-family:'JetBrains Mono',monospace;">
+      </div>
+    </div>
+  `;
+  openModal('editUserModal');
+}
+
+async function saveUserEdits(){
+  if(!editTargetId) return;
+  const u = allUsers.find(x=>x.id===editTargetId);
+  if(!u) return;
+
+  const g = id => document.getElementById(id).value.trim();
+  const now = new Date().toISOString();
+
+  u.fullNameAr = g('editFullNameAr') || u.fullNameAr;
+  u.fullNameEn = g('editFullNameEn') || u.fullNameEn;
+  u.email = g('editEmail') || u.email;
+  u.whatsapp = g('editWhatsapp') || u.whatsapp;
+  u.phone = g('editPhone') || u.phone;
+  u.lastModifiedAt = now;
+  u.lastModifiedBy = adminSession?.name || 'Admin';
+
+  try{
+    await dbUpdateUser(u);
+    logActivity('edit', `تعديل بيانات: ${u.fullNameAr}`, {userName:u.fullNameAr});
+    showToast('تم حفظ التعديلات ✓','success');
+    closeModal('editUserModal');
+    closeModal('userModal');
+    await refreshAllData();
+  }catch(e){ showToast('حدث خطأ','error'); }
+}
+
+/* =========================================================
+   ADMIN PROFILE
+   ========================================================= */
+async function saveAdminProfile(){
+  const name = document.getElementById('adminEditName').value.trim();
+  const email = document.getElementById('adminEditEmail').value.trim();
+  const role = document.getElementById('adminEditRole').value.trim();
+
+  if(!name){ showToast('الاسم مطلوب','error'); return; }
+
+  const profile = loadAdminProfile();
+  profile.name = name;
+  profile.email = email || profile.email;
+  profile.roleTitle = role || profile.roleTitle;
+  saveAdminProfileToLS(profile);
+
+  // Update session
+  if(adminSession){
+    adminSession.name = name;
+    if(email) adminSession.email = email;
+    if(role) adminSession.roleTitle = role;
+    if(localStorage.getItem('fba_session')) localStorage.setItem('fba_session', JSON.stringify(adminSession));
+    if(sessionStorage.getItem('fba_session')) sessionStorage.setItem('fba_session', JSON.stringify(adminSession));
+  }
+
+  // Update UI
+  const initials = getInitials(name);
+  document.getElementById('sideAdminName').textContent = name;
+  document.getElementById('sideAdminAvatar').textContent = initials;
+  document.getElementById('profileHeroAvatar').textContent = initials;
+  document.getElementById('profileHeroName').textContent = name;
+  document.getElementById('profileHeroEmail').textContent = email || adminSession.email || '—';
+
+  logActivity('profile', `تحديث بيانات الأدمن`);
+  showToast('تم حفظ بياناتك الشخصية ✓','success');
+}
+
+async function changeAdminPassword(){
+  const cur = document.getElementById('adminCurrentPass').value;
+  const np = document.getElementById('adminNewPass').value;
+  const cp = document.getElementById('adminConfirmPass').value;
+
+  if(!cur || !np || !cp){ showToast('جميع الحقول مطلوبة','error'); return; }
+  if(np.length<8){ showToast('كلمة المرور 8 أحرف على الأقل','error'); return; }
+  if(np!==cp){ showToast('كلمتا المرور غير متطابقتين','error'); return; }
+
+  // التحقق من كلمة المرور الحالية
+  const storedAdminPass = localStorage.getItem('fba_admin_password') || '23522004';
+  if(cur !== storedAdminPass){
+    showToast('كلمة المرور الحالية غير صحيحة','error');
+    return;
+  }
+
+  localStorage.setItem('fba_admin_password', np);
+  document.getElementById('adminCurrentPass').value = '';
+  document.getElementById('adminNewPass').value = '';
+  document.getElementById('adminConfirmPass').value = '';
+  logActivity('password', `تغيير كلمة مرور الأدمن`);
+  showToast('تم تحديث كلمة مرور الأدمن ✓','success');
+}
+
+/* =========================================================
+   EXPORT
+   ========================================================= */
+function exportData(){
+  try{
+    const data = {
+      exportedAt: new Date().toISOString(),
+      exportedBy: adminSession?.name || 'Admin',
+      total: allUsers.length,
+      users: allUsers
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `fba-users-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    logActivity('export', `تصدير ${allUsers.length} مستخدم`);
+    showToast('تم تصدير البيانات','success');
+  }catch(e){ showToast('فشل التصدير','error'); }
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+(async function init(){
+  const govs = ['القاهرة','الجيزة','الإسكندرية','الدقهلية','الشرقية','القليوبية','كفر الشيخ','الغربية','المنوفية','البحيرة','الإسماعيلية','بورسعيد','السويس','شمال سيناء','جنوب سيناء','الفيوم','بني سويف','المنيا','أسيوط','سوهاج','قنا','الأقصر','أسوان','البحر الأحمر','الوادي الجديد','مطروح','دمياط'];
+  const govSel = document.getElementById('govFilter');
+  govs.forEach(g=>{ const o = document.createElement('option'); o.value=g; o.textContent=g; govSel.appendChild(o); });
+
+  await refreshAllData();
+  renderActivity();
+
+  setTimeout(()=>{
+    document.getElementById('pageLoader').classList.add('hide');
+    setTimeout(()=>document.getElementById('pageLoader')?.remove(), 500);
+  }, 400);
+})();
+</script>
+</body>
+</html>

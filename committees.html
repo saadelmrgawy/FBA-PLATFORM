@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الوحدات | FBA Futur By Ai - المستقبل بالذكاء الاصطناعي</title>
+<meta name="description" content="تعرّف على الوحدات الخمس في FBA Futur By Ai: الموارد البشرية، التنظيم والعمليات، العلاقات العامة واللوجستيات، التسويق والانتشار، وتحول الذكاء الاصطناعي.">
+<link rel="icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+<link rel="shortcut icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<style>
+:root{
+  --neon-cyan:#00d9ff;
+  --neon-blue:#3b82f6;
+  --neon-purple:#8b5cf6;
+  --neon-pink:#ec4899;
+  --deep-space:#05060f;
+  --deep-navy:#0a0e27;
+  --deep-purple:#1a0b2e;
+  --text-light:#f1f5f9;
+  --text-muted:#94a3b8;
+  --gradient-main:linear-gradient(135deg,#00d9ff 0%,#8b5cf6 50%,#ec4899 100%);
+  --gradient-blue:linear-gradient(135deg,#3b82f6,#8b5cf6);
+  --radius:20px;
+  /* dynamic per-committee */
+  --accent:#00d9ff;
+  --accent-2:#8b5cf6;
+  --accent-rgb:0,217,255;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'Cairo',sans-serif;
+  background:var(--deep-space);color:var(--text-light);
+  overflow-x:hidden;min-height:100vh;line-height:1.7;font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+/* ============ BACKGROUND ============ */
+.bg-layer{position:fixed;inset:0;z-index:-4;background:
+  radial-gradient(ellipse at 20% 20%,rgba(var(--accent-rgb),.13),transparent 55%),
+  radial-gradient(ellipse at 80% 80%,rgba(139,92,246,.15),transparent 55%),
+  radial-gradient(ellipse at 50% 50%,rgba(236,72,153,.07),transparent 60%),
+  var(--deep-space);
+  transition:background 1s ease;
+}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(var(--accent-rgb),.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(139,92,246,.045) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  transition:background-image 1s ease;
+}
+.bg-mesh{position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:
+    radial-gradient(circle 600px at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),.22),transparent 55%),
+    radial-gradient(circle 500px at calc(100% - var(--mx,50%)) calc(100% - var(--my,50%)),rgba(139,92,246,.2),transparent 55%);
+  transition:background .25s ease-out;
+  mix-blend-mode:screen;
+}
+.bg-orbs{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.3;animation:orbFloat 22s ease-in-out infinite;transition:background 1s ease;}
+.orb-1{width:420px;height:420px;background:var(--accent);top:8%;left:8%;}
+.orb-2{width:500px;height:500px;background:#8b5cf6;top:50%;right:5%;animation-delay:-6s;}
+.orb-3{width:380px;height:380px;background:#ec4899;bottom:8%;left:25%;animation-delay:-12s;}
+.orb-4{width:320px;height:320px;background:var(--accent-2);top:20%;right:28%;animation-delay:-18s;}
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0) scale(1);}
+  25%{transform:translate(60px,-40px) scale(1.1);}
+  50%{transform:translate(-40px,60px) scale(.95);}
+  75%{transform:translate(40px,40px) scale(1.05);}
+}
+
+/* ============ LOADING ============ */
+.loader-screen{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#0a0e27 0%,#05060f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease;overflow:hidden;}
+.loader-screen.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-screen::before{content:'';position:absolute;inset:-10%;background-image:radial-gradient(rgba(0,217,255,.35) 1px,transparent 1px);background-size:34px 34px;opacity:.22;animation:loaderGridDrift 16s linear infinite;pointer-events:none;}
+@keyframes loaderGridDrift{0%{transform:translate(0,0);}100%{transform:translate(34px,34px);}}
+.loader-particle{position:absolute;bottom:-10px;border-radius:50%;background:var(--gradient-main);filter:blur(.5px);pointer-events:none;animation:loaderParticleFloat linear infinite;}
+@keyframes loaderParticleFloat{0%{transform:translateY(0) translateX(0) scale(1);opacity:0;}10%{opacity:.75;}85%{opacity:.45;}100%{transform:translateY(-105vh) translateX(24px) scale(.4);opacity:0;}}
+.loader-content{position:relative;z-index:2;width:100%;max-width:420px;margin:0 auto;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.loader-logo-wrap{position:relative;width:150px;height:150px;margin:0 auto 25px;display:flex;align-items:center;justify-content:center;animation:loaderFadeInUp .7s ease both;}
+.loader-glow{position:absolute;inset:-22px;border-radius:50%;background:var(--gradient-main);filter:blur(28px);opacity:.35;animation:loaderGlowPulse 2.4s ease-in-out infinite;}
+@keyframes loaderGlowPulse{0%,100%{opacity:.22;transform:scale(.9);}50%{opacity:.5;transform:scale(1.08);}}
+.loader-ring{position:absolute;inset:0;border-radius:50%;border:3px solid transparent;border-top-color:#00d9ff;border-right-color:#8b5cf6;animation:spin 1.3s linear infinite;}
+.loader-ring::before{content:'';position:absolute;top:-4px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#00d9ff;box-shadow:0 0 12px 3px rgba(0,217,255,.9);}
+.loader-ring-2{inset:15px;border-top-color:#8b5cf6;border-right-color:#ec4899;animation:spin 2s linear infinite reverse;}
+.loader-ring-2::before{content:'';position:absolute;top:-3px;left:50%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#ec4899;box-shadow:0 0 10px 3px rgba(236,72,153,.9);}
+.loader-ring-3{inset:30px;border-top-color:#3b82f6;border-right-color:#00d9ff;animation:spin 2.6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loader-logo-inner{position:relative;width:90px;height:90px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 40px rgba(0,217,255,.7);animation:pulseScale 2s ease-in-out infinite;border:2px solid rgba(255,255,255,.25);}
+.loader-logo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;}
+.loader-logo-inner::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);background-size:250% 250%;background-position:200% 0;animation:loaderShine 2.6s ease-in-out infinite;z-index:2;}
+@keyframes loaderShine{0%{background-position:200% 0;}100%{background-position:-50% 0;}}
+@keyframes pulseScale{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+.loader-title{font-family:'Orbitron',sans-serif;font-size:2.3rem;font-weight:900;background:var(--gradient-main);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:3px;margin:0 0 8px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .15s both,loaderGradientShift 3s linear infinite;}
+@keyframes loaderGradientShift{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+.loader-sub{font-family:'Cairo',sans-serif;font-size:1rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:30px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .3s both;}
+.loader-bar{position:relative;width:300px;max-width:80vw;height:6px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin:0 auto 15px;border:1px solid rgba(0,217,255,.2);animation:loaderFadeInUp .7s ease .45s both;}
+.loader-bar-fill{height:100%;width:0%;background:var(--gradient-main);background-size:200% auto;border-radius:10px;box-shadow:0 0 15px rgba(0,217,255,.8);transition:width .3s ease;position:relative;overflow:hidden;}
+.loader-bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);animation:loaderBarShimmer 1.2s linear infinite;}
+@keyframes loaderBarShimmer{0%{transform:translateX(-140%);}100%{transform:translateX(140%);}}
+.loader-percent{font-family:'Orbitron',sans-serif;font-size:.9rem;color:#00d9ff;letter-spacing:2px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .55s both;}
+@keyframes loaderFadeInUp{0%{opacity:0;transform:translateY(16px);}100%{opacity:1;transform:translateY(0);}}
+
+/* ============ NAVBAR ============ */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 28px;background:transparent;transition:all .35s ease;}
+.nav-logos{display:flex;align-items:center;gap:12px;}
+.nav-logos img{height:46px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(var(--accent-rgb),.3));transition:transform .3s;}
+.nav-logos img:hover{transform:scale(1.08) translateY(-2px);}
+.nav-actions{display:flex;align-items:center;gap:10px;}
+.nav-icon-btn{position:relative;width:48px;height:48px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(var(--accent-rgb),.32);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;transition:all .35s cubic-bezier(.34,1.56,.64,1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.nav-icon-btn::before{content:'';position:absolute;inset:0;border-radius:14px;background:var(--gradient-main);opacity:0;transition:opacity .3s;z-index:1;}
+.nav-icon-btn:hover{transform:translateY(-3px) scale(1.08);border-color:transparent;box-shadow:0 12px 30px rgba(var(--accent-rgb),.5);}
+.nav-icon-btn:hover::before{opacity:1;}
+.menu-lines{position:relative;width:22px;height:16px;z-index:2;}
+.menu-lines span{position:absolute;right:0;height:2px;background:#fff;border-radius:2px;transition:all .4s cubic-bezier(.34,1.56,.64,1);}
+.menu-lines span:nth-child(1){top:0;width:22px;}
+.menu-lines span:nth-child(2){top:7px;width:16px;}
+.menu-lines span:nth-child(3){top:14px;width:20px;}
+.nav-icon-btn:hover .menu-lines span:nth-child(1){width:16px;}
+.nav-icon-btn:hover .menu-lines span:nth-child(2){width:22px;}
+.nav-icon-btn:hover .menu-lines span:nth-child(3){width:14px;}
+.nav-login-btn{position:relative;display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 22px 0 18px;border-radius:100px;background:var(--gradient-main);background-size:200% auto;color:#fff;font-weight:800;font-size:.88rem;border:1px solid rgba(255,255,255,.25);overflow:hidden;isolation:isolate;box-shadow:0 8px 22px rgba(139,92,246,.45);transition:background-position .6s ease,transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease;}
+.nav-login-btn::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-120%) skewX(-20deg);transition:transform .7s ease;}
+.nav-login-btn:hover::before{transform:translateX(120%) skewX(-20deg);}
+.nav-login-btn:hover{background-position:100% center;transform:translateY(-3px) scale(1.04);box-shadow:0 14px 34px rgba(236,72,153,.6);}
+.nav-login-btn span{position:relative;z-index:1;white-space:nowrap;}
+
+/* ============ SIDEBAR ============ */
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:999;opacity:0;visibility:hidden;transition:all .4s;}
+.sidebar-overlay.open{opacity:1;visibility:visible;}
+.sidebar-menu{position:fixed;top:0;right:0;height:100vh;width:360px;max-width:88vw;background:linear-gradient(180deg,rgba(10,14,39,.98),rgba(15,23,42,.98));backdrop-filter:blur(30px);border-left:1px solid rgba(var(--accent-rgb),.3);box-shadow:-20px 0 60px rgba(0,0,0,.6);z-index:1000;transform:translateX(100%);transition:transform .5s cubic-bezier(.68,-.55,.27,1.55);padding:26px 22px;overflow-y:auto;}
+.sidebar-menu.open{transform:translateX(0);}
+.sidebar-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient-main);box-shadow:0 0 20px rgba(var(--accent-rgb),.8);}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid rgba(var(--accent-rgb),.18);}
+.sidebar-header h3{margin:0;font-family:'Orbitron',sans-serif;font-size:1rem;letter-spacing:1px;background:linear-gradient(135deg,#00d9ff,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.sidebar-close{width:38px;height:38px;border-radius:10px;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.3);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.15rem;transition:all .3s;}
+.sidebar-close:hover{background:var(--gradient-main);transform:rotate(90deg);}
+.sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;}
+.sidebar-links li a{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;color:var(--text-light);font-weight:600;font-size:.95rem;transition:all .35s;border:1px solid transparent;position:relative;overflow:hidden;}
+.sidebar-links li a::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(var(--accent-rgb),.15),rgba(139,92,246,.15));transform:translateX(100%);transition:transform .4s;z-index:0;}
+.sidebar-links li a:hover::before{transform:translateX(0);}
+.sidebar-links li a:hover{border-color:rgba(var(--accent-rgb),.4);transform:translateX(-6px);}
+.sidebar-links li a i{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(var(--accent-rgb),.12);color:var(--accent);font-size:.95rem;transition:all .35s;position:relative;z-index:1;flex-shrink:0;}
+.sidebar-links li a:hover i{background:var(--gradient-main);color:#fff;transform:rotate(-8deg) scale(1.05);}
+.sidebar-links li a span{position:relative;z-index:1;}
+.sidebar-links li a.active{border-color:rgba(var(--accent-rgb),.55);background:linear-gradient(135deg,rgba(var(--accent-rgb),.12),rgba(139,92,246,.12));}
+.sidebar-links li a.active i{background:var(--gradient-main);color:#fff;}
+
+/* ============ PAGE HERO ============ */
+.page-hero{min-height:66vh;min-height:66svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(120px,17vh,160px) 5% clamp(40px,7vh,70px);text-align:center;position:relative;overflow:hidden;}
+.breadcrumb{display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:100px;background:rgba(15,23,42,.65);border:1px solid rgba(var(--accent-rgb),.3);backdrop-filter:blur(12px);font-size:.78rem;font-weight:700;color:var(--text-muted);margin-bottom:22px;animation:fadeInUp .7s ease both;}
+.breadcrumb a{color:var(--accent);transition:color .3s;}
+.breadcrumb a:hover{color:#ec4899;}
+.breadcrumb i{font-size:.6rem;color:#475569;}
+.breadcrumb .current{color:#fff;}
+.page-hero-tag{display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:100px;background:linear-gradient(135deg,rgba(var(--accent-rgb),.15),rgba(139,92,246,.1));border:1px solid rgba(var(--accent-rgb),.45);color:var(--accent);font-size:.8rem;font-weight:700;margin-bottom:22px;backdrop-filter:blur(10px);position:relative;overflow:hidden;box-shadow:0 0 25px rgba(var(--accent-rgb),.15);animation:fadeInUp .7s ease .1s both;}
+.page-hero-tag i{color:#ec4899;animation:pulseScale 2s infinite;}
+.page-hero h1{font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:clamp(1.9rem,5.5vw,4rem);line-height:1.35;margin:0 0 18px;animation:fadeInUp .8s ease .25s both;}
+.page-hero h1 .grad{background:linear-gradient(100deg,var(--accent),var(--accent-2) 45%,#ec4899 75%,var(--accent));background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 45px rgba(139,92,246,.55));animation:gradientShift 5s ease-in-out infinite;padding-bottom:.15em;transition:all .8s ease;}
+@keyframes gradientShift{0%,100%{background-position:0% center;}50%{background-position:100% center;}}
+.page-hero p{max-width:800px;color:var(--text-muted);font-size:clamp(.9rem,1.5vw,1.12rem);line-height:2;margin:0 auto 30px;animation:fadeInUp .8s ease .4s both;}
+.page-hero p strong{color:var(--accent);font-weight:700;}
+.page-hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeInUp .8s ease .55s both;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* ============ BUTTONS ============ */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;font-size:clamp(.85rem,1.3vw,1rem);border:none;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(var(--accent-rgb),.45);transition:all .35s;white-space:nowrap;}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#ec4899,#8b5cf6,var(--accent));opacity:0;transition:opacity .4s;}
+.btn-primary>*{position:relative;z-index:1;}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(236,72,153,.55);}
+.btn-primary:hover::before{opacity:1;}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:rgba(15,23,42,.5);color:#fff;font-weight:700;font-size:clamp(.85rem,1.3vw,1rem);border:1px solid rgba(var(--accent-rgb),.4);cursor:pointer;backdrop-filter:blur(10px);transition:all .35s;white-space:nowrap;}
+.btn-ghost:hover{background:rgba(var(--accent-rgb),.12);border-color:var(--accent);transform:translateY(-4px);box-shadow:0 10px 30px rgba(var(--accent-rgb),.3);}
+
+/* ============ COMMITTEE TABS (Dynamic) ============ */
+.committees-tabs-section{padding:0 5% 30px;max-width:1500px;margin:0 auto;}
+.committees-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:10px;border-radius:60px;background:rgba(15,23,42,.6);border:1px solid rgba(var(--accent-rgb),.22);backdrop-filter:blur(16px);max-width:fit-content;margin:0 auto;}
+.committee-tab{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:50px;background:transparent;color:#cbd5e1;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;border:1px solid transparent;}
+.committee-tab .tab-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;background:rgba(148,163,184,.12);color:#94a3b8;transition:all .35s;}
+.committee-tab .tab-label{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:right;}
+.committee-tab .tab-label small{font-family:'Orbitron',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:1.2px;opacity:.65;color:#94a3b8;transition:all .35s;}
+.committee-tab:hover{background:rgba(var(--accent-rgb),.08);color:#fff;}
+.committee-tab.active{background:linear-gradient(135deg,var(--tab-color,#00d9ff),var(--tab-color-2,#8b5cf6));color:#fff;border-color:transparent;box-shadow:0 12px 30px rgba(var(--tab-rgb,0,217,255),.45);transform:translateY(-2px);}
+.committee-tab.active .tab-icon{background:rgba(255,255,255,.22);color:#fff;transform:rotate(-8deg) scale(1.05);}
+.committee-tab.active .tab-label small{color:#fff;opacity:.95;}
+
+/* ============ DYNAMIC COMMITTEE CONTENT ============ */
+.committee-view{position:relative;padding:20px 5% 90px;max-width:1500px;margin:0 auto;}
+.committee-panel{display:none;animation:panelIn .7s cubic-bezier(.16,1,.3,1);}
+.committee-panel.active{display:block;}
+@keyframes panelIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+/* Panel Header */
+.panel-hero{position:relative;padding:clamp(30px,5vw,60px) clamp(22px,4vw,48px);border-radius:28px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.85));border:1px solid rgba(var(--accent-rgb),.35);overflow:hidden;margin-bottom:34px;box-shadow:0 25px 60px rgba(0,0,0,.45);}
+.panel-hero::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(var(--accent-rgb),.12),transparent 30%,rgba(139,92,246,.1),transparent 55%,rgba(236,72,153,.1),transparent 80%);animation:spin 24s linear infinite;pointer-events:none;}
+.panel-hero::after{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(var(--accent-rgb),.25),transparent 70%);pointer-events:none;}
+.panel-hero-inner{position:relative;z-index:1;display:flex;align-items:center;gap:clamp(20px,3.5vw,36px);flex-wrap:wrap;}
+.panel-hero-icon{flex-shrink:0;width:clamp(80px,11vw,120px);height:clamp(80px,11vw,120px);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:clamp(2rem,4vw,3rem);color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 18px 45px rgba(var(--accent-rgb),.55);position:relative;}
+.panel-hero-icon::before{content:'';position:absolute;inset:-8px;border-radius:28px;border:2px dashed rgba(var(--accent-rgb),.4);animation:spin 18s linear infinite;}
+.panel-hero-text{flex:1;min-width:240px;}
+.panel-hero-text .tag{display:inline-block;padding:6px 14px;border-radius:100px;background:rgba(var(--accent-rgb),.15);border:1px solid rgba(var(--accent-rgb),.4);color:var(--accent);font-family:'Orbitron',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:1.5px;margin-bottom:12px;}
+.panel-hero-text h2{font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:clamp(1.4rem,3.4vw,2.4rem);line-height:1.3;margin:0 0 10px;color:#fff;}
+.panel-hero-text .tagline{font-size:clamp(.9rem,1.5vw,1.05rem);color:var(--accent);font-weight:700;margin:0 0 8px;font-style:italic;}
+.panel-hero-text .short{color:var(--text-muted);font-size:.95rem;line-height:1.9;margin:0;max-width:820px;}
+
+/* Sub-sections general */
+.sub-section{padding:36px 0;}
+.sub-section-title{display:flex;align-items:center;gap:14px;margin-bottom:24px;font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:clamp(1.15rem,2.2vw,1.6rem);color:#fff;}
+.sub-section-title i{color:var(--accent);font-size:clamp(1.1rem,2vw,1.5rem);}
+.sub-section-title::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,rgba(var(--accent-rgb),.5),transparent);border-radius:2px;}
+
+/* Stats row */
+.panel-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px;}
+.panel-stat{padding:20px 18px;border-radius:18px;background:linear-gradient(160deg,rgba(15,23,42,.88),rgba(26,11,46,.72));border:1px solid rgba(var(--accent-rgb),.22);position:relative;overflow:hidden;transition:all .4s;}
+.panel-stat::before{content:'';position:absolute;top:0;right:0;width:60%;height:100%;background:radial-gradient(circle at 100% 0%,rgba(var(--accent-rgb),.15),transparent 65%);pointer-events:none;}
+.panel-stat:hover{transform:translateY(-6px);border-color:rgba(var(--accent-rgb),.55);box-shadow:0 15px 40px rgba(var(--accent-rgb),.28);}
+.panel-stat .stat-val{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1.4rem,2.6vw,2rem);background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:8px;display:block;}
+.panel-stat .stat-key{font-size:.78rem;color:var(--text-muted);font-weight:700;line-height:1.4;}
+
+/* Vision & Mission */
+.vm-row{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:8px;}
+.vm-box{position:relative;padding:30px 26px;border-radius:22px;background:linear-gradient(160deg,rgba(15,23,42,.92),rgba(26,11,46,.82));border:1px solid rgba(var(--accent-rgb),.28);overflow:hidden;transition:all .45s;}
+.vm-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(var(--accent-rgb),.22),transparent 70%);opacity:.6;transition:opacity .4s;}
+.vm-box:hover::before{opacity:1;}
+.vm-box:hover{transform:translateY(-8px);border-color:rgba(var(--accent-rgb),.6);box-shadow:0 22px 55px rgba(var(--accent-rgb),.28);}
+.vm-box-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;position:relative;z-index:1;}
+.vm-box-icon{flex-shrink:0;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 10px 26px rgba(var(--accent-rgb),.4);transition:transform .4s;}
+.vm-box:hover .vm-box-icon{transform:rotate(-8deg) scale(1.08);}
+.vm-box h4{font-family:'Orbitron','Cairo',sans-serif;font-size:1.15rem;font-weight:900;color:#fff;margin:0;position:relative;z-index:1;}
+.vm-box .vm-text{color:var(--text-muted);font-size:.92rem;line-height:2;position:relative;z-index:1;margin:0;}
+.vm-box .vm-quote{color:var(--accent);font-weight:800;font-style:italic;font-size:.95rem;line-height:1.8;margin:0 0 12px;padding-right:14px;border-right:3px solid rgba(var(--accent-rgb),.5);position:relative;z-index:1;}
+
+/* Definition / Info */
+.definition-box{padding:clamp(24px,3.5vw,40px);border-radius:24px;background:linear-gradient(140deg,rgba(15,23,42,.9),rgba(26,11,46,.78));border:1px solid rgba(var(--accent-rgb),.25);position:relative;overflow:hidden;}
+.definition-box::before{content:'';position:absolute;top:-50%;left:-30%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(var(--accent-rgb),.12),transparent 60%);pointer-events:none;}
+.definition-box p{color:var(--text-muted);font-size:.95rem;line-height:2.05;margin:0 0 14px;position:relative;z-index:1;}
+.definition-box p:last-child{margin-bottom:0;}
+.definition-box strong{color:var(--accent);font-weight:700;}
+.definition-box .pull-quote{margin-top:18px;padding:16px 22px;border-radius:14px;background:rgba(var(--accent-rgb),.08);border-right:4px solid var(--accent);color:#e2e8f0;font-style:italic;font-weight:700;line-height:1.9;font-size:.92rem;position:relative;z-index:1;}
+
+/* Objectives */
+.objectives-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.obj-card{position:relative;padding:26px 22px 24px;border-radius:18px;background:linear-gradient(160deg,rgba(15,23,42,.88),rgba(26,11,46,.72));border:1px solid rgba(var(--accent-rgb),.22);transition:all .45s;overflow:hidden;}
+.obj-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .5s;border-radius:3px;}
+.obj-card:hover::after{width:88%;}
+.obj-card:hover{transform:translateY(-8px);border-color:rgba(var(--accent-rgb),.55);background:rgba(15,23,42,.95);box-shadow:0 20px 45px rgba(var(--accent-rgb),.25);}
+.obj-num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-family:'Orbitron',sans-serif;font-weight:900;font-size:1rem;margin-bottom:14px;box-shadow:0 8px 20px rgba(var(--accent-rgb),.4);transition:transform .4s;}
+.obj-card:hover .obj-num{transform:rotate(-8deg) scale(1.1);}
+.obj-card h5{font-size:1rem;font-weight:800;color:#fff;margin:0 0 8px;line-height:1.45;}
+.obj-card p{color:var(--text-muted);font-size:.85rem;line-height:1.85;margin:0;}
+
+/* Strategies */
+.strategies-list{display:flex;flex-direction:column;gap:14px;}
+.strategy-item{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;border-radius:18px;background:linear-gradient(140deg,rgba(15,23,42,.85),rgba(26,11,46,.72));border:1px solid rgba(var(--accent-rgb),.2);transition:all .4s;position:relative;overflow:hidden;}
+.strategy-item::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent-2));transform:scaleY(0);transform-origin:top;transition:transform .5s;}
+.strategy-item:hover::before{transform:scaleY(1);}
+.strategy-item:hover{border-color:rgba(var(--accent-rgb),.5);background:rgba(15,23,42,.92);transform:translateX(-6px);box-shadow:0 16px 40px rgba(var(--accent-rgb),.2);}
+.strategy-icon{flex-shrink:0;width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 8px 20px rgba(var(--accent-rgb),.38);}
+.strategy-body h5{font-size:.98rem;font-weight:800;color:#fff;margin:0 0 6px;line-height:1.45;}
+.strategy-body p{color:var(--text-muted);font-size:.85rem;line-height:1.8;margin:0;}
+
+/* Expansion Plan (Timeline) */
+.expansion-timeline{position:relative;display:flex;flex-direction:column;gap:0;padding:10px 0;}
+.expansion-timeline::before{content:'';position:absolute;top:0;bottom:0;right:34px;width:3px;background:linear-gradient(180deg,transparent,var(--accent) 8%,var(--accent-2) 50%,#ec4899 92%,transparent);border-radius:3px;box-shadow:0 0 18px rgba(var(--accent-rgb),.5);}
+.expansion-item{position:relative;padding:0 96px 34px 0;}
+.expansion-item:last-child{padding-bottom:0;}
+.expansion-dot{position:absolute;top:6px;right:16px;width:40px;height:40px;border-radius:50%;background:var(--deep-space);border:3px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:.78rem;color:var(--accent);box-shadow:0 0 22px rgba(var(--accent-rgb),.75);z-index:3;transition:all .4s;}
+.expansion-item:hover .expansion-dot{transform:scale(1.15) rotate(-8deg);background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;}
+.expansion-card{padding:22px 24px;border-radius:18px;background:linear-gradient(140deg,rgba(15,23,42,.9),rgba(26,11,46,.78));border:1px solid rgba(var(--accent-rgb),.22);transition:all .4s;}
+.expansion-card:hover{border-color:rgba(var(--accent-rgb),.55);box-shadow:0 18px 42px rgba(var(--accent-rgb),.25);transform:translateX(-6px);}
+.expansion-phase{display:inline-block;padding:5px 14px;border-radius:100px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-family:'Orbitron',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:1.5px;margin-bottom:10px;box-shadow:0 6px 18px rgba(var(--accent-rgb),.35);}
+.expansion-card h5{font-size:1rem;font-weight:800;color:#fff;margin:0 0 8px;line-height:1.45;}
+.expansion-card p{color:var(--text-muted);font-size:.85rem;line-height:1.85;margin:0;}
+.expansion-card .duration{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:.72rem;font-weight:700;margin-top:10px;}
+.expansion-card .duration i{font-size:.7rem;}
+
+/* Admin Structure */
+.structure-hierarchy{display:flex;flex-direction:column;gap:28px;}
+.structure-tier{position:relative;}
+.tier-label{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:100px;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.35);color:var(--accent);font-family:'Orbitron',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:1.5px;margin-bottom:16px;}
+.tier-label i{font-size:.7rem;}
+
+.leader-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.leader-cards.triple{grid-template-columns:repeat(3,1fr);}
+.leader-cards.single{grid-template-columns:minmax(0,420px);justify-content:center;}
+.leader-card-struct{position:relative;padding:26px 22px;border-radius:22px;background:linear-gradient(160deg,rgba(15,23,42,.9),rgba(26,11,46,.82));border:1px solid rgba(var(--accent-rgb),.28);text-align:center;transition:all .45s;overflow:hidden;}
+.leader-card-struct::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2),#ec4899);transform:scaleX(0);transform-origin:right;transition:transform .5s;}
+.leader-card-struct:hover::before{transform:scaleX(1);}
+.leader-card-struct:hover{transform:translateY(-8px);border-color:rgba(var(--accent-rgb),.55);box-shadow:0 22px 50px rgba(var(--accent-rgb),.28);}
+.lc-avatar{position:relative;width:96px;height:96px;margin:0 auto 16px;}
+.lc-avatar::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(from 0deg,var(--accent),var(--accent-2),#ec4899,var(--accent));animation:spin 6s linear infinite;z-index:-1;opacity:.85;}
+.leader-card-struct:hover .lc-avatar::before{animation-duration:3s;}
+.lc-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.95);background:linear-gradient(135deg,var(--accent),var(--accent-2));}
+.lc-avatar.placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:50%;color:#fff;font-size:2rem;border:3px solid rgba(255,255,255,.95);}
+.lc-avatar.placeholder::before{display:none;}
+.lc-name{font-size:1rem;font-weight:900;color:#fff;margin:0 0 4px;line-height:1.35;}
+.lc-name-en{font-family:'Orbitron',monospace;font-size:.62rem;color:var(--accent);letter-spacing:1.2px;margin:0 0 12px;text-transform:uppercase;}
+.lc-role{display:inline-block;padding:6px 14px;border-radius:100px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;font-size:.72rem;line-height:1.4;box-shadow:0 8px 20px rgba(var(--accent-rgb),.35);}
+
+.members-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.member-chip{padding:20px 16px;border-radius:16px;background:rgba(15,23,42,.7);backdrop-filter:blur(12px);border:1px solid rgba(var(--accent-rgb),.22);text-align:center;transition:all .4s;position:relative;overflow:hidden;}
+.member-chip::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .5s;}
+.member-chip:hover::after{width:85%;}
+.member-chip:hover{transform:translateY(-6px);border-color:rgba(var(--accent-rgb),.55);background:rgba(15,23,42,.9);box-shadow:0 15px 40px rgba(var(--accent-rgb),.22);}
+.member-icon{width:44px;height:44px;margin:0 auto 12px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 8px 20px rgba(var(--accent-rgb),.35);transition:transform .4s;}
+.member-chip:hover .member-icon{transform:rotate(-8deg) scale(1.1);}
+.member-role{font-size:.85rem;font-weight:800;color:#fff;margin:0 0 4px;line-height:1.4;}
+.member-count{font-family:'Orbitron',sans-serif;font-size:.68rem;color:var(--accent);font-weight:700;letter-spacing:1px;}
+
+/* CTA per committee */
+.committee-cta{margin-top:44px;padding:clamp(28px,4.5vw,48px);border-radius:26px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.88));border:1px solid rgba(var(--accent-rgb),.4);text-align:center;position:relative;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.4);}
+.committee-cta::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(var(--accent-rgb),.14),transparent 25%,rgba(139,92,246,.12),transparent 55%,rgba(236,72,153,.1),transparent 80%);animation:spin 22s linear infinite;pointer-events:none;}
+.committee-cta > *{position:relative;z-index:1;}
+.committee-cta h3{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.2rem,2.6vw,1.8rem);font-weight:900;color:#fff;margin:0 0 12px;line-height:1.4;}
+.committee-cta h3 .grad{background:linear-gradient(135deg,var(--accent),var(--accent-2),#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.committee-cta p{color:var(--text-muted);font-size:.92rem;line-height:1.9;max-width:640px;margin:0 auto 24px;}
+.committee-cta .cta-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+
+/* ============ GENERAL SECTIONS ============ */
+.section{padding:85px 5%;max-width:1400px;margin:0 auto;position:relative;}
+.section-head{text-align:center;margin-bottom:50px;}
+.section-tag{display:inline-block;padding:6px 16px;border-radius:100px;background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.35);color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.section-title{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:900;margin:0 0 14px;line-height:1.25;}
+.section-title .gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent-2),#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.section-desc{max-width:680px;margin:0 auto;color:var(--text-muted);font-size:.98rem;line-height:1.85;}
+
+/* Footer */
+footer{background:linear-gradient(180deg,transparent,rgba(5,6,15,.98));padding:55px 5% 25px;border-top:1px solid rgba(var(--accent-rgb),.18);position:relative;}
+footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2),#ec4899);box-shadow:0 0 25px rgba(var(--accent-rgb),.8);}
+.footer-simple{max-width:1100px;margin:0 auto;text-align:center;}
+.footer-simple-logo{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#00d9ff,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 12px;}
+.footer-simple-desc{color:var(--text-muted);font-size:.9rem;line-height:1.75;max-width:600px;margin:0 auto 22px;}
+.footer-simple-social{display:flex;justify-content:center;gap:12px;margin-bottom:22px;flex-wrap:wrap;}
+.footer-simple-social a{width:42px;height:42px;border-radius:12px;background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.28);display:flex;align-items:center;justify-content:center;color:var(--accent);transition:all .3s;font-size:1rem;}
+.footer-simple-social a:hover{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent;transform:translateY(-4px);box-shadow:0 10px 25px rgba(var(--accent-rgb),.4);}
+.footer-simple-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:22px;}
+.footer-simple-links a{color:var(--text-muted);font-size:.85rem;font-weight:600;transition:color .3s;}
+.footer-simple-links a:hover{color:var(--accent);}
+.footer-simple-copy{color:#64748b;font-size:.78rem;padding-top:20px;border-top:1px solid rgba(var(--accent-rgb),.1);}
+.footer-simple-copy .grad{color:#8b5cf6;font-weight:700;}
+
+/* Alpha */
+.alpha-character{position:fixed;bottom:22px;right:22px;z-index:400;cursor:pointer;animation:alphaBob 4s ease-in-out infinite;}
+@keyframes alphaBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.alpha-character img{width:100px;transition:transform .4s;filter:drop-shadow(0 10px 30px rgba(var(--accent-rgb),.5));}
+.alpha-character:hover img{transform:scale(1.12) rotate(-6deg);}
+.alpha-tooltip{position:absolute;bottom:110%;right:0;width:280px;max-width:85vw;padding:14px 16px;border-radius:16px;background:rgba(10,14,39,.96);backdrop-filter:blur(20px);border:1px solid rgba(var(--accent-rgb),.4);color:#e2e8f0;font-size:.82rem;line-height:1.7;box-shadow:0 15px 40px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s;pointer-events:none;}
+.alpha-tooltip::after{content:'';position:absolute;top:100%;right:26px;border-width:8px;border-style:solid;border-color:rgba(10,14,39,.96) transparent transparent transparent;}
+.alpha-character.active .alpha-tooltip{opacity:1;visibility:visible;transform:translateY(0);}
+
+/* WOW */
+.wow{visibility:hidden;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1200px){
+  .panel-stats{grid-template-columns:repeat(2,1fr);}
+  .objectives-grid{grid-template-columns:repeat(2,1fr);}
+  .members-grid{grid-template-columns:repeat(3,1fr);}
+  .committee-tab{padding:11px 18px;font-size:.82rem;}
+  .committee-tab .tab-icon{width:30px;height:30px;font-size:.78rem;}
+}
+@media (max-width:992px){
+  .vm-row{grid-template-columns:1fr;}
+  .objectives-grid{grid-template-columns:1fr;}
+  .leader-cards{grid-template-columns:1fr;}
+  .leader-cards.triple{grid-template-columns:repeat(2,1fr);}
+  .members-grid{grid-template-columns:repeat(2,1fr);}
+  .committees-tabs{border-radius:24px;padding:12px;}
+  .committee-tab{flex:1 1 calc(50% - 6px);justify-content:center;}
+  .panel-hero-inner{flex-direction:column;text-align:center;}
+  .panel-hero-text .short{margin:0 auto;}
+}
+@media (max-width:768px){
+  body{font-size:14px;}
+  .navbar{padding:10px 14px;}
+  .nav-logos img{height:36px;}
+  .nav-icon-btn{width:42px;height:42px;font-size:1rem;border-radius:12px;}
+  .nav-login-btn{height:42px;padding:0 16px 0 14px;font-size:.78rem;gap:6px;}
+  .sidebar-menu{width:290px;}
+  .sidebar-links li a{padding:11px 13px;font-size:.88rem;}
+  .sidebar-links li a i{width:34px;height:34px;font-size:.88rem;}
+  .page-hero{padding:100px 5% 30px;min-height:auto;}
+  .page-hero h1{font-size:1.7rem;}
+  .page-hero p{font-size:.85rem;line-height:1.9;}
+  .breadcrumb{font-size:.68rem;padding:6px 14px;}
+  .page-hero-tag{font-size:.68rem;padding:7px 15px;}
+  .committee-view{padding:10px 4% 55px;}
+  .committees-tabs-section{padding:0 4% 20px;}
+  .committees-tabs{border-radius:20px;padding:8px;gap:6px;}
+  .committee-tab{flex:1 1 100%;padding:11px 14px;font-size:.78rem;border-radius:14px;justify-content:flex-start;}
+  .committee-tab .tab-icon{width:32px;height:32px;font-size:.78rem;}
+  .committee-tab .tab-label small{font-size:.55rem;}
+  .panel-hero{padding:24px 18px;border-radius:20px;margin-bottom:22px;}
+  .panel-hero-icon{width:74px;height:74px;font-size:1.9rem;border-radius:18px;}
+  .panel-hero-text h2{font-size:1.2rem;}
+  .panel-hero-text .tagline{font-size:.82rem;}
+  .panel-hero-text .short{font-size:.82rem;}
+  .panel-stats{grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:22px;}
+  .panel-stat{padding:14px 12px;border-radius:14px;}
+  .panel-stat .stat-val{font-size:1.1rem;}
+  .panel-stat .stat-key{font-size:.68rem;}
+  .sub-section{padding:24px 0;}
+  .sub-section-title{font-size:1rem;gap:10px;margin-bottom:16px;}
+  .sub-section-title i{font-size:1rem;}
+  .vm-box{padding:22px 18px;border-radius:18px;}
+  .vm-box-icon{width:44px;height:44px;font-size:1.05rem;border-radius:12px;}
+  .vm-box h4{font-size:1rem;}
+  .vm-box .vm-text{font-size:.82rem;}
+  .vm-box .vm-quote{font-size:.85rem;}
+  .definition-box{padding:22px 18px;border-radius:18px;}
+  .definition-box p{font-size:.84rem;}
+  .definition-box .pull-quote{font-size:.82rem;padding:12px 16px;}
+  .obj-card{padding:20px 16px;}
+  .obj-num{width:38px;height:38px;font-size:.88rem;margin-bottom:12px;}
+  .obj-card h5{font-size:.9rem;}
+  .obj-card p{font-size:.78rem;}
+  .strategy-item{padding:16px 14px;gap:12px;border-radius:14px;}
+  .strategy-icon{width:40px;height:40px;font-size:.95rem;border-radius:11px;}
+  .strategy-body h5{font-size:.86rem;}
+  .strategy-body p{font-size:.78rem;}
+  .expansion-timeline::before{right:22px;}
+  .expansion-item{padding:0 68px 24px 0;}
+  .expansion-dot{right:8px;width:32px;height:32px;font-size:.65rem;}
+  .expansion-card{padding:18px 16px;border-radius:14px;}
+  .expansion-card h5{font-size:.9rem;}
+  .expansion-card p{font-size:.78rem;}
+  .expansion-phase{font-size:.6rem;padding:4px 10px;}
+  .leader-cards.triple{grid-template-columns:1fr;}
+  .leader-card-struct{padding:22px 18px;border-radius:18px;}
+  .lc-avatar{width:80px;height:80px;margin-bottom:12px;}
+  .lc-name{font-size:.9rem;}
+  .lc-name-en{font-size:.55rem;}
+  .lc-role{font-size:.68rem;padding:5px 10px;}
+  .members-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .member-chip{padding:14px 12px;border-radius:14px;}
+  .member-icon{width:38px;height:38px;font-size:.85rem;border-radius:10px;margin-bottom:10px;}
+  .member-role{font-size:.76rem;}
+  .member-count{font-size:.6rem;}
+  .committee-cta{padding:24px 18px;border-radius:20px;margin-top:30px;}
+  .committee-cta h3{font-size:1.15rem;}
+  .committee-cta p{font-size:.82rem;}
+  .btn-primary,.btn-ghost{padding:13px 20px;font-size:.82rem;}
+  .section{padding:55px 4%;}
+  .footer{padding:35px 4% 18px;}
+  .footer-simple-logo{font-size:1.1rem;letter-spacing:2px;}
+  .footer-simple-desc{font-size:.78rem;}
+  .footer-simple-social a{width:36px;height:36px;font-size:.85rem;}
+  .footer-simple-links{flex-direction:row;flex-wrap:nowrap;gap:8px;justify-content:center;overflow-x:auto;padding:0 4px;}
+  .footer-simple-links a{font-size:.68rem;white-space:nowrap;}
+  .footer-simple-copy{font-size:.68rem;}
+  .alpha-character{right:14px;bottom:14px;}
+  .alpha-character img{width:70px;}
+  .alpha-tooltip{width:220px;font-size:.72rem;padding:10px 12px;}
+}
+@media (max-width:520px){
+  body{font-size:13px;}
+  .nav-login-btn span{display:none;}
+  .nav-login-btn{padding:0;width:40px;justify-content:center;border-radius:50%;height:40px;}
+  .page-hero h1{font-size:1.45rem;}
+  .page-hero p{font-size:.78rem;}
+  .panel-stats{grid-template-columns:1fr 1fr;gap:6px;}
+  .panel-stat{padding:12px 10px;}
+  .panel-stat .stat-val{font-size:1rem;}
+  .panel-stat .stat-key{font-size:.62rem;}
+  .leader-cards.triple{grid-template-columns:1fr;}
+  .members-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .cta-actions{flex-direction:column;width:100%;}
+  .cta-actions .btn-primary,.cta-actions .btn-ghost{width:100%;}
+  .footer-simple-links{gap:6px;}
+  .footer-simple-links a{font-size:.6rem;}
+}
+@media (max-width:400px){
+  .members-grid{grid-template-columns:1fr;}
+  .panel-stats{grid-template-columns:1fr;}
+  .footer-simple-links{flex-direction:row;gap:4px;flex-wrap:nowrap;}
+  .footer-simple-links a{font-size:.55rem;}
+}
+
+::-webkit-scrollbar{width:9px;}
+::-webkit-scrollbar-track{background:#05060f;}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent),var(--accent-2));border-radius:10px;border:2px solid #05060f;}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADING ============ -->
+<div class="loader-screen" id="loaderScreen">
+<div class="loader-particle" style="width:6px;height:6px;left:10%;animation-duration:7s;animation-delay:0s"></div><div class="loader-particle" style="width:4px;height:4px;left:24%;animation-duration:9.5s;animation-delay:1.2s"></div><div class="loader-particle" style="width:5px;height:5px;left:40%;animation-duration:6.5s;animation-delay:2.4s"></div><div class="loader-particle" style="width:7px;height:7px;left:58%;animation-duration:8.5s;animation-delay:.6s"></div><div class="loader-particle" style="width:4px;height:4px;left:73%;animation-duration:7.8s;animation-delay:1.8s"></div><div class="loader-particle" style="width:5px;height:5px;left:87%;animation-duration:9s;animation-delay:.3s"></div>
+<div class="loader-content">
+<div class="loader-logo-wrap">
+<div class="loader-glow"></div>
+<div class="loader-ring"></div>
+<div class="loader-ring loader-ring-2"></div>
+<div class="loader-ring loader-ring-3"></div>
+<div class="loader-logo-inner"><img src="./assets/EBDA3.png" alt="FBA Futur By Ai" loading="eager" onerror="this.style.display='none'"></div>
+</div>
+<h1 class="loader-title">FUTUR BY AI</h1>
+<p class="loader-sub">الوحدات الخمس</p>
+<div class="loader-bar"><div class="loader-bar-fill" id="loaderBarFill"></div></div>
+<div class="loader-percent" id="loaderPercent">0%</div>
+</div>
+</div>
+
+<!-- ============ BACKGROUND ============ -->
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="bg-mesh" id="bgMesh"></div>
+<div class="bg-orbs">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="orb orb-4"></div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+<div class="nav-logos">
+<img src="./assets/minestry-sports.png" alt="وزارة الشباب والرياضة">
+<img src="./assets/KFS.png" alt="اتحاد شباب كفر الشيخ">
+</div>
+<div class="nav-actions">
+<a href="./login.html" class="nav-login-btn" aria-label="تسجيل الدخول" title="تسجيل الدخول">
+<i class="fas fa-right-to-bracket"></i>
+<span>تسجيل الدخول</span>
+</a>
+<button class="nav-icon-btn" id="menuToggleBtn" aria-label="القائمة" title="القائمة">
+<div class="menu-lines"><span></span><span></span><span></span></div>
+</button>
+</div>
+</nav>
+
+<!-- ============ SIDEBAR ============ -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar-menu" id="sidebarMenu">
+<div class="sidebar-header">
+<h3>FBA FUTUR BY AI</h3>
+<button class="sidebar-close" id="sidebarCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+</div>
+<ul class="sidebar-links">
+<li><a href="index.html"><i class="fas fa-home"></i> <span>الصفحة الرئيسية</span></a></li>
+<li><a href="about.html"><i class="fas fa-info-circle"></i> <span>من نحن</span></a></li>
+<li><a href="committees.html" class="active"><i class="fas fa-sitemap"></i> <span>الوحدات</span></a></li>
+<li><a href="events.html"><i class="fas fa-calendar-check"></i> <span>الفعاليات</span></a></li>
+<li><a href="team.html"><i class="fas fa-users"></i> <span>الهيكل التطوعي</span></a></li>
+<li><a href="sponsors.html"><i class="fas fa-handshake"></i> <span>الرعاة</span></a></li>
+<li><a href="contact.html"><i class="fas fa-headset"></i> <span>تواصل معنا</span></a></li>
+</ul>
+</aside>
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+<div class="breadcrumb">
+<a href="index.html">الرئيسية</a>
+<i class="fas fa-chevron-left"></i>
+<span class="current">الوحدات</span>
+</div>
+<div class="page-hero-tag"><i class="fas fa-sitemap"></i> <span>الوحدات التنظيمية الخمس للمبادرة</span></div>
+<h1>وحدات <span class="grad">FBA Futur By Ai</span><br>خمس وحدات.. منظومة واحدة</h1>
+<p>خمس وحدات متخصصة تعمل بتناغم لتحقيق أهداف المبادرة على المستوى الوطني. كل لجنة لها <strong>هويتها المستقلة</strong>، و<strong>رؤيتها ورسالتها</strong>، و<strong>أهدافها واستراتيجياتها</strong>، وخطتها الخاصة للتوسع، وهيكلها الإداري الكامل.</p>
+<div class="page-hero-actions">
+<button class="btn-primary" onclick="scrollToId('committees-tabs-section')"><i class="fas fa-compass"></i> <span>استكشف الوحدات</span></button>
+<a href="./register.html" class="btn-ghost"><i class="fas fa-user-plus"></i> <span>انضم لفريقك</span></a>
+</div>
+</section>
+
+<!-- ============ COMMITTEES TABS (Dynamic) ============ -->
+<section class="committees-tabs-section" id="committees-tabs-section">
+<div class="committees-tabs" id="committeesTabs">
+  <!-- tabs injected by JS -->
+</div>
+</section>
+
+<!-- ============ DYNAMIC COMMITTEE VIEW ============ -->
+<section class="committee-view" id="committeeView">
+  <!-- panels injected by JS -->
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+<div class="footer-simple">
+<h3 class="footer-simple-logo">FBA FUTUR BY AI</h3>
+<p class="footer-simple-desc">أول منصة رقمية تطوعية مصرية تدعم تحول الذكاء الاصطناعي، وتبني جيلاً قادراً على التعامل مع كل وسائل AI باحترافية.</p>
+<div class="footer-simple-social">
+<a href="https://www.facebook.com/share/16NuHNYhs7/?mibextid=wwXIfr" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/ebdaa360?igsh=MWk1ZmEyZThiMnZrOA%3D%3D&utm_source=qr" target="_blank" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@ebda3_360?_t=ZS-90GbHtyNHvE&_r=1" target="_blank" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
+<a href="mailto:ebdaa360@gmail.com" aria-label="البريد"><i class="fas fa-envelope"></i></a>
+</div>
+<div class="footer-simple-links">
+<a href="index.html">الرئيسية</a>
+<a href="about.html">معلومات عنا</a>
+<a href="committees.html">الوحدات</a>
+<a href="events.html">الفعاليات</a>
+<a href="team.html">الهيكل التطوعي</a>
+<a href="contact.html">اتصل بنا</a>
+</div>
+<p class="footer-simple-copy">© 2025 <span class="grad">FBA Futur By Ai</span> — جميع الحقوق محفوظة | صُمم بشغف في مصر 🇪🇬</p>
+</div>
+</footer>
+
+<!-- ============ ALPHA ============ -->
+<div class="alpha-character" id="alphaCharacter">
+<div class="alpha-tooltip" id="alphaTooltip">أهلاً بك في صفحة الوحدات! اضغط على أي لجنة لاستكشاف هويتها الكاملة.</div>
+<img src="./assets/ALPHA-1.png" alt="VolunAI" id="alphaImage" onerror="this.style.display='none'">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+/* =========================================================
+   COMMITTEES DATA — كل لجنة بكل تفاصيلها
+   ========================================================= */
+const COMMITTEES = {
+  hr: {
+    key: 'hr',
+    nameAr: 'وحدة الموارد البشرية',
+    nameEn: 'HR UNIT',
+    icon: 'fa-users-cog',
+    tagline: 'قلب الفريق النابض.. حيث تبدأ الكفاءات وتُصنع القادة',
+    color: '#00d9ff',
+    color2: '#3b82f6',
+    rgb: '0,217,255',
+    short: 'المسؤولة عن استقطاب وتأهيل وتطوير جميع المتطوعين في المبادرة، وبناء بيئة عمل رقمية محفزة تضمن استمرارية الكفاءات وتطورها المهني والشخصي.',
+    stats: [
+      { val: '5000+', key: 'متطوع مسجل' },
+      { val: '27', key: 'محافظة' },
+      { val: '40+', key: 'قائد فريق' },
+      { val: '98%', key: 'رضا المتطوعين' }
+    ],
+    definition: [
+      'وحدة الموارد البشرية (HR) هي <strong>العمود الفقري</strong> لأي منظومة تطوعية ناجحة، وفي FBA Futur By Ai تعتبر الوحدة المسؤولة عن <strong>اختيار وتأهيل وإدارة وتطوير</strong> جميع المتطوعين في المشروع.',
+      'تعمل الوحدة على تحديد احتياجات كل لجنة من الكفاءات، ثم تصمم إعلانات الاستقطاب المناسبة، وتُجري المقابلات، وتختار أفضل العناصر، ثم تضع كل متطوع في المكان الذي يُبرع فيه فعلياً.',
+      'لا تتوقف مسؤولية الوحدة عند الاستقطاب فقط، بل تمتد إلى <strong>التدريب والتأهيل المستمر</strong>، ومتابعة الأداء، وبناء مسارات تطور وظيفي داخل المبادرة، وحل أي مشكلات قد تواجه المتطوعين.'
+    ],
+    pullQuote: '"الكفاءة تُستقطب.. والقائد يُصنع.. وكلاهما مسؤوليتنا."',
+    vision: 'أن نكون المرجع الأول في <strong>إدارة الكفاءات التطوعية الرقمية</strong> في مصر والوطن العربي، ونموذجاً يحتذى به في بناء فرق شبابية احترافية تعمل بمنهجية مؤسسية.',
+    visionQuote: '"كفاءات مدروسة.. لفرق استثنائية."',
+    mission: 'استقطاب أفضل الكفاءات الشبابية، وتأهيلها وتطويرها ببرامج تدريبية متخصصة، وبناء بيئة تطوعية رقمية محفزة تحافظ على استمرارية المتطوعين وتحولهم إلى قادة مؤثرين.',
+    objectives: [
+      { t: 'استقطاب أفضل الكفاءات', d: 'تصميم حملات استقطاب دقيقة لجذب أفضل المواهب الشابة في كل محافظة مصرية.' },
+      { t: 'بناء نظام تقييم عادل', d: 'تطوير نظام KPI واضح يقيس أداء كل متطوع بموضوعية وشفافية تامة.' },
+      { t: 'تدريب وتأهيل مستمر', d: 'تنظيم ورش عمل دورية وبرامج تأهيلية مستمرة لكل الفرق والمتطوعين.' },
+      { t: 'الاحتفاظ بالكفاءات', d: 'بناء مسارات تطور وظيفي داخل المبادرة تُشعر المتطوع بأنه جزء من مشروع وطني كبير.' },
+      { t: 'بناء ثقافة مؤسسية', d: 'نشر قيم المبادرة وسلوكياتها بين كل الأعضاء لضمان تجربة موحدة.' },
+      { t: 'إدارة الأزمات الداخلية', d: 'التعامل السريع والاحترافي مع أي خلافات أو مشكلات بين أعضاء الفريق.' }
+    ],
+    strategies: [
+      { i: 'fa-search-plus', t: 'تحديد الاحتياجات الفعلية لكل لجنة', d: 'دراسة دورية لاحتياجات كل وحدة لتحديد أنواع الكفاءات المطلوبة قبل الإعلان عن أي استقطاب.' },
+      { i: 'fa-bullhorn', t: 'حملات استقطاب رقمية مبتكرة', d: 'استخدام منصات التواصل وفيديوهات التعريف بالمبادرة لجذب المواهب الشابة من كل المحافظات.' },
+      { i: 'fa-user-check', t: 'نظام مقابلات متعدد المراحل', d: 'تصفية أولية + مقابلة تقنية + مقابلة سلوكية لاختيار الأفضل في كل تخصص.' },
+      { i: 'fa-graduation-cap', t: 'برامج تأهيلية أسبوعية', d: 'تنظيم دورات تدريبية أسبوعية للمتطوعين الجدد تشمل مهارات العمل الجماعي وأدوات AI.' },
+      { i: 'fa-chart-line', t: 'تقييم ربع سنوي شامل', d: 'مراجعة دورية لأداء كل عضو من خلال تقارير واضحة ومؤشرات أداء محددة.' },
+      { i: 'fa-arrow-up-right-dots', t: 'مسارات تطور وظيفي داخلية', d: 'بناء سلّم ترقّي واضح داخل المبادرة يتيح لكل متطوع فرصة الوصول لمناصب قيادية.' }
+    ],
+    expansion: [
+      { p: 'PHASE 01', t: 'تأسيس فرق محلية في كل محافظة', d: 'بناء فريق HR محلي في كل محافظة من المحافظات الـ 27، مع قائد محلي مسؤول عن الاستقطاب والتأهيل.', dur: '6 أشهر' },
+      { p: 'PHASE 02', t: 'إطلاق نظام HR رقمي متكامل', d: 'بناء منصة داخلية لإدارة بيانات المتطوعين، ومتابعة أدائهم، وإدارة المهام والمكافآت.', dur: '12 شهر' },
+      { p: 'PHASE 03', t: 'أكاديمية قادة التحول', d: 'إنشاء برنامج تدريبي متقدم يُخَرّج قادة جاهزين لقيادة الوحدات في المحافظات الجديدة.', dur: '18 شهر' },
+      { p: 'PHASE 04', t: 'شبكة خبراء ومدربين عرب', d: 'التوسع في الوطن العربي وبناء شبكة من المدربين والخبراء لتدريب الأجيال القادمة.', dur: '24 شهر' }
+    ],
+    structure: {
+      head: { name: 'قائد الوحدة', role: 'Head of HR Unit', nameEn: 'HR DIRECTOR' },
+      vice: { name: 'نائب قائد الوحدة', role: 'Vice Head of HR Unit', nameEn: 'VICE HR DIRECTOR' },
+      members: [
+        { icon: 'fa-users-line', role: 'مسؤول الاستقطاب', count: 'RECRUITMENT' },
+        { icon: 'fa-clipboard-check', role: 'مسؤول التقييم', count: 'EVALUATION' },
+        { icon: 'fa-chalkboard-user', role: 'مسؤول التدريب', count: 'TRAINING' },
+        { icon: 'fa-heart-pulse', role: 'مسؤول رعاية الأعضاء', count: 'CARE' },
+        { icon: 'fa-file-signature', role: 'مسؤول التوثيق', count: 'DOCUMENTATION' },
+        { icon: 'fa-scale-balanced', role: 'مسؤول العلاقات الداخلية', count: 'INTERNAL RELATIONS' },
+        { icon: 'fa-chart-pie', role: 'محلل بيانات الموارد البشرية', count: 'HR ANALYTICS' },
+        { icon: 'fa-comments', role: 'مسؤول تجربة المتطوع', count: 'EXPERIENCE' }
+      ]
+    }
+  },
+
+  or: {
+    key: 'or',
+    nameAr: 'وحدة التنظيم والعمليات',
+    nameEn: 'OR UNIT',
+    icon: 'fa-cogs',
+    tagline: 'العقل التشغيلي.. حيث تُدار كل التفاصيل بدقة الساعات السويسرية',
+    color: '#8b5cf6',
+    color2: '#6a47e8',
+    rgb: '139,92,246',
+    short: 'الوحدة المسؤولة عن تنظيم العمليات اليومية، وإدارة المشروعات والفعاليات، وضمان سير العمل بكفاءة عالية وفق أنظمة وقواعد واضحة.',
+    stats: [
+      { val: '250+', key: 'مشروع مُدار' },
+      { val: '120+', key: 'فعالية' },
+      { val: '99%', key: 'دقة التنفيذ' },
+      { val: '24/7', key: 'متابعة مستمرة' }
+    ],
+    definition: [
+      'وحدة التنظيم والعمليات (OR) هي <strong>الجانب التنفيذي</strong> في المبادرة، حيث لا يوجد عمل جيد بدون تنظيم دقيق. الوحدة مسؤولة عن تحويل الخطط والأفكار إلى <strong>واقع قابل للقياس</strong> وفق جداول زمنية وموارد محددة.',
+      'تدير الوحدة جميع الأنشطة والفعاليات والمشروعات الداخلية، وتضع <strong>إجراءات تشغيل قياسية (SOPs)</strong> لكل نوع من الأعمال، وتتابع التنفيذ خطوة بخطوة لضمان الجودة والالتزام بالمواعيد.',
+      'كما تتابع الوحدة <strong>مؤشرات الأداء الرئيسية (KPIs)</strong> لكل وحدة أخرى في المبادرة، وتُصدر تقارير دورية للإدارة التنفيذية تُظهر تقدم العمل والمناطق التي تحتاج تحسيناً.'
+    ],
+    pullQuote: '"التنظيم ليس رفاهية.. بل هو الفرق بين الفوضى والإنجاز."',
+    vision: 'أن نكون النموذج العربي الرائد في <strong>الإدارة الرقمية للعمليات التطوعية</strong>، بمنظومة تشغيلية ذكية، مؤتمتة، وقابلة للتوسع في أي وقت وأي مكان.',
+    visionQuote: '"عمليات منضبطة.. نتائج مضمونة."',
+    mission: 'ضمان سير جميع عمليات المبادرة بكفاءة واحترافية، من خلال إجراءات تشغيل قياسية، وأتمتة ذكية، ومتابعة دقيقة، وتقارير شفافة تُساعد الإدارة على اتخاذ قرارات صحيحة.',
+    objectives: [
+      { t: 'بناء SOPs لكل عملية', d: 'توثيق كل إجراء تشغيلي في دليل واضح قابل للتطبيق من أي عضو جديد.' },
+      { t: 'أتمتة العمليات المتكررة', d: 'تحويل الأعمال الروتينية إلى عمليات آلية توفيراً للوقت والجهد.' },
+      { t: 'إدارة احترافية للمشروعات', d: 'تطبيق منهجيات إدارة المشروعات الحديثة على كل أنشطة المبادرة.' },
+      { t: 'متابعة الأداء بشكل لحظي', d: 'بناء لوحات تحكم (Dashboards) تُظهر مؤشرات الأداء لحظياً.' },
+      { t: 'إدارة المخاطر التشغيلية', d: 'التنبؤ بالمخاطر المحتملة ووضع خطط بديلة قبل حدوثها.' },
+      { t: 'تقارير دورية شفافة', d: 'إصدار تقارير أسبوعية وشهرية لكل الإدارة عن سير العمل.' }
+    ],
+    strategies: [
+      { i: 'fa-book', t: 'دليل العمليات الشامل', d: 'إنشاء Operations Manual يحتوي على كل الإجراءات التشغيلية في المبادرة بشكل موحد ومحدَّث.' },
+      { i: 'fa-robot', t: 'أتمتة ذكية للمهام', d: 'استخدام أدوات AI وأدوات الأتمتة لتقليل العمل اليدوي وزيادة الدقة والسرعة.' },
+      { i: 'fa-gantt-chart', t: 'لوحات زمنية لكل مشروع', d: 'استخدام أدوات Gantt و Kanban لمتابعة كل مشروع من الفكرة حتى التسليم.' },
+      { i: 'fa-file-lines', t: 'تقارير قياسية موحدة', d: 'قالب موحد لكل التقارير يُصدر بشكل دوري ومقروء لكل الإدارة.' },
+      { i: 'fa-shield-halved', t: 'إدارة المخاطر الاستباقية', d: 'تحليل دوري للمخاطر مع خطط بديلة جاهزة لكل سيناريو محتمل.' },
+      { i: 'fa-repeat', t: 'حلقة تحسين مستمرة', d: 'مراجعة كل عملية بعد تنفيذها (Post-Mortem) لتحسينها في المرة القادمة.' }
+    ],
+    expansion: [
+      { p: 'PHASE 01', t: 'توثيق كل الإجراءات الحالية', d: 'مراجعة وتوثيق كل العمليات الجارية حالياً في المبادرة وتوحيدها في دليل واحد.', dur: '4 أشهر' },
+      { p: 'PHASE 02', t: 'أتمتة العمليات الأساسية', d: 'بناء لوحات تحكم رقمية وتحويل المهام المتكررة إلى عمليات مؤتمتة.', dur: '10 أشهر' },
+      { p: 'PHASE 03', t: 'نظام إدارة مشروعات متكامل', d: 'تطبيق نظام متكامل لإدارة كل مشروعات المبادرة بمنهجية عالمية.', dur: '16 شهر' },
+      { p: 'PHASE 04', t: 'مركز عمليات مركزي', d: 'بناء مركز عمليات (Operations Center) يتابع كل المحافظات لحظياً.', dur: '24 شهر' }
+    ],
+    structure: {
+      head: { name: 'قائد الوحدة', role: 'Head of OR Unit', nameEn: 'OR DIRECTOR' },
+      vice: { name: 'نائب قائد الوحدة', role: 'Vice Head of OR Unit', nameEn: 'VICE OR DIRECTOR' },
+      members: [
+        { icon: 'fa-diagram-project', role: 'مسؤول إدارة المشروعات', count: 'PROJECT MGMT' },
+        { icon: 'fa-calendar-days', role: 'مسؤول الجداول الزمنية', count: 'SCHEDULING' },
+        { icon: 'fa-clipboard-list', role: 'مسؤول التوثيق', count: 'DOCUMENTATION' },
+        { icon: 'fa-chart-line', role: 'محلل مؤشرات الأداء', count: 'KPIs ANALYST' },
+        { icon: 'fa-shield-halved', role: 'مسؤول إدارة المخاطر', count: 'RISK MGMT' },
+        { icon: 'fa-gears', role: 'مسؤول الأتمتة', count: 'AUTOMATION' },
+        { icon: 'fa-bell', role: 'مسؤول المتابعة اللحظية', count: 'MONITORING' },
+        { icon: 'fa-file-invoice', role: 'مسؤول التقارير', count: 'REPORTING' }
+      ]
+    }
+  },
+
+  pr: {
+    key: 'pr',
+    nameAr: 'وحدة العلاقات العامة واللوجيستيات',
+    nameEn: 'PR UNIT',
+    icon: 'fa-handshake',
+    tagline: 'الجسر الذهبي.. يربط المبادرة بكل العالم الخارجي',
+    color: '#ec4899',
+    color2: '#be185d',
+    rgb: '236,72,153',
+    short: 'الوحدة المسؤولة عن بناء الشراكات الاستراتيجية، وإدارة العلاقات الخارجية والداخلية، وتأمين جميع اللوجيستيات اللازمة لفعاليات المبادرة وأنشطتها.',
+    stats: [
+      { val: '50+', key: 'شريك استراتيجي' },
+      { val: '200+', key: 'فعالية مؤمّنة' },
+      { val: '35+', key: 'جهة حكومية' },
+      { val: '100%', key: 'رضا الشركاء' }
+    ],
+    definition: [
+      'وحدة العلاقات العامة واللوجيستيات (PR) هي <strong>واجهة المبادرة أمام العالم الخارجي</strong>. تعمل على بناء شبكة علاقات قوية مع الجهات الحكومية، والشركات، والمؤسسات المدنية، والإعلام، لدعم أهداف المبادرة وتوسيع أثرها.',
+      'تتولى الوحدة مسؤولية <strong>التفاوض على الشراكات</strong> وتوقيع بروتوكولات التعاون، وتمثيل المبادرة في كل الفعاليات الرسمية، وبناء صورة ذهنية قوية ومحترمة للمبادرة في كل الأوساط.',
+      'كما تتولى الوحدة <strong>الجانب اللوجيستي الكامل</strong> لكل فعالية أو مؤتمر: من تأمين القاعات، والمعدات، والضيافة، والتنقلات، إلى إدارة التصاريح الرسمية والموافقات الحكومية.'
+    ],
+    pullQuote: '"علاقات قوية.. شراكات ناجحة.. حضور مؤثر في كل مكان."',
+    vision: 'أن نكون <strong>الجسر الأول</strong> بين المبادرة وكل الجهات الفاعلة في مصر والوطن العربي، وبناء شبكة شراكات استراتيجية تدعم استدامة المبادرة وتوسعها.',
+    visionQuote: '"شراكات تُبنى بثقة.. وأثر يُبنى بأثر."',
+    mission: 'بناء علاقات وشراكات استراتيجية متينة مع كل الجهات المؤثرة، وتقديم تمثيل احترافي للمبادرة في كل المحافل، وتأمين كل الجوانب اللوجيستية للأنشطة بكفاءة عالية.',
+    objectives: [
+      { t: 'بناء شراكات استراتيجية', d: 'التعاون مع الشركات والجهات الحكومية لدعم أهداف المبادرة وتوسيع أثرها.' },
+      { t: 'تمثيل احترافي للمبادرة', d: 'ظهور المبادرة بصورة محترمة ومؤثرة في كل الفعاليات الرسمية.' },
+      { t: 'إدارة العلاقات الداخلية', d: 'تنظيم التواصل بين الوحدات المختلفة وضمان تكامل العمل بينها.' },
+      { t: 'تأمين كل الفعاليات', d: 'توفير كل الاحتياجات اللوجيستية لكل فعالية بكفاءة وفي الوقت المحدد.' },
+      { t: 'إدارة العلاقة مع الإعلام', d: 'بناء علاقات قوية مع وسائل الإعلام لتغطية أنشطة المبادرة.' },
+      { t: 'حماية سمعة المبادرة', d: 'الرد السريع على أي معلومات غير دقيقة وحماية الصورة الذهنية.' }
+    ],
+    strategies: [
+      { i: 'fa-file-signature', t: 'بروتوكولات تعاون رسمية', d: 'توقيع بروتوكولات تعاون رسمية مع كل شريك لضمان وضوح الأهداف والالتزامات.' },
+      { i: 'fa-user-tie', t: 'وفد تمثيلي احترافي', d: 'تشكيل وفد رسمي يمثل المبادرة في كل محفل أو مؤتمر بشكل احترافي.' },
+      { i: 'fa-truck-fast', t: 'نظام لوجيستي متكامل', d: 'بناء نظام موحد لإدارة كل الاحتياجات اللوجيستية لكل فعالية من الألف إلى الياء.' },
+      { i: 'fa-newspaper', t: 'علاقات إعلامية استباقية', d: 'التواصل المستمر مع الإعلام لإبراز أنشطة المبادرة وتغطية فعالياتها.' },
+      { i: 'fa-shield-halved', t: 'إدارة سمعة المبادرة', d: 'متابعة أي محتوى يُنشر عن المبادرة والرد السريع على أي معلومات غير دقيقة.' },
+      { i: 'fa-people-arrows', t: 'تنسيق داخلي محكم', d: 'تنظيم التواصل الداخلي بين الوحدات لضمان تكامل العمل وتوحيد الجهود.' }
+    ],
+    expansion: [
+      { p: 'PHASE 01', t: 'بناء قاعدة شراكات محلية', d: 'التعاون مع الشركات والجهات في كل محافظة لبناء قاعدة شراكات محلية قوية.', dur: '8 أشهر' },
+      { p: 'PHASE 02', t: 'توقيع بروتوكولات وطنية', d: 'توقيع بروتوكولات تعاون مع وزارات وجهات وطنية لدعم المبادرة رسمياً.', dur: '14 شهر' },
+      { p: 'PHASE 03', t: 'شبكة علاقات عربية', d: 'التوسع في العلاقات مع الجهات العربية لبناء شبكة علاقات إقليمية.', dur: '20 شهر' },
+      { p: 'PHASE 04', t: 'قسم علاقات دولية', d: 'إنشاء قسم متخصص للعلاقات الدولية للتعاون مع المنظمات العالمية.', dur: '30 شهر' }
+    ],
+    structure: {
+      head: { name: 'قائد الوحدة', role: 'Head of PR Unit', nameEn: 'PR DIRECTOR' },
+      vice: { name: 'نائب قائد الوحدة', role: 'Vice Head of PR Unit', nameEn: 'VICE PR DIRECTOR' },
+      members: [
+        { icon: 'fa-handshake', role: 'مسؤول الشراكات', count: 'PARTNERSHIPS' },
+        { icon: 'fa-user-tie', role: 'مسؤول التمثيل الرسمي', count: 'REPRESENTATION' },
+        { icon: 'fa-truck-fast', role: 'مسؤول اللوجيستيات', count: 'LOGISTICS' },
+        { icon: 'fa-calendar-check', role: 'منسق الفعاليات', count: 'EVENTS' },
+        { icon: 'fa-newspaper', role: 'مسؤول العلاقات الإعلامية', count: 'MEDIA' },
+        { icon: 'fa-shield-halved', role: 'مسؤول السمعة', count: 'REPUTATION' },
+        { icon: 'fa-people-arrows', role: 'مسؤول العلاقات الداخلية', count: 'INTERNAL' },
+        { icon: 'fa-passport', role: 'مسؤول التصاريح الرسمية', count: 'PERMITS' }
+      ]
+    }
+  },
+
+  sm: {
+    key: 'sm',
+    nameAr: 'وحدة التسويق والانتشار',
+    nameEn: 'SM UNIT',
+    icon: 'fa-bullhorn',
+    tagline: 'صوت المبادرة.. يصل لكل شاب في مصر والوطن العربي',
+    color: '#f59e0b',
+    color2: '#d97706',
+    rgb: '245,158,11',
+    short: 'الوحدة المسؤولة عن بناء العلامة الرقمية للمبادرة، وإدارة السوشيال ميديا، وإطلاق الحملات التسويقية التي توصل رسالة المبادرة لأكبر شريحة شبابية.',
+    stats: [
+      { val: '500K+', key: 'متابع' },
+      { val: '10M+', key: 'مشاهدة' },
+      { val: '500+', key: 'حملة تسويقية' },
+      { val: '3M+', key: 'تفاعل شهري' }
+    ],
+    definition: [
+      'وحدة التسويق والانتشار (SM) هي <strong>صوت المبادرة في العالم الرقمي</strong>. مسؤولة عن بناء صورة ذهنية قوية للمبادرة على كل منصات التواصل الاجتماعي، وعن إيصال رسالتها لكل شاب مصري وعربي في أي مكان.',
+      'تتولى الوحدة <strong>إدارة كل الحسابات الرسمية</strong> للمبادرة، وإنتاج المحتوى الرقمي عالي الجودة، من تصميم المنشورات والفيديوهات إلى كتابة النصوص الإعلانية ومتابعة الحملات.',
+      'كما تضع الوحدة <strong>الاستراتيجيات التسويقية</strong> لكل حملة، وتُحلل بيانات الجمهور لمعرفة أفضل الأوقات والمحتوى الذي يجذب الشباب، وتُقيس الأثر الفعلي لكل حملة على الوصول والتفاعل.'
+    ],
+    pullQuote: '"المحتوى الجيد لا يكفي.. لا بد أن يصل للجمهور الصحيح."',
+    vision: 'أن نبني <strong>أقوى علامة شبابية رقمية</strong> في مصر والوطن العربي، تُلهم الملايين من الشباب وتدفعهم للانضمام لرحلة التحول الرقمي.',
+    visionQuote: '"علامة قوية.. رسالة تصل.. أثر يبقى."',
+    mission: 'إيصال رسالة المبادرة لأكبر شريحة شبابية ممكنة عبر محتوى رقمي مبتكر وحملات تسويقية مدروسة، وبناء مجتمع رقمي متفاعل ومخلص للمبادرة وأهدافها.',
+    objectives: [
+      { t: 'بناء علامة رقمية قوية', d: 'تطوير هوية بصرية وصوت موحد للمبادرة على كل المنصات الرقمية.' },
+      { t: 'إنتاج محتوى مبتكر', d: 'إنتاج محتوى رقمي عالي الجودة يجذب الشباب ويحقق تفاعلاً حقيقياً.' },
+      { t: 'إطلاق حملات مدروسة', d: 'تصميم حملات تسويقية بأهداف واضحة ومؤشرات نجاح قابلة للقياس.' },
+      { t: 'تحليل بيانات الجمهور', d: 'دراسة سلوك الجمهور لمعرفة ما يجذبهم وأفضل أوقات النشر.' },
+      { t: 'بناء مجتمع متفاعل', d: 'تحويل المتابعين إلى مجتمع متفاعل يشارك المبادرة قيمها وأهدافها.' },
+      { t: 'قياس الأثر الفعلي', d: 'تحليل نتائج كل حملة وتقديم تقارير دقيقة عن أثرها.' }
+    ],
+    strategies: [
+      { i: 'fa-palette', t: 'هوية بصرية موحدة', d: 'تطوير دليل هوية بصرية موحد (Brand Guide) يُطبق على كل المحتوى والمنصات.' },
+      { i: 'fa-video', t: 'محتوى مرئي مبتكر', d: 'إنتاج فيديوهات قصيرة بمستوى احترافي تُجذب الشباب وتنتشر بسرعة.' },
+      { i: 'fa-chart-pie', t: 'تحليل بيانات دقيق', d: 'استخدام أدوات التحليل لمعرفة أفضل أوقات النشر وأنواع المحتوى الأكثر تفاعلاً.' },
+      { i: 'fa-calendar-days', t: 'خطة محتوى شهرية', d: 'إعداد خطة محتوى شهرية واضحة تغطي كل الأحداث والمناسبات.' },
+      { i: 'fa-bullseye', t: 'حملات مدفوعة مستهدفة', d: 'إدارة حملات إعلانية مدفوعة موجهة بدقة للجمهور المستهدف.' },
+      { i: 'fa-comments', t: 'تفاعل نشط مع الجمهور', d: 'الرد على التعليقات والرسائل خلال 24 ساعة لبناء علاقة قوية مع الجمهور.' }
+    ],
+    expansion: [
+      { p: 'PHASE 01', t: 'توحيد الهوية الرقمية', d: 'بناء دليل هوية بصرية موحد وكل الحسابات الرسمية على كل المنصات.', dur: '3 أشهر' },
+      { p: 'PHASE 02', t: 'محتوى عالي الجودة', d: 'إنتاج محتوى مرئي احترافي بثبات أسبوعي على كل القنوات.', dur: '8 أشهر' },
+      { p: 'PHASE 03', t: 'حملات تسويقية وطنية', d: 'إطلاق حملات مدفوعة واسعة تغطي كل المحافظات بأهداف محددة.', dur: '16 شهر' },
+      { p: 'PHASE 04', t: 'توسع عربي', d: 'بناء حضور قوي للمبادرة على مستوى الوطن العربي بمحتوى موجه لكل بلد.', dur: '24 شهر' }
+    ],
+    structure: {
+      head: { name: 'قائد الوحدة', role: 'Head of SM Unit', nameEn: 'SM DIRECTOR' },
+      vice: { name: 'نائب قائد الوحدة', role: 'Vice Head of SM Unit', nameEn: 'VICE SM DIRECTOR' },
+      members: [
+        { icon: 'fa-pen-fancy', role: 'مسؤول كتابة المحتوى', count: 'COPYWRITING' },
+        { icon: 'fa-palette', role: 'مسؤول التصميم الجرافيكي', count: 'GRAPHIC DESIGN' },
+        { icon: 'fa-video', role: 'مسؤول المونتاج', count: 'VIDEO EDITING' },
+        { icon: 'fa-hashtag', role: 'مسؤول السوشيال ميديا', count: 'SOCIAL MEDIA' },
+        { icon: 'fa-bullseye', role: 'مسؤول الحملات المدفوعة', count: 'PAID ADS' },
+        { icon: 'fa-chart-simple', role: 'محلل البيانات', count: 'ANALYTICS' },
+        { icon: 'fa-comments', role: 'مسؤول التفاعل', count: 'COMMUNITY' },
+        { icon: 'fa-camera', role: 'مسؤول التصوير', count: 'PHOTOGRAPHY' }
+      ]
+    }
+  },
+
+  ait: {
+    key: 'ait',
+    nameAr: 'وحدة تحول الذكاء الاصطناعي',
+    nameEn: 'AIT UNIT',
+    icon: 'fa-microchip',
+    tagline: 'محرك المستقبل.. حيث يُدمج AI في كل شيء',
+    color: '#22d3ee',
+    color2: '#8b5cf6',
+    rgb: '34,211,238',
+    short: 'الوحدة المتخصصة في قيادة التحول الرقمي، ودمج تقنيات الذكاء الاصطناعي في كل أعمال المبادرة، وبناء المحتوى العربي المتخصص في AI.',
+    stats: [
+      { val: '100+', key: 'مبادرة AI' },
+      { val: '50+', key: 'أداة مُدمجة' },
+      { val: '12000+', key: 'ساعة تدريب' },
+      { val: '24/7', key: 'دعم تقني' }
+    ],
+    definition: [
+      'وحدة تحول الذكاء الاصطناعي (AIT) هي <strong>محرك التحول الرقمي</strong> في المبادرة، والمسؤولة عن دمج تقنيات AI في كل عملياتها وأنشطتها. تعمل الوحدة على تحويل المبادرة من منظومة تطوعية تقليدية إلى <strong>منظومة رقمية ذكية</strong> تستخدم أحدث تقنيات AI.',
+      'تتولى الوحدة تصميم وتنفيذ <strong>البرامج التدريبية المتخصصة</strong> في الذكاء الاصطناعي، بدءاً من الأساسيات وحتى المستوى الاحترافي المتقدم، وتُقدم هذه البرامج بالعربية لسد الفجوة المعرفية في المحتوى العربي.',
+      'كما تقدم الوحدة <strong>الدعم التقني لكل الوحدات الأخرى</strong>، وتستكشف أدوات AI جديدة وتقوم بتجربتها ثم دمجها في العمل اليومي، مع بناء مكتبة عربية من الموارد التعليمية لكل من يريد تعلم AI.'
+    ],
+    pullQuote: '"الذكاء الاصطناعي ليس ترفاً.. بل هو اللغة الجديدة للمستقبل."',
+    vision: 'أن نكون <strong>المحرك الأول للتحول الرقمي</strong> في العمل التطوعي الشبابي في مصر والوطن العربي، وأن نجعل من FBA Futur By Ai النموذج العربي الرائد في استخدام AI لخدمة المجتمع.',
+    visionQuote: '"نقود التحول.. ونصنع المستقبل."',
+    mission: 'قيادة التحول الرقمي في المبادرة، ودمج تقنيات الذكاء الاصطناعي في كل عملياتها، وتقديم تدريبات عربية عالية الجودة في AI لبناء جيل قادر على المنافسة عالمياً.',
+    objectives: [
+      { t: 'دمج AI في كل الوحدات', d: 'تطبيق أدوات AI في كل عمليات المبادرة لزيادة الكفاءة وتقليل الوقت.' },
+      { t: 'تقديم تدريبات عربية متخصصة', d: 'بناء محتوى تعليمي عربي أصيل في AI لكل المستويات.' },
+      { t: 'استكشاف أدوات AI جديدة', d: 'متابعة كل ما هو جديد في عالم AI وتجربة الأدوات المفيدة.' },
+      { t: 'بناء مكتبة موارد عربية', d: 'جمع وتصنيف كل الموارد العربية المتعلقة بـ AI في مكتبة موحدة.' },
+      { t: 'تقديم دعم تقني للوحدات', d: 'مساعدة باقي الوحدات في استخدام أدوات AI في أعمالها.' },
+      { t: 'قيادة الأبحاث والتطوير', d: 'البحث عن تطبيقات مبتكرة لـ AI في العمل التطوعي.' }
+    ],
+    strategies: [
+      { i: 'fa-robot', t: 'دمج ChatGPT وأدوات AI', d: 'استخدام أدوات AI في كل الأعمال: الكتابة، الترجمة، التصميم، التحليل، إدارة المهام.' },
+      { i: 'fa-code', t: 'بناء أنظمة مخصصة', d: 'تطوير أدوات وأنظمة داخلية مخصصة لتلبية احتياجات المبادرة الرقمية.' },
+      { i: 'fa-graduation-cap', t: 'مناهج تعليمية عربية', d: 'بناء مناهج تدريبية بالعربية في AI من الصفر حتى الاحتراف بجودة عالمية.' },
+      { i: 'fa-flask', t: 'مختبر AI للأبحاث', d: 'إنشاء مختبر داخلي لتجربة كل جديد في AI قبل دمجه في العمل.' },
+      { i: 'fa-database', t: 'مكتبة موارد موحدة', d: 'جمع كل الموارد التعليمية العربية في مكتبة رقمية موحدة سهلة الوصول.' },
+      { i: 'fa-headset', t: 'دعم تقني مستمر 24/7', d: 'فريق دعم فني جاهز لمساعدة كل وحدات المبادرة في أي وقت.' }
+    ],
+    expansion: [
+      { p: 'PHASE 01', t: 'دمج AI في الوحدات الداخلية', d: 'تطبيق أدوات AI في عمل كل وحدة داخلية لزيادة الكفاءة وتحسين المخرجات.', dur: '6 أشهر' },
+      { p: 'PHASE 02', t: 'إطلاق أكاديمية AI', d: 'بناء أكاديمية رقمية متكاملة تُقدم برامج تدريبية عربية في الذكاء الاصطناعي.', dur: '14 شهر' },
+      { p: 'PHASE 03', t: 'مختبر أبحاث وتطوير', d: 'إنشاء مختبر متخصص لتطوير حلول AI مبتكرة تخدم العمل التطوعي.', dur: '20 شهر' },
+      { p: 'PHASE 04', t: 'تصدير المعرفة عربياً', d: 'تقديم برامج تدريبية ومناهج AI لشباب الوطن العربي بجودة عالمية.', dur: '30 شهر' }
+    ],
+    structure: {
+      head: { name: 'قائد الوحدة', role: 'Head of AIT Unit', nameEn: 'AIT DIRECTOR' },
+      vice: { name: 'نائب قائد الوحدة', role: 'Vice Head of AIT Unit', nameEn: 'VICE AIT DIRECTOR' },
+      members: [
+        { icon: 'fa-robot', role: 'مسؤول دمج AI', count: 'AI INTEGRATION' },
+        { icon: 'fa-code', role: 'مطور حلول رقمية', count: 'DEVELOPER' },
+        { icon: 'fa-graduation-cap', role: 'مدرب AI', count: 'AI TRAINER' },
+        { icon: 'fa-flask', role: 'باحث R&D', count: 'R&D' },
+        { icon: 'fa-prompt', role: 'خبير Prompt Engineering', count: 'PROMPT EXPERT' },
+        { icon: 'fa-database', role: 'مسؤول مكتبة الموارد', count: 'RESOURCES' },
+        { icon: 'fa-headset', role: 'مسؤول الدعم التقني', count: 'TECH SUPPORT' },
+        { icon: 'fa-chart-line', role: 'محلل بيانات AI', count: 'DATA ANALYST' }
+      ]
+    }
+  }
+};
+
+/* =========================================================
+   RENDER — بناء الصفحة ديناميكياً
+   ========================================================= */
+(function(){
+  const tabsContainer = document.getElementById('committeesTabs');
+  const viewContainer = document.getElementById('committeeView');
+  const keys = Object.keys(COMMITTEES);
+
+  /* ---- Build tabs ---- */
+  keys.forEach((key, i)=>{
+    const c = COMMITTEES[key];
+    const btn = document.createElement('button');
+    btn.className = 'committee-tab' + (i===0 ? ' active' : '');
+    btn.dataset.key = key;
+    btn.style.setProperty('--tab-color', c.color);
+    btn.style.setProperty('--tab-color-2', c.color2);
+    btn.style.setProperty('--tab-rgb', c.rgb);
+    btn.innerHTML = `
+      <span class="tab-icon"><i class="fas ${c.icon}"></i></span>
+      <span class="tab-label">
+        <span>${c.nameAr}</span>
+        <small>${c.nameEn}</small>
+      </span>
+    `;
+    btn.addEventListener('click', ()=> activateCommittee(key));
+    tabsContainer.appendChild(btn);
+  });
+
+  /* ---- Build panels ---- */
+  keys.forEach((key, i)=>{
+    const c = COMMITTEES[key];
+    const panel = document.createElement('div');
+    panel.className = 'committee-panel' + (i===0 ? ' active' : '');
+    panel.dataset.key = key;
+
+    panel.innerHTML = `
+      <!-- Panel Hero -->
+      <div class="panel-hero">
+        <div class="panel-hero-inner">
+          <div class="panel-hero-icon">
+            <i class="fas ${c.icon}"></i>
+          </div>
+          <div class="panel-hero-text">
+            <span class="tag">${c.nameEn}</span>
+            <h2>${c.nameAr}</h2>
+            <p class="tagline">${c.tagline}</p>
+            <p class="short">${c.short}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="panel-stats">
+        ${c.stats.map(s=>`
+          <div class="panel-stat">
+            <span class="stat-val">${s.val}</span>
+            <span class="stat-key">${s.key}</span>
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Vision & Mission -->
+      <div class="sub-section">
+        <h3 class="sub-section-title"><i class="fas fa-eye"></i> الرؤية والرسالة</h3>
+        <div class="vm-row">
+          <div class="vm-box">
+            <div class="vm-box-head">
+              <div class="vm-box-icon"><i class="fas fa-binoculars"></i></div>
+              <h4>رؤية الوحدة</h4>
+            </div>
+            <p class="vm-quote">${c.visionQuote}</p>
+            <p class="vm-text">${c.vision}</p>
+          </div>
+          <div class="vm-box">
+            <div class="vm-box-head">
+              <div class="vm-box-icon"><i class="fas fa-rocket"></i></div>
+              <h4>رسالة الوحدة</h4>
+            </div>
+            <p class="vm-text">${c.mission}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Definition / Identity -->
+      <div class="sub-section">
+        <h3 class="sub-section-title"><i class="fas fa-fingerprint"></i> تعريف الوحدة وهوية عملها</h3>
+        <div class="definition-box">
+          ${c.definition.map(p=>`<p>${p}</p>`).join('')}
+          <div class="pull-quote">${c.pullQuote}</div>
+        </div>
+      </div>
+
+      <!-- Objectives -->
+      <div class="sub-section">
+        <h3 class="sub-section-title"><i class="fas fa-bullseye"></i> الأهداف الاستراتيجية</h3>
+        <div class="objectives-grid">
+          ${c.objectives.map((o, idx)=>`
+            <div class="obj-card">
+              <span class="obj-num">${String(idx+1).padStart(2,'0')}</span>
+              <h5>${o.t}</h5>
+              <p>${o.d}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Strategies -->
+      <div class="sub-section">
+        <h3 class="sub-section-title"><i class="fas fa-chess-knight"></i> الاستراتيجيات التنفيذية</h3>
+        <div class="strategies-list">
+          ${c.strategies.map(s=>`
+            <div class="strategy-item">
+              <div class="strategy-icon"><i class="fas ${s.i}"></i></div>
+              <div class="strategy-body">
+                <h5>${s.t}</h5>
+                <p>${s.d}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Expansion Plan -->
+      <div class="sub-section">
+        <h3 class="sub-section-title"><i class="fas fa-diagram-project"></i> خطة التوسع</h3>
+        <div class="expansion-timeline">
+          ${c.expansion.map(e=>`
+            <div class="expansion-item">
+              <div class="expansion-dot">${e.p.replace('PHASE ','').trim()}</div>
+              <div class="expansion-card">
+                <span class="expansion-phase">${e.p}</span>
+                <h5>${e.t}</h5>
+                <p>${e.d}</p>
+                <span class="duration"><i class="fas fa-hourglass-half"></i> المدة الزمنية: ${e.dur}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Admin Structure -->
+      <div class="sub-section">
+        <h3 class="sub-section-title"><i class="fas fa-sitemap"></i> الهيكل الإداري للوحدة</h3>
+        <div class="structure-hierarchy">
+          <!-- Head -->
+          <div class="structure-tier">
+            <span class="tier-label"><i class="fas fa-crown"></i> القيادة العليا للوحدة</span>
+            <div class="leader-cards">
+              <div class="leader-card-struct">
+                <div class="lc-avatar placeholder"><i class="fas fa-user-tie"></i></div>
+                <h4 class="lc-name">${c.structure.head.name}</h4>
+                <p class="lc-name-en">${c.structure.head.nameEn}</p>
+                <span class="lc-role">${c.structure.head.role}</span>
+              </div>
+              <div class="leader-card-struct">
+                <div class="lc-avatar placeholder"><i class="fas fa-user-graduate"></i></div>
+                <h4 class="lc-name">${c.structure.vice.name}</h4>
+                <p class="lc-name-en">${c.structure.vice.nameEn}</p>
+                <span class="lc-role">${c.structure.vice.role}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Members -->
+          <div class="structure-tier">
+            <span class="tier-label"><i class="fas fa-users"></i> الأعضاء والمهام المتخصصة</span>
+            <div class="members-grid">
+              ${c.structure.members.map(m=>`
+                <div class="member-chip">
+                  <div class="member-icon"><i class="fas ${m.icon}"></i></div>
+                  <h5 class="member-role">${m.role}</h5>
+                  <span class="member-count">${m.count}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="committee-cta">
+        <h3>جاهز تنضم لـ <span class="grad">${c.nameAr}</span>؟</h3>
+        <p>لو حسّيت إن شغفك ومهاراتك تتناسب مع وحدة ${c.nameAr}، فإحنا بنستناك. سجّل الآن وانضم لفريقك المفضل وابدأ رحلتك مع FBA Futur By Ai.</p>
+        <div class="cta-actions">
+          <a href="./register.html" class="btn-primary"><i class="fas fa-user-plus"></i> <span>سجّل في الوحدة</span></a>
+          <a href="./contact.html" class="btn-ghost"><i class="fas fa-comments"></i> <span>استفسر أولاً</span></a>
+        </div>
+      </div>
+    `;
+
+    viewContainer.appendChild(panel);
+  });
+
+  /* ---- Activate committee ---- */
+  function activateCommittee(key){
+    const c = COMMITTEES[key];
+    if(!c) return;
+
+    // Update accent colors on :root
+    const root = document.documentElement;
+    root.style.setProperty('--accent', c.color);
+    root.style.setProperty('--accent-2', c.color2);
+    root.style.setProperty('--accent-rgb', c.rgb);
+
+    // Tabs
+    document.querySelectorAll('.committee-tab').forEach(t=>{
+      t.classList.toggle('active', t.dataset.key === key);
+    });
+
+    // Panels
+    document.querySelectorAll('.committee-panel').forEach(p=>{
+      p.classList.toggle('active', p.dataset.key === key);
+    });
+
+    // Smooth scroll to view on mobile
+    if(window.innerWidth < 992){
+      const view = document.getElementById('committeeView');
+      if(view) view.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  // Expose for alpha tooltip
+  window.__activateCommittee = activateCommittee;
+
+  // Support URL hash (e.g. #hr, #ait)
+  const hash = window.location.hash.replace('#','');
+  if(hash && COMMITTEES[hash]){
+    activateCommittee(hash);
+  }
+})();
+
+/* ============ LOADING ============ */
+(function(){
+  const loader=document.getElementById('loaderScreen');
+  const bar=document.getElementById('loaderBarFill');
+  const pct=document.getElementById('loaderPercent');
+  let progress=0;
+  const interval=setInterval(()=>{
+    progress+=Math.random()*12+4;
+    if(progress>=100)progress=100;
+    bar.style.width=progress+'%';
+    pct.textContent=Math.floor(progress)+'%';
+    if(progress>=100){
+      clearInterval(interval);
+      setTimeout(()=>{loader.classList.add('hide');setTimeout(()=>loader.remove(),900);},400);
+    }
+  },180);
+})();
+
+/* ============ MESH BG ============ */
+(function(){
+  const mesh=document.getElementById('bgMesh');
+  let tx=50,ty=50,cx=50,cy=50;
+  document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth)*100;ty=(e.clientY/window.innerHeight)*100;});
+  document.addEventListener('touchmove',e=>{if(e.touches[0]){tx=(e.touches[0].clientX/window.innerWidth)*100;ty=(e.touches[0].clientY/window.innerHeight)*100;}},{passive:true});
+  function animate(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;mesh.style.setProperty('--mx',cx+'%');mesh.style.setProperty('--my',cy+'%');requestAnimationFrame(animate);}
+  animate();
+})();
+
+/* ============ NAVBAR SCROLL ============ */
+(function(){
+  const nb=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{if(window.scrollY>30)nb.classList.add('scrolled');else nb.classList.remove('scrolled');},{passive:true});
+})();
+
+/* ============ SIDEBAR ============ */
+(function(){
+  const btn=document.getElementById('menuToggleBtn');
+  const menu=document.getElementById('sidebarMenu');
+  const overlay=document.getElementById('sidebarOverlay');
+  const closeBtn=document.getElementById('sidebarCloseBtn');
+  function open(){menu.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){menu.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+  btn.addEventListener('click',open);
+  closeBtn.addEventListener('click',close);
+  overlay.addEventListener('click',close);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+})();
+
+/* ============ SMOOTH SCROLL ============ */
+function scrollToId(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+/* ============ ALPHA ============ */
+(function(){
+  const alpha=document.getElementById('alphaCharacter');
+  const tooltip=document.getElementById('alphaTooltip');
+  const messages=[
+    'كل لجنة لها هويتها الكاملة.. رؤية، رسالة، أهداف، استراتيجيات، وخطة توسع!',
+    'وحدة HR هي قلب الفريق.. ووحدة AIT هي محرك المستقبل!',
+    'اختر اللجنة اللي تشبه مهاراتك وانضم لنا!',
+    'الخمس لجان تعمل بتناغم.. كل واحدة مكمّلة للثانية!',
+    'تحب تشتغل على AI؟ وحدة AIT هي مكانك!',
+    'الـ PR واللوجيستيات.. صوت المبادرة وذراعها التنفيذي!',
+    'وحدة التسويق هي اللي بتوصل صوتنا لكل شاب!'
+  ];
+  setTimeout(()=>{alpha.classList.add('active');setTimeout(()=>alpha.classList.remove('active'),7000);},1600);
+  alpha.addEventListener('click',()=>{
+    tooltip.textContent=messages[Math.floor(Math.random()*messages.length)];
+    alpha.classList.add('active');
+    clearTimeout(alpha._t);alpha._t=setTimeout(()=>alpha.classList.remove('active'),5500);
+  });
+})();
+
+/* ============ IMG FALLBACK ============ */
+(function(){
+  document.querySelectorAll('img').forEach(img=>{
+    img.addEventListener('error',function(){
+      if(!this.dataset.fb){
+        this.dataset.fb='1';
+        this.style.background='linear-gradient(135deg,rgba(var(--accent-rgb),.15),rgba(139,92,246,.15))';
+        this.style.border='1px dashed rgba(var(--accent-rgb),.3)';
+      }
+    });
+  });
+})();
+</script>
+
+<script src="./auth-widget.js" defer></script>
+</body>
+</html>

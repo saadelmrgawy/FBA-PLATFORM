@@ -1,0 +1,2771 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الرعاة والشركاء | FBA Futur By Ai</title>
+<meta name="description" content="انضم كراعٍ رسمي لـ FBA Futur By Ai. باقات رعاية مرنة: البلاتينية، الذهبية، البرونزية. مساهمات مالية وعينية وخدمية. صندوق وزارة الشباب والرياضة.">
+<link rel="icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+<link rel="shortcut icon" href="./assets/EBDA3-LOGO.png" type="image/x-icon">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<style>
+:root{
+  --neon-cyan:#00d9ff;
+  --neon-purple:#8b5cf6;
+  --neon-pink:#ec4899;
+  --gold:#fbbf24;
+  --gold-dark:#d97706;
+  --platinum:#cbd5e1;
+  --platinum-dark:#94a3b8;
+  --rose:#f472b6;
+  --rose-dark:#b76e79;
+  --emerald:#10b981;
+  --deep-space:#05060f;
+  --text-light:#f1f5f9;
+  --text-muted:#94a3b8;
+  --gradient-main:linear-gradient(135deg,#00d9ff 0%,#8b5cf6 50%,#ec4899 100%);
+  --gradient-gold:linear-gradient(135deg,#fde68a 0%,#fbbf24 40%,#d97706 100%);
+  --gradient-platinum:linear-gradient(135deg,#e2e8f0 0%,#94a3b8 50%,#cbd5e1 100%);
+  --gradient-bronze:linear-gradient(135deg,#fbcfe8 0%,#f472b6 35%,#b76e79 70%,#fbbf24 100%);
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Cairo',sans-serif;background:var(--deep-space);color:var(--text-light);overflow-x:hidden;min-height:100vh;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased;}
+img,svg{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+/* BG */
+.bg-layer{position:fixed;inset:0;z-index:-4;background:radial-gradient(ellipse at 20% 20%,rgba(251,191,36,.12),transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(139,92,246,.15),transparent 55%),radial-gradient(ellipse at 50% 50%,rgba(236,72,153,.07),transparent 60%),var(--deep-space);}
+.bg-grid{position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(251,191,36,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.04) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);}
+.bg-mesh{position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle 600px at var(--mx,50%) var(--my,50%),rgba(251,191,36,.18),transparent 55%),radial-gradient(circle 500px at calc(100% - var(--mx,50%)) calc(100% - var(--my,50%)),rgba(139,92,246,.18),transparent 55%);transition:background .25s ease-out;mix-blend-mode:screen;}
+.bg-orbs{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.3;animation:orbFloat 22s ease-in-out infinite;}
+.orb-1{width:420px;height:420px;background:#fbbf24;top:8%;left:8%;}
+.orb-2{width:500px;height:500px;background:#8b5cf6;top:50%;right:5%;animation-delay:-6s;}
+.orb-3{width:380px;height:380px;background:#ec4899;bottom:8%;left:25%;animation-delay:-12s;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(60px,-40px) scale(1.1);}50%{transform:translate(-40px,60px) scale(.95);}75%{transform:translate(40px,40px) scale(1.05);}}
+
+/* Loader */
+.loader-screen{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#0a0e27 0%,#05060f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease;overflow:hidden;}
+.loader-screen.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-screen::before{content:'';position:absolute;inset:-10%;background-image:radial-gradient(rgba(251,191,36,.35) 1px,transparent 1px);background-size:34px 34px;opacity:.22;animation:loaderGridDrift 16s linear infinite;pointer-events:none;}
+@keyframes loaderGridDrift{0%{transform:translate(0,0);}100%{transform:translate(34px,34px);}}
+.loader-particle{position:absolute;bottom:-10px;border-radius:50%;background:var(--gradient-gold);filter:blur(.5px);pointer-events:none;animation:loaderParticleFloat linear infinite;}
+@keyframes loaderParticleFloat{0%{transform:translateY(0) translateX(0) scale(1);opacity:0;}10%{opacity:.75;}85%{opacity:.45;}100%{transform:translateY(-105vh) translateX(24px) scale(.4);opacity:0;}}
+.loader-content{position:relative;z-index:2;width:100%;max-width:420px;margin:0 auto;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.loader-logo-wrap{position:relative;width:150px;height:150px;margin:0 auto 25px;display:flex;align-items:center;justify-content:center;animation:loaderFadeInUp .7s ease both;}
+.loader-glow{position:absolute;inset:-22px;border-radius:50%;background:var(--gradient-gold);filter:blur(28px);opacity:.35;animation:loaderGlowPulse 2.4s ease-in-out infinite;}
+@keyframes loaderGlowPulse{0%,100%{opacity:.22;transform:scale(.9);}50%{opacity:.5;transform:scale(1.08);}}
+.loader-ring{position:absolute;inset:0;border-radius:50%;border:3px solid transparent;border-top-color:#fbbf24;border-right-color:#8b5cf6;animation:spin 1.3s linear infinite;}
+.loader-ring::before{content:'';position:absolute;top:-4px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:#fbbf24;box-shadow:0 0 12px 3px rgba(251,191,36,.9);}
+.loader-ring-2{inset:15px;border-top-color:#8b5cf6;border-right-color:#ec4899;animation:spin 2s linear infinite reverse;}
+.loader-ring-2::before{content:'';position:absolute;top:-3px;left:50%;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#ec4899;box-shadow:0 0 10px 3px rgba(236,72,153,.9);}
+.loader-ring-3{inset:30px;border-top-color:#3b82f6;border-right-color:#fbbf24;animation:spin 2.6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loader-logo-inner{position:relative;width:90px;height:90px;border-radius:50%;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 0 40px rgba(251,191,36,.7);animation:pulseScale 2s ease-in-out infinite;border:2px solid rgba(255,255,255,.25);}
+.loader-logo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;}
+.loader-logo-inner::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);background-size:250% 250%;background-position:200% 0;animation:loaderShine 2.6s ease-in-out infinite;z-index:2;}
+@keyframes loaderShine{0%{background-position:200% 0;}100%{background-position:-50% 0;}}
+@keyframes pulseScale{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+.loader-title{font-family:'Orbitron',sans-serif;font-size:2.3rem;font-weight:900;background:var(--gradient-gold);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:3px;margin:0 0 8px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .15s both,loaderGradientShift 3s linear infinite;}
+@keyframes loaderGradientShift{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+.loader-sub{font-family:'Cairo',sans-serif;font-size:1rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:30px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .3s both;}
+.loader-bar{position:relative;width:300px;max-width:80vw;height:6px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden;margin:0 auto 15px;border:1px solid rgba(251,191,36,.2);animation:loaderFadeInUp .7s ease .45s both;}
+.loader-bar-fill{height:100%;width:0%;background:var(--gradient-gold);background-size:200% auto;border-radius:10px;box-shadow:0 0 15px rgba(251,191,36,.8);transition:width .3s ease;position:relative;overflow:hidden;}
+.loader-bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);animation:loaderBarShimmer 1.2s linear infinite;}
+@keyframes loaderBarShimmer{0%{transform:translateX(-140%);}100%{transform:translateX(140%);}}
+.loader-percent{font-family:'Orbitron',sans-serif;font-size:.9rem;color:#fbbf24;letter-spacing:2px;text-align:center;width:100%;animation:loaderFadeInUp .7s ease .55s both;}
+@keyframes loaderFadeInUp{0%{opacity:0;transform:translateY(16px);}100%{opacity:1;transform:translateY(0);}}
+
+/* Navbar */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:transparent;transition:all .35s;}
+.nav-logos{display:flex;align-items:center;gap:12px;}
+.nav-logos img{height:46px;width:auto;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(251,191,36,.3));transition:transform .3s;}
+.nav-logos img:hover{transform:scale(1.08) translateY(-2px);}
+.nav-actions{display:flex;align-items:center;gap:10px;}
+.nav-icon-btn{position:relative;width:48px;height:48px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(251,191,36,.32);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;transition:all .35s;backdrop-filter:blur(12px);}
+.nav-icon-btn:hover{transform:translateY(-3px) scale(1.08);border-color:transparent;box-shadow:0 12px 30px rgba(251,191,36,.5);background:var(--gradient-gold);color:#1a0b2e;}
+.menu-lines{position:relative;width:22px;height:16px;}
+.menu-lines span{position:absolute;right:0;height:2px;background:#fff;border-radius:2px;transition:all .4s;}
+.menu-lines span:nth-child(1){top:0;width:22px;}
+.menu-lines span:nth-child(2){top:7px;width:16px;}
+.menu-lines span:nth-child(3){top:14px;width:20px;}
+.nav-login-btn{display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 22px 0 18px;border-radius:100px;background:var(--gradient-gold);color:#1a0b2e;font-weight:900;font-size:.88rem;border:1px solid rgba(255,255,255,.25);box-shadow:0 8px 22px rgba(251,191,36,.45);transition:all .35s;}
+.nav-login-btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 34px rgba(251,191,36,.6);}
+.nav-login-btn span{white-space:nowrap;}
+
+/* Sidebar */
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:999;opacity:0;visibility:hidden;transition:all .4s;}
+.sidebar-overlay.open{opacity:1;visibility:visible;}
+.sidebar-menu{position:fixed;top:0;right:0;height:100vh;width:360px;max-width:88vw;background:linear-gradient(180deg,rgba(10,14,39,.98),rgba(15,23,42,.98));backdrop-filter:blur(30px);border-left:1px solid rgba(251,191,36,.3);box-shadow:-20px 0 60px rgba(0,0,0,.6);z-index:1000;transform:translateX(100%);transition:transform .5s cubic-bezier(.68,-.55,.27,1.55);padding:26px 22px;overflow-y:auto;}
+.sidebar-menu.open{transform:translateX(0);}
+.sidebar-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient-gold);box-shadow:0 0 20px rgba(251,191,36,.8);}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid rgba(251,191,36,.18);}
+.sidebar-header h3{margin:0;font-family:'Orbitron',sans-serif;font-size:1rem;letter-spacing:1px;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.sidebar-close{width:38px;height:38px;border-radius:10px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.15rem;transition:all .3s;}
+.sidebar-close:hover{background:var(--gradient-gold);color:#1a0b2e;transform:rotate(90deg);}
+.sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;}
+.sidebar-links li a{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;color:var(--text-light);font-weight:600;font-size:.95rem;transition:all .35s;border:1px solid transparent;}
+.sidebar-links li a:hover{border-color:rgba(251,191,36,.4);transform:translateX(-6px);}
+.sidebar-links li a i{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(251,191,36,.12);color:#fbbf24;font-size:.95rem;transition:all .35s;flex-shrink:0;}
+.sidebar-links li a:hover i{background:var(--gradient-gold);color:#1a0b2e;transform:rotate(-8deg) scale(1.05);}
+.sidebar-links li a.active{border-color:rgba(251,191,36,.55);background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(139,92,246,.12));}
+.sidebar-links li a.active i{background:var(--gradient-gold);color:#1a0b2e;}
+
+/* Page Hero */
+.page-hero{min-height:80vh;min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(120px,17vh,160px) 5% clamp(50px,8vh,80px);text-align:center;position:relative;overflow:hidden;}
+.breadcrumb{display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:100px;background:rgba(15,23,42,.65);border:1px solid rgba(251,191,36,.35);backdrop-filter:blur(12px);font-size:.78rem;font-weight:700;color:var(--text-muted);margin-bottom:22px;animation:fadeInUp .7s ease both;}
+.breadcrumb a{color:#fbbf24;}
+.breadcrumb i{font-size:.6rem;color:#475569;}
+.breadcrumb .current{color:#fff;}
+.page-hero-tag{display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:100px;background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(236,72,153,.1));border:1px solid rgba(251,191,36,.5);color:#fbbf24;font-size:.8rem;font-weight:700;margin-bottom:22px;backdrop-filter:blur(10px);box-shadow:0 0 25px rgba(251,191,36,.15);animation:fadeInUp .7s ease .1s both;}
+.page-hero-tag i{color:#ec4899;animation:pulseScale 2s infinite;}
+.page-hero h1{font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:clamp(1.9rem,5.6vw,4.2rem);line-height:1.3;margin:0 0 20px;animation:fadeInUp .8s ease .25s both;}
+.page-hero h1 .grad{background:linear-gradient(100deg,#fbbf24,#ec4899 45%,#8b5cf6 75%,#fbbf24);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 45px rgba(251,191,36,.55));animation:gradientShift 5s ease-in-out infinite;padding-bottom:.15em;}
+@keyframes gradientShift{0%,100%{background-position:0% center;}50%{background-position:100% center;}}
+.page-hero p{max-width:900px;color:var(--text-muted);font-size:clamp(.88rem,1.5vw,1.1rem);line-height:2;margin:0 auto 30px;animation:fadeInUp .8s ease .4s both;}
+.page-hero p strong{color:#fbbf24;font-weight:700;}
+.page-hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeInUp .8s ease .55s both;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* Hero showcase chips */
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:38px;animation:fadeInUp .9s ease .7s both;}
+.hero-chip{padding:10px 18px;border-radius:100px;background:rgba(15,23,42,.7);border:1px solid rgba(251,191,36,.3);font-size:.78rem;font-weight:800;color:#fbbf24;display:inline-flex;align-items:center;gap:8px;backdrop-filter:blur(10px);transition:all .3s;cursor:default;}
+.hero-chip:hover{transform:translateY(-4px);border-color:#fbbf24;box-shadow:0 12px 28px rgba(251,191,36,.3);}
+.hero-chip i{color:#ec4899;}
+
+/* Buttons */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:var(--gradient-main);color:#fff;font-weight:800;font-size:clamp(.85rem,1.3vw,1rem);cursor:pointer;box-shadow:0 10px 30px rgba(139,92,246,.45);transition:all .35s;white-space:nowrap;border:none;}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(236,72,153,.55);}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:rgba(15,23,42,.5);color:#fff;font-weight:800;font-size:clamp(.85rem,1.3vw,1rem);border:1px solid rgba(251,191,36,.5);cursor:pointer;backdrop-filter:blur(10px);transition:all .35s;white-space:nowrap;}
+.btn-ghost:hover{background:rgba(251,191,36,.12);border-color:#fbbf24;transform:translateY(-4px);box-shadow:0 10px 30px rgba(251,191,36,.3);}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;background:var(--gradient-gold);color:#1a0b2e;font-weight:900;font-size:clamp(.85rem,1.3vw,1rem);border:none;cursor:pointer;box-shadow:0 10px 30px rgba(251,191,36,.45);transition:all .35s;white-space:nowrap;}
+.btn-gold:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(251,191,36,.65);}
+
+/* Section */
+.section{padding:85px 5%;max-width:1500px;margin:0 auto;position:relative;}
+.section-head{text-align:center;margin-bottom:50px;}
+.section-tag{display:inline-block;padding:6px 16px;border-radius:100px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.35);color:#fbbf24;font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.section-title{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:900;margin:0 0 14px;line-height:1.25;}
+.section-title .gradient-text{background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.section-desc{max-width:760px;margin:0 auto;color:var(--text-muted);font-size:.95rem;line-height:1.85;}
+
+/* LIVE STATS */
+.live-bar{padding:0 5% 40px;max-width:1500px;margin:0 auto;}
+.live-bar-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:22px;border-radius:22px;background:linear-gradient(160deg,rgba(15,23,42,.9),rgba(26,11,46,.85));border:1px solid rgba(251,191,36,.28);backdrop-filter:blur(16px);position:relative;overflow:hidden;}
+.live-bar-inner::before{content:'';position:absolute;top:0;right:0;width:100%;height:3px;background:linear-gradient(90deg,#fbbf24,#ec4899,#8b5cf6,#00d9ff);background-size:200% auto;animation:gradientSlide 4s linear infinite;}
+@keyframes gradientSlide{0%{background-position:0% center;}100%{background-position:200% center;}}
+.live-stat{display:flex;align-items:center;gap:12px;padding:10px;}
+.live-stat-icon{flex-shrink:0;width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:#1a0b2e;background:var(--gradient-gold);box-shadow:0 8px 22px rgba(251,191,36,.4);transition:transform .4s;}
+.live-stat:hover .live-stat-icon{transform:rotate(-8deg) scale(1.1);}
+.live-stat-info .val{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1.1rem,2vw,1.5rem);background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;display:block;margin-bottom:4px;}
+.live-stat-info .lbl{color:var(--text-muted);font-size:.75rem;font-weight:700;line-height:1.35;}
+.live-stat:nth-child(2) .live-stat-icon{background:linear-gradient(135deg,#ec4899,#be185d);box-shadow:0 8px 22px rgba(236,72,153,.4);color:#fff;}
+.live-stat:nth-child(2) .val{background:linear-gradient(135deg,#ec4899,#be185d);-webkit-background-clip:text;background-clip:text;}
+.live-stat:nth-child(3) .live-stat-icon{background:linear-gradient(135deg,#8b5cf6,#6a47e8);box-shadow:0 8px 22px rgba(139,92,246,.4);color:#fff;}
+.live-stat:nth-child(3) .val{background:linear-gradient(135deg,#8b5cf6,#6a47e8);-webkit-background-clip:text;background-clip:text;}
+.live-stat:nth-child(4) .live-stat-icon{background:linear-gradient(135deg,#00d9ff,#0891b2);box-shadow:0 8px 22px rgba(0,217,255,.4);color:#fff;}
+.live-stat:nth-child(4) .val{background:linear-gradient(135deg,#00d9ff,#0891b2);-webkit-background-clip:text;background-clip:text;}
+.live-stat:nth-child(5) .live-stat-icon{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 8px 22px rgba(16,185,129,.4);color:#fff;}
+.live-stat:nth-child(5) .val{background:linear-gradient(135deg,#10b981,#059669);-webkit-background-clip:text;background-clip:text;}
+
+/* CONTRIBUTION TYPES */
+.contrib-types{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1300px;margin:0 auto;align-items:stretch;}
+.contrib-card{position:relative;padding:26px 22px;border-radius:20px;background:linear-gradient(160deg,rgba(15,23,42,.88),rgba(26,11,46,.78));border:1px solid rgba(251,191,36,.25);transition:all .45s;text-align:center;overflow:hidden;display:flex;flex-direction:column;align-items:center;min-height:270px;}
+.contrib-card::before{content:'';position:absolute;top:0;right:0;width:100%;height:4px;background:linear-gradient(90deg,var(--ct-color,var(--gold)),var(--ct-color2,#ec4899));transform:scaleX(0);transform-origin:right;transition:transform .5s;}
+.contrib-card:hover::before{transform:scaleX(1);}
+.contrib-card:hover{transform:translateY(-10px);border-color:rgba(251,191,36,.6);box-shadow:0 24px 55px rgba(251,191,36,.28);}
+.contrib-icon{width:64px;height:64px;margin:0 auto 16px;border-radius:18px;background:linear-gradient(135deg,var(--ct-color,var(--gold)),var(--ct-color2,#ec4899));display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#1a0b2e;box-shadow:0 12px 30px rgba(251,191,36,.4);transition:transform .4s;flex-shrink:0;}
+.contrib-card:hover .contrib-icon{transform:rotate(-8deg) scale(1.08);}
+.contrib-name{font-size:1rem;font-weight:900;color:#fff;margin:0 0 4px;}
+.contrib-name-en{font-family:'Orbitron',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:1.4px;color:var(--ct-color,var(--gold));margin:0 0 12px;text-transform:uppercase;}
+.contrib-desc{color:var(--text-muted);font-size:.8rem;line-height:1.8;margin:0;flex:1;display:flex;align-items:center;justify-content:center;}
+
+/* MINISTRY BOX */
+.ministry-box{max-width:1100px;margin:44px auto 0;position:relative;padding:clamp(28px,4.5vw,44px);border-radius:26px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:2px solid rgba(251,191,36,.5);text-align:center;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.45);}
+.ministry-box::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(251,191,36,.12),transparent 25%,rgba(0,217,255,.1),transparent 55%,rgba(236,72,153,.1),transparent 80%);animation:spin 25s linear infinite;pointer-events:none;}
+.ministry-box > *{position:relative;z-index:1;}
+.ministry-icon{width:74px;height:74px;margin:0 auto 18px;border-radius:20px;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.9rem;color:#1a0b2e;box-shadow:0 15px 40px rgba(251,191,36,.55);position:relative;}
+.ministry-icon::before{content:'';position:absolute;inset:-10px;border-radius:24px;border:2px dashed rgba(251,191,36,.5);animation:spin 18s linear infinite;}
+.ministry-box h3{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.15rem,2.4vw,1.65rem);font-weight:900;color:#fff;margin:0 0 12px;line-height:1.4;}
+.ministry-box h3 .grad{background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.ministry-box p{color:var(--text-muted);font-size:.94rem;line-height:2;max-width:780px;margin:0 auto 14px;}
+.ministry-box p strong{color:#fbbf24;font-weight:800;}
+.ministry-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.5);color:#10b981;font-size:.78rem;font-weight:900;margin-top:8px;}
+.ministry-badge i{animation:pulseScale 1.6s infinite;}
+
+/* STRATEGIC SPONSORS */
+.strategic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto;align-items:stretch;}
+.strategic-card{position:relative;padding:36px 26px 30px;border-radius:24px;background:linear-gradient(160deg,rgba(15,23,42,.95),rgba(26,11,46,.88));border:1px solid rgba(251,191,36,.4);text-align:center;overflow:hidden;transition:all .5s;display:flex;flex-direction:column;}
+.strategic-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(251,191,36,.28),transparent 25%,rgba(0,217,255,.2),transparent 50%,rgba(236,72,153,.2),transparent 75%);animation:spin 14s linear infinite;opacity:0;transition:opacity .5s;pointer-events:none;}
+.strategic-card:hover::before{opacity:.6;}
+.strategic-card > *{position:relative;z-index:1;}
+.strategic-card:hover{transform:translateY(-12px) scale(1.02);border-color:rgba(251,191,36,.75);box-shadow:0 30px 70px rgba(251,191,36,.3);}
+.strategic-crown{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;background:linear-gradient(135deg,rgba(251,191,36,.22),rgba(236,72,153,.15));border:1px solid rgba(251,191,36,.55);color:#fbbf24;font-family:'Cairo',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:0;margin:0 auto 18px;width:fit-content;}
+.strategic-logo-wrap{width:140px;height:140px;margin:0 auto 20px;border-radius:50%;background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(139,92,246,.12));border:3px solid rgba(251,191,36,.5);display:flex;align-items:center;justify-content:center;padding:18px;position:relative;transition:transform .5s;flex-shrink:0;}
+.strategic-logo-wrap::before{content:'';position:absolute;inset:-10px;border-radius:50%;border:2px dashed rgba(251,191,36,.4);animation:spin 20s linear infinite;}
+.strategic-card:hover .strategic-logo-wrap{transform:scale(1.06) rotate(-4deg);}
+.strategic-logo-wrap img{width:100%;height:100%;object-fit:contain;}
+.strategic-name{font-size:1.15rem;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.4;}
+.strategic-name-en{font-family:'Orbitron',monospace;font-size:.68rem;color:#fbbf24;letter-spacing:1.5px;margin:0 0 14px;text-transform:uppercase;font-weight:700;}
+.strategic-role{display:inline-block;padding:6px 16px;border-radius:100px;background:var(--gradient-gold);color:#1a0b2e;font-weight:900;font-size:.74rem;margin:0 auto 16px;box-shadow:0 8px 20px rgba(251,191,36,.35);width:fit-content;}
+.strategic-desc{color:var(--text-muted);font-size:.85rem;line-height:1.85;margin:0 0 16px;flex:1;}
+.strategic-view{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:100px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.5);color:#fbbf24;font-weight:800;font-size:.78rem;transition:all .3s;cursor:pointer;margin:0 auto;width:fit-content;}
+.strategic-view:hover{background:var(--gradient-gold);color:#1a0b2e;border-color:transparent;transform:translateY(-3px);box-shadow:0 10px 25px rgba(251,191,36,.4);}
+.strategic-ribbon{position:absolute;top:20px;left:-30px;transform:rotate(-45deg);background:var(--gradient-gold);color:#1a0b2e;font-family:'Orbitron',sans-serif;font-weight:900;font-size:.58rem;letter-spacing:1.2px;padding:6px 40px;box-shadow:0 6px 18px rgba(251,191,36,.5);z-index:2;}
+
+/* TIERS */
+.tier-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:12px;border-radius:60px;background:rgba(15,23,42,.6);border:1px solid rgba(251,191,36,.22);backdrop-filter:blur(16px);max-width:fit-content;margin:0 auto 40px;}
+.tier-tab{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:50px;background:transparent;color:#cbd5e1;font-weight:800;font-size:.92rem;cursor:pointer;transition:all .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;border:1px solid transparent;font-family:'Cairo',sans-serif;letter-spacing:0;}
+.tier-tab .tab-dot{width:10px;height:10px;border-radius:50%;background:var(--tab-color,#fbbf24);box-shadow:0 0 12px var(--tab-color,#fbbf24);flex-shrink:0;}
+.tier-tab:hover{background:rgba(251,191,36,.08);color:#fff;}
+.tier-tab.active{background:var(--tab-gradient,var(--gradient-gold));color:#1a0b2e;box-shadow:0 12px 30px rgba(251,191,36,.4);transform:translateY(-2px);border-color:transparent;}
+.tier-tab.active .tab-dot{background:#1a0b2e;box-shadow:0 0 10px rgba(26,11,46,.5);}
+
+.tier-panel{display:none;animation:panelIn .6s cubic-bezier(.16,1,.3,1);}
+.tier-panel.active{display:block;}
+@keyframes panelIn{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+.tier-hero{position:relative;padding:clamp(30px,5vw,54px) clamp(24px,4.5vw,48px);border-radius:28px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(var(--tier-rgb,251,191,36),.45);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);margin-bottom:34px;}
+.tier-hero::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(var(--tier-rgb,251,191,36),.18),transparent 25%,rgba(139,92,246,.1),transparent 55%,rgba(236,72,153,.08),transparent 80%);animation:spin 25s linear infinite;pointer-events:none;}
+.tier-hero-inner{position:relative;z-index:1;display:flex;align-items:center;gap:clamp(20px,3.5vw,40px);flex-wrap:wrap;}
+.tier-hero-icon{flex-shrink:0;width:clamp(90px,12vw,130px);height:clamp(90px,12vw,130px);border-radius:26px;background:var(--tier-gradient,var(--gradient-gold));display:flex;align-items:center;justify-content:center;font-size:clamp(2.2rem,4.4vw,3.2rem);color:#1a0b2e;box-shadow:0 20px 50px rgba(var(--tier-rgb,251,191,36),.55);position:relative;}
+.tier-hero-icon::before{content:'';position:absolute;inset:-10px;border-radius:30px;border:2px dashed rgba(var(--tier-rgb,251,191,36),.5);animation:spin 18s linear infinite;}
+.tier-hero-text{flex:1;min-width:240px;}
+.tier-hero-text .badge{display:inline-block;padding:5px 14px;border-radius:100px;background:rgba(var(--tier-rgb,251,191,36),.15);border:1px solid rgba(var(--tier-rgb,251,191,36),.5);color:var(--tier-color,#fbbf24);font-family:'Cairo',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:0;margin-bottom:12px;}
+.tier-hero-text h2{font-family:'Orbitron','Cairo',sans-serif;font-weight:900;font-size:clamp(1.4rem,3.2vw,2.2rem);line-height:1.3;margin:0 0 10px;color:#fff;}
+.tier-hero-text h2 .grad{background:var(--tier-gradient,var(--gradient-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.tier-hero-text p{color:var(--text-muted);font-size:.94rem;line-height:1.9;margin:0;max-width:720px;}
+.tier-hero-meta{flex-shrink:0;padding:18px 22px;border-radius:18px;background:rgba(5,6,15,.7);border:1px solid rgba(var(--tier-rgb,251,191,36),.4);backdrop-filter:blur(10px);text-align:center;}
+.tier-hero-meta .mm{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.5rem;background:var(--tier-gradient,var(--gradient-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;display:block;margin-bottom:6px;}
+.tier-hero-meta .lb{color:var(--text-muted);font-size:.7rem;font-weight:700;}
+
+/* Benefits grid */
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;}
+.benefit-card{position:relative;padding:24px 22px;border-radius:18px;background:linear-gradient(160deg,rgba(15,23,42,.88),rgba(26,11,46,.78));border:1px solid rgba(var(--tier-rgb,251,191,36),.25);transition:all .45s;overflow:hidden;display:flex;flex-direction:column;}
+.benefit-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:3px;background:var(--tier-gradient,var(--gradient-gold));transition:width .5s;border-radius:3px;}
+.benefit-card:hover::after{width:88%;}
+.benefit-card:hover{transform:translateY(-8px);border-color:rgba(var(--tier-rgb,251,191,36),.6);background:rgba(15,23,42,.95);box-shadow:0 20px 50px rgba(var(--tier-rgb,251,191,36),.25);}
+.benefit-icon{width:52px;height:52px;border-radius:14px;background:var(--tier-gradient,var(--gradient-gold));display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#1a0b2e;margin-bottom:14px;box-shadow:0 10px 26px rgba(var(--tier-rgb,251,191,36),.4);transition:transform .4s;flex-shrink:0;}
+.benefit-card:hover .benefit-icon{transform:rotate(-8deg) scale(1.1);}
+.benefit-card h4{font-size:.98rem;font-weight:900;color:#fff;margin:0 0 8px;line-height:1.4;}
+.benefit-card p{color:var(--text-muted);font-size:.82rem;line-height:1.85;margin:0;}
+
+/* SPONSORS GRID */
+.sponsors-filter{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:14px;border-radius:60px;background:rgba(15,23,42,.6);border:1px solid rgba(251,191,36,.22);backdrop-filter:blur(16px);max-width:fit-content;margin:0 auto 40px;}
+.filter-chip{padding:9px 20px;border-radius:100px;background:rgba(15,23,42,.7);border:1px solid rgba(251,191,36,.22);color:#cbd5e1;font-weight:800;font-size:.82rem;cursor:pointer;transition:all .35s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}
+.filter-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--fc-color,#fbbf24);flex-shrink:0;}
+.filter-chip:hover{border-color:rgba(251,191,36,.55);color:#fff;background:rgba(251,191,36,.08);transform:translateY(-2px);}
+.filter-chip.active{background:linear-gradient(135deg,var(--fc-color,#fbbf24),var(--fc-color2,#d97706));color:#1a0b2e;border-color:transparent;box-shadow:0 10px 25px rgba(251,191,36,.4);}
+.filter-chip.active .dot{background:#1a0b2e;}
+
+.sponsors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,360px));gap:22px;justify-content:center;max-width:1300px;margin:0 auto;align-items:stretch;}
+.sponsor-card{position:relative;padding:0;border-radius:22px;background:linear-gradient(160deg,rgba(15,23,42,.92),rgba(26,11,46,.82));border:1px solid rgba(var(--sc-rgb,251,191,36),.32);overflow:hidden;transition:all .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;cursor:pointer;}
+.sponsor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--sc-gradient,var(--gradient-gold));transform:scaleX(0);transform-origin:right;transition:transform .5s;z-index:3;}
+.sponsor-card:hover::before{transform:scaleX(1);}
+.sponsor-card:hover{transform:translateY(-12px);border-color:rgba(var(--sc-rgb,251,191,36),.65);box-shadow:0 30px 70px rgba(var(--sc-rgb,251,191,36),.3);}
+
+.sc-cover{position:relative;height:180px;overflow:hidden;background:var(--sc-gradient,var(--gradient-gold));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sc-cover::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.3),transparent 60%),radial-gradient(circle at 70% 80%,rgba(0,0,0,.45),transparent 60%);z-index:1;}
+.sc-cover::after{content:'';position:absolute;inset:0;opacity:.3;background-image:radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1.5px);background-size:16px 16px;z-index:1;}
+.sc-tier-badge{position:absolute;top:12px;right:12px;z-index:3;padding:5px 14px;border-radius:100px;background:rgba(5,6,15,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.3);font-family:'Cairo',sans-serif;font-weight:800;font-size:.72rem;color:#fff;letter-spacing:0;}
+.sc-verified{position:absolute;top:12px;left:12px;z-index:3;padding:5px 12px;border-radius:100px;background:rgba(16,185,129,.95);color:#fff;font-size:.68rem;font-weight:800;display:flex;align-items:center;gap:5px;box-shadow:0 6px 18px rgba(16,185,129,.5);}
+.sc-verified i{font-size:.68rem;}
+.sc-logo-wrap{position:relative;z-index:3;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(15,23,42,.98),rgba(5,6,15,.98));border:4px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;padding:16px;box-shadow:0 15px 40px rgba(0,0,0,.55),0 0 0 5px rgba(255,255,255,.15),0 0 30px rgba(var(--sc-rgb,251,191,36),.4);transition:transform .5s;flex-shrink:0;}
+.sponsor-card:hover .sc-logo-wrap{transform:scale(1.08) rotate(-5deg);}
+.sc-logo-wrap img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3));}
+.sc-logo-wrap i{color:#fbbf24;}
+.sc-body{padding:22px;display:flex;flex-direction:column;flex:1;text-align:center;}
+.sc-name{font-size:1.05rem;font-weight:900;color:#fff;margin:0 0 4px;line-height:1.4;}
+.sc-name-en{font-family:'Orbitron',monospace;font-size:.62rem;color:var(--sc-color,#fbbf24);letter-spacing:1.2px;margin:0 0 10px;text-transform:uppercase;}
+.sc-role{display:inline-block;padding:5px 14px;border-radius:100px;background:var(--sc-gradient,var(--gradient-gold));color:#1a0b2e;font-weight:900;font-size:.7rem;margin:0 auto 14px;width:fit-content;}
+.sc-desc{color:var(--text-muted);font-size:.82rem;line-height:1.8;margin:0 0 16px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.sc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:12px;border-radius:14px;background:rgba(5,6,15,.5);border:1px solid rgba(var(--sc-rgb,251,191,36),.2);margin-bottom:16px;}
+.sc-stat{text-align:center;}
+.sc-stat .v{font-family:'Cairo',sans-serif;font-weight:900;font-size:.95rem;background:var(--sc-gradient,var(--gradient-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;display:block;margin-bottom:3px;}
+.sc-stat .l{font-size:.6rem;color:var(--text-muted);font-weight:700;}
+.sc-view-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:100px;background:var(--sc-gradient,var(--gradient-gold));color:#1a0b2e;font-weight:900;font-size:.78rem;transition:all .3s;border:none;width:100%;}
+.sc-view-btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(var(--sc-rgb,251,191,36),.5);}
+
+/* WHY SPONSOR */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
+.why-card{position:relative;padding:28px 24px;border-radius:22px;background:linear-gradient(160deg,rgba(15,23,42,.88),rgba(26,11,46,.78));border:1px solid rgba(251,191,36,.24);transition:all .45s;overflow:hidden;display:flex;flex-direction:column;}
+.why-card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(251,191,36,.18),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none;}
+.why-card:hover::before{opacity:1;}
+.why-card:hover{transform:translateY(-8px);border-color:rgba(251,191,36,.6);box-shadow:0 20px 50px rgba(251,191,36,.25);}
+.why-icon{width:60px;height:60px;border-radius:16px;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#1a0b2e;margin-bottom:16px;box-shadow:0 12px 30px rgba(251,191,36,.4);transition:transform .4s;position:relative;z-index:1;flex-shrink:0;}
+.why-card:hover .why-icon{transform:rotate(-8deg) scale(1.1);}
+.why-card h4{font-size:1.05rem;font-weight:900;color:#fff;margin:0 0 10px;line-height:1.4;position:relative;z-index:1;}
+.why-card p{color:var(--text-muted);font-size:.85rem;line-height:1.85;margin:0;position:relative;z-index:1;}
+
+/* PORTFOLIO MODAL */
+.portfolio-modal{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.9);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:all .4s;overflow-y:auto;}
+.portfolio-modal.open{opacity:1;visibility:visible;}
+.portfolio-box{position:relative;width:100%;max-width:1150px;max-height:94vh;overflow-y:auto;border-radius:26px;background:linear-gradient(160deg,rgba(15,23,42,.98),rgba(26,11,46,.96));border:1px solid rgba(251,191,36,.4);box-shadow:0 40px 100px rgba(0,0,0,.75);transform:scale(.94) translateY(30px);transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.portfolio-modal.open .portfolio-box{transform:scale(1) translateY(0);}
+
+/* Tier-specific portfolio themes */
+.portfolio-box.tier-strategic{border:2px solid rgba(251,191,36,.75);box-shadow:0 40px 100px rgba(0,0,0,.75),0 0 80px rgba(251,191,36,.35),0 0 0 1px rgba(236,72,153,.3);}
+.portfolio-box.tier-platinum{border:2px solid rgba(203,213,225,.75);box-shadow:0 40px 100px rgba(0,0,0,.75),0 0 70px rgba(203,213,225,.3);}
+.portfolio-box.tier-gold{border:2px solid rgba(251,191,36,.65);box-shadow:0 40px 100px rgba(0,0,0,.75),0 0 60px rgba(251,191,36,.3);}
+.portfolio-box.tier-bronze{border:2px solid rgba(244,114,182,.65);box-shadow:0 40px 100px rgba(0,0,0,.75),0 0 60px rgba(244,114,182,.28);}
+
+.portfolio-close{position:absolute;top:20px;left:20px;z-index:10;width:44px;height:44px;border-radius:50%;background:rgba(5,6,15,.9);border:1px solid rgba(251,191,36,.5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;cursor:pointer;transition:all .3s;}
+.portfolio-close:hover{background:var(--gradient-gold);color:#1a0b2e;transform:rotate(90deg);border-color:transparent;}
+
+.pf-cover{position:relative;height:clamp(200px,28vw,260px);overflow:hidden;background:var(--pf-gradient,var(--gradient-gold));display:flex;align-items:center;justify-content:center;}
+.pf-cover::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.3),transparent 60%),radial-gradient(circle at 70% 80%,rgba(0,0,0,.5),transparent 60%);}
+.pf-cover::after{content:'';position:absolute;inset:0;opacity:.35;background-image:radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1.5px);background-size:20px 20px;}
+.pf-cover-inner{position:relative;z-index:2;text-align:center;color:#fff;padding:20px;}
+
+/* Tier-level cover badge */
+.pf-tier-level-badge{position:absolute;top:16px;right:16px;z-index:4;padding:8px 18px;border-radius:100px;background:rgba(5,6,15,.9);backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,.35);font-family:'Cairo',sans-serif;font-weight:900;font-size:.78rem;color:#fff;display:flex;align-items:center;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,.5);}
+.pf-tier-level-badge i{font-size:.85rem;}
+.portfolio-box.tier-strategic .pf-tier-level-badge{background:linear-gradient(135deg,#fbbf24,#ec4899);color:#1a0b2e;border-color:transparent;box-shadow:0 10px 30px rgba(251,191,36,.6);}
+.portfolio-box.tier-platinum .pf-tier-level-badge{background:linear-gradient(135deg,#e2e8f0,#94a3b8);color:#1a0b2e;border-color:transparent;}
+.portfolio-box.tier-gold .pf-tier-level-badge{background:linear-gradient(135deg,#fde68a,#d97706);color:#1a0b2e;border-color:transparent;}
+.portfolio-box.tier-bronze .pf-tier-level-badge{background:linear-gradient(135deg,#fbcfe8,#b76e79);color:#1a0b2e;border-color:transparent;}
+
+/* Strategic crown ornament */
+.pf-cover.tier-strategic-cover .pf-cover-inner h2{background:linear-gradient(135deg,#fff,#fbbf24,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 20px rgba(251,191,36,.5));}
+
+.pf-cover-inner .pf-tier{display:inline-block;padding:6px 18px;border-radius:100px;background:rgba(5,6,15,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.4);font-family:'Cairo',sans-serif;font-weight:800;font-size:.74rem;letter-spacing:0;color:#fff;margin-bottom:14px;}
+.pf-cover-inner h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;color:#fff;margin:0 0 6px;text-shadow:0 4px 20px rgba(0,0,0,.5);}
+.pf-cover-inner .pf-role{font-size:.95rem;color:rgba(255,255,255,.95);font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.5);}
+
+.pf-header{position:relative;padding:0 clamp(22px,4vw,44px) 22px;margin-top:-60px;z-index:3;display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+.pf-logo-big{flex-shrink:0;width:clamp(100px,14vw,140px);height:clamp(100px,14vw,140px);border-radius:24px;background:linear-gradient(160deg,rgba(15,23,42,.98),rgba(26,11,46,.98));border:4px solid rgba(251,191,36,.6);display:flex;align-items:center;justify-content:center;padding:18px;box-shadow:0 20px 50px rgba(0,0,0,.6);}
+.portfolio-box.tier-strategic .pf-logo-big{border-color:#fbbf24;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 40px rgba(251,191,36,.5);}
+.portfolio-box.tier-platinum .pf-logo-big{border-color:#cbd5e1;}
+.portfolio-box.tier-gold .pf-logo-big{border-color:#fbbf24;}
+.portfolio-box.tier-bronze .pf-logo-big{border-color:#f472b6;}
+.pf-logo-big img{width:100%;height:100%;object-fit:contain;}
+.pf-header-info{flex:1;min-width:240px;padding-bottom:8px;}
+.pf-header-info .pf-name-en{font-family:'Orbitron',monospace;font-size:.72rem;color:#fbbf24;letter-spacing:2px;margin:0 0 4px;text-transform:uppercase;font-weight:700;}
+.pf-header-info .pf-subtitle{color:var(--text-muted);font-size:.88rem;margin:0;line-height:1.7;}
+
+.pf-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:16px clamp(20px,4vw,40px);border-bottom:1px solid rgba(251,191,36,.15);background:rgba(5,6,15,.4);position:sticky;top:0;z-index:5;backdrop-filter:blur(12px);justify-content:center;}
+.pf-tab{padding:11px 16px;border-radius:12px;background:rgba(15,23,42,.7);border:1px solid rgba(251,191,36,.2);color:#cbd5e1;font-weight:800;font-size:.76rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;text-align:center;}
+.pf-tab i{color:#fbbf24;font-size:.76rem;}
+.pf-tab:hover{color:#fff;border-color:rgba(251,191,36,.5);transform:translateY(-2px);background:rgba(251,191,36,.08);}
+.pf-tab.active{background:var(--gradient-gold);color:#1a0b2e;border-color:transparent;box-shadow:0 8px 22px rgba(251,191,36,.4);}
+.pf-tab.active i{color:#1a0b2e;}
+.portfolio-box.tier-platinum .pf-tab.active{background:var(--gradient-platinum);}
+.portfolio-box.tier-bronze .pf-tab.active{background:var(--gradient-bronze);}
+
+.pf-body{padding:clamp(24px,4vw,38px);}
+.pf-panel{display:none;animation:panelIn .5s cubic-bezier(.16,1,.3,1);}
+.pf-panel.active{display:block;}
+
+.pf-block{margin-bottom:28px;}
+.pf-block:last-child{margin-bottom:0;}
+.pf-block-title{display:flex;align-items:center;gap:10px;font-family:'Orbitron','Cairo',sans-serif;font-size:1rem;font-weight:900;color:#fff;margin:0 0 14px;}
+.pf-block-title i{color:#fbbf24;font-size:.95rem;}
+.pf-block p{color:var(--text-muted);font-size:.88rem;line-height:2;margin:0 0 12px;}
+.pf-block p:last-child{margin-bottom:0;}
+.pf-block p strong{color:#fbbf24;font-weight:700;}
+
+/* Exclusive privileges (platinum/strategic) */
+.privileges-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.privilege-card{position:relative;padding:20px 18px;border-radius:16px;background:linear-gradient(160deg,rgba(251,191,36,.08),rgba(139,92,246,.06));border:1px solid rgba(251,191,36,.35);transition:all .4s;overflow:hidden;}
+.privilege-card::before{content:'';position:absolute;top:0;right:0;width:100%;height:3px;background:var(--gradient-gold);transform:scaleX(0);transform-origin:right;transition:transform .5s;}
+.privilege-card:hover::before{transform:scaleX(1);}
+.privilege-card:hover{transform:translateY(-6px);border-color:rgba(251,191,36,.7);box-shadow:0 18px 42px rgba(251,191,36,.28);}
+.privilege-icon{width:48px;height:48px;border-radius:14px;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#1a0b2e;margin-bottom:12px;box-shadow:0 10px 26px rgba(251,191,36,.4);flex-shrink:0;}
+.privilege-card h5{font-size:.9rem;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.4;}
+.privilege-card p{font-size:.76rem;color:var(--text-muted);line-height:1.75;margin:0;}
+
+/* Partners grid */
+.partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+.partner-card{padding:16px 14px;border-radius:14px;background:rgba(5,6,15,.6);border:1px solid rgba(251,191,36,.22);display:flex;align-items:center;gap:12px;transition:all .35s;}
+.partner-card:hover{transform:translateY(-4px);border-color:rgba(251,191,36,.55);box-shadow:0 12px 30px rgba(251,191,36,.2);}
+.partner-logo{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:#1a0b2e;box-shadow:0 8px 20px rgba(251,191,36,.35);}
+.partner-info h5{font-size:.82rem;font-weight:900;color:#fff;margin:0 0 3px;}
+.partner-info p{font-size:.7rem;color:#cbd5e1;margin:0;font-weight:600;}
+
+/* KPI grid */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.kpi-card{padding:20px;border-radius:16px;background:linear-gradient(160deg,rgba(15,23,42,.85),rgba(26,11,46,.7));border:1px solid rgba(251,191,36,.25);transition:all .4s;}
+.kpi-card:hover{transform:translateY(-5px);border-color:rgba(251,191,36,.6);box-shadow:0 16px 40px rgba(251,191,36,.25);}
+.kpi-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.kpi-label{font-size:.78rem;color:var(--text-muted);font-weight:700;}
+.kpi-value{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.3rem;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.kpi-bar{width:100%;height:8px;background:rgba(5,6,15,.7);border-radius:100px;overflow:hidden;border:1px solid rgba(251,191,36,.15);margin-bottom:8px;}
+.kpi-bar-fill{height:100%;background:var(--gradient-gold);border-radius:100px;box-shadow:0 0 15px rgba(251,191,36,.6);transition:width 1.2s cubic-bezier(.16,1,.3,1);}
+.kpi-desc{font-size:.7rem;color:var(--text-muted);line-height:1.6;margin:0;}
+
+/* Future plans */
+.future-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+.future-card{position:relative;padding:20px 18px 20px 18px;border-radius:16px;background:linear-gradient(160deg,rgba(0,217,255,.08),rgba(139,92,246,.05));border:1px solid rgba(0,217,255,.3);transition:all .4s;}
+.future-card:hover{transform:translateY(-5px);border-color:rgba(0,217,255,.65);box-shadow:0 16px 40px rgba(0,217,255,.25);}
+.future-date{display:inline-block;padding:4px 12px;border-radius:100px;background:rgba(0,217,255,.15);border:1px solid rgba(0,217,255,.45);color:#00d9ff;font-family:'Cairo',sans-serif;font-weight:800;font-size:.68rem;margin-bottom:10px;}
+.future-card h5{font-size:.9rem;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.4;}
+.future-card p{font-size:.78rem;color:var(--text-muted);line-height:1.8;margin:0;}
+
+/* Recognition/Awards */
+.recognition-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+.recognition-card{padding:18px 16px;border-radius:14px;background:linear-gradient(160deg,rgba(251,191,36,.1),rgba(236,72,153,.06));border:1px solid rgba(251,191,36,.35);text-align:center;transition:all .4s;}
+.recognition-card:hover{transform:translateY(-5px) scale(1.02);border-color:rgba(251,191,36,.7);box-shadow:0 16px 40px rgba(251,191,36,.3);}
+.recognition-icon{width:52px;height:52px;margin:0 auto 10px;border-radius:50%;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#1a0b2e;box-shadow:0 10px 26px rgba(251,191,36,.5);}
+.recognition-card h5{font-size:.82rem;font-weight:900;color:#fff;margin:0 0 4px;}
+.recognition-card p{font-size:.7rem;color:var(--text-muted);margin:0;line-height:1.6;}
+
+/* Video highlight */
+.video-highlight{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,rgba(0,217,255,.15),rgba(139,92,246,.1));border:1px solid rgba(0,217,255,.4);padding:28px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.video-highlight-icon{flex-shrink:0;width:74px;height:74px;border-radius:50%;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#1a0b2e;box-shadow:0 15px 40px rgba(251,191,36,.5);cursor:pointer;transition:transform .4s;}
+.video-highlight-icon:hover{transform:scale(1.08);}
+.video-highlight-info{flex:1;min-width:220px;}
+.video-highlight-info h5{font-size:1.05rem;font-weight:900;color:#fff;margin:0 0 6px;}
+.video-highlight-info p{font-size:.82rem;color:var(--text-muted);margin:0 0 8px;line-height:1.7;}
+.video-highlight-info .duration{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;background:rgba(0,217,255,.15);border:1px solid rgba(0,217,255,.4);color:#00d9ff;font-family:'Cairo',sans-serif;font-weight:800;font-size:.72rem;}
+
+/* Contribution breakdown */
+.contrib-breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+.contrib-item{padding:16px 18px;border-radius:14px;background:rgba(5,6,15,.6);border:1px solid rgba(251,191,36,.2);display:flex;align-items:center;gap:12px;transition:all .35s;}
+.contrib-item:hover{transform:translateY(-4px);border-color:rgba(251,191,36,.5);box-shadow:0 12px 30px rgba(251,191,36,.2);}
+.contrib-item-icon{flex-shrink:0;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 8px 20px rgba(251,191,36,.35);}
+.contrib-item-info h5{font-size:.82rem;font-weight:900;color:#fff;margin:0 0 3px;}
+.contrib-item-info p{font-size:.72rem;color:#cbd5e1;margin:0;font-weight:600;}
+
+/* Impact stats */
+.impact-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px;border-radius:18px;background:rgba(5,6,15,.5);border:1px solid rgba(251,191,36,.2);}
+.impact-stat{text-align:center;}
+.impact-stat .v{font-family:'Cairo',sans-serif;font-weight:900;font-size:1.45rem;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;display:block;margin-bottom:6px;}
+.impact-stat .l{font-size:.7rem;color:var(--text-muted);font-weight:700;}
+
+/* Timeline */
+.pf-timeline{position:relative;padding:10px 0;}
+.pf-timeline::before{content:'';position:absolute;top:0;bottom:0;right:14px;width:3px;background:linear-gradient(180deg,transparent,#fbbf24 10%,#ec4899 50%,#8b5cf6 90%,transparent);border-radius:3px;}
+.pf-timeline-item{position:relative;padding:0 46px 26px 0;}
+.pf-timeline-item:last-child{padding-bottom:0;}
+.pf-timeline-dot{position:absolute;top:8px;right:4px;width:24px;height:24px;border-radius:50%;background:var(--deep-space);border:3px solid #fbbf24;box-shadow:0 0 18px rgba(251,191,36,.7);z-index:3;display:flex;align-items:center;justify-content:center;}
+.pf-timeline-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:#fbbf24;}
+.pf-timeline-card{padding:18px 20px;border-radius:16px;background:linear-gradient(140deg,rgba(15,23,42,.85),rgba(26,11,46,.72));border:1px solid rgba(251,191,36,.25);transition:all .4s;}
+.pf-timeline-card:hover{border-color:rgba(251,191,36,.6);box-shadow:0 14px 36px rgba(251,191,36,.22);transform:translateX(-6px);}
+.pf-timeline-date{display:inline-block;padding:4px 12px;border-radius:100px;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.4);color:#fbbf24;font-family:'Cairo',sans-serif;font-weight:800;font-size:.7rem;letter-spacing:0;margin-bottom:8px;}
+.pf-timeline-card h5{font-size:.95rem;font-weight:900;color:#fff;margin:0 0 6px;}
+.pf-timeline-card p{color:var(--text-muted);font-size:.82rem;line-height:1.85;margin:0;}
+
+/* Gallery */
+.pf-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.pf-gallery-item{position:relative;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:var(--pgi-gradient,var(--gradient-gold));display:flex;align-items:center;justify-content:center;border:1px solid rgba(251,191,36,.3);transition:all .4s;}
+.pf-gallery-item::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.25),transparent 60%),radial-gradient(circle at 70% 80%,rgba(0,0,0,.4),transparent 60%);}
+.pf-gallery-item::after{content:'';position:absolute;inset:0;opacity:.3;background-image:radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1.5px);background-size:18px 18px;}
+.pf-gallery-item:hover{transform:scale(1.03);border-color:#fbbf24;box-shadow:0 15px 40px rgba(251,191,36,.3);}
+.pf-gallery-icon{position:relative;z-index:1;font-size:2.4rem;color:rgba(255,255,255,.9);transition:transform .4s;}
+.pf-gallery-item:hover .pf-gallery-icon{transform:scale(1.15) rotate(-6deg);}
+.pf-gallery-label{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:14px 12px 12px;background:linear-gradient(0deg,rgba(5,6,15,.95),transparent);color:#fff;font-size:.74rem;font-weight:800;text-align:center;}
+
+/* Testimonial in portfolio */
+.pf-testimonial{padding:24px;border-radius:18px;background:linear-gradient(140deg,rgba(251,191,36,.1),rgba(139,92,246,.08));border:1px solid rgba(251,191,36,.3);position:relative;}
+.pf-testimonial::before{content:'\f10d';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:18px;right:22px;font-size:2rem;color:rgba(251,191,36,.15);}
+.pf-testimonial p{color:#e2e8f0;font-size:.9rem;line-height:1.9;font-style:italic;margin:0 0 14px;position:relative;z-index:1;}
+.pf-testimonial .author{display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid rgba(251,191,36,.2);}
+.pf-testimonial .author-avatar{width:48px;height:48px;border-radius:50%;background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#1a0b2e;font-weight:900;flex-shrink:0;}
+.pf-testimonial .author-info h6{font-size:.85rem;font-weight:900;color:#fff;margin:0 0 2px;}
+.pf-testimonial .author-info span{font-size:.72rem;color:#fbbf24;font-weight:700;}
+
+/* Special badge in portfolio */
+.pf-special-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:100px;background:linear-gradient(135deg,rgba(251,191,36,.2),rgba(236,72,153,.15));border:1px solid rgba(251,191,36,.5);color:#fbbf24;font-family:'Cairo',sans-serif;font-weight:800;font-size:.74rem;letter-spacing:0;margin-bottom:16px;}
+.pf-special-badge i{color:#ec4899;animation:pulseScale 2s infinite;}
+
+/* FORM */
+.form-section{padding:85px 5%;max-width:1300px;margin:0 auto;}
+.form-wrapper{position:relative;padding:clamp(30px,5vw,54px) clamp(24px,4.5vw,48px);border-radius:28px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(251,191,36,.4);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+.form-wrapper::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(251,191,36,.1),transparent 25%,rgba(139,92,246,.1),transparent 55%,rgba(236,72,153,.08),transparent 80%);animation:spin 25s linear infinite;pointer-events:none;}
+.form-wrapper > *{position:relative;z-index:1;}
+.form-header{text-align:center;margin-bottom:34px;}
+.form-header h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin:0 0 10px;color:#fff;}
+.form-header h2 .grad{background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.form-header p{color:var(--text-muted);font-size:.92rem;line-height:1.85;max-width:640px;margin:0 auto;}
+
+/* Package selector */
+.package-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:30px;align-items:stretch;}
+.package-option{position:relative;cursor:pointer;padding:0;border-radius:20px;overflow:hidden;transition:all .4s;display:flex;}
+.package-option input{position:absolute;opacity:0;pointer-events:none;}
+.package-inner{position:relative;padding:26px 20px 22px;border-radius:20px;background:linear-gradient(160deg,rgba(15,23,42,.85),rgba(26,11,46,.75));border:2px solid rgba(148,163,184,.25);text-align:center;transition:all .4s;width:100%;display:flex;flex-direction:column;align-items:center;}
+.package-option:hover .package-inner{border-color:rgba(var(--pkg-rgb,251,191,36),.55);transform:translateY(-6px);box-shadow:0 20px 45px rgba(var(--pkg-rgb,251,191,36),.25);}
+.package-option input:checked + .package-inner{border-color:rgba(var(--pkg-rgb,251,191,36),.9);background:linear-gradient(160deg,rgba(var(--pkg-rgb,251,191,36),.15),rgba(15,23,42,.95));box-shadow:0 20px 50px rgba(var(--pkg-rgb,251,191,36),.35);transform:translateY(-6px);}
+.package-option input:checked + .package-inner::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:14px;left:14px;width:28px;height:28px;border-radius:50%;background:var(--pkg-gradient,var(--gradient-gold));color:#1a0b2e;display:flex;align-items:center;justify-content:center;font-size:.72rem;box-shadow:0 6px 16px rgba(var(--pkg-rgb,251,191,36),.5);}
+.pkg-icon{width:56px;height:56px;margin:0 auto 14px;border-radius:16px;background:var(--pkg-gradient,var(--gradient-gold));display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:#1a0b2e;box-shadow:0 10px 26px rgba(var(--pkg-rgb,251,191,36),.4);transition:transform .4s;flex-shrink:0;}
+.package-option:hover .pkg-icon,.package-option input:checked + .package-inner .pkg-icon{transform:rotate(-8deg) scale(1.08);}
+.pkg-name{font-family:'Cairo',sans-serif;font-size:1.08rem;font-weight:900;color:#fff;margin:0 0 4px;letter-spacing:0;}
+.pkg-name-en{font-family:'Cairo',sans-serif;font-size:.72rem;color:var(--pkg-color,#fbbf24);font-weight:800;margin:0 0 12px;letter-spacing:3px;text-transform:uppercase;}
+.pkg-hint{font-size:.74rem;color:var(--text-muted);font-weight:700;margin-bottom:14px;line-height:1.65;}
+.pkg-features{list-style:none;padding:0;margin:0;text-align:right;width:100%;}
+.pkg-features li{position:relative;padding-right:20px;color:var(--text-muted);font-size:.72rem;line-height:1.7;margin-bottom:5px;}
+.pkg-features li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;right:0;top:2px;color:var(--pkg-color,#fbbf24);font-size:.6rem;}
+
+/* Contribution checkboxes */
+.contrib-checkboxes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.contrib-checkbox{position:relative;cursor:pointer;display:flex;}
+.contrib-checkbox input{position:absolute;opacity:0;pointer-events:none;}
+.contrib-checkbox-inner{padding:14px 10px;border-radius:14px;background:rgba(5,6,15,.6);border:2px solid rgba(251,191,36,.22);text-align:center;transition:all .3s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;position:relative;}
+.contrib-checkbox:hover .contrib-checkbox-inner{border-color:rgba(251,191,36,.5);transform:translateY(-3px);}
+.contrib-checkbox input:checked + .contrib-checkbox-inner{border-color:rgba(251,191,36,.8);background:rgba(251,191,36,.12);box-shadow:0 10px 25px rgba(251,191,36,.25);}
+.contrib-checkbox input:checked + .contrib-checkbox-inner::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:8px;left:8px;width:20px;height:20px;border-radius:50%;background:var(--gradient-gold);color:#1a0b2e;display:flex;align-items:center;justify-content:center;font-size:.55rem;}
+.contrib-checkbox-inner i{font-size:1.2rem;color:#fbbf24;}
+.contrib-checkbox-inner span{font-size:.72rem;font-weight:800;color:#fff;text-align:center;line-height:1.3;}
+
+/* Form fields */
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.form-group{position:relative;}
+.form-group.full{grid-column:1/-1;}
+.form-label{display:block;font-size:.8rem;font-weight:800;color:#e2e8f0;margin-bottom:7px;}
+.form-label .req{color:#ec4899;}
+.form-label .hint{color:var(--text-muted);font-weight:600;font-size:.72rem;margin-right:6px;}
+.form-control{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(251,191,36,.25);background:rgba(5,6,15,.6);color:#f1f5f9;font-family:'Cairo',sans-serif;font-size:.9rem;transition:all .3s;outline:none;}
+.form-control:focus{border-color:#fbbf24;box-shadow:0 0 0 4px rgba(251,191,36,.15);background:rgba(5,6,15,.85);}
+.form-control::placeholder{color:#64748b;}
+select.form-control{cursor:pointer;appearance:none;background-image:linear-gradient(45deg,transparent 50%,#fbbf24 50%),linear-gradient(135deg,#fbbf24 50%,transparent 50%);background-position:calc(10% - 2px) 50%,calc(10% - 12px) 50%;background-size:12px 12px,12px 12px;background-repeat:no-repeat;}
+select.form-control option{background:#0a0e27;color:#fff;}
+textarea.form-control{resize:none;min-height:110px;font-family:'Cairo',sans-serif;}
+.form-submit{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px;border-radius:14px;background:var(--gradient-gold);color:#1a0b2e;font-weight:900;font-size:1rem;cursor:pointer;border:none;transition:all .35s;box-shadow:0 14px 30px rgba(251,191,36,.45);position:relative;overflow:hidden;margin-top:22px;font-family:'Orbitron','Cairo',sans-serif;}
+.form-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent,rgba(255,255,255,.4),transparent);transform:translateX(-100%);transition:transform .6s;}
+.form-submit:hover::before{transform:translateX(100%);}
+.form-submit:hover{transform:translateY(-4px);box-shadow:0 20px 45px rgba(251,191,36,.65);}
+.form-submit:disabled{opacity:.7;cursor:not-allowed;transform:none;}
+
+/* FAQ */
+.faq-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.faq-item{border-radius:16px;background:linear-gradient(140deg,rgba(15,23,42,.85),rgba(26,11,46,.7));border:1px solid rgba(251,191,36,.22);overflow:hidden;transition:all .4s;}
+.faq-item.open{border-color:rgba(251,191,36,.6);box-shadow:0 18px 42px rgba(251,191,36,.24);}
+.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;text-align:right;cursor:pointer;font-size:.98rem;font-weight:800;color:#fff;line-height:1.55;transition:color .3s;}
+.faq-question:hover{color:#fbbf24;}
+.faq-q-icon{flex-shrink:0;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3);color:#fbbf24;font-size:.85rem;transition:all .4s;}
+.faq-item.open .faq-q-icon{background:var(--gradient-gold);color:#1a0b2e;border-color:transparent;transform:rotate(135deg);}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
+.faq-item.open .faq-answer{max-height:600px;}
+.faq-answer-inner{padding:0 22px 22px;color:var(--text-muted);font-size:.88rem;line-height:2;}
+.faq-answer-inner strong{color:#fbbf24;}
+
+/* Stats */
+.stats-section{padding:20px 5% 85px;max-width:1500px;margin:0 auto;}
+.stats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(10px,1.5vw,16px);}
+.stat-card{text-align:right;padding:clamp(14px,1.8vw,22px) clamp(12px,1.6vw,18px);background:linear-gradient(160deg,rgba(15,23,42,.85),rgba(26,11,46,.75));backdrop-filter:blur(16px);border-radius:var(--radius);border:1px solid rgba(251,191,36,.22);transition:all .4s;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;min-height:140px;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gradient-gold);transform:scaleX(0);transform-origin:right;transition:transform .5s;}
+.stat-card:hover::before{transform:scaleX(1);}
+.stat-card:hover{transform:translateY(-8px);border-color:rgba(251,191,36,.6);box-shadow:0 20px 45px rgba(251,191,36,.3);}
+.stat-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:auto;padding-bottom:10px;}
+.stat-icon-big{font-size:1.3rem;color:#fbbf24;background:rgba(251,191,36,.12);width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:12px;flex-shrink:0;}
+.stat-number-large{font-size:clamp(1.15rem,1.8vw,1.55rem);font-weight:800;margin-bottom:2px;font-family:'Orbitron',sans-serif;background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-label-large{font-size:clamp(.68rem,1vw,.8rem);color:#cbd5e1;font-weight:600;line-height:1.35;}
+
+/* CTA */
+.cta-section{padding:20px 5% 90px;max-width:1300px;margin:0 auto;}
+.cta-box{position:relative;padding:clamp(34px,6vw,64px) clamp(22px,5vw,56px);border-radius:30px;background:linear-gradient(140deg,rgba(15,23,42,.95),rgba(26,11,46,.9));border:1px solid rgba(251,191,36,.4);text-align:center;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);}
+.cta-box::before{content:'';position:absolute;top:-50%;right:-30%;width:120%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(251,191,36,.12),transparent 25%,rgba(139,92,246,.12),transparent 55%,rgba(236,72,153,.1),transparent 80%);animation:spin 22s linear infinite;pointer-events:none;}
+.cta-box > *{position:relative;z-index:1;}
+.cta-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.4);color:#fbbf24;font-size:.76rem;font-weight:700;margin-bottom:18px;}
+.cta-box h2{font-family:'Orbitron','Cairo',sans-serif;font-size:clamp(1.5rem,3.6vw,2.5rem);font-weight:900;line-height:1.35;margin:0 0 16px;color:#fff;}
+.cta-box h2 .grad{background:var(--gradient-gold);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.cta-box p{max-width:660px;margin:0 auto 28px;color:var(--text-muted);font-size:.96rem;line-height:2;}
+.cta-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+
+/* Footer */
+footer{background:linear-gradient(180deg,transparent,rgba(5,6,15,.98));padding:55px 5% 25px;border-top:1px solid rgba(251,191,36,.18);position:relative;}
+footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:2px;background:var(--gradient-gold);box-shadow:0 0 25px rgba(251,191,36,.8);}
+.footer-simple{max-width:1100px;margin:0 auto;text-align:center;}
+.footer-simple-logo{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#fbbf24,#ec4899,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 12px;}
+.footer-simple-desc{color:var(--text-muted);font-size:.9rem;line-height:1.75;max-width:600px;margin:0 auto 22px;}
+.footer-simple-social{display:flex;justify-content:center;gap:12px;margin-bottom:22px;flex-wrap:wrap;}
+.footer-simple-social a{width:42px;height:42px;border-radius:12px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.28);display:flex;align-items:center;justify-content:center;color:#fbbf24;transition:all .3s;font-size:1rem;}
+.footer-simple-social a:hover{background:var(--gradient-gold);color:#1a0b2e;border-color:transparent;transform:translateY(-4px);}
+.footer-simple-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:22px;}
+.footer-simple-links a{color:var(--text-muted);font-size:.85rem;font-weight:600;transition:color .3s;}
+.footer-simple-links a:hover{color:#fbbf24;}
+.footer-simple-copy{color:#64748b;font-size:.78rem;padding-top:20px;border-top:1px solid rgba(251,191,36,.1);}
+
+/* Alpha */
+.alpha-character{position:fixed;bottom:22px;right:22px;z-index:400;cursor:pointer;animation:alphaBob 4s ease-in-out infinite;}
+@keyframes alphaBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.alpha-character img{width:100px;transition:transform .4s;filter:drop-shadow(0 10px 30px rgba(251,191,36,.5));}
+.alpha-character:hover img{transform:scale(1.12) rotate(-6deg);}
+.alpha-tooltip{position:absolute;bottom:110%;right:0;width:280px;max-width:85vw;padding:14px 16px;border-radius:16px;background:rgba(10,14,39,.96);backdrop-filter:blur(20px);border:1px solid rgba(251,191,36,.4);color:#e2e8f0;font-size:.82rem;line-height:1.7;box-shadow:0 15px 40px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s;pointer-events:none;}
+.alpha-tooltip::after{content:'';position:absolute;top:100%;right:26px;border-width:8px;border-style:solid;border-color:rgba(10,14,39,.96) transparent transparent transparent;}
+.alpha-character.active .alpha-tooltip{opacity:1;visibility:visible;transform:translateY(0);}
+
+.wow{visibility:hidden;}
+
+/* RESPONSIVE */
+@media (max-width:1200px){
+  .contrib-types{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .benefits-grid{grid-template-columns:repeat(3,1fr);gap:14px;}
+  .strategic-grid{grid-template-columns:repeat(3,1fr);gap:18px;}
+  .stats-grid{grid-template-columns:repeat(3,1fr);}
+  .why-grid{grid-template-columns:repeat(3,1fr);gap:14px;}
+  .sponsors-grid{grid-template-columns:repeat(auto-fit,minmax(280px,340px));}
+}
+@media (max-width:992px){
+  .contrib-types{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .strategic-grid{grid-template-columns:1fr;max-width:520px;}
+  .benefits-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+  .package-selector{grid-template-columns:1fr;max-width:460px;margin:0 auto 30px;}
+  .form-grid{grid-template-columns:1fr;}
+  .tier-hero-inner{flex-direction:column;text-align:center;}
+  .tier-hero-text p{margin:0 auto;}
+  .contrib-checkboxes{grid-template-columns:repeat(2,1fr);}
+  .impact-stats{grid-template-columns:repeat(2,1fr);}
+  .pf-gallery{grid-template-columns:repeat(2,1fr);}
+  .sponsors-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:700px;}
+}
+@media (max-width:768px){
+  body{font-size:14px;}
+  .navbar{padding:10px 14px;}
+  .nav-logos img{height:36px;}
+  .nav-icon-btn{width:42px;height:42px;font-size:1rem;border-radius:12px;}
+  .nav-login-btn{height:42px;padding:0 16px 0 14px;font-size:.78rem;gap:6px;}
+  .sidebar-menu{width:290px;}
+  .sidebar-links li a{padding:11px 13px;font-size:.88rem;}
+  .page-hero{padding:100px 5% 30px;min-height:auto;}
+  .page-hero h1{font-size:1.5rem;}
+  .page-hero p{font-size:.8rem;}
+  .page-hero-actions{gap:10px;}
+  .btn-primary,.btn-ghost,.btn-gold{padding:12px 18px;font-size:.78rem;}
+  .breadcrumb{font-size:.68rem;padding:6px 14px;}
+  .page-hero-tag{font-size:.68rem;padding:7px 15px;}
+  .hero-chips{gap:6px;}
+  .hero-chip{padding:7px 14px;font-size:.68rem;}
+  .section{padding:55px 4%;}
+  .section-title{font-size:clamp(1.25rem,4.8vw,1.7rem);}
+  .section-desc{font-size:.83rem;}
+  .live-bar{padding:0 4% 30px;}
+  .live-bar-inner{grid-template-columns:repeat(2,1fr);padding:14px;gap:8px;}
+  .live-bar-inner .live-stat:last-child{grid-column:1/-1;}
+  .live-stat{padding:6px;gap:8px;}
+  .live-stat-icon{width:38px;height:38px;font-size:.9rem;border-radius:11px;}
+  .live-stat-info .val{font-size:.9rem;}
+  .live-stat-info .lbl{font-size:.6rem;}
+  .contrib-types{grid-template-columns:1fr;gap:12px;}
+  .contrib-card{padding:22px 18px;min-height:220px;}
+  .contrib-icon{width:56px;height:56px;font-size:1.3rem;border-radius:16px;margin-bottom:12px;}
+  .contrib-name{font-size:.95rem;}
+  .contrib-desc{font-size:.78rem;}
+  .ministry-box{padding:22px 18px;border-radius:20px;}
+  .ministry-icon{width:60px;height:60px;font-size:1.5rem;border-radius:16px;}
+  .ministry-box h3{font-size:1.05rem;}
+  .ministry-box p{font-size:.82rem;}
+  .strategic-card{padding:28px 20px 24px;}
+  .strategic-logo-wrap{width:110px;height:110px;padding:14px;}
+  .strategic-name{font-size:1rem;}
+  .strategic-role{font-size:.68rem;}
+  .strategic-desc{font-size:.78rem;}
+  .tier-tabs{border-radius:20px;padding:8px;gap:6px;flex-wrap:wrap;max-width:100%;}
+  .tier-tab{flex:1 1 calc(50% - 3px);padding:10px 14px;font-size:.78rem;justify-content:flex-start;gap:8px;}
+  .tier-hero{padding:24px 18px;border-radius:22px;margin-bottom:22px;}
+  .tier-hero-icon{width:80px;height:80px;font-size:2rem;border-radius:20px;}
+  .tier-hero-text h2{font-size:1.15rem;}
+  .tier-hero-text p{font-size:.82rem;}
+  .benefits-grid{grid-template-columns:1fr;gap:12px;}
+  .benefit-card{padding:18px 16px;border-radius:14px;}
+  .benefit-icon{width:44px;height:44px;font-size:1.1rem;border-radius:12px;margin-bottom:12px;}
+  .benefit-card h4{font-size:.9rem;}
+  .benefit-card p{font-size:.78rem;}
+  .sponsors-filter{padding:10px;gap:6px;max-width:100%;}
+  .filter-chip{padding:7px 14px;font-size:.72rem;}
+  .sponsors-grid{grid-template-columns:1fr;max-width:420px;gap:16px;}
+  .sc-cover{height:150px;}
+  .sc-logo-wrap{width:100px;height:100px;padding:14px;}
+  .sc-body{padding:18px;}
+  .sc-name{font-size:.92rem;}
+  .sc-desc{font-size:.76rem;}
+  .sc-stats{padding:10px;gap:5px;}
+  .sc-stat .v{font-size:.82rem;}
+  .why-grid{grid-template-columns:1fr;gap:14px;}
+  .why-card{padding:22px 18px;border-radius:18px;}
+  .why-icon{width:50px;height:50px;font-size:1.2rem;border-radius:14px;}
+  .why-card h4{font-size:.92rem;}
+  .why-card p{font-size:.78rem;}
+  .form-section{padding:55px 4%;}
+  .form-wrapper{padding:24px 18px;border-radius:22px;}
+  .form-header h2{font-size:1.2rem;}
+  .form-header p{font-size:.82rem;}
+  .package-option .package-inner{padding:22px 16px 18px;}
+  .pkg-icon{width:50px;height:50px;font-size:1.2rem;}
+  .pkg-name{font-size:.95rem;}
+  .contrib-checkboxes{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .contrib-checkbox-inner{padding:12px 8px;border-radius:12px;}
+  .contrib-checkbox-inner i{font-size:1rem;}
+  .contrib-checkbox-inner span{font-size:.68rem;}
+  .form-control{padding:11px 14px;font-size:.86rem;}
+  .form-submit{padding:14px;font-size:.9rem;}
+  .faq-question{padding:16px 16px;font-size:.86rem;}
+  .faq-answer-inner{padding:0 16px 18px;font-size:.8rem;}
+  .stats-section{padding:10px 4% 55px;}
+  .stats-grid{grid-template-columns:repeat(3,1fr);gap:8px;}
+  .stat-card{padding:12px 8px;min-height:110px;border-radius:14px;text-align:center;align-items:center;}
+  .stat-card-top{padding-bottom:8px;justify-content:center;width:100%;}
+  .stat-number-large{font-size:.9rem;text-align:center;}
+  .stat-label-large{font-size:.58rem;text-align:center;}
+  .stat-icon-big{width:32px;height:32px;font-size:.88rem;border-radius:10px;}
+  .cta-section{padding:10px 4% 60px;}
+  .cta-box{border-radius:22px;}
+  .cta-box h2{font-size:1.25rem;}
+  .cta-box p{font-size:.82rem;}
+  .cta-actions{flex-direction:column;}
+  .cta-actions .btn-primary,.cta-actions .btn-ghost,.cta-actions .btn-gold{width:100%;}
+  footer{padding:35px 4% 18px;}
+  .footer-simple-logo{font-size:1.1rem;letter-spacing:2px;}
+  .footer-simple-desc{font-size:.78rem;}
+  .footer-simple-social a{width:36px;height:36px;font-size:.85rem;}
+  .footer-simple-links{flex-direction:row;flex-wrap:wrap;gap:10px;justify-content:center;padding:0 4px;}
+  .footer-simple-links a{font-size:.7rem;white-space:nowrap;}
+  .footer-simple-copy{font-size:.68rem;}
+  .alpha-character{right:14px;bottom:14px;}
+  .alpha-character img{width:70px;}
+  .alpha-tooltip{width:220px;font-size:.72rem;padding:10px 12px;}
+  /* Portfolio modal mobile */
+  .portfolio-modal{padding:10px;}
+  .portfolio-box{border-radius:20px;max-height:96vh;}
+  .pf-cover{height:170px;}
+  .pf-cover-inner h2{font-size:1.15rem;}
+  .pf-tier-level-badge{font-size:.68rem;padding:6px 14px;top:12px;right:12px;}
+  .pf-header{padding:0 18px 18px;margin-top:-50px;gap:16px;}
+  .pf-logo-big{width:90px;height:90px;padding:14px;border-radius:20px;}
+  .pf-header-info .pf-name-en{font-size:.62rem;}
+  .pf-header-info .pf-subtitle{font-size:.78rem;}
+  .pf-tabs{padding:12px;gap:6px;}
+  .pf-tab{font-size:.68rem;padding:9px 12px;min-height:40px;}
+  .pf-tab i{font-size:.64rem;}
+  .pf-body{padding:20px 16px;}
+  .pf-block-title{font-size:.88rem;}
+  .pf-block p{font-size:.78rem;}
+  .contrib-breakdown{grid-template-columns:1fr;gap:8px;}
+  .contrib-item{padding:12px 14px;}
+  .impact-stats{grid-template-columns:repeat(2,1fr);padding:14px;gap:10px;}
+  .impact-stat .v{font-size:1.1rem;}
+  .pf-timeline-item{padding:0 42px 20px 0;}
+  .pf-timeline-card{padding:14px 16px;}
+  .pf-timeline-card h5{font-size:.85rem;}
+  .pf-timeline-card p{font-size:.76rem;}
+  .pf-gallery{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .pf-gallery-icon{font-size:1.8rem;}
+  .pf-gallery-label{font-size:.68rem;padding:10px 8px 8px;}
+  .pf-testimonial{padding:18px;}
+  .pf-testimonial p{font-size:.8rem;}
+  .privileges-grid,.partners-grid,.kpi-grid,.future-grid,.recognition-grid{grid-template-columns:1fr;}
+  .video-highlight{padding:20px 18px;gap:14px;}
+  .video-highlight-icon{width:60px;height:60px;font-size:1.3rem;}
+  .video-highlight-info h5{font-size:.9rem;}
+}
+@media (max-width:520px){
+  body{font-size:13px;}
+  .nav-login-btn span{display:none;}
+  .nav-login-btn{padding:0;width:40px;justify-content:center;border-radius:50%;height:40px;}
+  .page-hero h1{font-size:1.3rem;}
+  .page-hero p{font-size:.74rem;}
+  .tier-tab{flex:1 1 100%;}
+  .live-bar-inner{grid-template-columns:1fr 1fr;}
+  .stats-grid{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .stat-card{padding:8px 6px;min-height:96px;}
+  .stat-number-large{font-size:.76rem;}
+  .stat-label-large{font-size:.54rem;}
+  .stat-icon-big{width:28px;height:28px;font-size:.75rem;}
+  .strategic-logo-wrap{width:90px;height:90px;padding:12px;}
+  .contrib-checkboxes{grid-template-columns:1fr;}
+  .sc-cover{height:140px;}
+  .sc-logo-wrap{width:90px;height:90px;padding:12px;}
+}
+@media (max-width:400px){
+  .stats-grid{grid-template-columns:repeat(3,1fr);gap:5px;}
+  .stat-card{padding:6px 4px;min-height:84px;}
+  .stat-number-large{font-size:.68rem;}
+  .stat-label-large{font-size:.5rem;}
+  .footer-simple-links{flex-direction:row;gap:6px;flex-wrap:wrap;}
+  .footer-simple-links a{font-size:.6rem;}
+  .sc-logo-wrap{width:80px;height:80px;padding:10px;}
+}
+
+::-webkit-scrollbar{width:9px;}
+::-webkit-scrollbar-track{background:#05060f;}
+::-webkit-scrollbar-thumb{background:var(--gradient-gold);border-radius:10px;border:2px solid #05060f;}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div class="loader-screen" id="loaderScreen">
+<div class="loader-particle" style="width:6px;height:6px;left:10%;animation-duration:7s;animation-delay:0s"></div><div class="loader-particle" style="width:4px;height:4px;left:24%;animation-duration:9.5s;animation-delay:1.2s"></div><div class="loader-particle" style="width:5px;height:5px;left:40%;animation-duration:6.5s;animation-delay:2.4s"></div><div class="loader-particle" style="width:7px;height:7px;left:58%;animation-duration:8.5s;animation-delay:.6s"></div><div class="loader-particle" style="width:4px;height:4px;left:73%;animation-duration:7.8s;animation-delay:1.8s"></div><div class="loader-particle" style="width:5px;height:5px;left:87%;animation-duration:9s;animation-delay:.3s"></div>
+<div class="loader-content">
+<div class="loader-logo-wrap">
+<div class="loader-glow"></div>
+<div class="loader-ring"></div><div class="loader-ring loader-ring-2"></div><div class="loader-ring loader-ring-3"></div>
+<div class="loader-logo-inner"><img src="./assets/EBDA3.png" alt="FBA Futur By Ai" loading="eager" onerror="this.style.display='none'"></div>
+</div>
+<h1 class="loader-title">FUTUR BY AI</h1>
+<p class="loader-sub">بوابة الرعاة والشركاء</p>
+<div class="loader-bar"><div class="loader-bar-fill" id="loaderBarFill"></div></div>
+<div class="loader-percent" id="loaderPercent">0%</div>
+</div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="bg-mesh" id="bgMesh"></div>
+<div class="bg-orbs">
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-logos">
+<img src="./assets/minestry-sports.png" alt="وزارة الشباب والرياضة">
+<img src="./assets/KFS.png" alt="اتحاد شباب كفر الشيخ">
+</div>
+<div class="nav-actions">
+<a href="./login.html" class="nav-login-btn"><i class="fas fa-right-to-bracket"></i><span>تسجيل الدخول</span></a>
+<button class="nav-icon-btn" id="menuToggleBtn" aria-label="القائمة"><div class="menu-lines"><span></span><span></span><span></span></div></button>
+</div>
+</nav>
+
+<!-- SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar-menu" id="sidebarMenu">
+<div class="sidebar-header"><h3>FBA FUTUR BY AI</h3><button class="sidebar-close" id="sidebarCloseBtn"><i class="fas fa-times"></i></button></div>
+<ul class="sidebar-links">
+<li><a href="index.html"><i class="fas fa-home"></i><span>الصفحة الرئيسية</span></a></li>
+<li><a href="about.html"><i class="fas fa-info-circle"></i><span>من نحن</span></a></li>
+<li><a href="committees.html"><i class="fas fa-sitemap"></i><span>الوحدات</span></a></li>
+<li><a href="events.html"><i class="fas fa-calendar-check"></i><span>الفعاليات</span></a></li>
+<li><a href="team.html"><i class="fas fa-users"></i><span>الهيكل التطوعي</span></a></li>
+<li><a href="sponsors.html" class="active"><i class="fas fa-handshake"></i><span>الرعاة</span></a></li>
+<li><a href="contact.html"><i class="fas fa-headset"></i><span>تواصل معنا</span></a></li>
+</ul>
+</aside>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+<div class="breadcrumb">
+<a href="index.html">الرئيسية</a>
+<i class="fas fa-chevron-left"></i>
+<span class="current">بوابة الرعاة</span>
+</div>
+<div class="page-hero-tag"><i class="fas fa-crown"></i> <span>شراكة استراتيجية · مساهمة مرنة · أثر حقيقي</span></div>
+<h1>شركاء النجاح.. <span class="grad">رعاة المستقبل الرقمي</span></h1>
+<p>في FBA Futur By Ai لا نبحث عن راعٍ يدفع فقط.. نبحث عن <strong>شريك يصنع الأثر</strong>. نساهم معاً في بناء جيل عربي يقود التحول الرقمي، من خلال <strong>مساهمات مرنة</strong> تناسب كل مؤسسة — مالية، عينية، خدمية، أو تدريبية. وكل مساهمة تُحتسب بدقة وتُوجَّه تحت مظلة <strong>صندوق وزارة الشباب والرياضة</strong>.</p>
+<div class="page-hero-actions">
+<button class="btn-gold" onclick="scrollToId('apply')"><i class="fas fa-handshake"></i> <span>كن راعياً رسمياً</span></button>
+<button class="btn-ghost" onclick="scrollToId('tiers')"><i class="fas fa-gem"></i> <span>استعرض الباقات</span></button>
+<button class="btn-primary" onclick="scrollToId('portfolio')"><i class="fas fa-briefcase"></i> <span>بورتفوليو الرعاة</span></button>
+</div>
+<div class="hero-chips">
+<span class="hero-chip"><i class="fas fa-coins"></i> مساهمات مرنة</span>
+<span class="hero-chip"><i class="fas fa-gift"></i> عينية وخدمية</span>
+<span class="hero-chip"><i class="fas fa-graduation-cap"></i> تدريبات وعروض</span>
+<span class="hero-chip"><i class="fas fa-shield-halved"></i> صندوق الوزارة</span>
+<span class="hero-chip"><i class="fas fa-chart-line"></i> تقارير مخصصة</span>
+</div>
+</section>
+
+<!-- LIVE STATS -->
+<section class="live-bar">
+<div class="live-bar-inner wow animate__fadeInUp">
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-handshake"></i></div><div class="live-stat-info"><span class="val" data-count="18" data-suffix="+">0</span><span class="lbl">شريك رسمي</span></div></div>
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-users"></i></div><div class="live-stat-info"><span class="val" data-count="12000" data-suffix="+">0</span><span class="lbl">شاب مستفيد</span></div></div>
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-bullhorn"></i></div><div class="live-stat-info"><span class="val" data-count="500" data-suffix="K+">0</span><span class="lbl">وصول رقمي سنوي</span></div></div>
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-calendar-check"></i></div><div class="live-stat-info"><span class="val" data-count="85" data-suffix="+">0</span><span class="lbl">فعالية سنوياً</span></div></div>
+<div class="live-stat"><div class="live-stat-icon"><i class="fas fa-map-location-dot"></i></div><div class="live-stat-info"><span class="val" data-count="27">0</span><span class="lbl">محافظة</span></div></div>
+</div>
+</section>
+
+<!-- CONTRIBUTION TYPES -->
+<section class="section" id="contributions" style="padding-top:20px">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">أنواع المساهمة</span>
+<h2 class="section-title">الرعاية ليست <span class="gradient-text">مالاً فقط</span></h2>
+<p class="section-desc">نؤمن بأن كل مؤسسة تستطيع المساهمة بما تملك. سواء كانت مالية، أو خدمات، أو أماكن، أو تدريبات، أو خصومات لمتطوعينا — كل مساهمة تُصنع فرقاً حقيقياً.</p>
+</div>
+
+<div class="contrib-types">
+<div class="contrib-card wow animate__fadeInUp" style="--ct-color:#fbbf24;--ct-color2:#d97706">
+<div class="contrib-icon"><i class="fas fa-coins"></i></div>
+<h4 class="contrib-name">مساهمة مالية</h4>
+<p class="contrib-name-en">FINANCIAL</p>
+<p class="contrib-desc">تُوجَّه 100% إلى صندوق وزارة الشباب والرياضة تحت مسمّى المشروع، مع إيصالات رسمية موثقة.</p>
+</div>
+
+<div class="contrib-card wow animate__fadeInUp" data-wow-delay="0.05s" style="--ct-color:#ec4899;--ct-color2:#be185d">
+<div class="contrib-icon"><i class="fas fa-building"></i></div>
+<h4 class="contrib-name">أماكن ومساحات</h4>
+<p class="contrib-name-en">SPACES</p>
+<p class="contrib-desc">قاعات، مكاتب، أو مساحات للفعاليات والتدريبات. تُقدَّر قيمتها السوقية وتُحتسب في باقة الرعاية.</p>
+</div>
+
+<div class="contrib-card wow animate__fadeInUp" data-wow-delay="0.1s" style="--ct-color:#8b5cf6;--ct-color2:#6a47e8">
+<div class="contrib-icon"><i class="fas fa-tools"></i></div>
+<h4 class="contrib-name">خدمات احترافية</h4>
+<p class="contrib-name-en">SERVICES</p>
+<p class="contrib-desc">تصميم، طباعة، تصوير، إنتاج، محاماة، محاسبة، أو أي خدمات احترافية تدعم عمل المشروع.</p>
+</div>
+
+<div class="contrib-card wow animate__fadeInUp" data-wow-delay="0.15s" style="--ct-color:#10b981;--ct-color2:#059669">
+<div class="contrib-icon"><i class="fas fa-graduation-cap"></i></div>
+<h4 class="contrib-name">تدريبات وكورسات</h4>
+<p class="contrib-name-en">TRAINING</p>
+<p class="contrib-desc">دورات، شهادات، أو مقاعد تدريبية مجانية لمتطوعي المشروع في مجالاتهم التخصصية.</p>
+</div>
+
+<div class="contrib-card wow animate__fadeInUp" data-wow-delay="0.2s" style="--ct-color:#00d9ff;--ct-color2:#0891b2">
+<div class="contrib-icon"><i class="fas fa-ticket"></i></div>
+<h4 class="contrib-name">خصومات ومزايا</h4>
+<p class="contrib-name-en">DISCOUNTS</p>
+<p class="contrib-desc">خصومات حصرية لمتطوعي المشروع على منتجات وخدمات المؤسسة، تُوثّق في "بطاقة قادة التحول".</p>
+</div>
+
+<div class="contrib-card wow animate__fadeInUp" data-wow-delay="0.25s" style="--ct-color:#f59e0b;--ct-color2:#d97706">
+<div class="contrib-icon"><i class="fas fa-gift"></i></div>
+<h4 class="contrib-name">منتجات ودعم عيني</h4>
+<p class="contrib-name-en">IN-KIND</p>
+<p class="contrib-desc">هدايا، حوافز، تجهيزات، أو أي منتجات تدعم الفعاليات والمسابقات والجوائز.</p>
+</div>
+
+<div class="contrib-card wow animate__fadeInUp" data-wow-delay="0.3s" style="--ct-color:#a855f7;--ct-color2:#7c3aed">
+<div class="contrib-icon"><i class="fas fa-user-tie"></i></div>
+<h4 class="contrib-name">خبراء ومتحدثون</h4>
+<p class="contrib-name-en">EXPERTISE</p>
+<p class="contrib-desc">توفير متحدثين أو مدربين من فريق مؤسستك للمشاركة في فعاليات المشروع وبرامجه.</p>
+</div>
+
+<div class="contrib-card wow animate__fadeInUp" data-wow-delay="0.35s" style="--ct-color:#f472b6;--ct-color2:#b76e79">
+<div class="contrib-icon"><i class="fas fa-bullhorn"></i></div>
+<h4 class="contrib-name">دعم إعلامي وتسويقي</h4>
+<p class="contrib-name-en">MEDIA</p>
+<p class="contrib-desc">ظهور في قنوات المؤسسة، أو توفير مساحات إعلانية تدعم انتشار المشروع ورسالته.</p>
+</div>
+</div>
+
+<!-- MINISTRY BOX -->
+<div class="ministry-box wow animate__fadeInUp">
+<div class="ministry-icon"><i class="fas fa-landmark-dome"></i></div>
+<h3>كل المساهمات المالية <span class="grad">تحت مظلة صندوق وزارة الشباب والرياضة</span></h3>
+<p>نعمل بشفافية كاملة. كل مساهمة مالية يتم إيداعها في <strong>صندوق وزارة الشباب والرياضة</strong> تحت مسمّى المشروع رسمياً، مع إصدار <strong>إيصالات وفواتير موثقة</strong> لكل راعٍ. جميع المستندات متاحة للاطلاع في أي وقت.</p>
+<p>المساهمات العينية والخدمية يتم تقييمها وتوثيقها في <strong>بروتوكول تعاون رسمي</strong> يوضح قيمتها السوقية، مما يجعلها جزءاً رسمياً من الباقة.</p>
+<span class="ministry-badge"><i class="fas fa-lock"></i> شفافية مالية 100% · موافقات رسمية · مستندات موثقة</span>
+</div>
+</section>
+
+<!-- STRATEGIC SPONSORS -->
+<section class="section" id="strategic" style="padding-top:0">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">الرعاة الاستراتيجيون</span>
+<h2 class="section-title">شركاء <span class="gradient-text">المسيرة الرسميون</span></h2>
+<p class="section-desc">الجهات الرسمية التي ترعى المشروع وتدعمه على أعلى مستوى استراتيجي.</p>
+</div>
+
+<div class="strategic-grid">
+<div class="strategic-card wow animate__fadeInUp">
+<div class="strategic-ribbon">OFFICIAL</div>
+<div class="strategic-crown"><i class="fas fa-crown"></i> راعٍ استراتيجي</div>
+<div class="strategic-logo-wrap"><img src="./assets/minestry-sports.png" alt="وزارة الشباب والرياضة" onerror="logoFallback(this)"></div>
+<h3 class="strategic-name">وزارة الشباب والرياضة</h3>
+<p class="strategic-name-en">Ministry of Youth & Sports</p>
+<span class="strategic-role">الراعي الرسمي الأول</span>
+<p class="strategic-desc">ترعى المشروع رسمياً وتوفر له الغطاء الرسمي والقدرة على الانتشار في كل محافظات مصر. كل المساهمات المالية تمر عبر صندوقها الرسمي.</p>
+<button class="strategic-view" onclick="openPortfolio('ministry')"><i class="fas fa-briefcase"></i> عرض البورتفوليو</button>
+</div>
+
+<div class="strategic-card wow animate__fadeInUp" data-wow-delay="0.1s">
+<div class="strategic-ribbon">OFFICIAL</div>
+<div class="strategic-crown"><i class="fas fa-crown"></i> راعٍ استراتيجي</div>
+<div class="strategic-logo-wrap"><img src="./assets/KFS.png" alt="اتحاد شباب كفر الشيخ" onerror="logoFallback(this)"></div>
+<h3 class="strategic-name">اتحاد شباب كفر الشيخ</h3>
+<p class="strategic-name-en">KFS Youth Union</p>
+<span class="strategic-role">الشريك المؤسس</span>
+<p class="strategic-desc">المؤسس الفعلي للمشروع، ومصدر الرؤية الشبابية التي انطلق منها. يدعم المشروع بالكفاءات والقيادات الشابة.</p>
+<button class="strategic-view" onclick="openPortfolio('kfs')"><i class="fas fa-briefcase"></i> عرض البورتفوليو</button>
+</div>
+
+<div class="strategic-card wow animate__fadeInUp" data-wow-delay="0.2s">
+<div class="strategic-ribbon">OFFICIAL</div>
+<div class="strategic-crown"><i class="fas fa-crown"></i> راعٍ استراتيجي</div>
+<div class="strategic-logo-wrap"><img src="./assets/الكيانات-الشبابية.png" alt="الكيانات الشبابية" onerror="logoFallback(this)"></div>
+<h3 class="strategic-name">الكيانات الشبابية</h3>
+<p class="strategic-name-en">Youth Entities</p>
+<span class="strategic-role">الشريك المجتمعي</span>
+<p class="strategic-desc">شبكة الكيانات الشبابية الرسمية التي تربط المشروع بكل المبادرات الشبابية في المحافظات، وتدعم الانتشار الميداني.</p>
+<button class="strategic-view" onclick="openPortfolio('entities')"><i class="fas fa-briefcase"></i> عرض البورتفوليو</button>
+</div>
+</div>
+</section>
+
+<!-- TIERS -->
+<section class="section" id="tiers">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">باقات الرعاية</span>
+<h2 class="section-title">ثلاث باقات <span class="gradient-text">مرنة وقابلة للتخصيص</span></h2>
+<p class="section-desc">لا نُحدد أسعاراً ثابتة. كل باقة قابلة للتخصيص حسب نوع المساهمة وحجمها. اختر المستوى الذي يناسب مؤسستك، وسنصمم معك باقة مخصصة.</p>
+</div>
+
+<div class="tier-tabs wow animate__fadeInUp" id="tierTabs"></div>
+<div id="tierPanels"></div>
+</section>
+
+<!-- SPONSOR PORTFOLIO -->
+<section class="section" id="portfolio">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">بورتفوليو الرعاة</span>
+<h2 class="section-title">قصص <span class="gradient-text">شركاء النجاح</span></h2>
+<p class="section-desc">لكل راعٍ صفحة بورتفوليو مخصصة تعرض مسيرته مع المشروع، ومساهماته، وأثره الحقيقي. اضغط على أي راعٍ لاستعراض بورتفوليوه الكامل.</p>
+</div>
+
+<div class="sponsors-filter wow animate__fadeInUp" id="sponsorsFilter"></div>
+<div class="sponsors-grid" id="sponsorsGrid"></div>
+</section>
+
+<!-- WHY SPONSOR -->
+<section class="section">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">لماذا ترعى؟</span>
+<h2 class="section-title">فرص <span class="gradient-text">حقيقية للشراكة</span></h2>
+<p class="section-desc">رعاية FBA Futur By Ai ليست مجرد دعم، بل استثمار حقيقي في مستقبل مصر الرقمي.</p>
+</div>
+
+<div class="why-grid">
+<div class="why-card wow animate__fadeInUp">
+<div class="why-icon"><i class="fas fa-bullhorn"></i></div>
+<h4>وصول جماهيري واسع</h4>
+<p>500K+ وصول رقمي سنوي على كل المنصات، مع ظهور مباشر في كل الفعاليات الكبرى.</p>
+</div>
+<div class="why-card wow animate__fadeInUp" data-wow-delay="0.05s">
+<div class="why-icon"><i class="fas fa-users-viewfinder"></i></div>
+<h4>جمهور شبابي مستهدف</h4>
+<p>الوصول إلى 5000+ متطوع و12000+ شاب مستفيد في 27 محافظة — جمهورك المستهدف في مكان واحد.</p>
+</div>
+<div class="why-card wow animate__fadeInUp" data-wow-delay="0.1s">
+<div class="why-icon"><i class="fas fa-shield-halved"></i></div>
+<h4>شراكة رسمية موثوقة</h4>
+<p>شراكة موثقة رسمياً تحت رعاية وزارة الشباب والرياضة. كل مساهمة مالية تمر بصندوقها الرسمي.</p>
+</div>
+<div class="why-card wow animate__fadeInUp" data-wow-delay="0.15s">
+<div class="why-icon"><i class="fas fa-microchip"></i></div>
+<h4>ارتباط بمجال AI</h4>
+<p>ربط اسم مؤسستك بمجال الذكاء الاصطناعي — المجال الأكثر نمواً في العالم — كداعم للابتكار.</p>
+</div>
+<div class="why-card wow animate__fadeInUp" data-wow-delay="0.2s">
+<div class="why-icon"><i class="fas fa-briefcase"></i></div>
+<h4>بورتفوليو مخصص</h4>
+<p>لكل راعٍ صفحة بورتفوليو احترافية على المنصة الرقمية تعرض مسيرته وأثره بشكل دائم.</p>
+</div>
+<div class="why-card wow animate__fadeInUp" data-wow-delay="0.25s">
+<div class="why-icon"><i class="fas fa-award"></i></div>
+<h4>مسؤولية اجتماعية مؤثرة</h4>
+<p>دعم التعليم الرقمي للشباب المصري = استثمار في المستقبل + مسؤولية مجتمعية حقيقية تُحسب لك.</p>
+</div>
+</div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="form-section" id="apply">
+<div class="form-wrapper wow animate__fadeInUp">
+<div class="form-header">
+<div class="page-hero-tag" style="margin-bottom:14px"><i class="fas fa-handshake"></i> <span>طلب رعاية رسمي</span></div>
+<h2>انضم كـ <span class="grad">راعٍ رسمي</span> للمشروع</h2>
+<p>املأ النموذج التالي وسيتم التواصل معك من قسم العلاقات العامة خلال 48 ساعة. اختر الباقة، وحدّد نوع المساهمة المناسب، وسنصمم معك باقة مخصصة.</p>
+</div>
+
+<form id="sponsorForm" onsubmit="handleSponsorSubmit(event)">
+<!-- Package -->
+<div class="package-selector" role="radiogroup">
+<label class="package-option" style="--pkg-color:#cbd5e1;--pkg-rgb:203,213,225;--pkg-gradient:var(--gradient-platinum)">
+<input type="radio" name="package" value="platinum" required>
+<div class="package-inner">
+<div class="pkg-icon"><i class="fas fa-gem"></i></div>
+<h4 class="pkg-name">الباقة البلاتينية</h4>
+<p class="pkg-name-en">PLATINUM</p>
+<p class="pkg-hint">رعاية شاملة على كل المستويات · شراكة استراتيجية كاملة</p>
+</div>
+</label>
+
+<label class="package-option" style="--pkg-color:#fbbf24;--pkg-rgb:251,191,36;--pkg-gradient:var(--gradient-gold)">
+<input type="radio" name="package" value="gold" required>
+<div class="package-inner">
+<div class="pkg-icon"><i class="fas fa-trophy"></i></div>
+<h4 class="pkg-name">الباقة الذهبية</h4>
+<p class="pkg-name-en">GOLD</p>
+<p class="pkg-hint">رعاية الفعاليات الكبرى · ظهور قوي على المنصة</p>
+</div>
+</label>
+
+<label class="package-option" style="--pkg-color:#f472b6;--pkg-rgb:244,114,182;--pkg-gradient:var(--gradient-bronze)">
+<input type="radio" name="package" value="rose" required>
+<div class="package-inner">
+<div class="pkg-icon"><i class="fas fa-crown"></i></div>
+<h4 class="pkg-name">الباقة البرونزية</h4>
+<p class="pkg-name-en">BRONZE</p>
+<p class="pkg-hint">باقة الدخول المثالية · للشركات الناشئة والمؤسسات</p>
+</div>
+</label>
+</div>
+
+<!-- Contribution types -->
+<div style="margin-bottom:22px">
+<label class="form-label" style="font-size:.9rem;margin-bottom:12px;display:block">
+<i class="fas fa-hand-holding-heart" style="color:#fbbf24;margin-left:6px"></i> نوع المساهمة المفضّلة <span class="req">*</span>
+<span class="hint">(يمكن اختيار أكثر من نوع)</span>
+</label>
+<div class="contrib-checkboxes">
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="financial">
+<div class="contrib-checkbox-inner"><i class="fas fa-coins"></i><span>مساهمة مالية</span></div>
+</label>
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="spaces">
+<div class="contrib-checkbox-inner"><i class="fas fa-building"></i><span>أماكن ومساحات</span></div>
+</label>
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="services">
+<div class="contrib-checkbox-inner"><i class="fas fa-tools"></i><span>خدمات احترافية</span></div>
+</label>
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="training">
+<div class="contrib-checkbox-inner"><i class="fas fa-graduation-cap"></i><span>تدريبات وكورسات</span></div>
+</label>
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="discounts">
+<div class="contrib-checkbox-inner"><i class="fas fa-ticket"></i><span>خصومات للمتطوعين</span></div>
+</label>
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="inkind">
+<div class="contrib-checkbox-inner"><i class="fas fa-gift"></i><span>منتجات ودعم عيني</span></div>
+</label>
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="expertise">
+<div class="contrib-checkbox-inner"><i class="fas fa-microphone"></i><span>خبراء ومتحدثون</span></div>
+</label>
+<label class="contrib-checkbox">
+<input type="checkbox" name="contribution" value="media">
+<div class="contrib-checkbox-inner"><i class="fas fa-bullhorn"></i><span>دعم إعلامي</span></div>
+</label>
+</div>
+</div>
+
+<!-- Form fields -->
+<div class="form-grid">
+<div class="form-group">
+<label class="form-label" for="f-company">اسم المؤسسة <span class="req">*</span></label>
+<input type="text" class="form-control" id="f-company" name="company" placeholder="اسم الشركة أو المؤسسة" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="f-contact">اسم الشخص المسؤول <span class="req">*</span></label>
+<input type="text" class="form-control" id="f-contact" name="contact" placeholder="الاسم الكامل" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="f-position">المنصب الوظيفي <span class="req">*</span></label>
+<input type="text" class="form-control" id="f-position" name="position" placeholder="مثال: مدير التسويق" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="f-industry">مجال النشاط <span class="req">*</span></label>
+<select class="form-control" id="f-industry" name="industry" required>
+<option value="">اختر مجال النشاط...</option>
+<option value="tech">تكنولوجيا المعلومات</option>
+<option value="real-estate">تطوير عقاري</option>
+<option value="media">إعلام وإنتاج</option>
+<option value="finance">خدمات مالية</option>
+<option value="education">تعليم وتدريب</option>
+<option value="healthcare">رعاية صحية</option>
+<option value="retail">تجارة وتوزيع</option>
+<option value="industrial">صناعة</option>
+<option value="hospitality">ضيافة وفنادق</option>
+<option value="ngo">منظمة غير ربحية</option>
+<option value="government">جهة حكومية</option>
+<option value="other">أخرى</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" for="f-email">البريد الإلكتروني <span class="req">*</span></label>
+<input type="email" class="form-control" id="f-email" name="email" placeholder="contact@company.com" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="f-phone">رقم الهاتف <span class="req">*</span></label>
+<input type="tel" class="form-control" id="f-phone" name="phone" placeholder="+20 1XX XXX XXXX" required>
+</div>
+<div class="form-group">
+<label class="form-label" for="f-website">الموقع الإلكتروني</label>
+<input type="url" class="form-control" id="f-website" name="website" placeholder="https://company.com">
+</div>
+<div class="form-group">
+<label class="form-label" for="f-budget">نطاق المساهمة المتوقع</label>
+<select class="form-control" id="f-budget" name="budget">
+<option value="">اختر النطاق...</option>
+<option value="in-kind">مساهمة عينية فقط</option>
+<option value="up-to-25">أقل من 25,000 جنيه</option>
+<option value="25-50">25,000 - 50,000 جنيه</option>
+<option value="50-100">50,000 - 100,000 جنيه</option>
+<option value="100+">أكثر من 100,000 جنيه</option>
+<option value="discuss">ناقش معنا</option>
+</select>
+</div>
+<div class="form-group full">
+<label class="form-label" for="f-message">رسالتك لنا <span class="req">*</span></label>
+<textarea class="form-control" id="f-message" name="message" placeholder="اكتب لنا عن رؤيتك للشراكة، ونوع المساهمة التي تفكر فيها، وما تتوقع من المشروع..." required></textarea>
+</div>
+</div>
+
+<button type="submit" class="form-submit">
+<i class="fas fa-paper-plane"></i>
+<span>أرسل طلب الرعاية</span>
+</button>
+</form>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">أسئلة شائعة</span>
+<h2 class="section-title">عندك <span class="gradient-text">سؤال؟</span></h2>
+<p class="section-desc">أكثر الأسئلة التي تصلنا من الشركات والمؤسسات المهتمة بالرعاية.</p>
+</div>
+
+<div class="faq-wrap">
+<div class="faq-item open wow animate__fadeInUp">
+<button class="faq-question"><span>هل يجب أن تكون الرعاية مالية؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>لا، الرعاية ليست مالاً فقط.</strong> نقبل المساهمات العينية والخدمية والتدريبية. يمكنك المساهمة بأماكن، أو خدمات احترافية، أو تدريبات للمتطوعين، أو خصومات، أو منتجات. كل مساهمة تُقدَّر بقيمتها السوقية وتُحتسب ضمن باقة الرعاية.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>لماذا لا توجد أسعار ثابتة للباقات؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>لأن كل مؤسسة مختلفة.</strong> نؤمن بالمرونة الكاملة. كل باقة قابلة للتخصيص حسب نوع المساهمة وحجمها وأهداف المؤسسة. الهدف ليس التمويل فقط، بل بناء شراكة حقيقية يستفيد منها الطرفان.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>أين تذهب المساهمات المالية؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>تحت مظلة رسمية كاملة.</strong> كل مساهمة مالية يتم إيداعها في <strong>صندوق وزارة الشباب والرياضة</strong> تحت مسمّى المشروع الرسمي، مع إصدار إيصالات وفواتير موثقة لكل راعٍ. جميع المستندات متاحة للاطلاع في أي وقت، والشفافية المالية كاملة.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>ما الذي يميز البورتفوليو المخصص للرعاة؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>لكل راعٍ صفحة بورتفوليو احترافية كاملة على منصتنا</strong> تعرض: تعريف المؤسسة، مساهماتها بالتفصيل، أثرها الحقيقي بالأرقام، الجدول الزمني للشراكة، معرض اللحظات، شهادة من المشروع، وروابط التواصل. البورتفوليو يُحدَّث تلقائياً مع كل إنجاز جديد، ويمكن مشاركة الرابط في أي مكان. <strong>وكل ما ارتفعت باقة الراعي، زادت مزايا البورتفوليو وعمقه.</strong>
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>كيف يتم تقييم المساهمات العينية؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>بمعايير واضحة ومتفق عليها.</strong> يتم تقييم المساهمة العينية بقيمتها السوقية الفعلية، ويُوثَّق التقييم في <strong>بروتوكول تعاون رسمي</strong> يوقّعه الطرفان. هذا يجعل المساهمة العينية جزءاً رسمياً من الباقة، وبنفس وزن المساهمة المالية.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>ما المطلوب من الراعي بعد التوقيع؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>الالتزام بما تم الاتفاق عليه فقط.</strong> بعد التوقيع، يصبح لدينا <strong>مدير حساب مخصص</strong> لك يتواصل معك شهرياً. سيتم تزويدك بتقارير دورية عن كل ظهور وإنجاز. الراعي ليس مطالباً بأي شيء إضافي غير ما تم الاتفاق عليه في البروتوكول.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>هل يمكن أن يظهر اسم الراعي في اسم المشروع؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>نعم، للرعاة البلاتينيوم فقط.</strong> يمكن للراعي البلاتيني أن يظهر اسمه بجانب اسم المشروع في بعض الفعاليات، مثل: "FBA Futur By Ai powered by [اسم الراعي]". هذا الامتياز حصري للباقة البلاتينية ويمكن التفاوض عليه.
+</div></div>
+</div>
+
+<div class="faq-item wow animate__fadeInUp">
+<button class="faq-question"><span>كم تستغرق عملية اعتماد الرعاية؟</span><span class="faq-q-icon"><i class="fas fa-plus"></i></span></button>
+<div class="faq-answer"><div class="faq-answer-inner">
+<strong>عادة 5-10 أيام عمل</strong> من تاريخ استلام الطلب. تشمل العملية: مراجعة الطلب، اجتماع تعريفي، الاتفاق على الباقة ونوع المساهمة، توقيع بروتوكول التعاون، وتفعيل الظهور والبورتفوليو على المنصة.
+</div></div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+<div class="section-head wow animate__fadeInUp">
+<span class="section-tag">أرقامنا</span>
+<h2 class="section-title">قيمة <span class="gradient-text">الشراكة معنا</span></h2>
+<p class="section-desc">أرقام حقيقية تُظهر حجم الأثر الذي يمكن أن تحققه رعايتك.</p>
+</div>
+<div class="stats-grid">
+<div class="stat-card wow animate__fadeInUp"><div class="stat-card-top"><div class="stat-icon-big"><i class="fas fa-bullhorn"></i></div></div><div class="stat-number-large"><span class="counter" data-target="500">0</span>K+</div><div class="stat-label-large">وصول رقمي سنوي</div></div>
+<div class="stat-card wow animate__fadeInUp" data-wow-delay="0.08s"><div class="stat-card-top"><div class="stat-icon-big"><i class="fas fa-users"></i></div></div><div class="stat-number-large"><span class="counter" data-target="12000">0</span>+</div><div class="stat-label-large">شاب مستفيد</div></div>
+<div class="stat-card wow animate__fadeInUp" data-wow-delay="0.16s"><div class="stat-card-top"><div class="stat-icon-big"><i class="fas fa-calendar-check"></i></div></div><div class="stat-number-large"><span class="counter" data-target="85">0</span>+</div><div class="stat-label-large">فعالية سنوياً</div></div>
+<div class="stat-card wow animate__fadeInUp" data-wow-delay="0.24s"><div class="stat-card-top"><div class="stat-icon-big"><i class="fas fa-map-location-dot"></i></div></div><div class="stat-number-large"><span class="counter" data-target="27">0</span></div><div class="stat-label-large">محافظة</div></div>
+<div class="stat-card wow animate__fadeInUp" data-wow-delay="0.32s"><div class="stat-card-top"><div class="stat-icon-big"><i class="fas fa-newspaper"></i></div></div><div class="stat-number-large"><span class="counter" data-target="200">0</span>+</div><div class="stat-label-large">تغطية إعلامية</div></div>
+<div class="stat-card wow animate__fadeInUp" data-wow-delay="0.4s"><div class="stat-card-top"><div class="stat-icon-big"><i class="fas fa-handshake"></i></div></div><div class="stat-number-large"><span class="counter" data-target="18">0</span>+</div><div class="stat-label-large">راعٍ رسمي</div></div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+<div class="cta-box wow animate__fadeInUp">
+<div class="cta-badge"><i class="fas fa-gem"></i> <span>كن جزءاً من قصة النجاح</span></div>
+<h2>مؤسستك تستحق أن تكون <span class="grad">في الواجهة</span></h2>
+<p>رعاية FBA Futur By Ai ليست مجرد دعم، بل شراكة استراتيجية حقيقية في مشروع يبني جيل المستقبل الرقمي في مصر. انضم إلى نخبة المؤسسات التي اختارت أن تصنع فرقاً حقيقياً.</p>
+<div class="cta-actions">
+<button class="btn-gold" onclick="scrollToId('apply')"><i class="fas fa-handshake"></i> <span>سجّل كراعٍ رسمي</span></button>
+<a href="./contact.html" class="btn-ghost"><i class="fas fa-comments"></i> <span>تواصل مع فريق العلاقات</span></a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-simple">
+<h3 class="footer-simple-logo">FBA FUTUR BY AI</h3>
+<p class="footer-simple-desc">أول منصة رقمية تطوعية مصرية تدعم تحول الذكاء الاصطناعي، وتبني جيلاً قادراً على التعامل مع كل وسائل AI باحترافية.</p>
+<div class="footer-simple-social">
+<a href="https://www.facebook.com/share/16NuHNYhs7/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/ebdaa360?igsh=MWk1ZmEyZThiMnZrOA%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@ebda3_360?_t=ZS-90GbHtyNHvE&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+<a href="mailto:ebdaa360@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+<div class="footer-simple-links">
+<a href="index.html">الرئيسية</a>
+<a href="about.html">معلومات عنا</a>
+<a href="committees.html">الوحدات</a>
+<a href="events.html">الفعاليات</a>
+<a href="team.html">الهيكل التطوعي</a>
+<a href="sponsors.html">الرعاة</a>
+<a href="contact.html">اتصل بنا</a>
+</div>
+<p class="footer-simple-copy">© 2025 <span class="grad">FBA Futur By Ai</span> — جميع الحقوق محفوظة | صُمم بشغف في مصر 🇪🇬</p>
+</div>
+</footer>
+
+<!-- ALPHA -->
+<div class="alpha-character" id="alphaCharacter">
+<div class="alpha-tooltip" id="alphaTooltip">أهلاً بك في بوابة الرعاة! استعرض الباقات أو بورتفوليو الرعاة الحاليين.</div>
+<img src="./assets/ALPHA-1.png" alt="VolunAI" id="alphaImage" onerror="this.style.display='none'">
+</div>
+
+<!-- PORTFOLIO MODAL -->
+<div class="portfolio-modal" id="portfolioModal">
+<div class="portfolio-box" id="portfolioBox"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+/* =========================================================
+   LOGO FALLBACK
+   ========================================================= */
+window.logoFallback = function(img){
+  const big = img.dataset.big === 'true';
+  const fs = big ? '2.5rem' : '2rem';
+  img.outerHTML = `<i class="fas fa-building" style="font-size:${fs};color:#fbbf24;"></i>`;
+};
+
+/* =========================================================
+   TIER CONFIGURATION
+   ========================================================= */
+const TIER_CONFIG = {
+  strategic: {
+    label:'راعٍ استراتيجي',
+    level:'المستوى الأعلى',
+    badgeIcon:'fa-crown',
+    badgeText:'راعٍ استراتيجي · المستوى الأعلى',
+    tabs:[
+      {k:'about', i:'fa-file-lines', t:'التعريف'},
+      {k:'privileges', i:'fa-crown', t:'الامتيازات'},
+      {k:'contrib', i:'fa-hand-holding-heart', t:'المساهمات'},
+      {k:'impact', i:'fa-chart-line', t:'الأثر'},
+      {k:'journey', i:'fa-timeline', t:'المسيرة'},
+      {k:'partners', i:'fa-handshake', t:'الشركاء'},
+      {k:'kpis', i:'fa-gauge-high', t:'المؤشرات'},
+      {k:'future', i:'fa-rocket', t:'المستقبل'},
+      {k:'recognition', i:'fa-trophy', t:'التكريمات'},
+      {k:'gallery', i:'fa-images', t:'المعرض'}
+    ]
+  },
+  platinum: {
+    label:'بلاتينية',
+    level:'المستوى المتقدم',
+    badgeIcon:'fa-gem',
+    badgeText:'بلاتينية · المستوى المتقدم',
+    tabs:[
+      {k:'about', i:'fa-file-lines', t:'التعريف'},
+      {k:'privileges', i:'fa-crown', t:'الامتيازات'},
+      {k:'contrib', i:'fa-hand-holding-heart', t:'المساهمات'},
+      {k:'impact', i:'fa-chart-line', t:'الأثر'},
+      {k:'journey', i:'fa-timeline', t:'المسيرة'},
+      {k:'partners', i:'fa-handshake', t:'الشركاء'},
+      {k:'kpis', i:'fa-gauge-high', t:'المؤشرات'},
+      {k:'gallery', i:'fa-images', t:'المعرض'}
+    ]
+  },
+  gold: {
+    label:'ذهبية',
+    level:'المستوى المتوسط',
+    badgeIcon:'fa-trophy',
+    badgeText:'ذهبية · المستوى المتوسط',
+    tabs:[
+      {k:'about', i:'fa-file-lines', t:'التعريف'},
+      {k:'contrib', i:'fa-hand-holding-heart', t:'المساهمات'},
+      {k:'impact', i:'fa-chart-line', t:'الأثر'},
+      {k:'journey', i:'fa-timeline', t:'المسيرة'},
+      {k:'future', i:'fa-rocket', t:'المستقبل'},
+      {k:'gallery', i:'fa-images', t:'المعرض'}
+    ]
+  },
+  bronze: {
+    label:'برونزية',
+    level:'مستوى الدخول',
+    badgeIcon:'fa-crown',
+    badgeText:'برونزية · مستوى الدخول',
+    tabs:[
+      {k:'about', i:'fa-file-lines', t:'التعريف'},
+      {k:'contrib', i:'fa-hand-holding-heart', t:'المساهمات'},
+      {k:'impact', i:'fa-chart-line', t:'الأثر'},
+      {k:'gallery', i:'fa-images', t:'المعرض'}
+    ]
+  }
+};
+
+/* =========================================================
+   DATA: TIERS
+   ========================================================= */
+const TIERS = {
+  platinum: {
+    key:'platinum', name:'البلاتينية', nameEn:'PLATINUM', icon:'fa-gem',
+    color:'#cbd5e1', rgb:'203,213,225', gradient:'linear-gradient(135deg,#e2e8f0 0%,#94a3b8 50%,#cbd5e1 100%)',
+    badge:'أعلى مستوى رعاية · شراكة استراتيجية كاملة',
+    desc:'الباقة الأشمل والأعلى في الرعاية. تعطيك حضوراً كاملاً في كل أنشطة المشروع، مع بورتفوليو مخصص، وحق استخدام الاسم في العلامة، وشريك استراتيجي رسمي.',
+    meta:{ mm:'12+', lb:'ميزة حصرية' },
+    benefits:[
+      {i:'fa-star', t:'شعار في كل الفعاليات', d:'ظهور شعارك في كل فعالية، كبيرة أو صغيرة، طوال السنة بلا استثناء.'},
+      {i:'fa-globe', t:'شعار على المنصة الرئيسية', d:'شعار بحجم كبير في الصفحة الرئيسية + صفحة الرعاة + صفحة البورتفوليو المخصصة.'},
+      {i:'fa-briefcase', t:'بورتفوليو مخصص كامل', d:'صفحة بورتفوليو احترافية باسم مؤسستك تعرض كل تفاصيل الشراكة والأثر.'},
+      {i:'fa-crown', t:'20 مقعد VIP في كل فعالية', d:'20 مقعد VIP في كل فعالية كبرى + دعوة رسمية لفريق كامل من مؤسستك.'},
+      {i:'fa-store', t:'بوث حصري في الفعاليات', d:'بوث مخصص لمؤسستك في كل فعالية كبرى (مساحة عرض + فريق).'},
+      {i:'fa-signature', t:'استخدام الاسم في العلامة', d:'إمكانية ظهور "FBA Futur By Ai powered by [اسم الراعي]" في بعض الفعاليات.'},
+      {i:'fa-newspaper', t:'تغطية إعلامية كاملة', d:'ذكر اسمك في كل التغطيات الإعلامية + حفل تكريم خاص + تصريح صحفي مشترك.'},
+      {i:'fa-chalkboard-user', t:'3 ورش تدريبية مخصصة', d:'3 ورش تدريبية مجاناً لموظفي مؤسستك في مجال AI (5 ساعات لكل ورشة).'},
+      {i:'fa-video', t:'إنتاج فيديو وثائقي', d:'فيديو وثائقي احترافي 3 دقائق يوثّق الشراكة والأثر، يُعرض على كل المنصات.'},
+      {i:'fa-microphone', t:'متحدث رئيسي دائم', d:'فرصة الحديث كمتحدث رئيسي في فعاليتين كبيرتين على مدار السنة.'},
+      {i:'fa-ticket', t:'خصومات حصرية للمتطوعين', d:'إدراج مؤسستك في بطاقة "قادة التحول" بخصومات حصرية للمتطوعين.'},
+      {i:'fa-user-tie', t:'مدير حساب تنفيذي مخصص', d:'مدير حساب من فريق PR يتابع كل تفاصيل الشراكة 24/7.'},
+      {i:'fa-chart-line', t:'تقارير شهرية مفصلة', d:'تقرير شهري شامل يوضح كل مقاييس الأداء والوصول والظهورات بالصور.'},
+      {i:'fa-graduation-cap', t:'10 مقاعد تدريبية مجانية', d:'10 مقاعد تدريبية مجانية لموظفي مؤسستك في أكاديمية AI العربية.'}
+    ]
+  },
+  gold: {
+    key:'gold', name:'الذهبية', nameEn:'GOLD', icon:'fa-trophy',
+    color:'#fbbf24', rgb:'251,191,36', gradient:'linear-gradient(135deg,#fde68a 0%,#fbbf24 40%,#d97706 100%)',
+    badge:'الباقة الذهبية الشاملة',
+    desc:'الباقة المتوازنة التي تجمع بين الحضور القوي والسعر المناسب. مثالية للشركات التي تريد تأثيراً كبيراً بميزانية ذكية.',
+    meta:{ mm:'11+', lb:'ميزة شاملة' },
+    benefits:[
+      {i:'fa-star', t:'شعار في الفعاليات الكبرى', d:'ظهور شعارك في كل الفعاليات الكبرى (10+ فعالية في السنة).'},
+      {i:'fa-globe', t:'شعار على المنصة الرقمية', d:'شعار بحجم متوسط في صفحة الرعاة + ذكر في التغطيات الرقمية الرئيسية.'},
+      {i:'fa-briefcase', t:'بورتفوليو مصغر على المنصة', d:'صفحة بورتفوليو مصغّرة تعرض مؤسستك ومساهماتها الرئيسية.'},
+      {i:'fa-crown', t:'10 مقاعد VIP', d:'10 مقاعد VIP في كل فعالية كبرى + دعوات رسمية لحضور الفعاليات.'},
+      {i:'fa-store', t:'بوث في الفعاليات الكبرى', d:'بوث مخصص لمؤسستك في 3 فعاليات كبرى من اختيارك.'},
+      {i:'fa-newspaper', t:'تغطية إعلامية مميزة', d:'ذكر اسمك في التغطيات الإعلامية للفعاليات الكبرى + صور مشتركة + منشور تكريم.'},
+      {i:'fa-video', t:'إنتاج فيديو دعائي', d:'فيديو دعائي احترافي 60 ثانية يعرض مؤسستك على كل المنصات الرقمية.'},
+      {i:'fa-microphone', t:'فرصة للتحدث', d:'فرصة الحديث في فعالية واحدة كبيرة من اختيارك.'},
+      {i:'fa-chalkboard-user', t:'ورشة تدريبية مخصصة', d:'ورشة تدريبية مجانية واحدة لموظفي مؤسستك في مجال AI (5 ساعات).'},
+      {i:'fa-ticket', t:'خصومات للمتطوعين', d:'إدراج مؤسستك في بطاقة "قادة التحول" بخصومات للمتطوعين.'},
+      {i:'fa-graduation-cap', t:'5 مقاعد تدريبية', d:'5 مقاعد تدريبية مجانية لموظفي مؤسستك في أكاديمية AI.'},
+      {i:'fa-chart-line', t:'تقارير ربع سنوية', d:'تقرير مفصل كل 3 أشهر يوضح كل مقاييس الأداء والوصول.'}
+    ]
+  },
+  rose: {
+    key:'rose', name:'البرونزية', nameEn:'BRONZE', icon:'fa-crown',
+    color:'#f472b6', rgb:'244,114,182', gradient:'linear-gradient(135deg,#fbcfe8 0%,#f472b6 35%,#b76e79 70%,#fbbf24 100%)',
+    badge:'باقة الدخول المثالية',
+    desc:'الباقة المثالية للشركات الناشئة والمؤسسات التي تريد تجربة الشراكة لأول مرة، بسعر مناسب وحضور محترم.',
+    meta:{ mm:'9+', lb:'ميزة أساسية' },
+    benefits:[
+      {i:'fa-star', t:'شعار في الفعاليات المختارة', d:'ظهور شعارك في الفعاليات المختارة (5+ فعاليات في السنة).'},
+      {i:'fa-globe', t:'شعار على المنصة', d:'شعار في صفحة الرعاة + ذكر في التغطيات الرقمية الرئيسية.'},
+      {i:'fa-briefcase', t:'بطاقة تعريف على المنصة', d:'بطاقة تعريف مصغّرة باسم مؤسستك ووصف مختصر وروابط التواصل.'},
+      {i:'fa-ticket', t:'8 مقاعد VIP محدودة', d:'8 مقاعد VIP في الفعاليات الكبرى + دعوات لحضور الفعاليات العامة.'},
+      {i:'fa-newspaper', t:'ذكر في التغطيات', d:'ذكر اسم مؤسستك في التغطيات الإعلامية للفعاليات المختارة.'},
+      {i:'fa-certificate', t:'شهادة رعاية رسمية', d:'شهادة رعاية رسمية موثقة من المشروع تُعلَّق في مقر مؤسستك.'},
+      {i:'fa-bullhorn', t:'منشور تعريفي', d:'منشور تعريفي بمؤسستك على المنصات الرقمية للمشروع.'},
+      {i:'fa-ticket', t:'إدراج في بطاقة قادة التحول', d:'إدراج مؤسستك في بطاقة خصومات المتطوعين بمزايا محدودة.'},
+      {i:'fa-chart-line', t:'تقرير نصف سنوي', d:'تقرير مفصل كل 6 أشهر يوضح كل مقاييس الأداء والوصول.'}
+    ]
+  }
+};
+
+/* =========================================================
+   DATA: SPONSORS
+   ========================================================= */
+const SPONSORS = {
+  ministry: {
+    id:'ministry', tier:'strategic', tierLevel:'strategic', tierLabel:'راعٍ استراتيجي',
+    name:'وزارة الشباب والرياضة',
+    nameEn:'MINISTRY OF YOUTH & SPORTS',
+    role:'الراعي الرسمي الأول',
+    logo:'./assets/minestry-sports.png',
+    gradient:'linear-gradient(135deg,#00d9ff,#8b5cf6,#fbbf24)',
+    rgb:'0,217,255',
+    subtitle:'الراعي الرسمي للمشروع · الجهة الراعية الرسمية',
+    verified:true,
+    stats:[
+      {v:'رسمي', l:'الرعاية'},
+      {v:'100%', l:'صندوق مالي'},
+      {v:'27', l:'محافظة'}
+    ],
+    about:[
+      'وزارة الشباب والرياضة هي الجهة الرسمية الراعية لـ FBA Futur By Ai، وتوفّر للمشروع الغطاء الرسمي الكامل الذي يسمح له بالانتشار في كل محافظات مصر.',
+      'تُشرف الوزارة على <strong>صندوق المشروع المالي</strong>، وكل المساهمات المالية من الرعاة تُودَع فيه تحت المسمّى الرسمي. هذا يضمن <strong>الشفافية الكاملة</strong> والموثوقية للجهات الراعية.',
+      'كما توفّر الوزارة الدعم اللوجيستي والتنظيمي عبر مراكز الشباب في المحافظات، وتدعم المشروع معنوياً وإعلامياً في كل فعالياته الكبرى.'
+    ],
+    exclusivePrivileges:[
+      {i:'fa-crown', t:'الرعاية الرسمية الحصرية', d:'الجهة الرسمية الوحيدة التي ترعى المشروع وتوفر له الغطاء الرسمي الكامل.'},
+      {i:'fa-building-columns', t:'إدارة صندوق المشروع', d:'الإشراف الكامل على الصندوق المالي للمشروع تحت مظلتها الرسمية.'},
+      {i:'fa-map-location-dot', t:'مراكز الشباب في 27 محافظة', d:'توفير البنية التحتية للفعاليات والتدريبات في كل المحافظات.'},
+      {i:'fa-bullhorn', t:'الظهور في كل الفعاليات الرسمية', d:'شعار الوزارة في كل فعالية رسمية كبيرة أو صغيرة.'},
+      {i:'fa-file-signature', t:'الموافقات الرسمية', d:'منح الموافقات الرسمية لكل فعاليات المشروع في المحافظات.'},
+      {i:'fa-landmark-dome', t:'الرعاية المعنوية الكاملة', d:'دعم رسمي معنوي وإعلامي لكل أنشطة المشروع.'}
+    ],
+    contributions:[
+      {i:'fa-landmark-dome', c:'#00d9ff', c2:'#0891b2', t:'الغطاء الرسمي', d:'رعاية رسمية كاملة'},
+      {i:'fa-coins', c:'#fbbf24', c2:'#d97706', t:'صندوق مالي', d:'إدارة كامل للصندوق'},
+      {i:'fa-building', c:'#8b5cf6', c2:'#6a47e8', t:'مراكز الشباب', d:'في 27 محافظة'},
+      {i:'fa-bullhorn', c:'#ec4899', c2:'#be185d', t:'دعم إعلامي', d:'رسمي وواسع'},
+      {i:'fa-handshake', c:'#10b981', c2:'#059669', t:'دعم لوجيستي', d:'تنظيمي وميداني'},
+      {i:'fa-file-signature', c:'#f59e0b', c2:'#d97706', t:'موافقات رسمية', d:'لكل الفعاليات'}
+    ],
+    impact:[
+      {v:'27', l:'محافظة مغطاة'},
+      {v:'100%', l:'دعم رسمي'},
+      {v:'85+', l:'فعالية سنوياً'},
+      {v:'12K+', l:'شاب مستفيد'}
+    ],
+    timeline:[
+      {d:'مارس 2025', t:'اعتماد الرعاية الرسمية', x:'اعتمدت الوزارة رعايتها الرسمية للمشروع وأدرجته تحت مبادراتها الرسمية.'},
+      {d:'2025', t:'تفعيل الصندوق الرسمي', x:'تم تفعيل الصندوق المالي الرسمي للمشروع تحت مظلة الوزارة.'},
+      {d:'2025 - 2026', t:'الدعم اللوجيستي', x:'توفير مراكز الشباب في 27 محافظة للفعاليات والتدريبات.'},
+      {d:'2026', t:'التوسع العربي', x:'دعم التوسع في الوطن العربي وتفعيل شراكات إقليمية.'}
+    ],
+    partners:[
+      {i:'fa-building-columns', t:'الجهات الحكومية', d:'شراكة رسمية كاملة'},
+      {i:'fa-handshake', t:'اتحاد شباب كفر الشيخ', d:'الشريك المؤسس'},
+      {i:'fa-network-wired', t:'الكيانات الشبابية', d:'شبكة وطنية'},
+      {i:'fa-globe', t:'الجهات الدولية', d:'توسع عربي'},
+      {i:'fa-graduation-cap', t:'الجامعات المصرية', d:'شراكة أكاديمية'},
+      {i:'fa-briefcase', t:'القطاع الخاص', d:'شراكات تجارية'}
+    ],
+    kpis:[
+      {l:'رضا الشركاء', v:'98%', p:98, d:'مؤشر رضا كل الجهات الراعية عن الشراكة'},
+      {l:'الالتزام بالمواعيد', v:'95%', p:95, d:'نسبة تنفيذ الفعاليات في مواعيدها المحددة'},
+      {l:'الشفافية المالية', v:'100%', p:100, d:'تقارير مالية كاملة لكل مساهمة'},
+      {l:'نمو الشباب المستفيد', v:'+42%', p:42, d:'نمو سنوي في عدد المستفيدين'}
+    ],
+    futurePlans:[
+      {d:'2026 Q1', t:'التوسع العربي', x:'افتتاح فروع للمشروع في 3 دول عربية بشراكة الوزارة.'},
+      {d:'2026 Q2', t:'الأكاديمية الرسمية', x:'إطلاق أكاديمية AI العربية الرسمية بالتعاون مع الوزارة.'},
+      {d:'2026 Q3', t:'ملتقى الشباب العربي', x:'تنظيم أكبر ملتقى شبابي عربي في القاهرة.'},
+      {d:'2026 Q4', t:'المقر الرسمي الدائم', x:'تخصيص مقر رسمي دائم للمشروع.'}
+    ],
+    recognition:[
+      {i:'fa-trophy', t:'أفضل مبادرة شبابية 2025', d:'تكريم رسمي من مجلس الوزراء'},
+      {i:'fa-medal', t:'شهادة الجودة الرسمية', d:'من وزارة التخطيط'},
+      {i:'fa-award', t:'جائزة الابتكار الرقمي', d:'من الاتحاد العربي'},
+      {i:'fa-star', t:'التميز المؤسسي', d:'تقييم 5 نجوم'}
+    ],
+    videoHighlight:{
+      title:'وثائقي "شباب يصنعون المستقبل"',
+      desc:'فيلم وثائقي يعرض رحلة المشروع من الفكرة إلى الرعاية الرسمية، مع شهادات حية من الشباب المستفيد.',
+      duration:'8:42 دقيقة'
+    },
+    testimonial:{
+      text:'وزارة الشباب والرياضة تفخر برعاية هذا المشروع الرائد الذي يمثل نموذجاً حقيقياً للشباب المصري الطموح. المشروع يبني جيلاً واعياً بمتطلبات المستقبل الرقمي.',
+      author:'قيادة الوزارة', position:'وزارة الشباب والرياضة'
+    },
+    gallery:[
+      {i:'fa-landmark-dome', c1:'#00d9ff', c2:'#8b5cf6', l:'الرعاية الرسمية'},
+      {i:'fa-coins', c1:'#fbbf24', c2:'#d97706', l:'الصندوق الرسمي'},
+      {i:'fa-building', c1:'#8b5cf6', c2:'#6a47e8', l:'مراكز الشباب'},
+      {i:'fa-users', c1:'#ec4899', c2:'#be185d', l:'الفعاليات'},
+      {i:'fa-trophy', c1:'#f59e0b', c2:'#d97706', l:'التكريمات'},
+      {i:'fa-flag', c1:'#10b981', c2:'#059669', l:'الرعاية الوطنية'},
+      {i:'fa-globe', c1:'#00d9ff', c2:'#8b5cf6', l:'التوسع العربي'},
+      {i:'fa-medal', c1:'#fbbf24', c2:'#ec4899', l:'الجوائز'},
+      {i:'fa-handshake', c1:'#10b981', c2:'#00d9ff', l:'الشراكات'}
+    ],
+    social:{ facebook:'#', website:'#' },
+    specialBadge:'الراعي الرسمي · تحت مظلة صندوق الوزارة'
+  },
+  kfs: {
+    id:'kfs', tier:'strategic', tierLevel:'strategic', tierLabel:'راعٍ استراتيجي',
+    name:'اتحاد شباب كفر الشيخ',
+    nameEn:'KFS YOUTH UNION',
+    role:'الشريك المؤسس',
+    logo:'./assets/KFS.png',
+    gradient:'linear-gradient(135deg,#8b5cf6,#ec4899,#fbbf24)',
+    rgb:'139,92,246',
+    subtitle:'المؤسس الفعلي للمشروع · مصدر الرؤية الشبابية',
+    verified:true,
+    stats:[
+      {v:'2025', l:'سنة التأسيس'},
+      {v:'100%', l:'دعم مباشر'},
+      {v:'500+', l:'قائد شاب'}
+    ],
+    about:[
+      'اتحاد شباب كفر الشيخ هو <strong>المؤسس الفعلي</strong> للمشروع، ومصدر الرؤية الشبابية التي انطلق منها. آمن بالأفكار الكبيرة وقرر تحويلها إلى واقع.',
+      'يدعم المشروع على مستوى <strong>الكفاءات والقيادات الشابة</strong>، حيث وفّر أول 500 قائد شبابي لبناء الهيكل التنظيمي للمشروع في كل المحافظات.',
+      'كما يدعم المشروع في <strong>الجانب المجتمعي</strong>، ويُعدّ الجهة الأم الرسمية التي تتبعها المبادرات الشبابية في الدلتا.'
+    ],
+    exclusivePrivileges:[
+      {i:'fa-seedling', t:'المؤسس الفعلي', d:'صاحب الرؤية الأصلية للمشروع منذ اليوم الأول.'},
+      {i:'fa-users', t:'500 قائد شاب', d:'توفير أول 500 قائد لبناء الهيكل التنظيمي.'},
+      {i:'fa-chalkboard-user', t:'التدريب القيادي المستمر', d:'برامج تدريبية متخصصة لقادة المشروع.'},
+      {i:'fa-network-wired', t:'الشبكة الشبابية في الدلتا', d:'ربط المشروع بكل المبادرات الشبابية في الدلتا.'},
+      {i:'fa-handshake', t:'الشراكات المحلية', d:'تسهيل الشراكات مع الجهات المحلية في كل محافظة.'},
+      {i:'fa-flag', t:'الدعم المعنوي الكامل', d:'دعم رسمي ومجتمعي مستمر للمشروع.'}
+    ],
+    contributions:[
+      {i:'fa-seedling', c:'#8b5cf6', c2:'#6a47e8', t:'المؤسس', d:'الرؤية والتأسيس'},
+      {i:'fa-users', c:'#ec4899', c2:'#be185d', t:'500 قائد شاب', d:'بناء الهيكل'},
+      {i:'fa-chalkboard-user', c:'#fbbf24', c2:'#d97706', t:'التدريب القيادي', d:'للقادة الشباب'},
+      {i:'fa-network-wired', c:'#00d9ff', c2:'#0891b2', t:'شبكة شبابية', d:'في الدلتا'},
+      {i:'fa-handshake', c:'#10b981', c2:'#059669', t:'الشراكات المحلية', d:'في المحافظات'},
+      {i:'fa-flag', c:'#f59e0b', c2:'#d97706', t:'الدعم المعنوي', d:'الرسمي والمجتمعي'}
+    ],
+    impact:[
+      {v:'500+', l:'قائد شاب'},
+      {v:'27', l:'محافظة'},
+      {v:'2025', l:'سنة التأسيس'},
+      {v:'100%', l:'دعم مباشر'}
+    ],
+    timeline:[
+      {d:'مارس 2025', t:'إطلاق الفكرة', x:'انطلقت فكرة المشروع من قيادات اتحاد شباب كفر الشيخ.'},
+      {d:'أبريل 2025', t:'بناء الهيكل', x:'وفّر الاتحاد أول 100 قائد لبناء الهيكل التنظيمي للمشروع.'},
+      {d:'يونيو 2025', t:'التوسع الوطني', x:'دعم الاتحاد المشروع في الانتشار في المحافظات الأولى.'},
+      {d:'2025 - 2026', t:'الدعم المستمر', x:'دعم مستمر بالكفاءات والقيادات الشابة.'}
+    ],
+    partners:[
+      {i:'fa-landmark-dome', t:'وزارة الشباب والرياضة', d:'الراعي الرسمي'},
+      {i:'fa-network-wired', t:'الكيانات الشبابية', d:'شبكة وطنية'},
+      {i:'fa-building', t:'مراكز الشباب', d:'في كل المحافظات'},
+      {i:'fa-graduation-cap', t:'الجامعات المصرية', d:'شراكة أكاديمية'},
+      {i:'fa-users', t:'المبادرات الشبابية', d:'في الدلتا'},
+      {i:'fa-briefcase', t:'القطاع الخاص', d:'شراكات تجارية'}
+    ],
+    kpis:[
+      {l:'نمو القادة', v:'+85%', p:85, d:'نمو سنوي في عدد القادة الشباب'},
+      {l:'الانتشار الجغرافي', v:'27', p:100, d:'تغطية كل المحافظات'},
+      {l:'رضا القادة', v:'96%', p:96, d:'مؤشر رضا القادة عن البرامج التدريبية'},
+      {l:'معدل الاستمرارية', v:'92%', p:92, d:'نسبة القادة المستمرين في المشروع'}
+    ],
+    futurePlans:[
+      {d:'2026 Q1', t:'الأكاديمية القيادية', x:'إطلاق أكاديمية متخصصة في القيادة الشبابية.'},
+      {d:'2026 Q2', t:'ملتقى القادة العربي', x:'تنظيم ملتقى يجمع القادة الشباب من كل الوطن العربي.'},
+      {d:'2026 Q3', t:'برنامج الإرشاد', x:'إطلاق برنامج إرشاد للقادة الشباب الجدد.'}
+    ],
+    recognition:[
+      {i:'fa-seedling', t:'جائزة المؤسس المتميز', d:'تكريم من وزارة الشباب'},
+      {i:'fa-users', t:'أفضل فريق شبابي', d:'تكريم من الكيانات الشبابية'},
+      {i:'fa-trophy', t:'جائزة الإلهام', d:'من الاتحاد العربي للشباب'}
+    ],
+    videoHighlight:{
+      title:'وثائقي "رحلة 500 قائد"',
+      desc:'فيلم يوثق كيف تحولت فكرة إلى مشروع يقوده 500 شاب في 27 محافظة.',
+      duration:'6:15 دقيقة'
+    },
+    testimonial:{
+      text:'نحن نؤمن بأن الشباب قادر على صناعة المستقبل. FBA Futur By Ai هو تجسيد حقيقي لهذه الرؤية، ونحن فخورون بأننا المؤسس الفعلي لهذا المشروع الرائد.',
+      author:'قيادة الاتحاد', position:'اتحاد شباب كفر الشيخ'
+    },
+    gallery:[
+      {i:'fa-seedling', c1:'#8b5cf6', c2:'#6a47e8', l:'التأسيس'},
+      {i:'fa-users', c1:'#ec4899', c2:'#be185d', l:'القادة الشباب'},
+      {i:'fa-chalkboard-user', c1:'#fbbf24', c2:'#d97706', l:'التدريبات'},
+      {i:'fa-network-wired', c1:'#00d9ff', c2:'#0891b2', l:'الشبكة الوطنية'},
+      {i:'fa-trophy', c1:'#10b981', c2:'#059669', l:'الإنجازات'},
+      {i:'fa-flag', c1:'#f59e0b', c2:'#d97706', l:'الفعاليات'},
+      {i:'fa-star', c1:'#8b5cf6', c2:'#ec4899', l:'التكريمات'},
+      {i:'fa-globe', c1:'#00d9ff', c2:'#8b5cf6', l:'التوسع'},
+      {i:'fa-handshake', c1:'#10b981', c2:'#fbbf24', l:'الشراكات'}
+    ],
+    social:{ facebook:'#', website:'#' },
+    specialBadge:'المؤسس الفعلي للمشروع'
+  },
+  entities: {
+    id:'entities', tier:'strategic', tierLevel:'strategic', tierLabel:'راعٍ استراتيجي',
+    name:'الكيانات الشبابية',
+    nameEn:'YOUTH ENTITIES',
+    role:'الشريك المجتمعي',
+    logo:'./assets/الكيانات-الشبابية.png',
+    gradient:'linear-gradient(135deg,#ec4899,#8b5cf6,#00d9ff)',
+    rgb:'236,72,153',
+    subtitle:'الشريك المجتمعي الرسمي · شبكة الكيانات الشبابية في مصر',
+    verified:true,
+    stats:[
+      {v:'50+', l:'كيان شريك'},
+      {v:'27', l:'محافظة'},
+      {v:'1000+', l:'عضو نشط'}
+    ],
+    about:[
+      'شبكة الكيانات الشبابية الرسمية التي تربط المشروع بكل المبادرات الشبابية في المحافظات. تُعدّ <strong>الشريك المجتمعي الرسمي</strong> للمشروع.',
+      'تدعم الكيانات الشبابية المشروع في <strong>الانتشار الميداني</strong>، وتوفير الحضور في الفعاليات المحلية، وربط المشروع بالمبادرات الشبابية الموجودة في كل محافظة.',
+      'كما تُعدّ حلقة الوصل بين المشروع والجهات الشبابية الرسمية، وتدعم رسالة المشروع في كل المحافظات.'
+    ],
+    exclusivePrivileges:[
+      {i:'fa-network-wired', t:'شبكة 50+ كيان شريك', d:'أكبر شبكة كيانات شبابية مرتبطة بمشروع واحد.'},
+      {i:'fa-users', t:'1000+ عضو نشط', d:'كفاءات جاهزة للمشاركة في كل أنشطة المشروع.'},
+      {i:'fa-map-location-dot', t:'الانتشار الميداني الكامل', d:'تغطية كل المحافظات المصرية.'},
+      {i:'fa-bullhorn', t:'الترويج المجتمعي', d:'الترويج للمشروع في كل محافظة عبر الكيانات.'},
+      {i:'fa-handshake', t:'الشراكات المحلية', d:'ربط المشروع بالمبادرات المحلية في كل محافظة.'},
+      {i:'fa-flag', t:'الدعم الرسمي المجتمعي', d:'دعم رسمي من كل الكيانات الشبابية.'}
+    ],
+    contributions:[
+      {i:'fa-network-wired', c:'#ec4899', c2:'#be185d', t:'50+ كيان شريك', d:'شبكة وطنية'},
+      {i:'fa-users', c:'#8b5cf6', c2:'#6a47e8', t:'1000+ عضو نشط', d:'كفاءات جاهزة'},
+      {i:'fa-map-location-dot', c:'#00d9ff', c2:'#0891b2', t:'الانتشار الميداني', d:'27 محافظة'},
+      {i:'fa-bullhorn', c:'#fbbf24', c2:'#d97706', t:'الترويج المجتمعي', d:'في كل محافظة'},
+      {i:'fa-handshake', c:'#10b981', c2:'#059669', t:'الشراكات المحلية', d:'مع المبادرات'},
+      {i:'fa-flag', c:'#f59e0b', c2:'#d97706', t:'الدعم الرسمي', d:'المجتمعي'}
+    ],
+    impact:[
+      {v:'50+', l:'كيان شريك'},
+      {v:'27', l:'محافظة'},
+      {v:'1000+', l:'عضو نشط'},
+      {v:'100+', l:'فعالية سنوياً'}
+    ],
+    timeline:[
+      {d:'أبريل 2025', t:'الانضمام للشراكة', x:'انضمت الكيانات الشبابية كشريك مجتمعي رسمي.'},
+      {d:'2025', t:'ربط المحافظات', x:'تم ربط 50+ كيان شبابي بالمشروع في كل المحافظات.'},
+      {d:'2025 - 2026', t:'الدعم الميداني', x:'دعم الحضور الميداني للفعاليات في كل المحافظات.'},
+      {d:'2026', t:'التوسع المجتمعي', x:'توسيع الشراكة لمزيد من الكيانات في المحافظات.'}
+    ],
+    partners:[
+      {i:'fa-landmark-dome', t:'وزارة الشباب والرياضة', d:'الراعي الرسمي'},
+      {i:'fa-users', t:'اتحاد شباب كفر الشيخ', d:'المؤسس'},
+      {i:'fa-network-wired', t:'50+ كيان شبابي', d:'في كل المحافظات'},
+      {i:'fa-building', t:'مراكز الشباب', d:'في 27 محافظة'},
+      {i:'fa-graduation-cap', t:'الجامعات المصرية', d:'شراكة أكاديمية'},
+      {i:'fa-briefcase', t:'القطاع الخاص', d:'شراكات تجارية'}
+    ],
+    kpis:[
+      {l:'عدد الكيانات', v:'50+', p:100, d:'كيان شبابي شريك في المشروع'},
+      {l:'الانتشار الجغرافي', v:'27', p:100, d:'تغطية كل المحافظات'},
+      {l:'نمو الأعضاء', v:'+65%', p:65, d:'نمو سنوي في الأعضاء النشطين'},
+      {l:'رضا الكيانات', v:'94%', p:94, d:'مؤشر رضا الكيانات الشريكة'}
+    ],
+    futurePlans:[
+      {d:'2026 Q1', t:'توسيع الشبكة', x:'الوصول إلى 100 كيان شريك في كل المحافظات.'},
+      {d:'2026 Q2', t:'ملتقى الكيانات', x:'تنظيم ملتقى سنوي لكل الكيانات الشريكة.'},
+      {d:'2026 Q3', t:'برامج مشتركة', x:'إطلاق برامج مشتركة مع كل الكيانات.'}
+    ],
+    recognition:[
+      {i:'fa-network-wired', t:'أكبر شبكة كيانات', d:'في مصر'},
+      {i:'fa-users', t:'أفضل شريك مجتمعي', d:'تكريم من وزارة الشباب'},
+      {i:'fa-trophy', t:'جائزة الانتشار', d:'من الاتحاد العربي'}
+    ],
+    videoHighlight:{
+      title:'وثائقي "شبكة تصنع الفرق"',
+      desc:'فيلم يوثق دور الكيانات الشبابية في نجاح المشروع ووصوله لكل محافظات مصر.',
+      duration:'5:48 دقيقة'
+    },
+    testimonial:{
+      text:'الكيانات الشبابية تفخر بأن تكون الشريك المجتمعي لـ FBA Futur By Ai. المشروع يمثل امتداداً حقيقياً لرؤيتنا في دعم الشباب المصري.',
+      author:'قيادة الكيانات', position:'الكيانات الشبابية'
+    },
+    gallery:[
+      {i:'fa-network-wired', c1:'#ec4899', c2:'#be185d', l:'الشبكة الوطنية'},
+      {i:'fa-users', c1:'#8b5cf6', c2:'#6a47e8', l:'الأعضاء النشطون'},
+      {i:'fa-map-location-dot', c1:'#00d9ff', c2:'#0891b2', l:'الانتشار'},
+      {i:'fa-bullhorn', c1:'#fbbf24', c2:'#d97706', l:'الفعاليات'},
+      {i:'fa-handshake', c1:'#10b981', c2:'#059669', l:'الشراكات'},
+      {i:'fa-flag', c1:'#f59e0b', c2:'#d97706', l:'الدعم المجتمعي'},
+      {i:'fa-star', c1:'#8b5cf6', c2:'#ec4899', l:'التكريمات'},
+      {i:'fa-globe', c1:'#00d9ff', c2:'#fbbf24', l:'التوسع'},
+      {i:'fa-building', c1:'#ec4899', c2:'#8b5cf6', l:'المراكز'}
+    ],
+    social:{ facebook:'#', website:'#' },
+    specialBadge:'الشريك المجتمعي الرسمي'
+  },
+  egyptMedia: {
+    id:'egyptMedia', tier:'platinum', tierLevel:'platinum', tierLabel:'بلاتينية',
+    name:'Egypt Media Company',
+    nameEn:'EGYPT MEDIA',
+    role:'الشريك الإعلامي الرسمي',
+    logo:'./assets/EGYPT-MEDIA.png',
+    gradient:'linear-gradient(135deg,#e2e8f0,#94a3b8,#cbd5e1)',
+    rgb:'203,213,225',
+    subtitle:'الشريك الإعلامي · إنتاج فني وتغطيات احترافية',
+    verified:true,
+    stats:[
+      {v:'50+', l:'تغطية إعلامية'},
+      {v:'2025', l:'بداية الشراكة'},
+      {v:'100+', l:'فيديو منتج'}
+    ],
+    about:[
+      'Egypt Media Company هي <strong>الشريك الإعلامي الرسمي</strong> لـ FBA Futur By Ai. شركة متخصصة في الدعاية والإعلان والإنتاج الفني وتنظيم الفعاليات والمهرجانات.',
+      'تتولى الشركة <strong>كل الإنتاجات الفنية</strong> للمشروع: الفيديوهات الترويجية، التغطيات الإعلامية للفعاليات، الموشن جرافيك، والفواصل الإعلانية.',
+      'كما توفّر الشركة <strong>استوديوهات التصوير والمونتاج</strong> المجانية لبعض فعاليات المشروع، وتدعم إنتاج محتوى تدريبي عالي الجودة.'
+    ],
+    exclusivePrivileges:[
+      {i:'fa-video', t:'الإنتاج الإعلامي الرسمي', d:'الشريك الإعلامي الوحيد الذي ينتج كل محتوى المشروع.'},
+      {i:'fa-camera', t:'استوديوهات احترافية', d:'توفير استوديوهات تصوير ومونتاج مجاناً للمشروع.'},
+      {i:'fa-microphone', t:'تسجيل صوتي احترافي', d:'إنتاج كل المحتوى الصوتي للمشروع.'},
+      {i:'fa-film', t:'موشن جرافيك حصري', d:'إنتاج كل الرسوم المتحركة والفواصل البصرية.'},
+      {i:'fa-photo-film', t:'تغطيات فوتوغرافية', d:'تغطية احترافية لكل فعاليات المشروع بالصور.'},
+      {i:'fa-bullhorn', t:'إعلانات مدفوعة', d:'إدارة الحملات الإعلانية للمشروع على كل المنصات.'}
+    ],
+    contributions:[
+      {i:'fa-video', c:'#cbd5e1', c2:'#94a3b8', t:'إنتاج فيديو', d:'+100 فيديو منتج'},
+      {i:'fa-camera', c:'#00d9ff', c2:'#0891b2', t:'تغطيات فنية', d:'لكل الفعاليات'},
+      {i:'fa-microphone', c:'#ec4899', c2:'#be185d', t:'تسجيل صوتي', d:'استوديو احترافي'},
+      {i:'fa-film', c:'#8b5cf6', c2:'#6a47e8', t:'موشن جرافيك', d:'رسوم متحركة'},
+      {i:'fa-photo-film', c:'#fbbf24', c2:'#d97706', t:'تصوير فوتوغرافي', d:'احترافي'},
+      {i:'fa-bullhorn', c:'#10b981', c2:'#059669', t:'إعلانات مدفوعة', d:'على كل المنصات'}
+    ],
+    impact:[
+      {v:'100+', l:'فيديو منتج'},
+      {v:'50+', l:'تغطية إعلامية'},
+      {v:'500K+', l:'وصول'},
+      {v:'100%', l:'جودة احترافية'}
+    ],
+    timeline:[
+      {d:'يناير 2025', t:'بداية الشراكة', x:'انضمت Egypt Media كشريك إعلامي رسمي للمشروع.'},
+      {d:'2025', t:'إنتاج أول فيديو', x:'تم إنتاج أول فيديو تعريفي احترافي للمشروع.'},
+      {d:'2025 - 2026', t:'التغطيات المستمرة', x:'تغطية إعلامية كاملة لكل الفعاليات الكبرى.'},
+      {d:'2026', t:'مشاريع إنتاجية كبرى', x:'إنتاج سلسلة وثائقية عن المشروع.'}
+    ],
+    partners:[
+      {i:'fa-landmark-dome', t:'وزارة الشباب والرياضة', d:'الراعي الرسمي'},
+      {i:'fa-users', t:'اتحاد شباب كفر الشيخ', d:'المؤسس'},
+      {i:'fa-network-wired', t:'الكيانات الشبابية', d:'شبكة وطنية'},
+      {i:'fa-briefcase', t:'الرعاة الرسميون', d:'شركاء تجاريون'}
+    ],
+    kpis:[
+      {l:'عدد الفيديوهات', v:'100+', p:100, d:'فيديو منتج للمشروع'},
+      {l:'الوصول الرقمي', v:'500K+', p:95, d:'مشاهدات المحتوى المنتج'},
+      {l:'جودة الإنتاج', v:'5/5', p:100, d:'تقييم جودة الإنتاج'},
+      {l:'الالتزام بالمواعيد', v:'98%', p:98, d:'تسليم المشاريع في مواعيدها'}
+    ],
+    testimonial:{
+      text:'نفخر بأن نكون الشريك الإعلامي لهذا المشروع الرائد. الإنتاج الإعلامي الاحترافي هو جزء أساسي من نجاح المشروع، ونحن ملتزمون بأعلى معايير الجودة.',
+      author:'إدارة Egypt Media', position:'Egypt Media Company'
+    },
+    gallery:[
+      {i:'fa-video', c1:'#cbd5e1', c2:'#94a3b8', l:'الإنتاج المرئي'},
+      {i:'fa-camera', c1:'#00d9ff', c2:'#0891b2', l:'التصوير'},
+      {i:'fa-microphone', c1:'#ec4899', c2:'#be185d', l:'الاستوديو'},
+      {i:'fa-film', c1:'#8b5cf6', c2:'#6a47e8', l:'الموشن جرافيك'},
+      {i:'fa-photo-film', c1:'#fbbf24', c2:'#d97706', l:'التغطيات'},
+      {i:'fa-star', c1:'#10b981', c2:'#059669', l:'الإنجازات'},
+      {i:'fa-trophy', c1:'#f59e0b', c2:'#d97706', l:'الجوائز'},
+      {i:'fa-handshake', c1:'#8b5cf6', c2:'#ec4899', l:'الشراكة'}
+    ],
+    social:{ facebook:'https://www.facebook.com/share/178iMZXhDf/?mibextid=wwXIfr' },
+    specialBadge:'الشريك الإعلامي الرسمي'
+  },
+  brolosy: {
+    id:'brolosy', tier:'platinum', tierLevel:'platinum', tierLabel:'بلاتينية',
+    name:'شركة البرلسي للتطوير العقاري',
+    nameEn:'EL-BROLOSY REAL ESTATE',
+    role:'الراعي الرئيسي',
+    logo:'./assets/برلسي.png',
+    gradient:'linear-gradient(135deg,#e2e8f0,#94a3b8,#cbd5e1)',
+    rgb:'203,213,225',
+    subtitle:'الراعي الرئيسي · الداعم الاستراتيجي للفعاليات',
+    verified:true,
+    stats:[
+      {v:'2025', l:'بداية الشراكة'},
+      {v:'10+', l:'فعالية كبرى'},
+      {v:'1000+', l:'مستفيد'}
+    ],
+    about:[
+      'شركة البرلسي للتطوير العقاري هي <strong>الراعي الرئيسي</strong> للمشروع. شركة رائدة في التطوير العقاري، آمنت برسالة المشروع في تمكين الشباب.',
+      'توفّر الشركة <strong>الدعم المالي الرئيسي</strong> لكل الفعاليات الكبرى، وتساهم في جوائز المسابقات والهاكاثونات.',
+      'كما توفّر <strong>أماكن وقاعات</strong> لبعض الفعاليات في كفر الشيخ والدلتا، وتدعم المشروع معنوياً ومجتمعياً.'
+    ],
+    exclusivePrivileges:[
+      {i:'fa-coins', t:'الرعاية المالية الرئيسية', d:'الداعم المالي الأول لكل الفعاليات الكبرى.'},
+      {i:'fa-building', t:'قاعات ومساحات حصرية', d:'توفير قاعات فعاليات في كفر الشيخ والدلتا.'},
+      {i:'fa-trophy', t:'جوائز المسابقات', d:'رعاية جوائز المسابقات والهاكاثونات.'},
+      {i:'fa-map-location-dot', t:'دعم فعاليات الدلتا', d:'رعاية خاصة لفعاليات الدلتا وكفر الشيخ.'},
+      {i:'fa-handshake', t:'الدعم المجتمعي المستمر', d:'دعم مجتمعي للمبادرات الشبابية.'},
+      {i:'fa-crown', t:'حق الظهور في العلامة', d:'إمكانية ظهور اسم الشركة في اسم الفعاليات الكبرى.'}
+    ],
+    contributions:[
+      {i:'fa-coins', c:'#fbbf24', c2:'#d97706', t:'مساهمة مالية', d:'الراعي الرئيسي'},
+      {i:'fa-building', c:'#00d9ff', c2:'#0891b2', t:'أماكن وفعاليات', d:'قاعات ومساحات'},
+      {i:'fa-trophy', c:'#ec4899', c2:'#be185d', t:'جوائز المسابقات', d:'+50,000 ج'},
+      {i:'fa-map-location-dot', c:'#8b5cf6', c2:'#6a47e8', t:'دعم فعاليات الدلتا', d:'في كفر الشيخ'},
+      {i:'fa-handshake', c:'#10b981', c2:'#059669', t:'دعم مجتمعي', d:'مستمر'},
+      {i:'fa-flag', c:'#f59e0b', c2:'#d97706', t:'رعاية كاملة', d:'للفعاليات الكبرى'}
+    ],
+    impact:[
+      {v:'10+', l:'فعالية كبرى'},
+      {v:'1000+', l:'مستفيد'},
+      {v:'50K+', l:'جوائز مدعومة'},
+      {v:'100%', l:'دعم مستمر'}
+    ],
+    timeline:[
+      {d:'فبراير 2025', t:'انضمام الشراكة', x:'انضمت شركة البرلسي كراعي رئيسي للمشروع.'},
+      {d:'2025', t:'رعاية أول فعالية', x:'رعاية أول فعالية كبرى للمشروع في كفر الشيخ.'},
+      {d:'2025 - 2026', t:'رعاية مستمرة', x:'رعاية 10+ فعاليات كبرى في مختلف المحافظات.'},
+      {d:'2026', t:'مشاريع مشتركة', x:'تخطيط مشاريع مشتركة لدعم الشباب.'}
+    ],
+    partners:[
+      {i:'fa-landmark-dome', t:'وزارة الشباب والرياضة', d:'الراعي الرسمي'},
+      {i:'fa-users', t:'اتحاد شباب كفر الشيخ', d:'المؤسس'},
+      {i:'fa-network-wired', t:'الكيانات الشبابية', d:'شبكة وطنية'},
+      {i:'fa-briefcase', t:'الرعاة الرسميون', d:'شركاء تجاريون'}
+    ],
+    kpis:[
+      {l:'عدد الفعاليات', v:'10+', p:85, d:'فعالية كبرى في السنة'},
+      {l:'المستفيدون', v:'1000+', p:90, d:'شاب استفاد من الرعاية'},
+      {l:'جوائز مدعومة', v:'50K+', p:100, d:'جنيه جوائز مدعومة'},
+      {l:'رضا المشروع', v:'98%', p:98, d:'مؤشر رضا المشروع عن الشراكة'}
+    ],
+    testimonial:{
+      text:'نحن في شركة البرلسي نؤمن بأن دعم الشباب هو استثمار في مستقبل مصر. FBA Futur By Ai يمثل نموذجاً حقيقياً للعمل المنظم والمؤثر.',
+      author:'إدارة الشركة', position:'شركة البرلسي للتطوير العقاري'
+    },
+    gallery:[
+      {i:'fa-coins', c1:'#fbbf24', c2:'#d97706', l:'الرعاية المالية'},
+      {i:'fa-building', c1:'#00d9ff', c2:'#0891b2', l:'الأماكن'},
+      {i:'fa-trophy', c1:'#ec4899', c2:'#be185d', l:'الجوائز'},
+      {i:'fa-users', c1:'#8b5cf6', c2:'#6a47e8', l:'المستفيدون'},
+      {i:'fa-handshake', c1:'#10b981', c2:'#059669', l:'الشراكة'},
+      {i:'fa-star', c1:'#f59e0b', c2:'#d97706', l:'الإنجازات'},
+      {i:'fa-flag', c1:'#00d9ff', c2:'#8b5cf6', l:'الفعاليات'},
+      {i:'fa-crown', c1:'#fbbf24', c2:'#ec4899', l:'الرعاية الرئيسية'}
+    ],
+    social:{ facebook:'https://www.facebook.com/share/1AcMviGebt/?mibextid=wwXIfr' },
+    specialBadge:'الراعي الرئيسي للمشروع'
+  },
+  techInnovators: {
+    id:'techInnovators', tier:'gold', tierLevel:'gold', tierLabel:'ذهبية',
+    name:'شركة تِك إبتكار',
+    nameEn:'TECH INNOVATORS',
+    role:'راعٍ ذهبي · شريك تقني',
+    logo:null,
+    gradient:'linear-gradient(135deg,#fde68a,#fbbf24,#d97706)',
+    rgb:'251,191,36',
+    subtitle:'شريك تقني · داعم تدريبات الذكاء الاصطناعي',
+    verified:true,
+    stats:[
+      {v:'2025', l:'بداية الشراكة'},
+      {v:'20+', l:'ورش تدريبية'},
+      {v:'500+', l:'متدرب'}
+    ],
+    about:[
+      'شركة تك إبتكار هي شريك تقني لـ FBA Futur By Ai. شركة رائدة في تكنولوجيا المعلومات ودعم التدريبات التقنية.',
+      'توفّر الشركة <strong>20+ ورشة تدريبية سنوياً</strong> لمتطوعي المشروع في مجالات AI والبرمجة وتحليل البيانات.',
+      'كما توفّر <strong>مقاعد تدريبية مجانية</strong> في دوراتها المدفوعة، وتدعم المشروع في بناء الأكاديمية الرقمية العربية.'
+    ],
+    contributions:[
+      {i:'fa-graduation-cap', c:'#fbbf24', c2:'#d97706', t:'20+ ورشة سنوياً', d:'في AI والبرمجة'},
+      {i:'fa-laptop-code', c:'#00d9ff', c2:'#0891b2', t:'مقاعد تدريبية', d:'+100 مقعد مجاني'},
+      {i:'fa-chalkboard-user', c:'#ec4899', c2:'#be185d', t:'مدربون خبراء', d:'مجاناً'},
+      {i:'fa-certificate', c:'#8b5cf6', c2:'#6a47e8', t:'شهادات معتمدة', d:'للمتدربين'},
+      {i:'fa-tools', c:'#10b981', c2:'#059669', t:'أدوات تقنية', d:'مجانية للمشروع'},
+      {i:'fa-headset', c:'#f59e0b', c2:'#d97706', t:'دعم تقني', d:'مستمر'}
+    ],
+    impact:[
+      {v:'20+', l:'ورشة تدريبية'},
+      {v:'500+', l:'متدرب'},
+      {v:'100+', l:'مقعد مجاني'},
+      {v:'100%', l:'جودة معتمدة'}
+    ],
+    timeline:[
+      {d:'مايو 2025', t:'انضمام الشراكة', x:'انضمت تك إبتكار كشريك تقني ذهبي للمشروع.'},
+      {d:'2025', t:'أول ورشة تدريبية', x:'تقديم أول ورشة تدريبية لـ 50 متطوع.'},
+      {d:'2025 - 2026', t:'التوسع في التدريب', x:'20+ ورشة سنوياً في مختلف المجالات التقنية.'},
+      {d:'2026', t:'مشاريع مشتركة', x:'تطوير أكاديمية AI العربية بالشراكة.'}
+    ],
+    futurePlans:[
+      {d:'2026 Q1', t:'أكاديمية AI العربية', x:'إطلاق الأكاديمية الرقمية العربية بالشراكة.'},
+      {d:'2026 Q2', t:'برامج تدريبية متقدمة', x:'إطلاق برامج تدريبية متقدمة في AI.'},
+      {d:'2026 Q3', t:'مسابقات تقنية', x:'تنظيم مسابقات تقنية للشباب العربي.'}
+    ],
+    testimonial:{
+      text:'نحن في تك إبتكار نؤمن بأن التدريب هو المفتاح لبناء جيل تقني قادر على المنافسة. FBA Futur By Ai مشروع يستحق كل الدعم.',
+      author:'إدارة الشركة', position:'شركة تك إبتكار'
+    },
+    gallery:[
+      {i:'fa-graduation-cap', c1:'#fbbf24', c2:'#d97706', l:'الورش التدريبية'},
+      {i:'fa-laptop-code', c1:'#00d9ff', c2:'#0891b2', l:'التدريبات التقنية'},
+      {i:'fa-users', c1:'#ec4899', c2:'#be185d', l:'المتدربون'},
+      {i:'fa-certificate', c1:'#8b5cf6', c2:'#6a47e8', l:'الشهادات'},
+      {i:'fa-trophy', c1:'#10b981', c2:'#059669', l:'الإنجازات'},
+      {i:'fa-handshake', c1:'#f59e0b', c2:'#d97706', l:'الشراكة'}
+    ],
+    social:{},
+    specialBadge:'شريك تقني رسمي'
+  },
+  futureEdu: {
+    id:'futureEdu', tier:'gold', tierLevel:'gold', tierLabel:'ذهبية',
+    name:'أكاديمية المستقبل للتدريب',
+    nameEn:'FUTURE ACADEMY',
+    role:'راعٍ ذهبي · شريك تدريبي',
+    logo:null,
+    gradient:'linear-gradient(135deg,#fde68a,#fbbf24,#d97706)',
+    rgb:'251,191,36',
+    subtitle:'أكاديمية تدريبية · داعم المهارات الرقمية',
+    verified:true,
+    stats:[
+      {v:'2025', l:'بداية الشراكة'},
+      {v:'15+', l:'دورة سنوياً'},
+      {v:'300+', l:'متدرب'}
+    ],
+    about:[
+      'أكاديمية المستقبل للتدريب هي شريك تدريبي ذهبي لـ FBA Futur By Ai. أكاديمية متخصصة في تقديم الدورات التدريبية في المهارات الرقمية.',
+      'توفّر الأكاديمية <strong>15+ دورة سنوياً مجانية</strong> لمتطوعي المشروع في المهارات الرقمية والتسويق والتطوير الشخصي.',
+      'كما تمنح <strong>شهادات معتمدة</strong> لكل من يكمل الدورات، وتدعم المشروع في تطوير المناهج التدريبية.'
+    ],
+    contributions:[
+      {i:'fa-graduation-cap', c:'#fbbf24', c2:'#d97706', t:'15+ دورة سنوياً', d:'مجاناً للمتطوعين'},
+      {i:'fa-certificate', c:'#00d9ff', c2:'#0891b2', t:'شهادات معتمدة', d:'لكل خريج'},
+      {i:'fa-book-open', c:'#ec4899', c2:'#be185d', t:'مناهج تدريبية', d:'مطورة خصيصاً'},
+      {i:'fa-chalkboard-user', c:'#8b5cf6', c2:'#6a47e8', t:'مدربون معتمدون', d:'خبراء في مجالاتهم'},
+      {i:'fa-users', c:'#10b981', c2:'#059669', t:'300+ متدرب', d:'سنوياً'},
+      {i:'fa-headset', c:'#f59e0b', c2:'#d97706', t:'دعم ما بعد التدريب', d:'مستمر'}
+    ],
+    impact:[
+      {v:'15+', l:'دورة سنوياً'},
+      {v:'300+', l:'متدرب'},
+      {v:'100%', l:'مجاني'},
+      {v:'100%', l:'معتمد'}
+    ],
+    timeline:[
+      {d:'يونيو 2025', t:'انضمام الشراكة', x:'انضمت أكاديمية المستقبل كشريك تدريبي ذهبي.'},
+      {d:'2025', t:'أول دورة تدريبية', x:'تقديم أول دورة تدريبية لـ 40 متطوع.'},
+      {d:'2025 - 2026', t:'التوسع التدريبي', x:'15+ دورة سنوياً في مختلف المجالات.'},
+      {d:'2026', t:'مشاريع تعليمية', x:'تطوير مناهج تدريبية مشتركة.'}
+    ],
+    futurePlans:[
+      {d:'2026 Q1', t:'منصة تعلم رقمية', x:'إطلاق منصة تعلم رقمية بالشراكة مع المشروع.'},
+      {d:'2026 Q2', t:'شهادات دولية', x:'تقديم شهادات معتمدة دولياً للمتدربين.'},
+      {d:'2026 Q3', t:'محتوى تدريبي عربي', x:'إنتاج محتوى تدريبي عربي عالي الجودة.'}
+    ],
+    testimonial:{
+      text:'نحن في أكاديمية المستقبل نؤمن بأن التعليم المستمر هو الأساس لبناء جيل ناجح. FBA Futur By Ai يقدم فرصة حقيقية لتطبيق هذه الرؤية.',
+      author:'إدارة الأكاديمية', position:'أكاديمية المستقبل للتدريب'
+    },
+    gallery:[
+      {i:'fa-graduation-cap', c1:'#fbbf24', c2:'#d97706', l:'الدورات'},
+      {i:'fa-certificate', c1:'#00d9ff', c2:'#0891b2', l:'الشهادات'},
+      {i:'fa-book-open', c1:'#ec4899', c2:'#be185d', l:'المناهج'},
+      {i:'fa-users', c1:'#8b5cf6', c2:'#6a47e8', l:'المتدربون'},
+      {i:'fa-trophy', c1:'#10b981', c2:'#059669', l:'الإنجازات'},
+      {i:'fa-star', c1:'#f59e0b', c2:'#d97706', l:'التكريمات'}
+    ],
+    social:{},
+    specialBadge:'شريك تدريبي رسمي'
+  },
+  smartSolutions: {
+    id:'smartSolutions', tier:'rose', tierLevel:'bronze', tierLabel:'برونزية',
+    name:'سمارت سوليوشنز',
+    nameEn:'SMART SOLUTIONS',
+    role:'راعٍ برونزي · شريك حلول رقمية',
+    logo:null,
+    gradient:'linear-gradient(135deg,#fbcfe8,#f472b6,#b76e79,#fbbf24)',
+    rgb:'244,114,182',
+    subtitle:'شريك حلول رقمية · داعم مشروعات الشباب',
+    verified:true,
+    stats:[
+      {v:'2025', l:'بداية الشراكة'},
+      {v:'5+', l:'مشروعات مدعومة'},
+      {v:'200+', l:'مستفيد'}
+    ],
+    about:[
+      'سمارت سوليوشنز هي شريك حلول رقمية لـ FBA Futur By Ai. شركة متخصصة في الحلول الرقمية المبتكرة.',
+      'تدعم الشركة <strong>مشروعات الشباب</strong> في مجالات التحول الرقمي، وتوفّر <strong>حلولاً تقنية مجانية</strong> لبعض مشروعات المبادرة.',
+      'كما توفّر <strong>خصومات حصرية</strong> لمتطوعي المشروع على منتجاتها وخدماتها الرقمية.'
+    ],
+    contributions:[
+      {i:'fa-tools', c:'#f472b6', c2:'#b76e79', t:'حلول رقمية', d:'مجانية للمشروع'},
+      {i:'fa-ticket', c:'#fbbf24', c2:'#d97706', t:'خصومات للمتطوعين', d:'حصرية'},
+      {i:'fa-laptop-code', c:'#00d9ff', c2:'#0891b2', t:'دعم مشروعات', d:'رقمية مبتكرة'},
+      {i:'fa-headset', c:'#8b5cf6', c2:'#6a47e8', t:'دعم تقني', d:'للفعاليات'},
+      {i:'fa-network-wired', c:'#10b981', c2:'#059669', t:'شبكة تقنية', d:'واسعة'},
+      {i:'fa-star', c:'#ec4899', c2:'#be185d', t:'دعم معنوي', d:'مستمر'}
+    ],
+    impact:[
+      {v:'5+', l:'مشروعات مدعومة'},
+      {v:'200+', l:'مستفيد'},
+      {v:'100%', l:'مجاني'},
+      {v:'100%', l:'جودة عالية'}
+    ],
+    timeline:[
+      {d:'سبتمبر 2025', t:'انضمام الشراكة', x:'انضمت سمارت سوليوشنز كراعٍ برونزي.'},
+      {d:'2025', t:'أول مشروع مدعوم', x:'دعم أول مشروع رقمي لمتطوعي المبادرة.'},
+      {d:'2026', t:'توسع الشراكة', x:'توسيع الدعم ليشمل المزيد من المشروعات.'}
+    ],
+    testimonial:{
+      text:'نحن في سمارت سوليوشنز نؤمن بأن الحلول الرقمية هي مفتاح المستقبل. FBA Futur By Ai مشروع يستحق دعمنا الكامل.',
+      author:'إدارة الشركة', position:'سمارت سوليوشنز'
+    },
+    gallery:[
+      {i:'fa-tools', c1:'#f472b6', c2:'#b76e79', l:'الحلول الرقمية'},
+      {i:'fa-laptop-code', c1:'#fbbf24', c2:'#d97706', l:'المشروعات'},
+      {i:'fa-ticket', c1:'#00d9ff', c2:'#0891b2', l:'الخصومات'},
+      {i:'fa-users', c1:'#8b5cf6', c2:'#6a47e8', l:'المستفيدون'},
+      {i:'fa-star', c1:'#10b981', c2:'#059669', l:'الإنجازات'},
+      {i:'fa-handshake', c1:'#ec4899', c2:'#be185d', l:'الشراكة'}
+    ],
+    social:{},
+    specialBadge:'شريك حلول رقمية'
+  },
+  greenEnergy: {
+    id:'greenEnergy', tier:'rose', tierLevel:'bronze', tierLabel:'برونزية',
+    name:'جرين إنيرجي مصر',
+    nameEn:'GREEN ENERGY EGYPT',
+    role:'راعٍ برونزي · شريك الاستدامة',
+    logo:null,
+    gradient:'linear-gradient(135deg,#fbcfe8,#f472b6,#b76e79,#fbbf24)',
+    rgb:'244,114,182',
+    subtitle:'شريك الاستدامة · داعم المبادرات البيئية',
+    verified:true,
+    stats:[
+      {v:'2025', l:'بداية الشراكة'},
+      {v:'3+', l:'مبادرات خضراء'},
+      {v:'150+', l:'مستفيد'}
+    ],
+    about:[
+      'جرين إنيرجي مصر هي شريك الاستدامة لـ FBA Futur By Ai. شركة رائدة في مجال الطاقة المتجددة.',
+      'تدعم الشركة <strong>المبادرات الشبابية الصديقة للبيئة</strong>، وتوفّر <strong>أماكن ومساحات</strong> لبعض الفعاليات البيئية.',
+      'كما تدعم الشركة <strong>توعية الشباب</strong> بأهمية الاستدامة والطاقة المتجددة، وتشارك في الفعاليات المعنية بالبيئة.'
+    ],
+    contributions:[
+      {i:'fa-leaf', c:'#10b981', c2:'#059669', t:'دعم المبادرات الخضراء', d:'الصديقة للبيئة'},
+      {i:'fa-solar-panel', c:'#fbbf24', c2:'#d97706', t:'توعية بيئية', d:'للشباب'},
+      {i:'fa-building', c:'#f472b6', c2:'#b76e79', t:'أماكن للفعاليات', d:'البيئية'},
+      {i:'fa-handshake', c:'#00d9ff', c2:'#0891b2', t:'شراكات بيئية', d:'مع المبادرات'},
+      {i:'fa-star', c:'#8b5cf6', c2:'#6a47e8', t:'دعم معنوي', d:'مستمر'},
+      {i:'fa-globe', c:'#ec4899', c2:'#be185d', t:'دعم الاستدامة', d:'البيئية'}
+    ],
+    impact:[
+      {v:'3+', l:'مبادرات خضراء'},
+      {v:'150+', l:'مستفيد'},
+      {v:'100%', l:'دعم مستمر'},
+      {v:'100%', l:'بيئي'}
+    ],
+    timeline:[
+      {d:'أكتوبر 2025', t:'انضمام الشراكة', x:'انضمت جرين إنيرجي كراعٍ برونزي.'},
+      {d:'2025', t:'أول مبادرة بيئية', x:'دعم أول مبادرة شبابية صديقة للبيئة.'},
+      {d:'2026', t:'توسع الدعم', x:'توسيع دعم المبادرات البيئية الشبابية.'}
+    ],
+    testimonial:{
+      text:'نحن في جرين إنيرجي نؤمن بأن الاستدامة هي مسؤولية جماعية. FBA Futur By Ai يعطينا فرصة حقيقية لدعم جيل واعٍ بيئياً.',
+      author:'إدارة الشركة', position:'جرين إنيرجي مصر'
+    },
+    gallery:[
+      {i:'fa-leaf', c1:'#10b981', c2:'#059669', l:'الاستدامة'},
+      {i:'fa-solar-panel', c1:'#fbbf24', c2:'#d97706', l:'الطاقة المتجددة'},
+      {i:'fa-globe', c1:'#f472b6', c2:'#b76e79', l:'البيئة'},
+      {i:'fa-users', c1:'#00d9ff', c2:'#0891b2', l:'المستفيدون'},
+      {i:'fa-star', c1:'#8b5cf6', c2:'#6a47e8', l:'الإنجازات'},
+      {i:'fa-handshake', c1:'#ec4899', c2:'#be185d', l:'الشراكة'}
+    ],
+    social:{},
+    specialBadge:'شريك الاستدامة الرسمي'
+  }
+};
+
+/* =========================================================
+   RENDER TIERS
+   ========================================================= */
+(function renderTiers(){
+  const tabsEl = document.getElementById('tierTabs');
+  const panelsEl = document.getElementById('tierPanels');
+  const keys = ['platinum','gold','rose'];
+
+  keys.forEach((key,i)=>{
+    const t = TIERS[key];
+    const tab = document.createElement('button');
+    tab.className = 'tier-tab' + (i===0?' active':'');
+    tab.dataset.tier = key;
+    tab.style.setProperty('--tab-color', t.color);
+    tab.style.setProperty('--tab-gradient', t.gradient);
+    tab.innerHTML = `<span class="tab-dot"></span> ${t.name}`;
+    tab.addEventListener('click', ()=>{
+      tabsEl.querySelectorAll('.tier-tab').forEach(x=>x.classList.remove('active'));
+      tab.classList.add('active');
+      panelsEl.querySelectorAll('.tier-panel').forEach(p=>p.classList.toggle('active', p.dataset.tier===key));
+    });
+    tabsEl.appendChild(tab);
+
+    const panel = document.createElement('div');
+    panel.className = 'tier-panel' + (i===0?' active':'');
+    panel.dataset.tier = key;
+    panel.style.setProperty('--tier-rgb', t.rgb);
+    panel.style.setProperty('--tier-color', t.color);
+    panel.style.setProperty('--tier-gradient', t.gradient);
+
+    panel.innerHTML = `
+      <div class="tier-hero">
+        <div class="tier-hero-inner">
+          <div class="tier-hero-icon"><i class="fas ${t.icon}"></i></div>
+          <div class="tier-hero-text">
+            <span class="badge">${t.badge}</span>
+            <h2>الباقة <span class="grad">${t.name}</span> — ${t.nameEn}</h2>
+            <p>${t.desc}</p>
+          </div>
+          <div class="tier-hero-meta">
+            <span class="mm">${t.meta.mm}</span>
+            <span class="lb">${t.meta.lb}</span>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-grid">
+        ${t.benefits.map(b=>`
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas ${b.i}"></i></div>
+            <h4>${b.t}</h4>
+            <p>${b.d}</p>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    panelsEl.appendChild(panel);
+  });
+})();
+
+/* =========================================================
+   RENDER SPONSORS
+   ========================================================= */
+(function renderSponsors(){
+  const filterEl = document.getElementById('sponsorsFilter');
+  const gridEl = document.getElementById('sponsorsGrid');
+
+  const filters = [
+    {key:'all', label:'الكل', color:'#00d9ff', color2:'#8b5cf6'},
+    {key:'strategic', label:'الاستراتيجيون', color:'#fbbf24', color2:'#ec4899'},
+    {key:'platinum', label:'البلاتينية', color:'#cbd5e1', color2:'#94a3b8'},
+    {key:'gold', label:'الذهبية', color:'#fbbf24', color2:'#d97706'},
+    {key:'rose', label:'البرونزية', color:'#f472b6', color2:'#b76e79'}
+  ];
+
+  filterEl.innerHTML = filters.map((f,i)=>`
+    <button class="filter-chip ${i===0?'active':''}" data-filter="${f.key}" style="--fc-color:${f.color};--fc-color2:${f.color2}">
+      <span class="dot"></span> ${f.label}
+    </button>
+  `).join('');
+
+  let currentFilter = 'all';
+
+  function getLogoHTML(s){
+    if (s.logo) {
+      return `<img src="${s.logo}" alt="${s.name}" onerror="logoFallback(this)">`;
+    }
+    return `<i class="fas fa-building" style="font-size:2rem;color:#fbbf24;"></i>`;
+  }
+
+  function renderGrid(){
+    const allSponsors = Object.values(SPONSORS);
+    const filtered = currentFilter === 'all'
+      ? allSponsors
+      : allSponsors.filter(s => s.tier === currentFilter);
+
+    if(filtered.length === 0){
+      gridEl.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);">
+        <i class="fas fa-building" style="font-size:3rem;color:rgba(251,191,36,.3);margin-bottom:16px;display:block;"></i>
+        <h4 style="color:#fff;font-size:1.05rem;margin:0 0 8px;">لا يوجد رعاة في هذه الفئة حالياً</h4>
+        <p style="font-size:.85rem;margin:0;">كن أول راعٍ في هذه الفئة!</p>
+      </div>`;
+      return;
+    }
+
+    gridEl.innerHTML = filtered.map(s=>{
+      const tierColor = s.tier === 'strategic' ? '#fbbf24' : s.tier === 'platinum' ? '#cbd5e1' : s.tier === 'gold' ? '#fbbf24' : '#f472b6';
+
+      return `
+        <article class="sponsor-card" style="--sc-color:${tierColor};--sc-rgb:${s.rgb};--sc-gradient:${s.gradient}" onclick="openPortfolio('${s.id}')">
+          <div class="sc-cover">
+            ${s.verified ? `<div class="sc-verified"><i class="fas fa-check-circle"></i> موثّق</div>` : ''}
+            <div class="sc-tier-badge">${s.tierLabel}</div>
+            <div class="sc-logo-wrap">${getLogoHTML(s)}</div>
+          </div>
+          <div class="sc-body">
+            <h3 class="sc-name">${s.name}</h3>
+            <p class="sc-name-en">${s.nameEn}</p>
+            <span class="sc-role">${s.role}</span>
+            <p class="sc-desc">${s.about[0].replace(/<[^>]*>/g,'')}</p>
+            <div class="sc-stats">
+              ${s.stats.map(st=>`
+                <div class="sc-stat"><span class="v">${st.v}</span><span class="l">${st.l}</span></div>
+              `).join('')}
+            </div>
+            <button class="sc-view-btn"><i class="fas fa-briefcase"></i> عرض البورتفوليو الكامل</button>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  filterEl.querySelectorAll('.filter-chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      filterEl.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      currentFilter = chip.dataset.filter;
+      renderGrid();
+    });
+  });
+
+  renderGrid();
+})();
+
+/* =========================================================
+   PORTFOLIO MODAL - TIER-BASED
+   ========================================================= */
+function buildPanelHTML(s, key){
+  switch(key){
+    case 'about':
+      return `
+        ${s.specialBadge ? `<span class="pf-special-badge"><i class="fas fa-star"></i> ${s.specialBadge}</span>` : ''}
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-fingerprint"></i> نبذة عن الشراكة</h4>
+          ${s.about.map(p=>`<p>${p}</p>`).join('')}
+        </div>
+        ${s.videoHighlight ? `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-video"></i> الفيديو الوثائقي</h4>
+          <div class="video-highlight">
+            <div class="video-highlight-icon"><i class="fas fa-play"></i></div>
+            <div class="video-highlight-info">
+              <h5>${s.videoHighlight.title}</h5>
+              <p>${s.videoHighlight.desc}</p>
+              <span class="duration"><i class="fas fa-clock"></i> ${s.videoHighlight.duration}</span>
+            </div>
+          </div>
+        </div>` : ''}
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-quote-right"></i> شهادة المشروع</h4>
+          <div class="pf-testimonial">
+            <p>"${s.testimonial.text}"</p>
+            <div class="author">
+              <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+              <div class="author-info">
+                <h6>${s.testimonial.author}</h6>
+                <span>${s.testimonial.position}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+    case 'privileges':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-crown"></i> الامتيازات الحصرية للشريك</h4>
+          <p style="margin-bottom:18px">هذه امتيازات حصرية لا تتوفر إلا لهذا المستوى من الشراكة — وهي جزء من قوة البورتفوليو.</p>
+          <div class="privileges-grid">
+            ${(s.exclusivePrivileges||[]).map(p=>`
+              <div class="privilege-card">
+                <div class="privilege-icon"><i class="fas ${p.i}"></i></div>
+                <h5>${p.t}</h5>
+                <p>${p.d}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'contrib':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-hand-holding-heart"></i> مساهمات الشريك بالتفصيل</h4>
+          <div class="contrib-breakdown">
+            ${s.contributions.map(c=>`
+              <div class="contrib-item">
+                <div class="contrib-item-icon" style="background:linear-gradient(135deg,${c.c},${c.c2});color:#1a0b2e">
+                  <i class="fas ${c.i}"></i>
+                </div>
+                <div class="contrib-item-info">
+                  <h5>${c.t}</h5>
+                  <p>${c.d}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'impact':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-chart-line"></i> الأثر الحقيقي بالأرقام</h4>
+          <div class="impact-stats">
+            ${s.impact.map(im=>`
+              <div class="impact-stat">
+                <span class="v">${im.v}</span>
+                <span class="l">${im.l}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-lightbulb"></i> لماذا هذا الأثر مهم؟</h4>
+          <p>هذه الأرقام لا تعكس فقط حجم المساهمة، بل تعكس <strong>الأثر الحقيقي</strong> على حياة آلاف الشباب المصري. كل رقم يمثل فرصة تدريب، أو مكان في فعالية، أو مشروع مدعوم، أو شاب اكتسب مهارة جديدة.</p>
+          <p>نؤمن بأن الشراكة الحقيقية تُقاس بالأثر وليس بالمبلغ فقط. ولهذا نحرص على توثيق كل مساهمة وتوضيح أثرها بشكل كامل.</p>
+        </div>
+      `;
+
+    case 'journey':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-timeline"></i> مسيرة الشراكة</h4>
+          <div class="pf-timeline">
+            ${s.timeline.map(t=>`
+              <div class="pf-timeline-item">
+                <div class="pf-timeline-dot"></div>
+                <div class="pf-timeline-card">
+                  <span class="pf-timeline-date">${t.d}</span>
+                  <h5>${t.t}</h5>
+                  <p>${t.x}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'partners':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-handshake"></i> الشركاء المتعاونون مع الشريك</h4>
+          <p style="margin-bottom:18px">شبكة الشركاء والجهات المتعاونة مع هذا الشريك في إطار المشروع.</p>
+          <div class="partners-grid">
+            ${(s.partners||[]).map(p=>`
+              <div class="partner-card">
+                <div class="partner-logo"><i class="fas ${p.i}"></i></div>
+                <div class="partner-info">
+                  <h5>${p.t}</h5>
+                  <p>${p.d}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'kpis':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-gauge-high"></i> مؤشرات الأداء الرئيسية (KPIs)</h4>
+          <p style="margin-bottom:18px">مؤشرات موضوعية نقيس بها نجاح الشراكة مع هذا الشريك.</p>
+          <div class="kpi-grid">
+            ${(s.kpis||[]).map(k=>`
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-label">${k.l}</span>
+                  <span class="kpi-value">${k.v}</span>
+                </div>
+                <div class="kpi-bar"><div class="kpi-bar-fill" style="width:${k.p}%"></div></div>
+                <p class="kpi-desc">${k.d}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'future':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-rocket"></i> خطط المستقبل مع الشريك</h4>
+          <p style="margin-bottom:18px">خطط مستقبلية طموحة تم الاتفاق عليها بين الشريك والمشروع.</p>
+          <div class="future-grid">
+            ${(s.futurePlans||[]).map(f=>`
+              <div class="future-card">
+                <span class="future-date">${f.d}</span>
+                <h5>${f.t}</h5>
+                <p>${f.x}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'recognition':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-trophy"></i> التكريمات والجوائز</h4>
+          <p style="margin-bottom:18px">الجوائز والتكريمات التي حصل عليها الشريك نتيجة شراكته مع المشروع.</p>
+          <div class="recognition-grid">
+            ${(s.recognition||[]).map(r=>`
+              <div class="recognition-card">
+                <div class="recognition-icon"><i class="fas ${r.i}"></i></div>
+                <h5>${r.t}</h5>
+                <p>${r.d}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    case 'gallery':
+      return `
+        <div class="pf-block">
+          <h4 class="pf-block-title"><i class="fas fa-images"></i> معرض اللحظات والإنجازات</h4>
+          <div class="pf-gallery">
+            ${s.gallery.map(g=>`
+              <div class="pf-gallery-item" style="--pgi-gradient:linear-gradient(135deg,${g.c1},${g.c2})">
+                <i class="fas ${g.i} pf-gallery-icon"></i>
+                <div class="pf-gallery-label">${g.l}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+    default:
+      return '';
+  }
+}
+
+function openPortfolio(id){
+  const s = SPONSORS[id];
+  if(!s) return;
+
+  const modal = document.getElementById('portfolioModal');
+  const box = document.getElementById('portfolioBox');
+
+  const cfg = TIER_CONFIG[s.tierLevel] || TIER_CONFIG.bronze;
+
+  const logoHtml = s.logo
+    ? `<img src="${s.logo}" alt="${s.name}" data-big="true" onerror="logoFallback(this)">`
+    : `<i class="fas fa-building" style="font-size:2.5rem;color:#fbbf24;"></i>`;
+
+  box.className = 'portfolio-box tier-' + s.tierLevel;
+
+  box.innerHTML = `
+    <button class="portfolio-close" onclick="closePortfolio()"><i class="fas fa-times"></i></button>
+
+    <div class="pf-cover ${s.tierLevel==='strategic'?'tier-strategic-cover':''}" style="--pf-gradient:${s.gradient}">
+      <div class="pf-tier-level-badge">
+        <i class="fas ${cfg.badgeIcon}"></i>
+        <span>${cfg.badgeText}</span>
+      </div>
+      <div class="pf-cover-inner">
+        ${s.verified ? `<span class="pf-tier"><i class="fas fa-check-circle" style="color:#10b981;margin-left:6px;"></i> شريك موثّق رسمياً · ${s.tierLabel}</span>` : `<span class="pf-tier">${s.tierLabel}</span>`}
+        <h2>${s.name}</h2>
+        <p class="pf-role">${s.role}</p>
+      </div>
+    </div>
+
+    <div class="pf-header">
+      <div class="pf-logo-big">${logoHtml}</div>
+      <div class="pf-header-info">
+        <p class="pf-name-en">${s.nameEn}</p>
+        <p class="pf-subtitle">${s.subtitle}</p>
+      </div>
+    </div>
+
+    <div class="pf-tabs">
+      ${cfg.tabs.map((tb,i)=>`
+        <button class="pf-tab ${i===0?'active':''}" data-pf-panel="${tb.k}">
+          <i class="fas ${tb.i}"></i> <span>${tb.t}</span>
+        </button>
+      `).join('')}
+    </div>
+
+    <div class="pf-body">
+      ${cfg.tabs.map((tb,i)=>`
+        <div class="pf-panel ${i===0?'active':''}" data-pf-panel="${tb.k}">
+          ${buildPanelHTML(s, tb.k)}
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  box.querySelectorAll('.pf-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      box.querySelectorAll('.pf-tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      box.querySelectorAll('.pf-panel').forEach(p=>{
+        p.classList.toggle('active', p.dataset.pfPanel === tab.dataset.pfPanel);
+      });
+    });
+  });
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  /* KPI bars animation */
+  setTimeout(()=>{
+    box.querySelectorAll('.kpi-bar-fill').forEach(bar=>{
+      const w = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(()=>{ bar.style.width = w; }, 100);
+    });
+  }, 200);
+}
+
+function closePortfolio(){
+  const modal = document.getElementById('portfolioModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('portfolioModal').addEventListener('click', (e)=>{
+  if(e.target.id === 'portfolioModal') closePortfolio();
+});
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closePortfolio();
+});
+
+/* =========================================================
+   SPONSOR FORM
+   ========================================================= */
+window.handleSponsorSubmit = function(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
+  const originalHTML = btn.innerHTML;
+
+  const selectedPackage = form.querySelector('input[name="package"]:checked');
+  const selectedContribs = form.querySelectorAll('input[name="contribution"]:checked');
+
+  if(!selectedPackage){
+    alert('الرجاء اختيار باقة الرعاية المناسبة أولاً.');
+    return;
+  }
+  if(selectedContribs.length === 0){
+    alert('الرجاء اختيار نوع مساهمة واحد على الأقل.');
+    return;
+  }
+
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>جاري إرسال طلبك...</span>';
+  btn.disabled = true;
+
+  setTimeout(()=>{
+    btn.innerHTML = '<i class="fas fa-check"></i> <span>تم استلام طلبك بنجاح!</span>';
+    btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+
+    setTimeout(()=>{
+      const pkgName = TIERS[selectedPackage.value].name;
+      alert(`✅ شكراً لك!\n\nتم استلام طلب الرعاية لباقة "${pkgName}" بنجاح.\n\nسيتم التواصل معك من قسم العلاقات العامة خلال 48 ساعة.\n\nشكراً لثقتك في FBA Futur By Ai!`);
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+      btn.disabled = false;
+      form.reset();
+    }, 1500);
+  }, 1800);
+};
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+(function(){
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item=>{
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      items.forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+})();
+
+/* =========================================================
+   WOW.js + LOADER + BG + NAVBAR + COUNTERS + ALPHA
+   ========================================================= */
+(function(){
+  if(typeof WOW !== 'undefined') new WOW({boxClass:'wow',animateClass:'animate__animated',offset:60,mobile:true,live:true}).init();
+})();
+
+(function(){
+  const loader = document.getElementById('loaderScreen');
+  const bar = document.getElementById('loaderBarFill');
+  const pct = document.getElementById('loaderPercent');
+  let p = 0;
+  const i = setInterval(()=>{
+    p += Math.random()*12 + 4;
+    if(p >= 100) p = 100;
+    bar.style.width = p + '%';
+    pct.textContent = Math.floor(p) + '%';
+    if(p >= 100){
+      clearInterval(i);
+      setTimeout(()=>{loader.classList.add('hide');setTimeout(()=>loader.remove(),900);},400);
+    }
+  }, 180);
+})();
+
+(function(){
+  const mesh = document.getElementById('bgMesh');
+  let tx=50, ty=50, cx=50, cy=50;
+  document.addEventListener('mousemove', e=>{tx=(e.clientX/window.innerWidth)*100;ty=(e.clientY/window.innerHeight)*100;});
+  document.addEventListener('touchmove', e=>{if(e.touches[0]){tx=(e.touches[0].clientX/window.innerWidth)*100;ty=(e.touches[0].clientY/window.innerHeight)*100;}},{passive:true});
+  function animate(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;mesh.style.setProperty('--mx',cx+'%');mesh.style.setProperty('--my',cy+'%');requestAnimationFrame(animate);}
+  animate();
+})();
+
+(function(){
+  const nb = document.getElementById('navbar');
+  window.addEventListener('scroll', ()=>{ if(window.scrollY>30) nb.classList.add('scrolled'); else nb.classList.remove('scrolled'); }, {passive:true});
+})();
+
+(function(){
+  const btn = document.getElementById('menuToggleBtn');
+  const menu = document.getElementById('sidebarMenu');
+  const overlay = document.getElementById('sidebarOverlay');
+  const closeBtn = document.getElementById('sidebarCloseBtn');
+  function open(){menu.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){menu.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
+  btn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', close);
+  document.addEventListener('keydown', e=>{if(e.key==='Escape')close();});
+})();
+
+function scrollToId(id){ const el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
+
+(function(){
+  const nodes = document.querySelectorAll('.counter, .val[data-count]');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target') || el.getAttribute('data-count'), 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        let cur = 0;
+        const step = target / 70;
+        const tick = ()=>{
+          cur += step;
+          if(cur >= target){ el.textContent = target.toLocaleString('en-US') + suffix; return; }
+          el.textContent = Math.floor(cur).toLocaleString('en-US') + suffix;
+          requestAnimationFrame(tick);
+        };
+        tick();
+        io.unobserve(el);
+      }
+    });
+  }, {threshold: 0.3});
+  nodes.forEach(n=> io.observe(n));
+})();
+
+(function(){
+  const alpha = document.getElementById('alphaCharacter');
+  const tooltip = document.getElementById('alphaTooltip');
+  const messages = [
+    'اضغط على أي راعٍ لعرض بورتفوليو كامل مخصص له!',
+    'كل ما ارتفعت باقة الراعي.. كل ما البورتفوليو بتاعه كان أقوى!',
+    'البلاتينية لها بورتفوليو بـ 8 أقسام.. والذهبية 6.. والبرونزية 4!',
+    'الرعاة الاستراتيجيون لهم بورتفوليو بـ 10 أقسام حصرية!',
+    'كل المساهمات المالية تحت مظلة صندوق وزارة الشباب والرياضة!',
+    'اختر الباقة المناسبة: البلاتينية، الذهبية، أو البرونزية!',
+    'كل راعٍ له صفحة بورتفوليو احترافية على المنصة!',
+    'نصمم معك باقة مخصصة حسب نوع المساهمة!'
+  ];
+  setTimeout(()=>{alpha.classList.add('active');setTimeout(()=>alpha.classList.remove('active'),7000);}, 1600);
+  alpha.addEventListener('click', ()=>{
+    tooltip.textContent = messages[Math.floor(Math.random()*messages.length)];
+    alpha.classList.add('active');
+    clearTimeout(alpha._t);
+    alpha._t = setTimeout(()=>alpha.classList.remove('active'), 5500);
+  });
+})();
+</script>
+
+<script src="./auth-widget.js" defer></script>
+</body>
+</html>
