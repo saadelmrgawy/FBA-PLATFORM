@@ -1374,12 +1374,14 @@ footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(
    INDEXEDDB MANAGER
    ========================================================= */
 const DB_NAME = 'FBA_FuturByAi_DB';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const STORE_USERS = 'users';
+const STORE_META = 'meta';
 
 function openDB(){
   return new Promise((resolve,reject)=>{
     const req = indexedDB.open(DB_NAME, DB_VERSION);
+    let migratedKeys = [];
     req.onupgradeneeded = e => {
       const db = e.target.result;
       if(!db.objectStoreNames.contains(STORE_USERS)){
@@ -1387,9 +1389,59 @@ function openDB(){
         store.createIndex('nationalId','nationalId',{unique:false});
         store.createIndex('email','email',{unique:false});
       }
+      // مخزن البيانات العامة (بروفايل الأدمن + صورته + كلمة المرور + سجل النشاط)
+      if(!db.objectStoreNames.contains(STORE_META)){
+        db.createObjectStore(STORE_META, {keyPath:'key'});
+      }
+      // ترحيل لمرة واحدة: نقل البيانات القديمة من localStorage إلى IndexedDB
+      try{
+        const metaStore = e.target.transaction.objectStore(STORE_META);
+        [['fba_admin_profile',true],['fba_admin_password',false],['fba_admin_activity',true]].forEach(([k,isJson])=>{
+          const raw = localStorage.getItem(k);
+          if(raw !== null){
+            let val = raw;
+            if(isJson){ try{ val = JSON.parse(raw); }catch(_){ return; } }
+            metaStore.put({key:k, value:val});
+            migratedKeys.push(k);
+          }
+        });
+      }catch(_){}
     };
-    req.onsuccess = () => resolve(req.result);
+    req.onsuccess = () => {
+      migratedKeys.forEach(k=>{ try{ localStorage.removeItem(k); }catch(_){} });
+      resolve(req.result);
+    };
     req.onerror = () => reject(req.error);
+  });
+}
+/* ===== مخزن البيانات العامة (key/value) داخل IndexedDB ===== */
+async function dbMetaGet(key, fallback){
+  try{
+    const db = await openDB();
+    return await new Promise(res=>{
+      const r = db.transaction(STORE_META,'readonly').objectStore(STORE_META).get(key);
+      r.onsuccess = () => res(r.result ? r.result.value : fallback);
+      r.onerror = () => res(fallback);
+    });
+  }catch(e){ return fallback; }
+}
+async function dbMetaSet(key, value){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_META,'readwrite');
+    tx.objectStore(STORE_META).put({key, value});
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error);
+  });
+}
+async function dbMetaDelete(key){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_META,'readwrite');
+    tx.objectStore(STORE_META).delete(key);
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
   });
 }
 async function dbAddUser(user){
@@ -1805,11 +1857,11 @@ const POSITIONS_BY_UNIT = {
 const UNIT_CODES = {top:'TOP',executive:'EXC',hr:'HRS',or:'ORS',pr:'PRS',sm:'SMS',ait:'AIT'};
 const GOV_CODES = {'القاهرة':'CAI','الجيزة':'GIZ','الإسكندرية':'ALX','الدقهلية':'DKH','الشرقية':'SHR','القليوبية':'QLY','كفر الشيخ':'KFS','الغربية':'GHR','المنوفية':'MNF','البحيرة':'BHR','الإسماعيلية':'ISM','بورسعيد':'PSD','السويس':'SUZ','شمال سيناء':'NSI','جنوب سيناء':'SSI','الفيوم':'FYM','بني سويف':'BSF','المنيا':'MNY','أسيوط':'ASY','سوهاج':'SHG','قنا':'QNA','الأقصر':'LXR','أسوان':'ASW','البحر الأحمر':'RSE','الوادي الجديد':'WAD','مطروح':'MTR','دمياط':'DMT'};
 
-// ===== ADMIN (يتم تحديثه من localStorage) =====
-function getAdminData(){
+// ===== ADMIN (يتم تحديثه من IndexedDB) =====
+async function getAdminData(){
   try{
-    const saved = JSON.parse(localStorage.getItem('fba_admin_profile')||'{}');
-    const savedPass = localStorage.getItem('fba_admin_password');
+    const saved = (await dbMetaGet('fba_admin_profile', {})) || {};
+    const savedPass = await dbMetaGet('fba_admin_password', null);
     return {
       email: saved.email || 'admin@fba.com',
       password: savedPass || '23522004',
@@ -2543,7 +2595,7 @@ async function handleLogin(e){
   try{
     await new Promise(r=>setTimeout(r,700));
     const idl=id.toLowerCase();
-    const ADMIN = getAdminData();
+    const ADMIN = await getAdminData();
     let user=null,isAdmin=false;
 
     if(idl===ADMIN.email.toLowerCase() && pwd===ADMIN.password){
@@ -2666,7 +2718,7 @@ function closeForgotModal(){
 async function verifyForgotIdentifier(){
   const id=document.getElementById('forgotIdentifier').value.trim();
   if(!id){showToast('يرجى إدخال الرقم.','error');return;}
-  const ADMIN = getAdminData();
+  const ADMIN = await getAdminData();
   const idl=id.toLowerCase();
 
   let found=null;
