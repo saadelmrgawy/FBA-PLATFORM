@@ -15,12 +15,14 @@
 
   /* ---------- إعدادات قاعدة البيانات (نفس login.html) ---------- */
   var DB_NAME = 'FBA_FuturByAi_DB';
-  var DB_VERSION = 1;
+  var DB_VERSION = 2;
   var STORE_USERS = 'users';
+  var STORE_META = 'meta';
 
   function openDB(){
     return new Promise(function(resolve, reject){
       var req = indexedDB.open(DB_NAME, DB_VERSION);
+      var migratedKeys = [];
       req.onupgradeneeded = function(e){
         var db = e.target.result;
         if(!db.objectStoreNames.contains(STORE_USERS)){
@@ -28,10 +30,39 @@
           store.createIndex('nationalId','nationalId',{unique:false});
           store.createIndex('email','email',{unique:false});
         }
+        if(!db.objectStoreNames.contains(STORE_META)){
+          db.createObjectStore(STORE_META, {keyPath:'key'});
+        }
+        // ترحيل لمرة واحدة من localStorage إلى IndexedDB
+        try{
+          var metaStore = e.target.transaction.objectStore(STORE_META);
+          [['fba_admin_profile',true],['fba_admin_password',false],['fba_admin_activity',true]].forEach(function(pair){
+            var raw = localStorage.getItem(pair[0]);
+            if(raw !== null){
+              var val = raw;
+              if(pair[1]){ try{ val = JSON.parse(raw); }catch(_){ return; } }
+              metaStore.put({key:pair[0], value:val});
+              migratedKeys.push(pair[0]);
+            }
+          });
+        }catch(_){}
       };
-      req.onsuccess = function(){ resolve(req.result); };
+      req.onsuccess = function(){
+        migratedKeys.forEach(function(k){ try{ localStorage.removeItem(k); }catch(_){} });
+        resolve(req.result);
+      };
       req.onerror = function(){ reject(req.error); };
     });
+  }
+
+  function dbMetaGet(key, fallback){
+    return openDB().then(function(db){
+      return new Promise(function(resolve){
+        var r = db.transaction(STORE_META,'readonly').objectStore(STORE_META).get(key);
+        r.onsuccess = function(){ resolve(r.result ? r.result.value : fallback); };
+        r.onerror = function(){ resolve(fallback); };
+      });
+    }).catch(function(){ return fallback; });
   }
 
   function dbGetUserById(id){
@@ -214,13 +245,11 @@
 
     if(session.isAdmin){
       dashUrl = './admin-dashboard.html';
-      // بيانات الأدمن (الاسم/المسمى/الصورة) من أحدث نسخة في fba_admin_profile
-      try{
-        var ap = JSON.parse(localStorage.getItem('fba_admin_profile') || '{}');
-        if(ap.name) session.name = ap.name;
-        if(ap.roleTitle) session.roleTitle = ap.roleTitle;
-        if(ap.photo && ap.photo.dataUrl) photoUrl = ap.photo.dataUrl;
-      }catch(e){}
+      // بيانات الأدمن (الاسم/المسمى/الصورة) من أحدث نسخة في IndexedDB
+      var ap = (await dbMetaGet('fba_admin_profile', {})) || {};
+      if(ap.name) session.name = ap.name;
+      if(ap.roleTitle) session.roleTitle = ap.roleTitle;
+      if(ap.photo && ap.photo.dataUrl) photoUrl = ap.photo.dataUrl;
     } else {
       var liveUser = null;
       try{ liveUser = await dbGetUserById(session.id); }catch(e){ liveUser = null; }
