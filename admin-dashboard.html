@@ -664,6 +664,25 @@ textarea.modal-form-control{resize:vertical;min-height:80px;line-height:1.6;}
             <h4><i class="fas fa-user-pen"></i> تعديل البيانات الأساسية</h4>
             <p>يمكنك تحديث اسمك وبريدك الإلكتروني.</p>
             <div class="modal-form-group">
+              <label class="modal-form-label">الصورة الشخصية</label>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:4px;">
+                <div id="adminPhotoAvatarWrap" style="position:relative;width:64px;height:64px;border-radius:50%;overflow:hidden;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:1.1rem;flex-shrink:0;">
+                  <img id="adminPhotoPreview" src="" alt="صورة المدير" style="width:100%;height:100%;object-fit:cover;display:none;position:absolute;inset:0;">
+                  <span id="adminPhotoInitials">م</span>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <label for="adminPhotoInput" class="modal-btn" style="cursor:pointer;background:rgba(0,217,255,.1);border-color:rgba(0,217,255,.4);color:#7dd3fc;min-width:auto;flex:none;">
+                    <i class="fas fa-camera"></i> رفع صورة
+                  </label>
+                  <input type="file" id="adminPhotoInput" accept="image/*" style="display:none" onchange="handleAdminPhotoUpload(this)">
+                  <button type="button" class="modal-btn" style="background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.4);color:#f87171;min-width:auto;flex:none;" onclick="removeAdminPhoto()">
+                    <i class="fas fa-trash"></i> حذف
+                  </button>
+                </div>
+              </div>
+              <p style="font-size:.7rem;color:#94a3b8;margin:0;">JPG أو PNG - حتى 2MB. هتظهر بدل الحروف في كل صفحات الموقع بعد تسجيل الدخول.</p>
+            </div>
+            <div class="modal-form-group">
               <label class="modal-form-label">الاسم الكامل</label>
               <input type="text" id="adminEditName" class="modal-form-control" placeholder="اسمك الكامل">
             </div>
@@ -923,6 +942,7 @@ async function dbDeleteUser(id){
   document.getElementById('sideAdminName').textContent = adminSession.name || 'المدير';
   document.getElementById('sideAdminAvatar').textContent = initials;
   document.getElementById('profileHeroAvatar').textContent = initials;
+  applyAdminPhoto(profile.photo && profile.photo.dataUrl, initials);
   document.getElementById('profileHeroName').textContent = adminSession.name || '—';
   document.getElementById('profileHeroEmail').textContent = adminSession.email || 'admin@fba.com';
 
@@ -940,6 +960,59 @@ function loadAdminProfile(){
 }
 function saveAdminProfileToLS(data){
   localStorage.setItem(LS_ADMIN_PROFILE, JSON.stringify(data));
+}
+
+/* ---------- صورة المدير (تُحفظ في fba_admin_profile.photo وتظهر في كل صفحات الموقع) ---------- */
+function applyAdminPhoto(dataUrl, initials){
+  const targets = [
+    {el: document.getElementById('sideAdminAvatar')},
+    {el: document.getElementById('profileHeroAvatar')}
+  ];
+  targets.forEach(t=>{
+    if(!t.el) return;
+    if(dataUrl){
+      t.el.innerHTML = '<img src="'+dataUrl+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;">';
+      t.el.style.overflow = 'hidden';
+      t.el.style.padding = '0';
+    } else {
+      t.el.textContent = initials || 'م';
+      t.el.style.overflow = '';
+      t.el.style.padding = '';
+    }
+  });
+  const prev = document.getElementById('adminPhotoPreview');
+  const ini = document.getElementById('adminPhotoInitials');
+  if(prev && ini){
+    if(dataUrl){ prev.src = dataUrl; prev.style.display = 'block'; ini.style.display = 'none'; }
+    else { prev.removeAttribute('src'); prev.style.display = 'none'; ini.style.display = ''; ini.textContent = initials || 'م'; }
+  }
+}
+function handleAdminPhotoUpload(input){
+  const file = input.files && input.files[0];
+  if(!file) return;
+  if(!file.type.startsWith('image/')){ showToast('من فضلك اختر ملف صورة فقط.','error'); input.value=''; return; }
+  if(file.size > 2*1024*1024){ showToast('حجم الصورة لازم يكون أقل من 2MB.','error'); input.value=''; return; }
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try{
+      const profile = loadAdminProfile();
+      profile.photo = { dataUrl: ev.target.result, name: file.name, type: file.type, updatedAt: new Date().toISOString() };
+      saveAdminProfileToLS(profile);
+      applyAdminPhoto(profile.photo.dataUrl, getInitials(adminSession && adminSession.name));
+      showToast('تم حفظ الصورة الشخصية.','success');
+    }catch(err){
+      showToast('تعذر حفظ الصورة (المساحة ممتلئة). جرّب صورة أصغر.','error');
+    }
+    input.value = '';
+  };
+  reader.readAsDataURL(file);
+}
+function removeAdminPhoto(){
+  const profile = loadAdminProfile();
+  delete profile.photo;
+  saveAdminProfileToLS(profile);
+  applyAdminPhoto(null, getInitials(adminSession && adminSession.name));
+  showToast('تم حذف الصورة الشخصية.','success');
 }
 
 function logoutAdmin(){
@@ -1311,6 +1384,12 @@ function navigateTo(view){
 document.querySelectorAll('.sidebar-nav .nav-link').forEach(a=>{
   a.addEventListener('click', ()=>{ if(a.dataset.view) navigateTo(a.dataset.view); });
 });
+
+// فتح القسم المطلوب من الرابط (مثال: admin-dashboard.html#profile من بوب أب الموقع)
+(function openViewFromHash(){
+  const v = (location.hash||'').replace('#','');
+  if(v && VIEW_META[v]) navigateTo(v);
+})();
 
 document.getElementById('sidebarToggle').addEventListener('click', ()=>{
   const sb = document.getElementById('adminSidebar');
@@ -1873,8 +1952,7 @@ async function saveAdminProfile(){
   // Update UI
   const initials = getInitials(name);
   document.getElementById('sideAdminName').textContent = name;
-  document.getElementById('sideAdminAvatar').textContent = initials;
-  document.getElementById('profileHeroAvatar').textContent = initials;
+  applyAdminPhoto(profile.photo && profile.photo.dataUrl, initials);
   document.getElementById('profileHeroName').textContent = name;
   document.getElementById('profileHeroEmail').textContent = email || adminSession.email || '—';
 
