@@ -99,33 +99,38 @@
     return String(name).trim().split(/\s+/)[0];
   }
 
-  /* ---------- الستايل (يُحقن مرة واحدة فقط) ---------- */
+  /* ---------- الستايل (يُحقن مرة واحدة فقط) ----------
+     الزرار في النافبار والزرار في الهيرو بيستخدموا نفس كلاسات الصفحة الأصلية
+     (nav-icon-btn / btn-primary ...) فبياخدوا نفس الحجم والشكل والـ responsive
+     تلقائي. هنا بس بنضيف تفاصيل الأفاتار والبوب أب، بألوان من متغيرات التصميم. */
   function injectStyles(){
     if(document.getElementById('fbaAuthStyles')) return;
     var style = document.createElement('style');
     style.id = 'fbaAuthStyles';
     style.textContent =
       '.fba-user-wrap{position:relative;display:inline-flex;z-index:501;}'+
-      '.fba-user-btn{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#00d9ff,#8b5cf6 55%,#ec4899);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.92rem;font-family:"Cairo",sans-serif;border:2px solid rgba(255,255,255,.35);cursor:pointer;box-shadow:0 8px 22px rgba(139,92,246,.45);transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease;}'+
-      '.fba-user-btn:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 14px 30px rgba(236,72,153,.55);}'+
-      '.fba-user-dropdown{position:absolute;top:calc(100% + 14px);left:0;min-width:250px;background:linear-gradient(180deg,rgba(10,14,39,.98),rgba(15,23,42,.98));border:1px solid rgba(0,217,255,.3);border-radius:16px;padding:10px;backdrop-filter:blur(20px);box-shadow:0 20px 50px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:"Cairo",sans-serif;}'+
+      /* زرار الأفاتار: نفس مقاس وشكل .nav-icon-btn في كل صفحة */
+      '.nav-icon-btn.fba-user-btn{padding:0;overflow:hidden;background:var(--gradient-main,linear-gradient(135deg,#00d9ff,#8b5cf6 50%,#ec4899));border:1px solid rgba(255,255,255,.28);font-family:inherit;font-weight:900;font-size:.95rem;letter-spacing:0;}'+
+      '.nav-icon-btn.fba-user-btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(139,92,246,.5);}'+
+      '.fba-user-btn img,.fba-avatar-sm img,.fba-chip-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;}'+
+      /* البوب أب */
+      '.fba-user-dropdown{position:absolute;top:calc(100% + 12px);left:0;min-width:250px;background:linear-gradient(180deg,rgba(10,14,39,.98),rgba(15,23,42,.98));border:1px solid rgba(0,217,255,.3);border-radius:16px;padding:10px;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 20px 50px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s cubic-bezier(.34,1.56,.64,1);font-family:inherit;direction:rtl;}'+
       '.fba-user-wrap.open .fba-user-dropdown{opacity:1;visibility:visible;transform:translateY(0);}'+
       '.fba-user-head{display:flex;align-items:center;gap:10px;padding:8px 8px 14px;border-bottom:1px solid rgba(0,217,255,.15);margin-bottom:8px;}'+
-      '.fba-user-head .fba-avatar-sm{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#00d9ff,#8b5cf6 55%,#ec4899);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:.82rem;flex-shrink:0;}'+
-      '.fba-user-head .fba-info h4{font-size:.85rem;color:#f1f5f9;margin:0 0 2px;font-weight:800;}'+
-      '.fba-user-head .fba-info p{font-size:.7rem;color:#94a3b8;margin:0;}'+
-      '.fba-menu-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;color:#e2e8f0;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s ease,color .2s ease;text-align:right;width:100%;}'+
-      '.fba-menu-item i{width:18px;text-align:center;color:#00d9ff;font-size:.85rem;}'+
+      '.fba-avatar-sm{position:relative;width:42px;height:42px;border-radius:12px;overflow:hidden;background:var(--gradient-main,linear-gradient(135deg,#00d9ff,#8b5cf6 50%,#ec4899));display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:.82rem;flex-shrink:0;}'+
+      '.fba-info{min-width:0;}'+
+      '.fba-info h4{font-size:.85rem;color:#f1f5f9;margin:0 0 2px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}'+
+      '.fba-info p{font-size:.7rem;color:#94a3b8;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}'+
+      '.fba-menu-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;color:#e2e8f0;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s ease,color .2s ease;text-align:right;width:100%;background:transparent;border:none;font-family:inherit;}'+
+      '.fba-menu-item i{width:18px;text-align:center;color:var(--neon-cyan,#00d9ff);font-size:.85rem;}'+
       '.fba-menu-item:hover{background:rgba(0,217,255,.1);color:#fff;}'+
       '.fba-menu-item.danger i{color:#ef4444;}'+
       '.fba-menu-item.danger:hover{background:rgba(239,68,68,.12);color:#fca5a5;}'+
       '.fba-menu-sep{height:1px;background:rgba(148,163,184,.15);margin:6px 4px;}'+
-      '.fba-welcome-pill{display:inline-flex;align-items:center;gap:10px;padding:0 22px 0 8px;height:52px;border-radius:100px;background:rgba(0,217,255,.08);border:1px solid rgba(0,217,255,.4);color:#f1f5f9;font-weight:800;font-size:.9rem;box-shadow:0 8px 22px rgba(0,217,255,.15);}'+
-      '.fba-welcome-pill i{color:#fbbf24;font-size:1.05rem;}'+
-      '.fba-welcome-pill .fba-name{color:#7dd3fc;}'+
-      '.fba-user-btn img,.fba-avatar-sm img,.fba-pill-avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;}'+
-      '.fba-pill-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#00d9ff,#8b5cf6 55%,#ec4899);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.78rem;flex-shrink:0;overflow:hidden;}'+
-      '@media (max-width:480px){.fba-user-dropdown{left:auto;right:0;min-width:230px;}.fba-welcome-pill{font-size:.8rem;padding:0 16px 0 6px;height:46px;}}';
+      /* شيب الأفاتار الصغير جوه زرار الترحيب */
+      '.fba-chip-avatar{position:relative;width:28px;height:28px;border-radius:9px;overflow:hidden;background:rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:.7rem;flex-shrink:0;}'+
+      '@media (max-width:768px){.nav-icon-btn.fba-user-btn{font-size:.85rem;}}'+
+      '@media (max-width:480px){.fba-user-dropdown{left:auto;right:0;min-width:230px;}}';
     document.head.appendChild(style);
   }
 
@@ -143,12 +148,12 @@
     if(!loginBtn) return;
 
     var initials = getInitials(session.name);
-    var settingsUrl = dashUrl + '#settings';
+    var settingsUrl = session.isAdmin ? (dashUrl + '#profile') : (dashUrl + '#settings');
 
     var wrap = document.createElement('div');
     wrap.className = 'fba-user-wrap';
     wrap.innerHTML =
-      '<button type="button" class="fba-user-btn" aria-haspopup="true" aria-label="حسابي">'+avatarInner(initials, photoUrl)+'</button>'+
+      '<button type="button" class="nav-icon-btn fba-user-btn" aria-haspopup="true" aria-label="حسابي">'+avatarInner(initials, photoUrl)+'</button>'+
       '<div class="fba-user-dropdown">'+
         '<div class="fba-user-head">'+
           '<div class="fba-avatar-sm">'+avatarInner(initials, photoUrl)+'</div>'+
@@ -173,11 +178,16 @@
     document.addEventListener('click', function(e){
       if(!wrap.contains(e.target)) wrap.classList.remove('open');
     });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') wrap.classList.remove('open');
+    });
     var logoutBtn = wrap.querySelector('#fbaLogoutBtn');
     if(logoutBtn) logoutBtn.addEventListener('click', logout);
   }
 
-  /* ---------- تحويل زرار الهيرو من "انضم" إلى ترحيب ---------- */
+  /* ---------- تحويل زرار الهيرو من "انضم" إلى ترحيب ----------
+     بنحتفظ بنفس كلاس الزرار الأصلي (btn-primary / btn-ghost / btn-gold)
+     فيطلع بنفس الحجم والشكل والألوان بالظبط في كل صفحة. */
   function renderHero(session, dashUrl, photoUrl){
     var heroCta = document.querySelector(
       '.hero-buttons a[href="./register.html"], .page-hero-actions a[href="./register.html"]'
@@ -185,13 +195,13 @@
     if(!heroCta) return;
 
     var initials = getInitials(session.name);
-    var pill = document.createElement('a');
-    pill.className = 'fba-welcome-pill';
-    pill.href = dashUrl;
-    pill.innerHTML =
-      '<span class="fba-pill-avatar">'+avatarInner(initials, photoUrl)+'</span>'+
-      '<span>أهلاً بعودتك، <span class="fba-name">'+escapeHTML(firstName(session.name))+'</span> 👋</span>';
-    heroCta.replaceWith(pill);
+    var btn = document.createElement('a');
+    btn.className = heroCta.className;
+    btn.href = dashUrl;
+    btn.innerHTML =
+      '<span class="fba-chip-avatar">'+avatarInner(initials, photoUrl)+'</span>'+
+      '<span>أهلاً بعودتك، '+escapeHTML(firstName(session.name))+' 👋</span>';
+    heroCta.replaceWith(btn);
   }
 
   /* ---------- التشغيل ---------- */
@@ -204,6 +214,13 @@
 
     if(session.isAdmin){
       dashUrl = './admin-dashboard.html';
+      // بيانات الأدمن (الاسم/المسمى/الصورة) من أحدث نسخة في fba_admin_profile
+      try{
+        var ap = JSON.parse(localStorage.getItem('fba_admin_profile') || '{}');
+        if(ap.name) session.name = ap.name;
+        if(ap.roleTitle) session.roleTitle = ap.roleTitle;
+        if(ap.photo && ap.photo.dataUrl) photoUrl = ap.photo.dataUrl;
+      }catch(e){}
     } else {
       var liveUser = null;
       try{ liveUser = await dbGetUserById(session.id); }catch(e){ liveUser = null; }
