@@ -858,8 +858,9 @@ textarea.modal-form-control{resize:vertical;min-height:80px;line-height:1.6;}
    CONFIG
    ========================================================= */
 const DB_NAME = 'FBA_FuturByAi_DB';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const STORE_USERS = 'users';
+const STORE_META = 'meta';
 const LS_ACTIVITY = 'fba_admin_activity';
 const LS_ADMIN_PROFILE = 'fba_admin_profile';
 
@@ -875,6 +876,7 @@ let pendingAction = null;
 function openDB(){
   return new Promise((resolve,reject)=>{
     const req = indexedDB.open(DB_NAME, DB_VERSION);
+    let migratedKeys = [];
     req.onupgradeneeded = e => {
       const db = e.target.result;
       if(!db.objectStoreNames.contains(STORE_USERS)){
@@ -882,11 +884,69 @@ function openDB(){
         store.createIndex('nationalId','nationalId',{unique:false});
         store.createIndex('email','email',{unique:false});
       }
+      // مخزن البيانات العامة (بروفايل الأدمن + صورته + كلمة المرور + سجل النشاط)
+      if(!db.objectStoreNames.contains(STORE_META)){
+        db.createObjectStore(STORE_META, {keyPath:'key'});
+      }
+      // ترحيل لمرة واحدة: نقل البيانات القديمة من localStorage إلى IndexedDB
+      try{
+        const metaStore = e.target.transaction.objectStore(STORE_META);
+        [['fba_admin_profile',true],['fba_admin_password',false],['fba_admin_activity',true]].forEach(([k,isJson])=>{
+          const raw = localStorage.getItem(k);
+          if(raw !== null){
+            let val = raw;
+            if(isJson){ try{ val = JSON.parse(raw); }catch(_){ return; } }
+            metaStore.put({key:k, value:val});
+            migratedKeys.push(k);
+          }
+        });
+      }catch(_){}
     };
-    req.onsuccess = () => resolve(req.result);
+    req.onsuccess = () => {
+      migratedKeys.forEach(k=>{ try{ localStorage.removeItem(k); }catch(_){} });
+      resolve(req.result);
+    };
     req.onerror = () => reject(req.error);
   });
 }
+/* ===== مخزن البيانات العامة (key/value) داخل IndexedDB ===== */
+async function dbMetaGet(key, fallback){
+  try{
+    const db = await openDB();
+    return await new Promise(res=>{
+      const r = db.transaction(STORE_META,'readonly').objectStore(STORE_META).get(key);
+      r.onsuccess = () => res(r.result ? r.result.value : fallback);
+      r.onerror = () => res(fallback);
+    });
+  }catch(e){ return fallback; }
+}
+async function dbMetaSet(key, value){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_META,'readwrite');
+    tx.objectStore(STORE_META).put({key, value});
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error);
+  });
+}
+async function dbMetaDelete(key){
+  const db = await openDB();
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(STORE_META,'readwrite');
+    tx.objectStore(STORE_META).delete(key);
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+/* كاش في الذاكرة للبيانات العامة (يتحمل من IndexedDB عند بدء الصفحة ويُكتب فيها عند كل تعديل) */
+const META = { profile:{}, activity:[] };
+async function loadMetaCache(){
+  META.profile = (await dbMetaGet(LS_ADMIN_PROFILE, {})) || {};
+  META.activity = (await dbMetaGet(LS_ACTIVITY, [])) || [];
+}
+
 async function dbGetAllUsers(){
   const db = await openDB();
   return new Promise((resolve,reject)=>{
@@ -932,7 +992,10 @@ async function dbDeleteUser(id){
     return;
   }
 
-  // تحميل الملف الشخصي المحفوظ (للتعديلات)
+})();
+
+function applyProfileToUI(){
+  if(!adminSession) return;
   const profile = loadAdminProfile();
   if(profile.name) adminSession.name = profile.name;
   if(profile.email) adminSession.email = profile.email;
@@ -946,20 +1009,20 @@ async function dbDeleteUser(id){
   document.getElementById('profileHeroName').textContent = adminSession.name || '—';
   document.getElementById('profileHeroEmail').textContent = adminSession.email || 'admin@fba.com';
 
-  // Pre-fill profile edit form
   const nameEl = document.getElementById('adminEditName');
   const emailEl = document.getElementById('adminEditEmail');
   const roleEl = document.getElementById('adminEditRole');
   if(nameEl) nameEl.value = adminSession.name || '';
   if(emailEl) emailEl.value = adminSession.email || 'admin@fba.com';
   if(roleEl) roleEl.value = adminSession.roleTitle || '';
-})();
+}
 
 function loadAdminProfile(){
-  try{ return JSON.parse(localStorage.getItem(LS_ADMIN_PROFILE)||'{}'); }catch(e){ return {}; }
+  return META.profile || {};
 }
 function saveAdminProfileToLS(data){
-  localStorage.setItem(LS_ADMIN_PROFILE, JSON.stringify(data));
+  META.profile = data;
+  return dbMetaSet(LS_ADMIN_PROFILE, data);
 }
 
 /* ---------- صورة المدير (تُحفظ في fba_admin_profile.photo وتظهر في كل صفحات الموقع) ---------- */
@@ -993,24 +1056,24 @@ function handleAdminPhotoUpload(input){
   if(!file.type.startsWith('image/')){ showToast('من فضلك اختر ملف صورة فقط.','error'); input.value=''; return; }
   if(file.size > 2*1024*1024){ showToast('حجم الصورة لازم يكون أقل من 2MB.','error'); input.value=''; return; }
   const reader = new FileReader();
-  reader.onload = ev => {
+  reader.onload = async ev => {
     try{
-      const profile = loadAdminProfile();
+      const profile = Object.assign({}, loadAdminProfile());
       profile.photo = { dataUrl: ev.target.result, name: file.name, type: file.type, updatedAt: new Date().toISOString() };
-      saveAdminProfileToLS(profile);
+      await saveAdminProfileToLS(profile);
       applyAdminPhoto(profile.photo.dataUrl, getInitials(adminSession && adminSession.name));
       showToast('تم حفظ الصورة الشخصية.','success');
     }catch(err){
-      showToast('تعذر حفظ الصورة (المساحة ممتلئة). جرّب صورة أصغر.','error');
+      showToast('تعذر حفظ الصورة. جرّب صورة أخرى.','error');
     }
     input.value = '';
   };
   reader.readAsDataURL(file);
 }
-function removeAdminPhoto(){
-  const profile = loadAdminProfile();
+async function removeAdminPhoto(){
+  const profile = Object.assign({}, loadAdminProfile());
   delete profile.photo;
-  saveAdminProfileToLS(profile);
+  await saveAdminProfileToLS(profile);
   applyAdminPhoto(null, getInitials(adminSession && adminSession.name));
   showToast('تم حذف الصورة الشخصية.','success');
 }
@@ -1087,18 +1150,20 @@ function userAvatarHTML(u, size='normal'){
    ACTIVITY LOG
    ========================================================= */
 function loadActivity(){
-  try{ return JSON.parse(localStorage.getItem(LS_ACTIVITY)||'[]'); }catch(e){ return []; }
+  return META.activity || [];
 }
 function logActivity(type, message, meta={}){
-  const log = loadActivity();
+  const log = loadActivity().slice();
   log.unshift({type, message, meta, at:new Date().toISOString()});
   if(log.length > 200) log.length = 200;
-  localStorage.setItem(LS_ACTIVITY, JSON.stringify(log));
+  META.activity = log;
+  dbMetaSet(LS_ACTIVITY, log).catch(()=>{});
   renderActivity();
 }
 function clearActivity(){
   if(!confirm('هل أنت متأكد من حذف كل سجل النشاط؟')) return;
-  localStorage.removeItem(LS_ACTIVITY);
+  META.activity = [];
+  dbMetaDelete(LS_ACTIVITY).catch(()=>{});
   renderActivity();
   showToast('تم حذف سجل النشاط','info');
 }
@@ -1934,11 +1999,11 @@ async function saveAdminProfile(){
 
   if(!name){ showToast('الاسم مطلوب','error'); return; }
 
-  const profile = loadAdminProfile();
+  const profile = Object.assign({}, loadAdminProfile());
   profile.name = name;
   profile.email = email || profile.email;
   profile.roleTitle = role || profile.roleTitle;
-  saveAdminProfileToLS(profile);
+  await saveAdminProfileToLS(profile);
 
   // Update session
   if(adminSession){
@@ -1970,13 +2035,14 @@ async function changeAdminPassword(){
   if(np!==cp){ showToast('كلمتا المرور غير متطابقتين','error'); return; }
 
   // التحقق من كلمة المرور الحالية
-  const storedAdminPass = localStorage.getItem('fba_admin_password') || '23522004';
+  const storedAdminPass = (await dbMetaGet('fba_admin_password', null)) || '23522004';
   if(cur !== storedAdminPass){
     showToast('كلمة المرور الحالية غير صحيحة','error');
     return;
   }
 
-  localStorage.setItem('fba_admin_password', np);
+  try{ await dbMetaSet('fba_admin_password', np); }
+  catch(e){ showToast('تعذر حفظ كلمة المرور','error'); return; }
   document.getElementById('adminCurrentPass').value = '';
   document.getElementById('adminNewPass').value = '';
   document.getElementById('adminConfirmPass').value = '';
@@ -2017,6 +2083,8 @@ function exportData(){
   const govSel = document.getElementById('govFilter');
   govs.forEach(g=>{ const o = document.createElement('option'); o.value=g; o.textContent=g; govSel.appendChild(o); });
 
+  await loadMetaCache();
+  applyProfileToUI();
   await refreshAllData();
   renderActivity();
 
